@@ -37,8 +37,8 @@ class Application extends  Configuration
             if($_SERVER["SERVER_PORT"] != 80){
                     $url .=":".$_SERVER["SERVER_PORT"];
             }
-        $this->baseUrl = $url."/".SITE_PATH."/";
-        $this->homeUrl = $url."/".SITE_PATH."/";
+        $this->baseUrl = $url."/";
+        $this->homeUrl = $url."/";
 
         self::sessionStart();
         if(isset($_SESSION["title"]))
@@ -383,7 +383,7 @@ class Application extends  Configuration
             $url .=":".$_SERVER["SERVER_PORT"];
         }
         $configuration = new Configuration();
-        return $url.="/".SITE_PATH."/templates/".$configuration->getTemplate().DIRECTORY_SEPARATOR;
+        return $url.="/templates/".$configuration->getTemplate().DIRECTORY_SEPARATOR;
     }
 
     /**

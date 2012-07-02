@@ -1,2 +1,9 @@
 <h1>Simple MVC</h1>
 <p>Simple MVC framework with forum implementation.</p>
+<p><a href="http://simplemvc.loki.iswift.eu/" target="blank">Forum implementation here</a></p>
+<p>Admin user:</p>
+<p><strong>Login:</strong>admin</p>
+<p><strong>Password:</strong>admin</p>
+<p>Normal user:</p>
+<p><strong>Login:</strong>user</p>
+<p><strong>Password:</strong>user</p>
