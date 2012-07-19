@@ -1,7 +1,6 @@
 <?php
 require_once("config.php");
 
-
 /** Class loading file with class, model etc. if its needed
  * @param $class_name
  */
@@ -20,5 +19,4 @@ $actions = $_GET["url"];
   }
 
 $site = new SiteController();
-
 

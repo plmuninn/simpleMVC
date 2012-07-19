@@ -23,5 +23,6 @@ function __autoload($class_name)
 
 }
    $actions = $_GET["url"];
+
    $admin = new AdminController();
 

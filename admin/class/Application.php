@@ -21,7 +21,6 @@ class Application extends  Configuration
 {
     private $homeUrl;
     private static  $baseDir = BASE_DIR;
-    private $baseUrl;
     private $siteTitle;
     private $pageTitle;
 
@@ -33,12 +32,18 @@ class Application extends  Configuration
         parent::__construct();
 
         $this->siteTitle = SITE_TITLE." ";
-        $url  ="http://".$_SERVER["SERVER_NAME"];
-            if($_SERVER["SERVER_PORT"] != 80){
-                    $url .=":".$_SERVER["SERVER_PORT"];
+
+        $url = Application::generateUrl();
+
+        $domain = explode("/",SITE_PATH);
+        $domain = array_filter($domain, 'strlen');
+            if(count($domain)> 1){
+        $this->homeUrl = $url."/".($domain[1] != "admin" ? $domain[1]."/" : "");
             }
-        $this->baseUrl = $url."/";
+            else{
         $this->homeUrl = $url."/";
+            }
+
 
         self::sessionStart();
         if(isset($_SESSION["title"]))
@@ -340,8 +345,8 @@ class Application extends  Configuration
     public static function makeActualLink(){
         self::clearActualLink();
         self::sessionStart();
-        $tin = new Application();
-        $link = $tin->getBaseUrl()."index.php?";
+        $app= new Application();
+        $link = $app->getHomeUrl()."index.php?";
         foreach ($_GET as $key => $value){
             $link.=$key."=".$value."&";
         }
@@ -378,12 +383,21 @@ class Application extends  Configuration
      * @return string
      */
     public static function templateDir(){
+        $url = Application::generateUrl();
+        $configuration = new Configuration();
+        return $url.=DIRECTORY_SEPARATOR.SITE_PATH."/templates/".$configuration->getTemplate().DIRECTORY_SEPARATOR;
+    }
+
+    /**Check basic URL
+     * @static
+     * @return string
+     */
+    private static function generateUrl(){
         $url  ="http://".$_SERVER["SERVER_NAME"];
         if($_SERVER["SERVER_PORT"] != 80){
             $url .=":".$_SERVER["SERVER_PORT"];
         }
-        $configuration = new Configuration();
-        return $url.="/templates/".$configuration->getTemplate().DIRECTORY_SEPARATOR;
+       return $url;
     }
 
     /**
@@ -392,14 +406,6 @@ class Application extends  Configuration
     public function getHomeUrl()
     {
         return $this->homeUrl;
-    }
-
-    /**
-     * @return string
-     */
-    public function getBaseUrl()
-    {
-        return $this->baseUrl;
     }
 
     /**

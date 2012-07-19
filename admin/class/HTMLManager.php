@@ -50,7 +50,7 @@ class HTMLManager implements HTMLInterface
                       $admin = $value;
                       break;
                 case "href":
-                   $href = "href='".$app->getBaseUrl().($admin == false ? "index.php?url=" : "admin/index.php?url=").$value."'";
+                   $href = "href='".$app->getHomeUrl().($admin == false ? "index.php?url=" : "admin/index.php?url=").$value."'";
                     break;
                 case "link":
                     $link = $value;
@@ -95,7 +95,7 @@ class HTMLManager implements HTMLInterface
                         $parameters .="alt='$value' ";
                         break;
                     case "src":
-                        $src = "src='".$app->getBaseUrl().$value."'";
+                        $src = "src='".$app->getHomeUrl().$value."'";
                         break;
                 }
             }

@@ -113,7 +113,7 @@ function addUser(e){
     var url = location.protocol + "//" + location.hostname + (location.port && ":" + location.port) + "/";
 
     if(location.hostname == "localhost"){
-        url += "homepage/"
+        url += "simpleMVC/"
     }
 
   var ajax = ajaxOpen();
@@ -174,7 +174,7 @@ function saveConfig(e){
     var url = location.protocol + "//" + location.hostname + (location.port && ":" + location.port) + "/";
 
     if(location.hostname == "localhost"){
-        url += "homepage/"
+        url += "simpleMVC/"
     }
 
     var object = url +"admin/index.php?url=admin/configurationsave";
@@ -216,7 +216,7 @@ function addCategory(e){
     var url = location.protocol + "//" + location.hostname + (location.port && ":" + location.port) + "/";
 
     if(location.hostname == "localhost"){
-         url += "homepage/"
+        url += "simpleMVC/"
      }
 
     var ajax = ajaxOpen();

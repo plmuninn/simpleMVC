@@ -23,6 +23,8 @@ class TemplateControll {
     protected $content;
     protected $message = array();
 
+    private $app;
+    private $file;
 
     /**
      *Constructor check url and active controller and actions from them.
@@ -61,13 +63,11 @@ class TemplateControll {
     public function render($name){
         $this->beforeRender();
         /*Create instance of application configurations and make it global*/
-        global $app;
-        $app = new Application();
+        $this->app = new Application();
         /*Get view*/
-        global $file;
-        $file =  $app->getBaseDir()."views/".$this->name."/".$name.".php";
+        $this->file =  $this->app->getBaseDir()."views/".$this->name."/".$name.".php";
         /*Get template*/
-        include_once($app->getBaseDir()."templates/".$app->getTemplate()."/index.php");
+        include_once($this->app->getBaseDir()."templates/".$this->app->getTemplate()."/index.php");
         $this->afterRender();
     }
 
@@ -114,18 +114,16 @@ class TemplateControll {
      * @param bool $admin for admin site true
      */
     protected function redirectToOther($view, $admin){
-        $tin = new Application();
-        header('Location: '.$tin->getHomeUrl().($admin == false ? "index.php?url=" : "admin/index.php?url=").$view."");
+        $app = new Application();
+        header('Location: '.$app->getHomeUrl().($admin == false ? "index.php?url=" : "admin/index.php?url=").$view."");
         exit();
     }
 
      /**Generate view*/
     private function view(){
-        global $file;
-        global $app;
-        if(file_exists($file)){
+        if(file_exists($this->file)){
         ob_start();
-        require_once($file);
+        require_once($this->file);
         $contents = ob_get_contents();
         ob_end_clean();
         echo $contents;
