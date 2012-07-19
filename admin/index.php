@@ -15,11 +15,13 @@ Application::sessionStart();
 function __autoload($class_name)
 {
     if(strpos($class_name,"Controller"))
-    require_once BASE_DIR."admin/controller/".$class_name.".php";
+        require_once BASE_DIR."admin/controller/".$class_name.".php";
     else if(strpos($class_name,"Model"))
-    require_once BASE_DIR."model/".$class_name.".php";
+        require_once BASE_DIR."model/".$class_name.".php";
+    else if(strpos($class_name,"Interface"))
+        require_once  BASE_DIR."admin/class/interfaces/".$class_name.".php";
     else
-    require_once BASE_DIR."admin/class/".$class_name.".php";
+        require_once BASE_DIR."admin/class/".$class_name.".php";
 
 }
    $actions = $_GET["url"];

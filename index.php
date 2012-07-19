@@ -10,6 +10,8 @@ function __autoload($class_name)
         require_once  BASE_DIR."controller/".$class_name.".php";
     else if(strpos($class_name,"Model"))
         require_once  BASE_DIR."model/".$class_name.".php";
+    else if(strpos($class_name,"Interface"))
+        require_once  BASE_DIR."admin/class/interfaces/".$class_name.".php";
     else
         require_once  BASE_DIR."admin/class/".$class_name.".php";
 }
