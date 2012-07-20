@@ -25,6 +25,7 @@ class Controller {
 
     private $app;
     private $file;
+    protected $actions;
 
     /**
      *Constructor check url and active controller and actions from them.
@@ -53,6 +54,7 @@ class Controller {
 
     function __destruct()
     {
+      unset($_GET["url"]);
       Application::sessionWrite();
     }
 
@@ -137,14 +139,13 @@ class Controller {
      */
     protected function generateControllers(){
         self::generateName();
-        global $actions;
+        if(isset($_GET["url"]))
+        $this->actions = $actions = $_GET["url"];
         $this->functions = get_class_methods($this);
-        $this->controllers = explode("/",$actions);
+        $this->controllers = explode("/",$this->actions);
         $this->controllers = array_reverse($this->controllers);
         $this->controllers = array_filter($this->controllers, 'strlen');
         $this->functionsCheck();
-        unset($_GET["url"]);
-
     }
 
     /**
