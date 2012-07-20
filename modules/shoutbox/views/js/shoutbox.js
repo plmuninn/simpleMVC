@@ -31,7 +31,9 @@ $(document).ready(function() {
 
    $("#shoutbox_show").click(function(){
          $(".box").slideToggle('slow');
-            if($(this).text() =="Pokaż shoutbox"){
+         $("html, body").animate({ scrollTop: $(document).height() }, "slow");
+
+       if($(this).text() =="Pokaż shoutbox"){
                 $(this).text("Schowaj shoutbox");
             }
        else{
