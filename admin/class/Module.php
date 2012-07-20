@@ -36,13 +36,13 @@ class Module implements ModuleManagerInterface
          switch($type){
              case "css":
                  if($path == null)
-                     echo "<link rel='stylesheet' type='text/css' href='".$this->app->getHomeUrl()."modules/".strtolower($this->name)."/views/css/".$name."' />";
+                     echo "<link rel='stylesheet' type='text/css' href='".$this->app->getHomeUrl()."modules/".strtolower($this->name)."/css/".$name."' />";
                  else
                      echo "<link rel='stylesheet' type='text/css' href='".$path.$name."' />";
                  break;
              case "javascript":
                  if($path == null)
-                     echo "<script src='".$this->app->getHomeUrl()."modules/".strtolower($this->name)."/views/js/".$name."' type='text/javascript' charset='utf-8'></script>";
+                     echo "<script src='".$this->app->getHomeUrl()."modules/".strtolower($this->name)."/js/".$name."' type='text/javascript' charset='utf-8'></script>";
                  else
                      echo "<script src='".$path.$name."' type='text/javascript' charset='utf-8'></script>";
                  break;

@@ -68,8 +68,10 @@ class Loader implements LoaderInterface
                     self::loadFolder($files,$app->getBaseDir().$path, $exceptions);
         }
         else{
-          if($exceptions == null)
-          require_once($app->getBaseDir().$path.".php");
+          if($exceptions == null){
+              if(self::checkClass($app->getBaseDir().$path.".php"))
+              require_once($app->getBaseDir().$path.".php");
+          }
             else{
                 $exception_path = "";
                 $exceptions = explode(".",$exceptions);
@@ -85,8 +87,10 @@ class Loader implements LoaderInterface
                              self::loadFile($files,$app->getBaseDir()."/".$path);
                 }
                 else
-                    if($path != $exception_path)
+                    if($path != $exception_path) {
+                        if(self::checkClass($app->getBaseDir().$path.".php"))
                         require_once($app->getBaseDir().$path.".php");
+                    }
             }
         }
     }
@@ -100,6 +104,7 @@ class Loader implements LoaderInterface
         if($exceptions == null){
             foreach($files as $value){
                 if(is_file($path."/".$value)){
+                    if(self::checkClass($path."/".$value))
                     require_once($path."/".$value);
                 }
                 elseif (is_dir($path."/".$value)){
@@ -123,6 +128,7 @@ class Loader implements LoaderInterface
                 $exception_path = explode("/",$exception_path);
                 foreach($files as $value){
                     if(is_file($path."/".$value)){
+                        if(self::checkClass($path."/".$value))
                             require_once($path."/".$value);
                     }
                     elseif (is_dir($path."/".$value)){
@@ -136,8 +142,10 @@ class Loader implements LoaderInterface
             else{
                 foreach($files as $value){
                     if(is_file($path."/".$value)){
-                        if($path."/".$value != $app->getBaseDir().$exception_path.".php")
-                        require_once($path."/".$value);
+                        if($path."/".$value != $app->getBaseDir().$exception_path.".php"){
+                            if(self::checkClass($path."/".$value))
+                            require_once($path."/".$value);
+                        }
                     }
                     elseif (is_dir($path."/".$value)){
                         $newFiles = FileManager::getAll($path."/".$value);
@@ -159,7 +167,44 @@ class Loader implements LoaderInterface
          if(!in_array($files,$path[0])){
              $path = array_reverse($path);
              $path = implode("/",$path);
+             if(self::checkClass($app->getBaseDir().$path.".php"))
              require_once($app->getBaseDir().$path.".php");
         }
     }
+
+    /**Downloaded from http://stackoverflow.com/questions/928928/determining-what-classes-are-defined-in-a-php-class-file
+     * @static
+     * @param $path
+     * @return bool
+     */
+    public static  function checkClass($path){
+            $php_code = file_get_contents($path);
+            $classes = self::get_php_classes($php_code);
+            if(count($classes) >0){
+                return true;
+            }
+                else
+            return false;
+    }
+
+    /** Downloaded from http://stackoverflow.com/questions/928928/determining-what-classes-are-defined-in-a-php-class-file
+     * @param $php_code
+     * @return array
+     */
+    private  function get_php_classes($php_code) {
+        $classes = array();
+        $tokens = token_get_all($php_code);
+        $count = count($tokens);
+        for ($i = 2; $i < $count; $i++) {
+            if (   $tokens[$i - 2][0] == T_CLASS
+                && $tokens[$i - 1][0] == T_WHITESPACE
+                && $tokens[$i][0] == T_STRING) {
+
+                $class_name = $tokens[$i][1];
+                $classes[] = $class_name;
+            }
+        }
+        return $classes;
+    }
+
 }
