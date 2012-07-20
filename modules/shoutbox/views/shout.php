@@ -15,7 +15,7 @@ if(count($shoutbox)>0){
     foreach($shoutbox as $value){
         foreach ($users as $user){
             if($value->user_id_user == $user->id_user){
-               echo "<li>".$user->login." : ".$value->text."</li>";
+               echo "<li>".$user->login." : ".$value->text."<div class='shout_remove'><a href='".$value->id_shoutbox."'>x</a></div></li>";
             }
         }
     }
