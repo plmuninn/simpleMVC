@@ -7,7 +7,8 @@ $this->loadFile("jquery.mousewheel.min.js","javascript");
 $this->loadFile("jquery.mCustomScrollbar.js","javascript");
 $usr = $_SESSION["user"];
 ?>
-<div class="box">
+<a id="shoutbox_show" href="#">Pokaż shoutbox</a>
+<div class="box" style="display: none">
     <p><h1>ShoutBox</h1></p>
     <div class="shoutbox">
       <div class="shout">

@@ -27,6 +27,19 @@ $(document).ready(function() {
 
     });
 
+
+
+   $("#shoutbox_show").click(function(){
+         $(".box").slideToggle('slow');
+            if($(this).text() =="Pokaż shoutbox"){
+                $(this).text("Schowaj shoutbox");
+            }
+       else{
+                $(this).text("Pokaż shoutbox");
+            }
+       return false;
+   });
+
 });
 
 function loadShoutbox(){
