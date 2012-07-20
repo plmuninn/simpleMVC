@@ -6,7 +6,7 @@
  * Time: 07:48
  *
  */
-class TopicController  extends TemplateControll
+class TopicController  extends Controller
 {
 
     function __construct()

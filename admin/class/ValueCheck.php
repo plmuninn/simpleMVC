@@ -42,10 +42,82 @@ class ValueCheck
                      else
                          return false;
                      break;
+                 case "char":
+                     if(is_string($value)){
+                         if(count($value) >= 0 && count($value) <= $prefLength && count($value) <= 255){
+                             return true;
+                         }
+                     }
+                     else
+                         return false;
+                     break;
                  case "varchar":
                      if(is_string($value)){
-                         if(count($value) <= $prefLength){
+                         if(count($value) >= 0 && count($value) <= $prefLength && count($value) <= 255){
                          return true;
+                         }
+                     }
+                     else
+                         return false;
+                     break;
+                 case "tinytext":
+                     if(is_string($value)){
+                         if(count($value) <= $prefLength && count($value) <= 255){
+                             return true;
+                         }
+                     }
+                     else
+                         return false;
+                     break;
+                 case "text":
+                     if(is_string($value)){
+                         if(count($value) <= $prefLength  && count($value) <= 65535){
+                             return true;
+                         }
+                     }
+                     else
+                         return false;
+                     break;
+                 case "blob":
+                     if(is_string($value)){
+                         if(count($value) <= $prefLength  && count($value) <= 65535){
+                             return true;
+                         }
+                     }
+                     else
+                         return false;
+                     break;
+                 case "mediumtext":
+                     if(is_string($value)){
+                         if(count($value) <= $prefLength  && count($value) <= 16777215){
+                             return true;
+                         }
+                     }
+                     else
+                         return false;
+                     break;
+                 case "mediumblob":
+                     if(is_string($value)){
+                         if(count($value) <= $prefLength  && count($value) <= 16777215){
+                             return true;
+                         }
+                     }
+                     else
+                         return false;
+                     break;
+                 case "longtext":
+                     if(is_string($value)){
+                         if(count($value) <= $prefLength  && count($value) <= 4294967295){
+                             return true;
+                         }
+                     }
+                     else
+                         return false;
+                     break;
+                 case "longblob":
+                     if(is_string($value)){
+                         if(count($value) <= $prefLength  && count($value) <= 4294967295){
+                             return true;
                          }
                      }
                      else

@@ -6,7 +6,7 @@
  * Time: 07:40
  *
  */
-class CategoryController  extends TemplateControll
+class CategoryController  extends Controller
 {
     function __construct()
     {

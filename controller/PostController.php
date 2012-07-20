@@ -6,7 +6,7 @@
  * Time: 07:48
  *
  */
-class PostController extends TemplateControll
+class PostController extends Controller
 {
     function __construct()
     {

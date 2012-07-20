@@ -8,7 +8,7 @@
  */
 
 /*Main site controller*/
-class SiteController extends TemplateControll
+class SiteController extends Controller
 {
 
 

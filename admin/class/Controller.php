@@ -11,7 +11,7 @@
 *
 *
 *  */
-class TemplateControll {
+class Controller {
 
 
     protected $controllers = array();
@@ -183,6 +183,11 @@ class TemplateControll {
     public function getName()
     {
         return $this->name;
+    }
+
+    public function module($name){
+        Loader::import("modules.".strtolower($name).".*","modules.".strtolower($name).".views.*" );
+        return new $name;
     }
 
     public function getModel()

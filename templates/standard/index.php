@@ -21,5 +21,9 @@
 <?php
   include_once("menu.php");
   $this->view();
+    if(!$this->app->isGuest()):
+     echo "<hr />";
+     $this->module("Shoutbox");
+    endif;
   include_once("foot.php");
 ?>

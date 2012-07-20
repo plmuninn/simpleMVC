@@ -6,7 +6,7 @@
  * Time: 10:20
  *
  */
-class LoginController extends TemplateControll
+class LoginController extends Controller
 {
     function __construct()
     {

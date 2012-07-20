@@ -14,7 +14,7 @@
  *@property array $variablesTypes
  *@property bool $new
  */
-class ModelSQLManager  extends ApplicationDB implements  SQLManagerInterface
+class ModelSQLManager  extends ApplicationDB implements SQLManagerInterface
 {
 
     protected  $table_name = null;
@@ -34,6 +34,14 @@ class ModelSQLManager  extends ApplicationDB implements  SQLManagerInterface
             break;
         }
 
+    }
+
+    private function getKeys(){
+        //TODO: Keys sercher
+    }
+
+    private function relations(){
+        //TODO: Relation manager
     }
 
     private function mysql()

@@ -6,7 +6,7 @@
  * Time: 22:44
  *
  */
-class AdminController  extends TemplateControll
+class AdminController  extends Controller
 {
 
     /**

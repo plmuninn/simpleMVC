@@ -93,7 +93,7 @@ class FileManager implements FileInterface
     /**Get all folders ona $path
      * @static
      * @param string $path
-     * @return string array
+     * @return array
      * @throws Exception
      */
     public static function  getFolders($path)
@@ -137,7 +137,10 @@ class FileManager implements FileInterface
         rtrim($path = $path.(substr($path,-1) != DIRECTORY_SEPARATOR ? DIRECTORY_SEPARATOR : ''));
 
        if(is_dir($path)){
-          return scandir($path);
+          $files = scandir($path);
+          unset($files[0]);
+          unset($files[1]);
+          return $files;
        }
         else
             new Exception($path." is not a directory");

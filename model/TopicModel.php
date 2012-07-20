@@ -6,7 +6,7 @@
  * Time: 07:39
  *
  */
-class TopicModel  extends TemplateMod
+class TopicModel  extends Model
 {
     function __construct()
     {

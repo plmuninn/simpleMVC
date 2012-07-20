@@ -6,7 +6,7 @@
  * Time: 10:56
  *
  */
-class UserModel extends TemplateMod
+class UserModel extends Model
 {
 
 

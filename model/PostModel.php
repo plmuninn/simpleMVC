@@ -6,7 +6,7 @@
  * Time: 07:39
  *
  */
-class PostModel  extends TemplateMod
+class PostModel  extends Model
 {
     function __construct()
     {

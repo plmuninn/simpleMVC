@@ -10,7 +10,7 @@
 /**
  *@param string $table_name if its null we get name from Model name
  */
-class TemplateMod extends ModelSQLManager
+class Model extends ModelSQLManager
 {
     protected $table_name = null;
 
