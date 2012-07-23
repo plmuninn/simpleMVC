@@ -20,15 +20,15 @@ class Component extends Controller
     public function __construct(){
       Application::sessionStart();
       parent::getName();
-      parent::getModel();
       parent::dependencies();
+      $this->generateModels();
       parent::generateControllers();
 
         if( (count($this->controllers) == 0) || ($this->controllers[0] == strtolower(preg_replace("/Controller/","",get_class($this)))) ){
             $this->rendered = true;
             $this->renderIndex();
         }
-        else{
+        elseif( count($this->controllers) < 2 || ($this->getName() != $this->controllers[1]) ){
            $this->redirect();
         }
 
@@ -45,6 +45,16 @@ class Component extends Controller
         parent::__destruct();
     }
 
+
+    /**
+     *Method generate model if model exist.
+     */
+    protected function generateModels(){
+        $className = get_class($this);
+        $modelName = preg_replace("/Controller/","",$className)."Model";
+        if(file_exists(Application::getBaseDir()."components/".$this->component."/model/".$modelName.".php"))
+            $this->model = new $modelName();
+    }
 
     /**
      *Render index file

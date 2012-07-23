@@ -8,7 +8,8 @@
  */
 
 if(!Application::isGuest()){
-$usr = $_SESSION["user"];}
+$usr = Application::loggedUser();
+}
 
 ?>
 <div class="user-menu">
@@ -17,6 +18,7 @@ $usr = $_SESSION["user"];}
     if(Application::isGuest()){
         echo HTMLManager::makeMenu(
             array(
+                array("href" =>"&comp=blog", "link" =>"Blogi"),
                 array("href" =>"user/registration", "link" =>"Rejestracja"),
                 array("href" =>"login", "link" =>"Zaloguj"),
             )
@@ -32,8 +34,11 @@ $usr = $_SESSION["user"];}
 
         echo HTMLManager::makeMenu(
             array(
-                array("href" =>"user/account&us_id=$usr->id_user", "link" =>"Twoje konto"),
                 array("href" =>"user/logout", "link" =>"Wyloguj"),
+                array("href" =>"user/account&us_id=$usr->id_user", "link" =>"Twoje konto"),
+                array("href" =>"&comp=blog", "link" =>"Blogi"),
+                array("href" =>"blog/account&comp=blog&user_id=$usr->id_user", "link" =>"Twój blog"),
+                array("href" =>"admin&comp=blog", "link" =>"Dodaj Wpis"),
                 (Application::isAdmin() ? array("admin" => true,"href" =>"", "link" =>"Panel Admina") : array()),
             ), false
         );

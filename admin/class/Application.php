@@ -330,8 +330,20 @@ class Application extends  Configuration
         }
         else
             return false;
+    }
 
-
+    /**
+     * Return logged user object
+     * @static
+     * @return mixed*/
+    public static function loggedUser(){
+        self::sessionStart();
+        if($_SESSION["user"] != null){
+            $usr = $_SESSION["user"];
+             return $usr;
+        }
+        else
+            return false;
     }
 
     /**

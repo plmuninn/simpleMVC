@@ -126,7 +126,7 @@ class ModelSQLManager  extends ApplicationDB implements SQLManagerInterface
         $name = get_class($this);
 
          foreach($primaryKeys as $key => $value){
-            $sql .=$key."= :".$key." AND ";
+            $sql .="`".$key."`= :".$key." AND ";
         }
 
         $sql = substr($sql , 0 , -4);
@@ -283,7 +283,7 @@ class ModelSQLManager  extends ApplicationDB implements SQLManagerInterface
                 $valueArr[$key] = $this->{$key};
                 /*Remove AutoIncrements on ID*/
                 if(!isset($this->primary[$key])){
-                        $sql.=$key." ,";
+                        $sql.="`".$key."` ,";
                         if(ValueCheck::isGoodType($valueArr, $this->variablesTypes)){
                             $sql_values .=":".$key.",";
                          }
@@ -292,6 +292,7 @@ class ModelSQLManager  extends ApplicationDB implements SQLManagerInterface
                         }
                 }
             }
+
             $sql_values = substr($sql_values , 0 ,-1);
             $sql_values .=")";
             $sql = substr($sql , 0 ,-1);
@@ -326,7 +327,7 @@ class ModelSQLManager  extends ApplicationDB implements SQLManagerInterface
                 /*Remove AutoIncrements on ID*/
                 if(!isset($this->primary[$key])){
                     if(ValueCheck::isGoodType($valueArr, $this->variablesTypes)){
-                        $sql .=$key."= :".$key.",";
+                        $sql .="`".$key."`= :".$key.",";
                     }
                     else{
                         throw new Exception("Bad type of variable ".$key);
@@ -338,7 +339,7 @@ class ModelSQLManager  extends ApplicationDB implements SQLManagerInterface
             $sql = substr($sql , 0 ,-1);
             $sql .=" WHERE ";
             foreach($this->primary as $key => $value){
-                $sql .=$key."= :".$key." AND ";
+                $sql .="`".$key."`= :".$key." AND ";
             }
             $sql = substr($sql , 0 , -4);
             $stmt=$db->prepare($sql);
@@ -378,7 +379,7 @@ class ModelSQLManager  extends ApplicationDB implements SQLManagerInterface
         $sql = "DELETE FROM ".$this->table_name." WHERE ";
 
         foreach($primaryKeys as $key => $value){
-            $sql .=$key."= :".$key." AND ";
+            $sql .="`".$key."`= :".$key." AND ";
         }
         $sql = substr($sql , 0 , -4);
         $stmt = $db->prepare($sql);
