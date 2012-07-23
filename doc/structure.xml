@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <project version="2.0.0a8" title="">
-  <file path="Application.php" hash="f9a1387b5c76933adf482d2bec3c8f12" package="Default">
+  <file path="Application.php" hash="750ce5d84085729795f0edf10cef7818" package="Default">
     <docblock line="2">
       <description><![CDATA[Application instance class]]></description>
       <long-description><![CDATA[]]></long-description>
@@ -395,159 +395,171 @@ vars and methods.</p>]]></long-description>
           </tag>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="342" package="core">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="339" package="core">
+        <name>loggedUser</name>
+        <full_name>loggedUser</full_name>
+        <docblock line="335">
+          <description><![CDATA[Return logged user object]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="335" name="static" description=""/>
+          <tag line="335" name="return" description="" type="mixed">
+            <type by_reference="false">mixed</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="354" package="core">
         <name>isOwner</name>
         <full_name>isOwner</full_name>
-        <docblock line="337">
+        <docblock line="349">
           <description><![CDATA[Check if id is the same as user id from session]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="337" name="static" description=""/>
-          <tag line="337" name="param" description="" type="int" variable="$id">
+          <tag line="349" name="static" description=""/>
+          <tag line="349" name="param" description="" type="int" variable="$id">
             <type by_reference="false">int</type>
           </tag>
-          <tag line="337" name="return" description="" type="bool">
+          <tag line="349" name="return" description="" type="bool">
             <type by_reference="false">bool</type>
           </tag>
         </docblock>
-        <argument line="342">
+        <argument line="354">
           <name>$id</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="361" package="core">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="373" package="core">
         <name>error</name>
         <full_name>error</full_name>
-        <docblock line="358">
+        <docblock line="370">
           <description><![CDATA[Display errors, warnings, messages.]]></description>
           <long-description><![CDATA[<p>All contains in session</p>]]></long-description>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="385" package="core">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="397" package="core">
         <name>makeActualLink</name>
         <full_name>makeActualLink</full_name>
-        <docblock line="382">
+        <docblock line="394">
           <description><![CDATA[Generate actual link and add it to session]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="382" name="static" description=""/>
+          <tag line="394" name="static" description=""/>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="401" package="core">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="413" package="core">
         <name>getActualLink</name>
         <full_name>getActualLink</full_name>
-        <docblock line="397">
+        <docblock line="409">
           <description><![CDATA[Return actual link to redirect]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="397" name="static" description=""/>
-          <tag line="397" name="return" description="" type="string">
+          <tag line="409" name="static" description=""/>
+          <tag line="409" name="return" description="" type="string">
             <type by_reference="false">string</type>
           </tag>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="409" package="core">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="421" package="core">
         <name>clearActualLink</name>
         <full_name>clearActualLink</full_name>
-        <docblock line="406">
+        <docblock line="418">
           <description><![CDATA[Clear acutal link from session]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="406" name="static" description=""/>
+          <tag line="418" name="static" description=""/>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="419" package="core">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="431" package="core">
         <name>getBaseDir</name>
         <full_name>getBaseDir</full_name>
-        <docblock line="414">
+        <docblock line="426">
           <description><![CDATA[Return dir for load files]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="414" name="static" description=""/>
-          <tag line="414" name="return" description="" type="string">
+          <tag line="426" name="static" description=""/>
+          <tag line="426" name="return" description="" type="string">
             <type by_reference="false">string</type>
           </tag>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="429" package="core">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="441" package="core">
         <name>templateDir</name>
         <full_name>templateDir</full_name>
-        <docblock line="424">
+        <docblock line="436">
           <description><![CDATA[Return template dir]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="424" name="static" description=""/>
-          <tag line="424" name="return" description="" type="string">
+          <tag line="436" name="static" description=""/>
+          <tag line="436" name="return" description="" type="string">
             <type by_reference="false">string</type>
           </tag>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="true" visibility="private" namespace="global" line="440" package="core">
+      <method final="false" abstract="false" static="true" visibility="private" namespace="global" line="452" package="core">
         <name>generateUrl</name>
         <full_name>generateUrl</full_name>
-        <docblock line="435">
+        <docblock line="447">
           <description><![CDATA[Check basic URL]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="435" name="static" description=""/>
-          <tag line="435" name="return" description="" type="string">
+          <tag line="447" name="static" description=""/>
+          <tag line="447" name="return" description="" type="string">
             <type by_reference="false">string</type>
           </tag>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="452" package="core">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="464" package="core">
         <name>getHomeUrl</name>
         <full_name>getHomeUrl</full_name>
-        <docblock line="448">
+        <docblock line="460">
           <description><![CDATA[Return url for homepage]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="448" name="return" description="" type="string">
+          <tag line="460" name="return" description="" type="string">
             <type by_reference="false">string</type>
           </tag>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="461" package="core">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="473" package="core">
         <name>setPageTitle</name>
         <full_name>setPageTitle</full_name>
-        <docblock line="457">
+        <docblock line="469">
           <description><![CDATA[Set page title]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="457" name="param" description="" type="string" variable="$pageTitle">
+          <tag line="469" name="param" description="" type="string" variable="$pageTitle">
             <type by_reference="false">string</type>
           </tag>
         </docblock>
-        <argument line="461">
+        <argument line="473">
           <name>$pageTitle</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="470" package="core">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="482" package="core">
         <name>getPageTitle</name>
         <full_name>getPageTitle</full_name>
-        <docblock line="466">
+        <docblock line="478">
           <description><![CDATA[Return title of page]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="466" name="return" description="" type="string">
+          <tag line="478" name="return" description="" type="string">
             <type by_reference="false">string</type>
           </tag>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="479" package="core">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="491" package="core">
         <name>setSiteTitle</name>
         <full_name>setSiteTitle</full_name>
-        <docblock line="475">
+        <docblock line="487">
           <description><![CDATA[Set site title]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="475" name="param" description="" type="" variable="$siteTitle"/>
+          <tag line="487" name="param" description="" type="" variable="$siteTitle"/>
         </docblock>
-        <argument line="479">
+        <argument line="491">
           <name>$siteTitle</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="488" package="core">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="500" package="core">
         <name>getSiteTitle</name>
         <full_name>getSiteTitle</full_name>
-        <docblock line="484">
+        <docblock line="496">
           <description><![CDATA[Return title of site]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="484" name="return" description="" type="string">
+          <tag line="496" name="return" description="" type="string">
             <type by_reference="false">string</type>
           </tag>
         </docblock>
@@ -2642,6 +2654,11 @@ date for connection form config.php file in site root directory]]></description>
       </method>
     </interface>
   </file>
+  <file path="interfaces/index.php" hash="8629af8ddf9806ea014a6d253060d186" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file interfaces/index.php</error>
+    </parse_markers>
+  </file>
   <file path="interfaces/FileInterface.php" hash="cb5e05f9e675eee49ff24c4b14eb1a45" package="Default">
     <docblock line="2">
       <description><![CDATA[Interface for FileManager class]]></description>
@@ -3143,7 +3160,7 @@ date for connection form config.php file in site root directory]]></description>
       <error line="0" code="50007">No page-level DocBlock was found in file Loader.php</error>
     </parse_markers>
   </file>
-  <file path="ModelSQLManager.php" hash="644bf319ce9970fa25d21a58eebd7d97" package="Default">
+  <file path="ModelSQLManager.php" hash="15a829dbce99c9f3df6b41a4e183e41b" package="Default">
     <docblock line="2">
       <description><![CDATA[Class mapping database columns to PHP Object values]]></description>
       <long-description><![CDATA[]]></long-description>
@@ -3341,67 +3358,67 @@ date for connection form config.php file in site root directory]]></description>
           </tag>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="376" package="core\model">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="377" package="core\model">
         <name>removeById</name>
         <full_name>removeById</full_name>
-        <docblock line="371">
+        <docblock line="372">
           <description><![CDATA[Method remove object from database by $primaryKeys]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="371" name="param" description="" type="array" variable="$primaryKeys">
+          <tag line="372" name="param" description="" type="array" variable="$primaryKeys">
             <type by_reference="false">array</type>
           </tag>
-          <tag line="371" name="return" description="" type="mixed">
+          <tag line="372" name="return" description="" type="mixed">
             <type by_reference="false">mixed</type>
           </tag>
         </docblock>
-        <argument line="376">
+        <argument line="377">
           <name>$primaryKeys</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="407" package="core\model">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="408" package="core\model">
         <name>getAllById</name>
         <full_name>getAllById</full_name>
-        <docblock line="402">
+        <docblock line="403">
           <description><![CDATA[Return array with objects by $primaryKeys]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="402" name="param" description="" type="array" variable="$primaryKeys">
+          <tag line="403" name="param" description="" type="array" variable="$primaryKeys">
             <type by_reference="false">array</type>
           </tag>
-          <tag line="402" name="return" description="" type="mixed">
+          <tag line="403" name="return" description="" type="mixed">
             <type by_reference="false">mixed</type>
           </tag>
         </docblock>
-        <argument line="407">
+        <argument line="408">
           <name>$primaryKeys</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="protected" namespace="global" line="459" package="core\model">
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="global" line="460" package="core\model">
         <name>afterSave</name>
         <full_name>afterSave</full_name>
-        <docblock line="456">
+        <docblock line="457">
           <description><![CDATA[We can do something with data after save.]]></description>
           <long-description><![CDATA[]]></long-description>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="protected" namespace="global" line="465" package="core\model">
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="global" line="466" package="core\model">
         <name>beforeSave</name>
         <full_name>beforeSave</full_name>
-        <docblock line="462">
+        <docblock line="463">
           <description><![CDATA[We can do something with data before save.]]></description>
           <long-description><![CDATA[]]></long-description>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="472" package="core\model">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="473" package="core\model">
         <name>getVariablesTypes</name>
         <full_name>getVariablesTypes</full_name>
-        <docblock line="468">
+        <docblock line="469">
           <description><![CDATA[Return all variable types from database]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="468" name="return" description="" type="array">
+          <tag line="469" name="return" description="" type="array">
             <type by_reference="false">array</type>
           </tag>
         </docblock>
@@ -3412,18 +3429,18 @@ date for connection form config.php file in site root directory]]></description>
       <todo line="70">Relation manager</todo>
     </markers>
   </file>
-  <file path="Component.php" hash="08212ce2087be5ccc3a52461a0c6f0b7" package="Default">
+  <file path="Component.php" hash="8e3b5ddb59425f25a483acd91fb4e9ff" package="Default">
     <docblock line="3">
       <description><![CDATA[Class for components Controllers.]]></description>
       <long-description><![CDATA[]]></long-description>
     </docblock>
-    <include line="68" type="Include Once" package="Default">
+    <include line="78" type="Include Once" package="Default">
       <name/>
     </include>
-    <include line="78" type="Require Once" package="Default">
+    <include line="88" type="Require Once" package="Default">
       <name/>
     </include>
-    <include line="84" type="Include Once" package="Default">
+    <include line="94" type="Include Once" package="Default">
       <name/>
     </include>
     <class final="false" abstract="false" namespace="global" line="12" package="core\controller">
@@ -3456,77 +3473,66 @@ date for connection form config.php file in site root directory]]></description>
         </docblock>
       </method>
       <method final="false" abstract="false" static="false" visibility="protected" namespace="global" line="52" package="core\controller">
+        <name>generateModels</name>
+        <full_name>generateModels</full_name>
+        <docblock line="49">
+          <description><![CDATA[Method generate model if model exist.]]></description>
+          <long-description><![CDATA[]]></long-description>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="global" line="62" package="core\controller">
         <name>renderIndex</name>
         <full_name>renderIndex</full_name>
-        <docblock line="49">
+        <docblock line="59">
           <description><![CDATA[Render index file]]></description>
           <long-description><![CDATA[]]></long-description>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="60" package="core\controller">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="70" package="core\controller">
         <name>render</name>
         <full_name>render</full_name>
-        <docblock line="56">
+        <docblock line="66">
           <description><![CDATA[Render view.]]></description>
           <long-description><![CDATA[<p>$name must have that same value like file name in view folder.</p>]]></long-description>
-          <tag line="56" name="param" description="" type="string" variable="$name">
+          <tag line="66" name="param" description="" type="string" variable="$name">
             <type by_reference="false">string</type>
           </tag>
         </docblock>
-        <argument line="60">
+        <argument line="70">
           <name>$name</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="private" namespace="global" line="75" package="core\controller">
+      <method final="false" abstract="false" static="false" visibility="private" namespace="global" line="85" package="core\controller">
         <name>view</name>
         <full_name>view</full_name>
-        <docblock line="72">
+        <docblock line="82">
           <description><![CDATA[Generate view]]></description>
           <long-description><![CDATA[]]></long-description>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="91" package="core\controller">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="101" package="core\controller">
         <name>getName</name>
         <full_name>getName</full_name>
-        <docblock line="87">
+        <docblock line="97">
           <description><![CDATA[Returning a name of controller.]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="87" name="return" description="" type="mixed|string">
+          <tag line="97" name="return" description="" type="mixed|string">
             <type by_reference="false">mixed</type>
             <type by_reference="false">string</type>
           </tag>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="101" package="core\controller">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="111" package="core\controller">
         <name>module</name>
         <full_name>module</full_name>
-        <docblock line="96">
+        <docblock line="106">
           <description><![CDATA[Load module in view.]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="96" name="param" description="" type="" variable="$name"/>
-          <tag line="96" name="return" description="" type="mixed">
+          <tag line="106" name="param" description="" type="" variable="$name"/>
+          <tag line="106" name="return" description="" type="mixed">
             <type by_reference="false">mixed</type>
-          </tag>
-        </docblock>
-        <argument line="101">
-          <name>$name</name>
-          <default><![CDATA[]]></default>
-          <type/>
-        </argument>
-      </method>
-      <method final="false" abstract="false" static="false" visibility="protected" namespace="global" line="111" package="core\controller">
-        <name>checkController</name>
-        <full_name>checkController</full_name>
-        <docblock line="106">
-          <description><![CDATA[Check if controller file exists.]]></description>
-          <long-description><![CDATA[]]></long-description>
-          <tag line="106" name="param" description="" type="string" variable="$name">
-            <type by_reference="false">string</type>
-          </tag>
-          <tag line="106" name="return" description="" type="bool">
-            <type by_reference="false">bool</type>
           </tag>
         </docblock>
         <argument line="111">
@@ -3535,34 +3541,58 @@ date for connection form config.php file in site root directory]]></description>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="119" package="core\controller">
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="global" line="121" package="core\controller">
+        <name>checkController</name>
+        <full_name>checkController</full_name>
+        <docblock line="116">
+          <description><![CDATA[Check if controller file exists.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="116" name="param" description="" type="string" variable="$name">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="116" name="return" description="" type="bool">
+            <type by_reference="false">bool</type>
+          </tag>
+        </docblock>
+        <argument line="121">
+          <name>$name</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="129" package="core\controller">
         <name>getModel</name>
         <full_name>getModel</full_name>
-        <docblock line="115">
+        <docblock line="125">
           <description><![CDATA[Returning a Controller model.]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="115" name="return" description="" type="mixed">
+          <tag line="125" name="return" description="" type="mixed">
             <type by_reference="false">mixed</type>
           </tag>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="protected" namespace="global" line="127" package="core\controller">
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="global" line="137" package="core\controller">
         <name>afterRender</name>
         <full_name>afterRender</full_name>
-        <docblock line="124">
+        <docblock line="134">
           <description><![CDATA[Method after render a view.]]></description>
           <long-description><![CDATA[]]></long-description>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="protected" namespace="global" line="134" package="core\controller">
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="global" line="144" package="core\controller">
         <name>beforeRender</name>
         <full_name>beforeRender</full_name>
-        <docblock line="131">
+        <docblock line="141">
           <description><![CDATA[Method before render a view.]]></description>
           <long-description><![CDATA[]]></long-description>
         </docblock>
       </method>
     </class>
+  </file>
+  <file path="index.php" hash="0e1ef9921bb661b723038828e7fa264c" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file index.php</error>
+    </parse_markers>
   </file>
   <package name="Default" full_name="Default"/>
   <package name="core" full_name="core">
