@@ -1,19 +1,24 @@
 <?php
 /**
- * Created by IntelliJ IDEA.
- * User: loki
- * Date: 14.04.12
- * Time: 11:18
- *
+ * Class for  print dates, times, timestamps etc.
  */
 
-/**Calendar Class to print dates, times, timestamps etc.*/
+/**
+ * Calendar Class to print dates, times, timestamps etc.
+ * @package core
+ * @subpackage helper
+ */
 class Calendar
 {
-  private  $configuration;
+    /**
+     * Configuration class instance.
+     * @var Configuration
+     */
+    private  $configuration;
 
     /**
-     *Setting time zone from Configuration class*/
+     *Setting time zone from Configuration class.
+     */
     function __construct()
     {
         $this->configuration = new Configuration();
@@ -23,29 +28,36 @@ class Calendar
         date_default_timezone_set($key);
     }
 
-   /*Clearing instance*/
+   /**
+    * Clearing instance.
+    */
     function __destruct()
     {
         $this->configuration = null;
     }
 
-   /**Method return actual date
-    * @return string actual date*/
+   /**
+    * Method return actual date.
+    * @return string actual date
+    */
     public static function today()
     {
         $cal = new Calendar();
         return  date($cal->configuration->getDateFormat());
     }
 
-   /**Method return actual time
-    * @return string actual time*/
+   /**
+    * Method return actual time.
+    * @return string actual time
+    */
     public static function now()
     {
         $cal = new Calendar();
         return date($cal->configuration->getTimeFormat());
     }
 
-   /**Return timestamp date
+   /**
+    * Return timestamp date.
     *@static
     *@param int $year
     *@param int $month
@@ -59,7 +71,8 @@ class Calendar
     }
 
 
-    /**Return timestamp time
+    /**
+     * Return timestamp time.
      * @static
      * @param int $hour
      * @param int $minutes

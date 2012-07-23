@@ -1,21 +1,24 @@
 <?php
 /**
- * Created by IntelliJ IDEA.
- * User: loki
- * Date: 14.04.12
- * Time: 12:19
- *
+ * Class for models
  */
 
 /**
+ * Class implements all models functionality.
+ *@package core
+ *@subpackage model
  *@param string $table_name if its null we get name from Model name
  */
 class Model extends ModelSQLManager
 {
+    /**
+     * Name of database table.
+     * @var null|string
+     */
     protected $table_name = null;
 
     /**
-     *Construct mapping Database variables to object
+     *Construct mapping Database variables to object.
      */
     function __construct()
     {
@@ -32,12 +35,16 @@ class Model extends ModelSQLManager
         }
     }
 
+    /**
+     *Close Database connection.
+     */
     function __destruct()
     {
         parent::__destruct();
     }
 
-    /** Method get object from database by id key
+    /**
+     * Method get object from database by id key.
      * @param array $primaryKeys
      * @return mixed
      */
@@ -52,7 +59,8 @@ class Model extends ModelSQLManager
         return false;
     }
 
-    /**Method get object from database by $statement
+    /**
+     * Method get object from database by $statement.
      * @param string $statement
      * @return mixed
      */
@@ -68,7 +76,8 @@ class Model extends ModelSQLManager
         return false;
     }
 
-    /**Method return all object of this model from database
+    /**
+     * Method return all object of this model from database.
      * @return array|bool
      */
     public function getAll()
@@ -83,7 +92,8 @@ class Model extends ModelSQLManager
         return false;
     }
 
-    /**Method save object in database. If it new object, insert into database
+    /**
+     * Method save object in database. If it new object, insert into database.
      * @return bool|string
      */
     public function save()
@@ -97,8 +107,10 @@ class Model extends ModelSQLManager
         return false;
     }
 
-    /**Method remove object from database by id
+    /**
+     * Method remove object from database by id.
      * @param array $primaryKeys
+     * @return mixed|void
      */
     public function removeById($primaryKeys)
     {
@@ -110,11 +122,17 @@ class Model extends ModelSQLManager
         }
     }
 
+    /**
+     * After model save.
+     */
     protected function afterSave()
     {
 
     }
 
+    /**
+     * Before model save.
+     */
     protected function beforeSave()
     {
 

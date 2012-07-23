@@ -1,27 +1,31 @@
 <?php
 /**
- * Created by IntelliJ IDEA.
- * User: loki
- * Date: 16.04.12
- * Time: 08:17
- *
+ * Check values for model.
  */
 
-/*Class check if variables are of good type and length*/
+/**
+ * Class check if variables are of good type and length.
+ * @package core
+ * @subpackage model
+ */
 class ValueCheck
 {
     /**
-     *
+     *Empty.
      */
     function __construct()
     {
     }
 
+    /**
+     *Empty.
+     */
     function __destruct()
     {
     }
 
-   /**Method check a type and length variable
+   /**
+    * Method check a type and length variable
     *@param array $valueArr array with variable, name and value
     *@param array $typeArr  array with type of variable, name and value
     *@return bool*/
@@ -135,7 +139,8 @@ class ValueCheck
             return false;
     }
 
-    /**Return PDO::PARAM type
+    /**
+     * Return PDO::PARAM type
      * @static
      * @param array $valueArr array with variable, name and value
      * @param array $typeArr  array with type of variable, name and value

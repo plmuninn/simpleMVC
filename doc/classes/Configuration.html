@@ -1,0 +1,731 @@
+<!DOCTYPE html><html xmlns:date="http://exslt.org/dates-and-times" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta charset="utf-8">
+<title>phpDocumentor » \Configuration</title>
+<meta name="author" content="Mike van Riel">
+<meta name="description" content="">
+<link href="../css/template.css" rel="stylesheet" media="all">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="../js/bootstrap.js" type="text/javascript"></script><script src="../js/template.js" type="text/javascript"></script><script src="../js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner"><div class="container">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">phpDocumentor</a><div class="nav-collapse"><ul class="nav">
+<li class="dropdown">
+<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a>Packages</a></li>
+<li><a href="../packages/core.html"><i class="icon-folder-open"></i> core</a></li>
+<li><a href="../packages/interfaces.html"><i class="icon-folder-open"></i> interfaces</a></li>
+</ul>
+</li>
+<li class="dropdown" id="charts-menu">
+<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="../graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
+</li>
+<li class="dropdown" id="reports-menu">
+<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
+                <span class="label label-info">1</span></a></li>
+<li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
+                <ul><li>todo 
+                <span class="label label-info">4</span>
+</li></ul></a></li>
+<li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
+                <span class="label label-info">0</span></a></li>
+</ul>
+</li>
+</ul></div>
+</div></div>
+<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+</div>
+<div id="___" class="container">
+<noscript><div class="alert alert-warning">
+                            Javascript is disabled; several features are only available
+                            if Javascript is enabled.
+                        </div></noscript>
+<div class="row">
+<div class="span4">
+<span class="btn-group visibility" data-toggle="buttons-checkbox"><button class="btn public active" title="Show public elements">Public</button><button class="btn protected" title="Show protected elements">Protected</button><button class="btn private" title="Show private elements">Private</button><button class="btn inherited active" title="Show inherited elements">Inherited</button></span><div class="btn-group view pull-right" data-toggle="buttons-radio">
+<button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+</div>
+<ul class="side-nav nav nav-list">
+<li class="nav-header">
+<i class="icon-custom icon-method"></i> Methods</li>
+<li class="method public "><a href="#__construct" title="__construct :: Construct map Database record to Object"><span class="description">Construct map Database record to Object</span><pre>__construct()</pre></a></li>
+<li class="method public "><a href="#__destruct" title="__destruct :: Empty"><span class="description">Empty</span><pre>__destruct()</pre></a></li>
+<li class="method public "><a href="#getAdminEmail" title="getAdminEmail :: Get Admin Email"><span class="description">Get Admin Email</span><pre>getAdminEmail()</pre></a></li>
+<li class="method public "><a href="#getAdminId" title="getAdminId :: Get Set admin user id"><span class="description">Get Set admin user id</span><pre>getAdminId()</pre></a></li>
+<li class="method public "><a href="#getAllTemplates" title="getAllTemplates :: List of all templates"><span class="description">List of all templates</span><pre>getAllTemplates()</pre></a></li>
+<li class="method public "><a href="#getDateFormat" title="getDateFormat :: Return Date Format"><span class="description">Return Date Format</span><pre>getDateFormat()</pre></a></li>
+<li class="method public "><a href="#getDateFormats" title="getDateFormats :: Return all Date formats"><span class="description">Return all Date formats</span><pre>getDateFormats()</pre></a></li>
+<li class="method public "><a href="#getFilePrev" title="getFilePrev :: Return file privileges"><span class="description">Return file privileges</span><pre>getFilePrev()</pre></a></li>
+<li class="method public "><a href="#getFolderPrev" title="getFolderPrev :: Return folder privileges"><span class="description">Return folder privileges</span><pre>getFolderPrev()</pre></a></li>
+<li class="method public "><a href="#getLang" title="getLang :: Return actual language"><span class="description">Return actual language</span><pre>getLang()</pre></a></li>
+<li class="method public "><a href="#getTemplate" title="getTemplate :: Return actual template"><span class="description">Return actual template</span><pre>getTemplate()</pre></a></li>
+<li class="method public "><a href="#getTimeFormat" title="getTimeFormat :: Get Time format"><span class="description">Get Time format</span><pre>getTimeFormat()</pre></a></li>
+<li class="method public "><a href="#getTimeFormats" title="getTimeFormats :: Return all Time formats"><span class="description">Return all Time formats</span><pre>getTimeFormats()</pre></a></li>
+<li class="method public "><a href="#getTimeZone" title="getTimeZone :: Return Time zone"><span class="description">Return Time zone</span><pre>getTimeZone()</pre></a></li>
+<li class="method public "><a href="#getTimeZones" title="getTimeZones :: Return all Time zones"><span class="description">Return all Time zones</span><pre>getTimeZones()</pre></a></li>
+<li class="method public "><a href="#save" title="save :: Save Object variables to Database"><span class="description">Save Object variables to Database</span><pre>save()</pre></a></li>
+<li class="method public "><a href="#setAdminEmail" title="setAdminEmail :: Set Admin Email"><span class="description">Set Admin Email</span><pre>setAdminEmail()</pre></a></li>
+<li class="method public "><a href="#setAdminId" title="setAdminId :: Set admin user id"><span class="description">Set admin user id</span><pre>setAdminId()</pre></a></li>
+<li class="method public "><a href="#setDateFormat" title="setDateFormat :: Set Date Format"><span class="description">Set Date Format</span><pre>setDateFormat()</pre></a></li>
+<li class="method public "><a href="#setFilePrev" title="setFilePrev :: Set file privileges"><span class="description">Set file privileges</span><pre>setFilePrev()</pre></a></li>
+<li class="method public "><a href="#setFolderPrev" title="setFolderPrev :: Set folder privileges"><span class="description">Set folder privileges</span><pre>setFolderPrev()</pre></a></li>
+<li class="method public "><a href="#setLang" title="setLang :: Change actual site language"><span class="description">Change actual site language</span><pre>setLang()</pre></a></li>
+<li class="method public "><a href="#setTemplate" title="setTemplate :: Set actual template"><span class="description">Set actual template</span><pre>setTemplate()</pre></a></li>
+<li class="method public "><a href="#setTimeFormat" title="setTimeFormat :: Set Time format"><span class="description">Set Time format</span><pre>setTimeFormat()</pre></a></li>
+<li class="method public "><a href="#setTimeZone" title="setTimeZone :: Set Time zone"><span class="description">Set Time zone</span><pre>setTimeZone()</pre></a></li>
+<li class="nav-header">
+<i class="icon-custom icon-property"></i> Properties</li>
+<li class="property public "><a href="#" title=" :: date format"><span class="description">date format</span><pre></pre></a></li>
+<li class="property public "><a href="#" title=" :: time zone"><span class="description">time zone</span><pre></pre></a></li>
+<li class="property public "><a href="#" title=" :: time format"><span class="description">time format</span><pre></pre></a></li>
+<li class="property public "><a href="#" title=" :: privileges to create,save files"><span class="description">privileges to create,save files</span><pre></pre></a></li>
+<li class="property public "><a href="#" title=" :: privileges to create,save folders"><span class="description">privileges to create,save folders</span><pre></pre></a></li>
+<li class="property public "><a href="#" title=" :: administrator email"><span class="description">administrator email</span><pre></pre></a></li>
+<li class="property public "><a href="#" title=" :: administrator id"><span class="description">administrator id</span><pre></pre></a></li>
+<li class="property public "><a href="#" title=" :: actual language"><span class="description">actual language</span><pre></pre></a></li>
+<li class="property public "><a href="#" title=" :: all time zones downloaded from http://stackoverflow.com/questions/4755704/php-timezone-list"><span class="description">all time zones downloaded from http://stackoverflow.com/questions/4755704/php-timezone-list</span><pre></pre></a></li>
+<li class="property public "><a href="#" title=" :: date formats array to choose"><span class="description">date formats array to choose</span><pre></pre></a></li>
+<li class="property public "><a href="#" title=" :: time formats array to choose"><span class="description">time formats array to choose</span><pre></pre></a></li>
+<li class="property public "><a href="#" title=" :: folder with template"><span class="description">folder with template</span><pre></pre></a></li>
+<li class="property public "><a href="#" title=" :: list of all templates"><span class="description">list of all templates</span><pre></pre></a></li>
+<li class="nav-header protected">» Protected</li>
+<li class="property protected "><a href="#%24Admin_Email" title="$Admin_Email :: Admin Email"><span class="description">Admin Email</span><pre>$Admin_Email</pre></a></li>
+<li class="property protected "><a href="#%24Admin_id" title="$Admin_id :: Admin User id"><span class="description">Admin User id</span><pre>$Admin_id</pre></a></li>
+<li class="property protected "><a href="#%24AllTemplates" title="$AllTemplates :: Templates to choose"><span class="description">Templates to choose</span><pre>$AllTemplates</pre></a></li>
+<li class="property protected "><a href="#%24DateFormats" title="$DateFormats :: Date formats to choose"><span class="description">Date formats to choose</span><pre>$DateFormats</pre></a></li>
+<li class="property protected "><a href="#%24Date_format" title="$Date_format :: Format for date"><span class="description">Format for date</span><pre>$Date_format</pre></a></li>
+<li class="property protected "><a href="#%24File_prev" title="$File_prev :: File privileges"><span class="description">File privileges</span><pre>$File_prev</pre></a></li>
+<li class="property protected "><a href="#%24Folder_prev" title="$Folder_prev :: Folder privileges"><span class="description">Folder privileges</span><pre>$Folder_prev</pre></a></li>
+<li class="property protected "><a href="#%24Lang" title="$Lang :: Language of site"><span class="description">Language of site</span><pre>$Lang</pre></a></li>
+<li class="property protected "><a href="#%24Template" title="$Template :: Which template you are using"><span class="description">Which template you are using</span><pre>$Template</pre></a></li>
+<li class="property protected "><a href="#%24TimeFormats" title="$TimeFormats :: Time formats to choose"><span class="description">Time formats to choose</span><pre>$TimeFormats</pre></a></li>
+<li class="property protected "><a href="#%24TimeZones" title="$TimeZones :: Time Zones to choose"><span class="description">Time Zones to choose</span><pre>$TimeZones</pre></a></li>
+<li class="property protected "><a href="#%24Time_Format" title="$Time_Format :: Format for time in date"><span class="description">Format for time in date</span><pre>$Time_Format</pre></a></li>
+<li class="property protected "><a href="#%24Time_zone" title="$Time_zone :: Timezone"><span class="description">Timezone</span><pre>$Time_zone</pre></a></li>
+</ul>
+</div>
+<div class="span8">
+<a name="%5CConfiguration" id="\Configuration"></a><ul class="breadcrumb">
+<li>
+<a href="../index.html"><i class="icon-custom icon-class"></i></a><span class="divider">\</span>
+</li>
+<li><a href="../namespaces/global.html">global</a></li>
+<li class="active">
+<span class="divider">\</span><a href="../classes/Configuration.html">Configuration</a>
+</li>
+</ul>
+<div href="../classes/Configuration.html" class="element class">
+<p class="short_description">Class for manage a basic configurations</p>
+<div class="details">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>package</th>
+<td><a href="../packages/core.html">core</a></td>
+</tr></table>
+<h3>
+<i class="icon-custom icon-method"></i> Methods</h3>
+<a name="__construct" id="__construct"></a><div class="element clickable method public __construct" data-toggle="collapse" data-target=".__construct .collapse">
+<h2>Construct map Database record to Object</h2>
+<pre>__construct() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="__destruct" id="__destruct"></a><div class="element clickable method public __destruct" data-toggle="collapse" data-target=".__destruct .collapse">
+<h2>Empty</h2>
+<pre>__destruct() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="getAdminEmail" id="getAdminEmail"></a><div class="element clickable method public getAdminEmail" data-toggle="collapse" data-target=".getAdminEmail .collapse">
+<h2>Get Admin Email</h2>
+<pre>getAdminEmail() : mixed</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<h3>Returns</h3>
+<div class="subelement response"><code>mixed</code></div>
+</div></div>
+</div>
+<a name="getAdminId" id="getAdminId"></a><div class="element clickable method public getAdminId" data-toggle="collapse" data-target=".getAdminId .collapse">
+<h2>Get Set admin user id</h2>
+<pre>getAdminId() : mixed</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<h3>Returns</h3>
+<div class="subelement response"><code>mixed</code></div>
+</div></div>
+</div>
+<a name="getAllTemplates" id="getAllTemplates"></a><div class="element clickable method public getAllTemplates" data-toggle="collapse" data-target=".getAllTemplates .collapse">
+<h2>List of all templates</h2>
+<pre>getAllTemplates() : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<h3>Returns</h3>
+<div class="subelement response"><code>array</code></div>
+</div></div>
+</div>
+<a name="getDateFormat" id="getDateFormat"></a><div class="element clickable method public getDateFormat" data-toggle="collapse" data-target=".getDateFormat .collapse">
+<h2>Return Date Format</h2>
+<pre>getDateFormat() : mixed</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<h3>Returns</h3>
+<div class="subelement response"><code>mixed</code></div>
+</div></div>
+</div>
+<a name="getDateFormats" id="getDateFormats"></a><div class="element clickable method public getDateFormats" data-toggle="collapse" data-target=".getDateFormats .collapse">
+<h2>Return all Date formats</h2>
+<pre>getDateFormats() : mixed</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<h3>Returns</h3>
+<div class="subelement response"><code>mixed</code></div>
+</div></div>
+</div>
+<a name="getFilePrev" id="getFilePrev"></a><div class="element clickable method public getFilePrev" data-toggle="collapse" data-target=".getFilePrev .collapse">
+<h2>Return file privileges</h2>
+<pre>getFilePrev() : mixed</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<h3>Returns</h3>
+<div class="subelement response"><code>mixed</code></div>
+</div></div>
+</div>
+<a name="getFolderPrev" id="getFolderPrev"></a><div class="element clickable method public getFolderPrev" data-toggle="collapse" data-target=".getFolderPrev .collapse">
+<h2>Return folder privileges</h2>
+<pre>getFolderPrev() : mixed</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<h3>Returns</h3>
+<div class="subelement response"><code>mixed</code></div>
+</div></div>
+</div>
+<a name="getLang" id="getLang"></a><div class="element clickable method public getLang" data-toggle="collapse" data-target=".getLang .collapse">
+<h2>Return actual language</h2>
+<pre>getLang() : mixed</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<h3>Returns</h3>
+<div class="subelement response"><code>mixed</code></div>
+</div></div>
+</div>
+<a name="getTemplate" id="getTemplate"></a><div class="element clickable method public getTemplate" data-toggle="collapse" data-target=".getTemplate .collapse">
+<h2>Return actual template</h2>
+<pre>getTemplate() : mixed</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<h3>Returns</h3>
+<div class="subelement response"><code>mixed</code></div>
+</div></div>
+</div>
+<a name="getTimeFormat" id="getTimeFormat"></a><div class="element clickable method public getTimeFormat" data-toggle="collapse" data-target=".getTimeFormat .collapse">
+<h2>Get Time format</h2>
+<pre>getTimeFormat() : mixed</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<h3>Returns</h3>
+<div class="subelement response"><code>mixed</code></div>
+</div></div>
+</div>
+<a name="getTimeFormats" id="getTimeFormats"></a><div class="element clickable method public getTimeFormats" data-toggle="collapse" data-target=".getTimeFormats .collapse">
+<h2>Return all Time formats</h2>
+<pre>getTimeFormats() : mixed</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<h3>Returns</h3>
+<div class="subelement response"><code>mixed</code></div>
+</div></div>
+</div>
+<a name="getTimeZone" id="getTimeZone"></a><div class="element clickable method public getTimeZone" data-toggle="collapse" data-target=".getTimeZone .collapse">
+<h2>Return Time zone</h2>
+<pre>getTimeZone() : mixed</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<h3>Returns</h3>
+<div class="subelement response"><code>mixed</code></div>
+</div></div>
+</div>
+<a name="getTimeZones" id="getTimeZones"></a><div class="element clickable method public getTimeZones" data-toggle="collapse" data-target=".getTimeZones .collapse">
+<h2>Return all Time zones</h2>
+<pre>getTimeZones() : mixed</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<h3>Returns</h3>
+<div class="subelement response"><code>mixed</code></div>
+</div></div>
+</div>
+<a name="save" id="save"></a><div class="element clickable method public save" data-toggle="collapse" data-target=".save .collapse">
+<h2>Save Object variables to Database</h2>
+<pre>save() : bool</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>bool</code>if execute was ok is true else is false</div>
+</div></div>
+</div>
+<a name="setAdminEmail" id="setAdminEmail"></a><div class="element clickable method public setAdminEmail" data-toggle="collapse" data-target=".setAdminEmail .collapse">
+<h2>Set Admin Email</h2>
+<pre>setAdminEmail(string $Admin_Email) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$Admin_Email</h4>
+<code>string</code>
+</div>
+</div></div>
+</div>
+<a name="setAdminId" id="setAdminId"></a><div class="element clickable method public setAdminId" data-toggle="collapse" data-target=".setAdminId .collapse">
+<h2>Set admin user id</h2>
+<pre>setAdminId(string $Admin_id) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$Admin_id</h4>
+<code>string</code>
+</div>
+</div></div>
+</div>
+<a name="setDateFormat" id="setDateFormat"></a><div class="element clickable method public setDateFormat" data-toggle="collapse" data-target=".setDateFormat .collapse">
+<h2>Set Date Format</h2>
+<pre>setDateFormat(string $Date_format) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$Date_format</h4>
+<code>string</code>
+</div>
+</div></div>
+</div>
+<a name="setFilePrev" id="setFilePrev"></a><div class="element clickable method public setFilePrev" data-toggle="collapse" data-target=".setFilePrev .collapse">
+<h2>Set file privileges</h2>
+<pre>setFilePrev(string $File_prev) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$File_prev</h4>
+<code>string</code>
+</div>
+</div></div>
+</div>
+<a name="setFolderPrev" id="setFolderPrev"></a><div class="element clickable method public setFolderPrev" data-toggle="collapse" data-target=".setFolderPrev .collapse">
+<h2>Set folder privileges</h2>
+<pre>setFolderPrev(string $Folder_prev) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$Folder_prev</h4>
+<code>string</code>
+</div>
+</div></div>
+</div>
+<a name="setLang" id="setLang"></a><div class="element clickable method public setLang" data-toggle="collapse" data-target=".setLang .collapse">
+<h2>Change actual site language</h2>
+<pre>setLang(string $Lang) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$Lang</h4>
+<code>string</code>
+</div>
+</div></div>
+</div>
+<a name="setTemplate" id="setTemplate"></a><div class="element clickable method public setTemplate" data-toggle="collapse" data-target=".setTemplate .collapse">
+<h2>Set actual template</h2>
+<pre>setTemplate(string $Template) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$Template</h4>
+<code>string</code>
+</div>
+</div></div>
+</div>
+<a name="setTimeFormat" id="setTimeFormat"></a><div class="element clickable method public setTimeFormat" data-toggle="collapse" data-target=".setTimeFormat .collapse">
+<h2>Set Time format</h2>
+<pre>setTimeFormat(string $Time_Format) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$Time_Format</h4>
+<code>string</code>
+</div>
+</div></div>
+</div>
+<a name="setTimeZone" id="setTimeZone"></a><div class="element clickable method public setTimeZone" data-toggle="collapse" data-target=".setTimeZone .collapse">
+<h2>Set Time zone</h2>
+<pre>setTimeZone(string $Time_zone) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$Time_zone</h4>
+<code>string</code>
+</div>
+</div></div>
+</div>
+<h3>
+<i class="icon-custom icon-property"></i> Properties</h3>
+<a name="" id=""> </a><div class="element clickable property public " data-toggle="collapse" data-target=". .collapse">
+<h2>date format</h2>
+<pre> : \$Date_format</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>magic</th>
+<td></td>
+</tr>
+<tr>
+<th>property</th>
+<td>date format</td>
+</tr>
+</table>
+</div></div>
+</div>
+<a name="" id=""> </a><div class="element clickable property public " data-toggle="collapse" data-target=". .collapse">
+<h2>time zone</h2>
+<pre> : \$Time_zone</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>magic</th>
+<td></td>
+</tr>
+<tr>
+<th>property</th>
+<td>time zone</td>
+</tr>
+</table>
+</div></div>
+</div>
+<a name="" id=""> </a><div class="element clickable property public " data-toggle="collapse" data-target=". .collapse">
+<h2>time format</h2>
+<pre> : \$Time_Format</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>magic</th>
+<td></td>
+</tr>
+<tr>
+<th>property</th>
+<td>time format</td>
+</tr>
+</table>
+</div></div>
+</div>
+<a name="" id=""> </a><div class="element clickable property public " data-toggle="collapse" data-target=". .collapse">
+<h2>privileges to create,save files</h2>
+<pre> : \$File_prev</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>magic</th>
+<td></td>
+</tr>
+<tr>
+<th>property</th>
+<td>privileges to create,save files</td>
+</tr>
+</table>
+</div></div>
+</div>
+<a name="" id=""> </a><div class="element clickable property public " data-toggle="collapse" data-target=". .collapse">
+<h2>privileges to create,save folders</h2>
+<pre> : \$Folder_prev</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>magic</th>
+<td></td>
+</tr>
+<tr>
+<th>property</th>
+<td>privileges to create,save folders</td>
+</tr>
+</table>
+</div></div>
+</div>
+<a name="" id=""> </a><div class="element clickable property public " data-toggle="collapse" data-target=". .collapse">
+<h2>administrator email</h2>
+<pre> : \$Admin_Email</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>magic</th>
+<td></td>
+</tr>
+<tr>
+<th>property</th>
+<td>administrator email</td>
+</tr>
+</table>
+</div></div>
+</div>
+<a name="" id=""> </a><div class="element clickable property public " data-toggle="collapse" data-target=". .collapse">
+<h2>administrator id</h2>
+<pre> : \$Admin_id</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>magic</th>
+<td></td>
+</tr>
+<tr>
+<th>property</th>
+<td>administrator id</td>
+</tr>
+</table>
+</div></div>
+</div>
+<a name="" id=""> </a><div class="element clickable property public " data-toggle="collapse" data-target=". .collapse">
+<h2>actual language</h2>
+<pre> : \$Lang</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>magic</th>
+<td></td>
+</tr>
+<tr>
+<th>property</th>
+<td>actual language</td>
+</tr>
+</table>
+</div></div>
+</div>
+<a name="" id=""> </a><div class="element clickable property public " data-toggle="collapse" data-target=". .collapse">
+<h2>all time zones downloaded from http://stackoverflow.com/questions/4755704/php-timezone-list</h2>
+<pre> : \$TimeZones</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>magic</th>
+<td></td>
+</tr>
+<tr>
+<th>property</th>
+<td>all time zones downloaded from http://stackoverflow.com/questions/4755704/php-timezone-list</td>
+</tr>
+</table>
+</div></div>
+</div>
+<a name="" id=""> </a><div class="element clickable property public " data-toggle="collapse" data-target=". .collapse">
+<h2>date formats array to choose</h2>
+<pre> : \$DateFormats</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>magic</th>
+<td></td>
+</tr>
+<tr>
+<th>property</th>
+<td>date formats array to choose</td>
+</tr>
+</table>
+</div></div>
+</div>
+<a name="" id=""> </a><div class="element clickable property public " data-toggle="collapse" data-target=". .collapse">
+<h2>time formats array to choose</h2>
+<pre> : \$TimeFormats</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>magic</th>
+<td></td>
+</tr>
+<tr>
+<th>property</th>
+<td>time formats array to choose</td>
+</tr>
+</table>
+</div></div>
+</div>
+<a name="" id=""> </a><div class="element clickable property public " data-toggle="collapse" data-target=". .collapse">
+<h2>folder with template</h2>
+<pre> : \$Template</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>magic</th>
+<td></td>
+</tr>
+<tr>
+<th>property</th>
+<td>folder with template</td>
+</tr>
+</table>
+</div></div>
+</div>
+<a name="" id=""> </a><div class="element clickable property public " data-toggle="collapse" data-target=". .collapse">
+<h2>list of all templates</h2>
+<pre> : \$AllTemplates</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>magic</th>
+<td></td>
+</tr>
+<tr>
+<th>property</th>
+<td>list of all templates</td>
+</tr>
+</table>
+</div></div>
+</div>
+<a name="%24Admin_Email" id="$Admin_Email"> </a><div class="element clickable property protected $Admin_Email" data-toggle="collapse" data-target=".$Admin_Email .collapse">
+<h2>Admin Email</h2>
+<pre>$Admin_Email : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="%24Admin_id" id="$Admin_id"> </a><div class="element clickable property protected $Admin_id" data-toggle="collapse" data-target=".$Admin_id .collapse">
+<h2>Admin User id</h2>
+<pre>$Admin_id : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="%24AllTemplates" id="$AllTemplates"> </a><div class="element clickable property protected $AllTemplates" data-toggle="collapse" data-target=".$AllTemplates .collapse">
+<h2>Templates to choose</h2>
+<pre>$AllTemplates : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="%24DateFormats" id="$DateFormats"> </a><div class="element clickable property protected $DateFormats" data-toggle="collapse" data-target=".$DateFormats .collapse">
+<h2>Date formats to choose</h2>
+<pre>$DateFormats : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="%24Date_format" id="$Date_format"> </a><div class="element clickable property protected $Date_format" data-toggle="collapse" data-target=".$Date_format .collapse">
+<h2>Format for date</h2>
+<pre>$Date_format : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="%24File_prev" id="$File_prev"> </a><div class="element clickable property protected $File_prev" data-toggle="collapse" data-target=".$File_prev .collapse">
+<h2>File privileges</h2>
+<pre>$File_prev : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="%24Folder_prev" id="$Folder_prev"> </a><div class="element clickable property protected $Folder_prev" data-toggle="collapse" data-target=".$Folder_prev .collapse">
+<h2>Folder privileges</h2>
+<pre>$Folder_prev : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="%24Lang" id="$Lang"> </a><div class="element clickable property protected $Lang" data-toggle="collapse" data-target=".$Lang .collapse">
+<h2>Language of site</h2>
+<pre>$Lang : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="%24Template" id="$Template"> </a><div class="element clickable property protected $Template" data-toggle="collapse" data-target=".$Template .collapse">
+<h2>Which template you are using</h2>
+<pre>$Template : </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="%24TimeFormats" id="$TimeFormats"> </a><div class="element clickable property protected $TimeFormats" data-toggle="collapse" data-target=".$TimeFormats .collapse">
+<h2>Time formats to choose</h2>
+<pre>$TimeFormats : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="%24TimeZones" id="$TimeZones"> </a><div class="element clickable property protected $TimeZones" data-toggle="collapse" data-target=".$TimeZones .collapse">
+<h2>Time Zones to choose</h2>
+<pre>$TimeZones : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="%24Time_Format" id="$Time_Format"> </a><div class="element clickable property protected $Time_Format" data-toggle="collapse" data-target=".$Time_Format .collapse">
+<h2>Format for time in date</h2>
+<pre>$Time_Format : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="%24Time_zone" id="$Time_zone"> </a><div class="element clickable property protected $Time_zone" data-toggle="collapse" data-target=".$Time_zone .collapse">
+<h2>Timezone</h2>
+<pre>$Time_zone : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a8</a> and<br>
+            generated on 2012-07-23T14:24:21+02:00.<br></footer></div>
+</div>
+</body>
+</html>

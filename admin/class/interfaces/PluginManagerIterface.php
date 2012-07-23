@@ -1,12 +1,13 @@
 <?php
 /**
- * Created by IntelliJ IDEA.
- * User: loki
- * Date: 02.07.12
- * Time: 19:41
- *
+ * Interface for plugin's
+ */
+/**
+ * Interface for plugin's
+ * @package interfaces
  */
 interface PluginManagerIterface
 {
 
+    //TODO: Implement Plugins!
 }

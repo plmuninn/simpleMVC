@@ -1,0 +1,1293 @@
+<!DOCTYPE html><html xmlns:date="http://exslt.org/dates-and-times" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta charset="utf-8">
+<title>phpDocumentor » \Application</title>
+<meta name="author" content="Mike van Riel">
+<meta name="description" content="">
+<link href="../css/template.css" rel="stylesheet" media="all">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="../js/bootstrap.js" type="text/javascript"></script><script src="../js/template.js" type="text/javascript"></script><script src="../js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner"><div class="container">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">phpDocumentor</a><div class="nav-collapse"><ul class="nav">
+<li class="dropdown">
+<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a>Packages</a></li>
+<li><a href="../packages/core.html"><i class="icon-folder-open"></i> core</a></li>
+<li><a href="../packages/interfaces.html"><i class="icon-folder-open"></i> interfaces</a></li>
+</ul>
+</li>
+<li class="dropdown" id="charts-menu">
+<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="../graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
+</li>
+<li class="dropdown" id="reports-menu">
+<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
+                <span class="label label-info">1</span></a></li>
+<li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
+                <ul><li>todo 
+                <span class="label label-info">4</span>
+</li></ul></a></li>
+<li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
+                <span class="label label-info">0</span></a></li>
+</ul>
+</li>
+</ul></div>
+</div></div>
+<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+</div>
+<div id="___" class="container">
+<noscript><div class="alert alert-warning">
+                            Javascript is disabled; several features are only available
+                            if Javascript is enabled.
+                        </div></noscript>
+<div class="row">
+<div class="span4">
+<span class="btn-group visibility" data-toggle="buttons-checkbox"><button class="btn public active" title="Show public elements">Public</button><button class="btn protected" title="Show protected elements">Protected</button><button class="btn private" title="Show private elements">Private</button><button class="btn inherited active" title="Show inherited elements">Inherited</button></span><div class="btn-group view pull-right" data-toggle="buttons-radio">
+<button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+</div>
+<ul class="side-nav nav nav-list">
+<li class="nav-header">
+<i class="icon-custom icon-method"></i> Methods</li>
+<li class="method public "><a href="#__construct" title="__construct :: Set base parameters."><span class="description">Set base parameters.</span><pre>__construct()</pre></a></li>
+<li class="method public "><a href="#__destruct" title="__destruct :: Do nothing."><span class="description">Do nothing.</span><pre>__destruct()</pre></a></li>
+<li class="method public "><a href="#addToSession" title="addToSession :: Adding variable to session"><span class="description">Adding variable to session</span><pre>addToSession()</pre></a></li>
+<li class="method public "><a href="#clearActualLink" title="clearActualLink :: Clear acutal link from session"><span class="description">Clear acutal link from session</span><pre>clearActualLink()</pre></a></li>
+<li class="method public "><a href="#error" title="error :: Display errors, warnings, messages."><span class="description">Display errors, warnings, messages.</span><pre>error()</pre></a></li>
+<li class="method public "><a href="#getActualLink" title="getActualLink :: Return actual link to redirect"><span class="description">Return actual link to redirect</span><pre>getActualLink()</pre></a></li>
+<li class="method public inherited"><a href="#getAdminEmail" title="getAdminEmail :: Get Admin Email"><span class="description">Get Admin Email</span><pre>getAdminEmail()</pre></a></li>
+<li class="method public inherited"><a href="#getAdminId" title="getAdminId :: Get Set admin user id"><span class="description">Get Set admin user id</span><pre>getAdminId()</pre></a></li>
+<li class="method public inherited"><a href="#getAllTemplates" title="getAllTemplates :: List of all templates"><span class="description">List of all templates</span><pre>getAllTemplates()</pre></a></li>
+<li class="method public "><a href="#getBaseDir" title="getBaseDir :: Return dir for load files"><span class="description">Return dir for load files</span><pre>getBaseDir()</pre></a></li>
+<li class="method public inherited"><a href="#getDateFormat" title="getDateFormat :: Return Date Format"><span class="description">Return Date Format</span><pre>getDateFormat()</pre></a></li>
+<li class="method public inherited"><a href="#getDateFormats" title="getDateFormats :: Return all Date formats"><span class="description">Return all Date formats</span><pre>getDateFormats()</pre></a></li>
+<li class="method public inherited"><a href="#getFilePrev" title="getFilePrev :: Return file privileges"><span class="description">Return file privileges</span><pre>getFilePrev()</pre></a></li>
+<li class="method public inherited"><a href="#getFolderPrev" title="getFolderPrev :: Return folder privileges"><span class="description">Return folder privileges</span><pre>getFolderPrev()</pre></a></li>
+<li class="method public "><a href="#getGetModel" title="getGetModel :: Get model object from Get array"><span class="description">Get model object from Get array</span><pre>getGetModel()</pre></a></li>
+<li class="method public "><a href="#getHomeUrl" title="getHomeUrl :: Return url for homepage"><span class="description">Return url for homepage</span><pre>getHomeUrl()</pre></a></li>
+<li class="method public inherited"><a href="#getLang" title="getLang :: Return actual language"><span class="description">Return actual language</span><pre>getLang()</pre></a></li>
+<li class="method public "><a href="#getPageTitle" title="getPageTitle :: Return title of page"><span class="description">Return title of page</span><pre>getPageTitle()</pre></a></li>
+<li class="method public "><a href="#getPostModel" title="getPostModel :: Get model object from Post array"><span class="description">Get model object from Post array</span><pre>getPostModel()</pre></a></li>
+<li class="method public "><a href="#getSessionModel" title="getSessionModel :: Get model object from session array"><span class="description">Get model object from session array</span><pre>getSessionModel()</pre></a></li>
+<li class="method public "><a href="#getSiteTitle" title="getSiteTitle :: Return title of site"><span class="description">Return title of site</span><pre>getSiteTitle()</pre></a></li>
+<li class="method public inherited"><a href="#getTemplate" title="getTemplate :: Return actual template"><span class="description">Return actual template</span><pre>getTemplate()</pre></a></li>
+<li class="method public inherited"><a href="#getTimeFormat" title="getTimeFormat :: Get Time format"><span class="description">Get Time format</span><pre>getTimeFormat()</pre></a></li>
+<li class="method public inherited"><a href="#getTimeFormats" title="getTimeFormats :: Return all Time formats"><span class="description">Return all Time formats</span><pre>getTimeFormats()</pre></a></li>
+<li class="method public inherited"><a href="#getTimeZone" title="getTimeZone :: Return Time zone"><span class="description">Return Time zone</span><pre>getTimeZone()</pre></a></li>
+<li class="method public inherited"><a href="#getTimeZones" title="getTimeZones :: Return all Time zones"><span class="description">Return all Time zones</span><pre>getTimeZones()</pre></a></li>
+<li class="method public "><a href="#isAdmin" title="isAdmin :: Check if user is Admin"><span class="description">Check if user is Admin</span><pre>isAdmin()</pre></a></li>
+<li class="method public "><a href="#isGuest" title="isGuest :: Check if user is guest"><span class="description">Check if user is guest</span><pre>isGuest()</pre></a></li>
+<li class="method public "><a href="#isOwner" title="isOwner :: Check if id is the same as user id from session"><span class="description">Check if id is the same as user id from session</span><pre>isOwner()</pre></a></li>
+<li class="method public "><a href="#makeActualLink" title="makeActualLink :: Generate actual link and add it to session"><span class="description">Generate actual link and add it to session</span><pre>makeActualLink()</pre></a></li>
+<li class="method public "><a href="#modelName" title='modelName :: Removing from model object word "Model"'><span class="description">Removing from model object word "Model"</span><pre>modelName()</pre></a></li>
+<li class="method public "><a href="#removeFromSession" title="removeFromSession :: Removing variable from session"><span class="description">Removing variable from session</span><pre>removeFromSession()</pre></a></li>
+<li class="method public "><a href="#removeGetModel" title="removeGetModel :: Removing model object from Get array"><span class="description">Removing model object from Get array</span><pre>removeGetModel()</pre></a></li>
+<li class="method public "><a href="#removePostModel" title="removePostModel :: Remove model from Post array"><span class="description">Remove model from Post array</span><pre>removePostModel()</pre></a></li>
+<li class="method public "><a href="#removeSessionModel" title="removeSessionModel :: Removing model object from session array"><span class="description">Removing model object from session array</span><pre>removeSessionModel()</pre></a></li>
+<li class="method public inherited"><a href="#save" title="save :: Save Object variables to Database"><span class="description">Save Object variables to Database</span><pre>save()</pre></a></li>
+<li class="method public "><a href="#sendGetModel" title="sendGetModel :: Add model object to Get array"><span class="description">Add model object to Get array</span><pre>sendGetModel()</pre></a></li>
+<li class="method public "><a href="#sendPostModel" title="sendPostModel :: Add model object to Post array"><span class="description">Add model object to Post array</span><pre>sendPostModel()</pre></a></li>
+<li class="method public "><a href="#sendSessionModel" title="sendSessionModel :: Add model object to session array"><span class="description">Add model object to session array</span><pre>sendSessionModel()</pre></a></li>
+<li class="method public "><a href="#session" title="session :: Check if session exist"><span class="description">Check if session exist</span><pre>session()</pre></a></li>
+<li class="method public "><a href="#sessionStart" title="sessionStart :: Starting session"><span class="description">Starting session</span><pre>sessionStart()</pre></a></li>
+<li class="method public "><a href="#sessionStop" title="sessionStop :: Stop session"><span class="description">Stop session</span><pre>sessionStop()</pre></a></li>
+<li class="method public "><a href="#sessionWrite" title="sessionWrite :: Write session"><span class="description">Write session</span><pre>sessionWrite()</pre></a></li>
+<li class="method public inherited"><a href="#setAdminEmail" title="setAdminEmail :: Set Admin Email"><span class="description">Set Admin Email</span><pre>setAdminEmail()</pre></a></li>
+<li class="method public inherited"><a href="#setAdminId" title="setAdminId :: Set admin user id"><span class="description">Set admin user id</span><pre>setAdminId()</pre></a></li>
+<li class="method public inherited"><a href="#setDateFormat" title="setDateFormat :: Set Date Format"><span class="description">Set Date Format</span><pre>setDateFormat()</pre></a></li>
+<li class="method public inherited"><a href="#setFilePrev" title="setFilePrev :: Set file privileges"><span class="description">Set file privileges</span><pre>setFilePrev()</pre></a></li>
+<li class="method public inherited"><a href="#setFolderPrev" title="setFolderPrev :: Set folder privileges"><span class="description">Set folder privileges</span><pre>setFolderPrev()</pre></a></li>
+<li class="method public inherited"><a href="#setLang" title="setLang :: Change actual site language"><span class="description">Change actual site language</span><pre>setLang()</pre></a></li>
+<li class="method public "><a href="#setPageTitle" title="setPageTitle :: Set page title"><span class="description">Set page title</span><pre>setPageTitle()</pre></a></li>
+<li class="method public "><a href="#setSiteTitle" title="setSiteTitle :: Set site title"><span class="description">Set site title</span><pre>setSiteTitle()</pre></a></li>
+<li class="method public inherited"><a href="#setTemplate" title="setTemplate :: Set actual template"><span class="description">Set actual template</span><pre>setTemplate()</pre></a></li>
+<li class="method public inherited"><a href="#setTimeFormat" title="setTimeFormat :: Set Time format"><span class="description">Set Time format</span><pre>setTimeFormat()</pre></a></li>
+<li class="method public inherited"><a href="#setTimeZone" title="setTimeZone :: Set Time zone"><span class="description">Set Time zone</span><pre>setTimeZone()</pre></a></li>
+<li class="method public "><a href="#templateDir" title="templateDir :: Return template dir"><span class="description">Return template dir</span><pre>templateDir()</pre></a></li>
+<li class="nav-header private">» Private</li>
+<li class="method private "><a href="#generateUrl" title="generateUrl :: Check basic URL"><span class="description">Check basic URL</span><pre>generateUrl()</pre></a></li>
+<li class="nav-header">
+<i class="icon-custom icon-property"></i> Properties</li>
+<li class="property public "><a href="#%24baseDir" title="$baseDir :: path to file load"><span class="description">path to file load</span><pre>$baseDir</pre></a></li>
+<li class="property public "><a href="#%24homeUrl" title="$homeUrl :: url form homepage"><span class="description">url form homepage</span><pre>$homeUrl</pre></a></li>
+<li class="property public "><a href="#%24pageTitle" title="$pageTitle :: actual site title"><span class="description">actual site title</span><pre>$pageTitle</pre></a></li>
+<li class="property public "><a href="#%24siteTitle" title="$siteTitle :: home site title"><span class="description">home site title</span><pre>$siteTitle</pre></a></li>
+<li class="nav-header protected">» Protected</li>
+<li class="property protected inherited"><a href="#%24Admin_Email" title="$Admin_Email :: Admin Email"><span class="description">Admin Email</span><pre>$Admin_Email</pre></a></li>
+<li class="property protected inherited"><a href="#%24Admin_id" title="$Admin_id :: Admin User id"><span class="description">Admin User id</span><pre>$Admin_id</pre></a></li>
+<li class="property protected inherited"><a href="#%24AllTemplates" title="$AllTemplates :: Templates to choose"><span class="description">Templates to choose</span><pre>$AllTemplates</pre></a></li>
+<li class="property protected inherited"><a href="#%24DateFormats" title="$DateFormats :: Date formats to choose"><span class="description">Date formats to choose</span><pre>$DateFormats</pre></a></li>
+<li class="property protected inherited"><a href="#%24Date_format" title="$Date_format :: Format for date"><span class="description">Format for date</span><pre>$Date_format</pre></a></li>
+<li class="property protected inherited"><a href="#%24File_prev" title="$File_prev :: File privileges"><span class="description">File privileges</span><pre>$File_prev</pre></a></li>
+<li class="property protected inherited"><a href="#%24Folder_prev" title="$Folder_prev :: Folder privileges"><span class="description">Folder privileges</span><pre>$Folder_prev</pre></a></li>
+<li class="property protected inherited"><a href="#%24Lang" title="$Lang :: Language of site"><span class="description">Language of site</span><pre>$Lang</pre></a></li>
+<li class="property protected inherited"><a href="#%24Template" title="$Template :: Which template you are using"><span class="description">Which template you are using</span><pre>$Template</pre></a></li>
+<li class="property protected inherited"><a href="#%24TimeFormats" title="$TimeFormats :: Time formats to choose"><span class="description">Time formats to choose</span><pre>$TimeFormats</pre></a></li>
+<li class="property protected inherited"><a href="#%24TimeZones" title="$TimeZones :: Time Zones to choose"><span class="description">Time Zones to choose</span><pre>$TimeZones</pre></a></li>
+<li class="property protected inherited"><a href="#%24Time_Format" title="$Time_Format :: Format for time in date"><span class="description">Format for time in date</span><pre>$Time_Format</pre></a></li>
+<li class="property protected inherited"><a href="#%24Time_zone" title="$Time_zone :: Timezone"><span class="description">Timezone</span><pre>$Time_zone</pre></a></li>
+<li class="nav-header private">» Private</li>
+<li class="property private "><a href="#%24baseDir" title="$baseDir :: Path to file load"><span class="description">Path to file load</span><pre>$baseDir</pre></a></li>
+<li class="property private "><a href="#%24homeUrl" title="$homeUrl :: Url form homepage"><span class="description">Url form homepage</span><pre>$homeUrl</pre></a></li>
+<li class="property private "><a href="#%24pageTitle" title="$pageTitle :: Actual site title"><span class="description">Actual site title</span><pre>$pageTitle</pre></a></li>
+<li class="property private "><a href="#%24siteTitle" title="$siteTitle :: Home site title"><span class="description">Home site title</span><pre>$siteTitle</pre></a></li>
+</ul>
+</div>
+<div class="span8">
+<a name="%5CApplication" id="\Application"></a><ul class="breadcrumb">
+<li>
+<a href="../index.html"><i class="icon-custom icon-class"></i></a><span class="divider">\</span>
+</li>
+<li><a href="../namespaces/global.html">global</a></li>
+<li class="active">
+<span class="divider">\</span><a href="../classes/Application.html">Application</a>
+</li>
+</ul>
+<div href="../classes/Application.html" class="element class">
+<p class="short_description">Class of application instance.</p>
+<div class="details">
+<p class="long_description"><p>Have all important
+vars and methods.</p></p>
+<table class="table table-bordered"><tr>
+<th>package</th>
+<td><a href="../packages/core.html">core</a></td>
+</tr></table>
+<h3>
+<i class="icon-custom icon-method"></i> Methods</h3>
+<a name="__construct" id="__construct"></a><div class="element clickable method public __construct" data-toggle="collapse" data-target=".__construct .collapse">
+<h2>Set base parameters.</h2>
+<pre>__construct() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="__destruct" id="__destruct"></a><div class="element clickable method public __destruct" data-toggle="collapse" data-target=".__destruct .collapse">
+<h2>Do nothing.</h2>
+<pre>__destruct() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="addToSession" id="addToSession"></a><div class="element clickable method public addToSession" data-toggle="collapse" data-target=".addToSession .collapse">
+<h2>Adding variable to session</h2>
+<pre>addToSession(array $var) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>static</th>
+<td></td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$var</h4>
+<code>array</code><p>| Object $var</p>
+</div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="http://php.net/manual/en/class.exception.php">\Exception</a></code></th>
+<td>if variable is bad type</td>
+</tr></table>
+</div></div>
+</div>
+<a name="clearActualLink" id="clearActualLink"></a><div class="element clickable method public clearActualLink" data-toggle="collapse" data-target=".clearActualLink .collapse">
+<h2>Clear acutal link from session</h2>
+<pre>clearActualLink() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>static</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a name="error" id="error"></a><div class="element clickable method public error" data-toggle="collapse" data-target=".error .collapse">
+<h2>Display errors, warnings, messages.</h2>
+<pre>error() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"><p>All contains in session</p></p></div></div>
+</div>
+<a name="getActualLink" id="getActualLink"></a><div class="element clickable method public getActualLink" data-toggle="collapse" data-target=".getActualLink .collapse">
+<h2>Return actual link to redirect</h2>
+<pre>getActualLink() : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>static</th>
+<td></td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a name="getAdminEmail" id="getAdminEmail"></a><div class="element clickable method public getAdminEmail" data-toggle="collapse" data-target=".getAdminEmail .collapse">
+<h2>Get Admin Email</h2>
+<pre>getAdminEmail() : mixed</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\Configuration::getAdminEmail()</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>mixed</code></div>
+</div></div>
+</div>
+<a name="getAdminId" id="getAdminId"></a><div class="element clickable method public getAdminId" data-toggle="collapse" data-target=".getAdminId .collapse">
+<h2>Get Set admin user id</h2>
+<pre>getAdminId() : mixed</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\Configuration::getAdminId()</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>mixed</code></div>
+</div></div>
+</div>
+<a name="getAllTemplates" id="getAllTemplates"></a><div class="element clickable method public getAllTemplates" data-toggle="collapse" data-target=".getAllTemplates .collapse">
+<h2>List of all templates</h2>
+<pre>getAllTemplates() : array</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\Configuration::getAllTemplates()</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>array</code></div>
+</div></div>
+</div>
+<a name="getBaseDir" id="getBaseDir"></a><div class="element clickable method public getBaseDir" data-toggle="collapse" data-target=".getBaseDir .collapse">
+<h2>Return dir for load files</h2>
+<pre>getBaseDir() : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>static</th>
+<td></td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a name="getDateFormat" id="getDateFormat"></a><div class="element clickable method public getDateFormat" data-toggle="collapse" data-target=".getDateFormat .collapse">
+<h2>Return Date Format</h2>
+<pre>getDateFormat() : mixed</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\Configuration::getDateFormat()</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>mixed</code></div>
+</div></div>
+</div>
+<a name="getDateFormats" id="getDateFormats"></a><div class="element clickable method public getDateFormats" data-toggle="collapse" data-target=".getDateFormats .collapse">
+<h2>Return all Date formats</h2>
+<pre>getDateFormats() : mixed</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\Configuration::getDateFormats()</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>mixed</code></div>
+</div></div>
+</div>
+<a name="getFilePrev" id="getFilePrev"></a><div class="element clickable method public getFilePrev" data-toggle="collapse" data-target=".getFilePrev .collapse">
+<h2>Return file privileges</h2>
+<pre>getFilePrev() : mixed</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\Configuration::getFilePrev()</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>mixed</code></div>
+</div></div>
+</div>
+<a name="getFolderPrev" id="getFolderPrev"></a><div class="element clickable method public getFolderPrev" data-toggle="collapse" data-target=".getFolderPrev .collapse">
+<h2>Return folder privileges</h2>
+<pre>getFolderPrev() : mixed</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\Configuration::getFolderPrev()</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>mixed</code></div>
+</div></div>
+</div>
+<a name="getGetModel" id="getGetModel"></a><div class="element clickable method public getGetModel" data-toggle="collapse" data-target=".getGetModel .collapse">
+<h2>Get model object from Get array</h2>
+<pre>getGetModel(Object $obj) : Object</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>static</th>
+<td></td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$obj</h4>
+<code>Object</code>
+</div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="http://php.net/manual/en/class.exception.php">\Exception</a></code></th>
+<td>if variable is bad type</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>Object</code>$obj</div>
+</div></div>
+</div>
+<a name="getHomeUrl" id="getHomeUrl"></a><div class="element clickable method public getHomeUrl" data-toggle="collapse" data-target=".getHomeUrl .collapse">
+<h2>Return url for homepage</h2>
+<pre>getHomeUrl() : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a name="getLang" id="getLang"></a><div class="element clickable method public getLang" data-toggle="collapse" data-target=".getLang .collapse">
+<h2>Return actual language</h2>
+<pre>getLang() : mixed</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\Configuration::getLang()</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>mixed</code></div>
+</div></div>
+</div>
+<a name="getPageTitle" id="getPageTitle"></a><div class="element clickable method public getPageTitle" data-toggle="collapse" data-target=".getPageTitle .collapse">
+<h2>Return title of page</h2>
+<pre>getPageTitle() : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a name="getPostModel" id="getPostModel"></a><div class="element clickable method public getPostModel" data-toggle="collapse" data-target=".getPostModel .collapse">
+<h2>Get model object from Post array</h2>
+<pre>getPostModel(Object $obj) : Object</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>static</th>
+<td></td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$obj</h4>
+<code>Object</code>
+</div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="http://php.net/manual/en/class.exception.php">\Exception</a></code></th>
+<td>if variable is bad type</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>Object</code>$obj</div>
+</div></div>
+</div>
+<a name="getSessionModel" id="getSessionModel"></a><div class="element clickable method public getSessionModel" data-toggle="collapse" data-target=".getSessionModel .collapse">
+<h2>Get model object from session array</h2>
+<pre>getSessionModel(Object $obj) : Object</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>static</th>
+<td></td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$obj</h4>
+<code>Object</code>
+</div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="http://php.net/manual/en/class.exception.php">\Exception</a></code></th>
+<td>if variable is bad type</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>Object</code>$obj</div>
+</div></div>
+</div>
+<a name="getSiteTitle" id="getSiteTitle"></a><div class="element clickable method public getSiteTitle" data-toggle="collapse" data-target=".getSiteTitle .collapse">
+<h2>Return title of site</h2>
+<pre>getSiteTitle() : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a name="getTemplate" id="getTemplate"></a><div class="element clickable method public getTemplate" data-toggle="collapse" data-target=".getTemplate .collapse">
+<h2>Return actual template</h2>
+<pre>getTemplate() : mixed</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\Configuration::getTemplate()</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>mixed</code></div>
+</div></div>
+</div>
+<a name="getTimeFormat" id="getTimeFormat"></a><div class="element clickable method public getTimeFormat" data-toggle="collapse" data-target=".getTimeFormat .collapse">
+<h2>Get Time format</h2>
+<pre>getTimeFormat() : mixed</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\Configuration::getTimeFormat()</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>mixed</code></div>
+</div></div>
+</div>
+<a name="getTimeFormats" id="getTimeFormats"></a><div class="element clickable method public getTimeFormats" data-toggle="collapse" data-target=".getTimeFormats .collapse">
+<h2>Return all Time formats</h2>
+<pre>getTimeFormats() : mixed</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\Configuration::getTimeFormats()</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>mixed</code></div>
+</div></div>
+</div>
+<a name="getTimeZone" id="getTimeZone"></a><div class="element clickable method public getTimeZone" data-toggle="collapse" data-target=".getTimeZone .collapse">
+<h2>Return Time zone</h2>
+<pre>getTimeZone() : mixed</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\Configuration::getTimeZone()</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>mixed</code></div>
+</div></div>
+</div>
+<a name="getTimeZones" id="getTimeZones"></a><div class="element clickable method public getTimeZones" data-toggle="collapse" data-target=".getTimeZones .collapse">
+<h2>Return all Time zones</h2>
+<pre>getTimeZones() : mixed</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\Configuration::getTimeZones()</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>mixed</code></div>
+</div></div>
+</div>
+<a name="isAdmin" id="isAdmin"></a><div class="element clickable method public isAdmin" data-toggle="collapse" data-target=".isAdmin .collapse">
+<h2>Check if user is Admin</h2>
+<pre>isAdmin() : bool</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>static</th>
+<td></td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>bool</code></div>
+</div></div>
+</div>
+<a name="isGuest" id="isGuest"></a><div class="element clickable method public isGuest" data-toggle="collapse" data-target=".isGuest .collapse">
+<h2>Check if user is guest</h2>
+<pre>isGuest() : bool</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>static</th>
+<td></td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>bool</code></div>
+</div></div>
+</div>
+<a name="isOwner" id="isOwner"></a><div class="element clickable method public isOwner" data-toggle="collapse" data-target=".isOwner .collapse">
+<h2>Check if id is the same as user id from session</h2>
+<pre>isOwner(int $id) : bool</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>static</th>
+<td></td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$id</h4>
+<code>int</code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>bool</code></div>
+</div></div>
+</div>
+<a name="makeActualLink" id="makeActualLink"></a><div class="element clickable method public makeActualLink" data-toggle="collapse" data-target=".makeActualLink .collapse">
+<h2>Generate actual link and add it to session</h2>
+<pre>makeActualLink() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>static</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a name="modelName" id="modelName"></a><div class="element clickable method public modelName" data-toggle="collapse" data-target=".modelName .collapse">
+<h2>Removing from model object word "Model"</h2>
+<pre>modelName(Object $obj) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>static</th>
+<td></td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$obj</h4>
+<code>Object</code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a name="removeFromSession" id="removeFromSession"></a><div class="element clickable method public removeFromSession" data-toggle="collapse" data-target=".removeFromSession .collapse">
+<h2>Removing variable from session</h2>
+<pre>removeFromSession(array $var) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>static</th>
+<td></td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$var</h4>
+<code>array</code><p>| Object $var</p>
+</div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="http://php.net/manual/en/class.exception.php">\Exception</a></code></th>
+<td>if variable is bad type</td>
+</tr></table>
+</div></div>
+</div>
+<a name="removeGetModel" id="removeGetModel"></a><div class="element clickable method public removeGetModel" data-toggle="collapse" data-target=".removeGetModel .collapse">
+<h2>Removing model object from Get array</h2>
+<pre>removeGetModel(Object $obj) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>static</th>
+<td></td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$obj</h4>
+<code>Object</code>
+</div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="http://php.net/manual/en/class.exception.php">\Exception</a></code></th>
+<td>if variable is bad type</td>
+</tr></table>
+</div></div>
+</div>
+<a name="removePostModel" id="removePostModel"></a><div class="element clickable method public removePostModel" data-toggle="collapse" data-target=".removePostModel .collapse">
+<h2>Remove model from Post array</h2>
+<pre>removePostModel(Object $obj) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$obj</h4>
+<code>Object</code>
+</div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="http://php.net/manual/en/class.exception.php">\Exception</a></code></th>
+<td>if variable is bad type</td>
+</tr></table>
+</div></div>
+</div>
+<a name="removeSessionModel" id="removeSessionModel"></a><div class="element clickable method public removeSessionModel" data-toggle="collapse" data-target=".removeSessionModel .collapse">
+<h2>Removing model object from session array</h2>
+<pre>removeSessionModel(Object $obj) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>static</th>
+<td></td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$obj</h4>
+<code>Object</code>
+</div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="http://php.net/manual/en/class.exception.php">\Exception</a></code></th>
+<td>if variable is bad type</td>
+</tr></table>
+</div></div>
+</div>
+<a name="save" id="save"></a><div class="element clickable method public save" data-toggle="collapse" data-target=".save .collapse">
+<h2>Save Object variables to Database</h2>
+<pre>save() : bool</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\Configuration::save()</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>bool</code>if execute was ok is true else is false</div>
+</div></div>
+</div>
+<a name="sendGetModel" id="sendGetModel"></a><div class="element clickable method public sendGetModel" data-toggle="collapse" data-target=".sendGetModel .collapse">
+<h2>Add model object to Get array</h2>
+<pre>sendGetModel(Object $obj) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>static</th>
+<td></td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$obj</h4>
+<code>Object</code>
+</div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="http://php.net/manual/en/class.exception.php">\Exception</a></code></th>
+<td>if variable is bad type</td>
+</tr></table>
+</div></div>
+</div>
+<a name="sendPostModel" id="sendPostModel"></a><div class="element clickable method public sendPostModel" data-toggle="collapse" data-target=".sendPostModel .collapse">
+<h2>Add model object to Post array</h2>
+<pre>sendPostModel(Object $obj) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>static</th>
+<td></td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$obj</h4>
+<code>Object</code>
+</div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="http://php.net/manual/en/class.exception.php">\Exception</a></code></th>
+<td>if variable is bad type</td>
+</tr></table>
+</div></div>
+</div>
+<a name="sendSessionModel" id="sendSessionModel"></a><div class="element clickable method public sendSessionModel" data-toggle="collapse" data-target=".sendSessionModel .collapse">
+<h2>Add model object to session array</h2>
+<pre>sendSessionModel(Object $obj) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>static</th>
+<td></td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$obj</h4>
+<code>Object</code>
+</div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="http://php.net/manual/en/class.exception.php">\Exception</a></code></th>
+<td>if variable is bad type</td>
+</tr></table>
+</div></div>
+</div>
+<a name="session" id="session"></a><div class="element clickable method public session" data-toggle="collapse" data-target=".session .collapse">
+<h2>Check if session exist</h2>
+<pre>session() : bool</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<h3>Returns</h3>
+<div class="subelement response"><code>bool</code></div>
+</div></div>
+</div>
+<a name="sessionStart" id="sessionStart"></a><div class="element clickable method public sessionStart" data-toggle="collapse" data-target=".sessionStart .collapse">
+<h2>Starting session</h2>
+<pre>sessionStart() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>static</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a name="sessionStop" id="sessionStop"></a><div class="element clickable method public sessionStop" data-toggle="collapse" data-target=".sessionStop .collapse">
+<h2>Stop session</h2>
+<pre>sessionStop() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>static</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a name="sessionWrite" id="sessionWrite"></a><div class="element clickable method public sessionWrite" data-toggle="collapse" data-target=".sessionWrite .collapse">
+<h2>Write session</h2>
+<pre>sessionWrite() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>static</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a name="setAdminEmail" id="setAdminEmail"></a><div class="element clickable method public setAdminEmail" data-toggle="collapse" data-target=".setAdminEmail .collapse">
+<h2>Set Admin Email</h2>
+<pre>setAdminEmail(string $Admin_Email) </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\Configuration::setAdminEmail()</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$Admin_Email</h4>
+<code>string</code>
+</div>
+</div></div>
+</div>
+<a name="setAdminId" id="setAdminId"></a><div class="element clickable method public setAdminId" data-toggle="collapse" data-target=".setAdminId .collapse">
+<h2>Set admin user id</h2>
+<pre>setAdminId(string $Admin_id) </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\Configuration::setAdminId()</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$Admin_id</h4>
+<code>string</code>
+</div>
+</div></div>
+</div>
+<a name="setDateFormat" id="setDateFormat"></a><div class="element clickable method public setDateFormat" data-toggle="collapse" data-target=".setDateFormat .collapse">
+<h2>Set Date Format</h2>
+<pre>setDateFormat(string $Date_format) </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\Configuration::setDateFormat()</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$Date_format</h4>
+<code>string</code>
+</div>
+</div></div>
+</div>
+<a name="setFilePrev" id="setFilePrev"></a><div class="element clickable method public setFilePrev" data-toggle="collapse" data-target=".setFilePrev .collapse">
+<h2>Set file privileges</h2>
+<pre>setFilePrev(string $File_prev) </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\Configuration::setFilePrev()</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$File_prev</h4>
+<code>string</code>
+</div>
+</div></div>
+</div>
+<a name="setFolderPrev" id="setFolderPrev"></a><div class="element clickable method public setFolderPrev" data-toggle="collapse" data-target=".setFolderPrev .collapse">
+<h2>Set folder privileges</h2>
+<pre>setFolderPrev(string $Folder_prev) </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\Configuration::setFolderPrev()</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$Folder_prev</h4>
+<code>string</code>
+</div>
+</div></div>
+</div>
+<a name="setLang" id="setLang"></a><div class="element clickable method public setLang" data-toggle="collapse" data-target=".setLang .collapse">
+<h2>Change actual site language</h2>
+<pre>setLang(string $Lang) </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\Configuration::setLang()</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$Lang</h4>
+<code>string</code>
+</div>
+</div></div>
+</div>
+<a name="setPageTitle" id="setPageTitle"></a><div class="element clickable method public setPageTitle" data-toggle="collapse" data-target=".setPageTitle .collapse">
+<h2>Set page title</h2>
+<pre>setPageTitle(string $pageTitle) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$pageTitle</h4>
+<code>string</code>
+</div>
+</div></div>
+</div>
+<a name="setSiteTitle" id="setSiteTitle"></a><div class="element clickable method public setSiteTitle" data-toggle="collapse" data-target=".setSiteTitle .collapse">
+<h2>Set site title</h2>
+<pre>setSiteTitle($siteTitle) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$siteTitle</h4>
+<code></code>
+</div>
+</div></div>
+</div>
+<a name="setTemplate" id="setTemplate"></a><div class="element clickable method public setTemplate" data-toggle="collapse" data-target=".setTemplate .collapse">
+<h2>Set actual template</h2>
+<pre>setTemplate(string $Template) </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\Configuration::setTemplate()</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$Template</h4>
+<code>string</code>
+</div>
+</div></div>
+</div>
+<a name="setTimeFormat" id="setTimeFormat"></a><div class="element clickable method public setTimeFormat" data-toggle="collapse" data-target=".setTimeFormat .collapse">
+<h2>Set Time format</h2>
+<pre>setTimeFormat(string $Time_Format) </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\Configuration::setTimeFormat()</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$Time_Format</h4>
+<code>string</code>
+</div>
+</div></div>
+</div>
+<a name="setTimeZone" id="setTimeZone"></a><div class="element clickable method public setTimeZone" data-toggle="collapse" data-target=".setTimeZone .collapse">
+<h2>Set Time zone</h2>
+<pre>setTimeZone(string $Time_zone) </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\Configuration::setTimeZone()</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$Time_zone</h4>
+<code>string</code>
+</div>
+</div></div>
+</div>
+<a name="templateDir" id="templateDir"></a><div class="element clickable method public templateDir" data-toggle="collapse" data-target=".templateDir .collapse">
+<h2>Return template dir</h2>
+<pre>templateDir() : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>static</th>
+<td></td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a name="generateUrl" id="generateUrl"></a><div class="element clickable method private generateUrl" data-toggle="collapse" data-target=".generateUrl .collapse">
+<h2>Check basic URL</h2>
+<pre>generateUrl() : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>static</th>
+<td></td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<h3>
+<i class="icon-custom icon-property"></i> Properties</h3>
+<a name="%24baseDir" id="$baseDir"> </a><div class="element clickable property public $baseDir" data-toggle="collapse" data-target=".$baseDir .collapse">
+<h2>path to file load</h2>
+<pre>$baseDir : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>magic</th>
+<td></td>
+</tr>
+<tr>
+<th>property-read</th>
+<td>path to file load</td>
+</tr>
+</table>
+</div></div>
+</div>
+<a name="%24homeUrl" id="$homeUrl"> </a><div class="element clickable property public $homeUrl" data-toggle="collapse" data-target=".$homeUrl .collapse">
+<h2>url form homepage</h2>
+<pre>$homeUrl : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>magic</th>
+<td></td>
+</tr>
+<tr>
+<th>property-read</th>
+<td>url form homepage</td>
+</tr>
+</table>
+</div></div>
+</div>
+<a name="%24pageTitle" id="$pageTitle"> </a><div class="element clickable property public $pageTitle" data-toggle="collapse" data-target=".$pageTitle .collapse">
+<h2>actual site title</h2>
+<pre>$pageTitle : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>magic</th>
+<td></td>
+</tr>
+<tr>
+<th>property</th>
+<td>actual site title</td>
+</tr>
+</table>
+</div></div>
+</div>
+<a name="%24siteTitle" id="$siteTitle"> </a><div class="element clickable property public $siteTitle" data-toggle="collapse" data-target=".$siteTitle .collapse">
+<h2>home site title</h2>
+<pre>$siteTitle : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>magic</th>
+<td></td>
+</tr>
+<tr>
+<th>property</th>
+<td>home site title</td>
+</tr>
+</table>
+</div></div>
+</div>
+<a name="%24Admin_Email" id="$Admin_Email"> </a><div class="element clickable property protected $Admin_Email" data-toggle="collapse" data-target=".$Admin_Email .collapse">
+<h2>Admin Email</h2>
+<pre>$Admin_Email : string</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\Configuration::$$Admin_Email</td>
+</tr></table>
+</div></div>
+</div>
+<a name="%24Admin_id" id="$Admin_id"> </a><div class="element clickable property protected $Admin_id" data-toggle="collapse" data-target=".$Admin_id .collapse">
+<h2>Admin User id</h2>
+<pre>$Admin_id : string</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\Configuration::$$Admin_id</td>
+</tr></table>
+</div></div>
+</div>
+<a name="%24AllTemplates" id="$AllTemplates"> </a><div class="element clickable property protected $AllTemplates" data-toggle="collapse" data-target=".$AllTemplates .collapse">
+<h2>Templates to choose</h2>
+<pre>$AllTemplates : array</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\Configuration::$$AllTemplates</td>
+</tr></table>
+</div></div>
+</div>
+<a name="%24DateFormats" id="$DateFormats"> </a><div class="element clickable property protected $DateFormats" data-toggle="collapse" data-target=".$DateFormats .collapse">
+<h2>Date formats to choose</h2>
+<pre>$DateFormats : array</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\Configuration::$$DateFormats</td>
+</tr></table>
+</div></div>
+</div>
+<a name="%24Date_format" id="$Date_format"> </a><div class="element clickable property protected $Date_format" data-toggle="collapse" data-target=".$Date_format .collapse">
+<h2>Format for date</h2>
+<pre>$Date_format : string</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\Configuration::$$Date_format</td>
+</tr></table>
+</div></div>
+</div>
+<a name="%24File_prev" id="$File_prev"> </a><div class="element clickable property protected $File_prev" data-toggle="collapse" data-target=".$File_prev .collapse">
+<h2>File privileges</h2>
+<pre>$File_prev : string</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\Configuration::$$File_prev</td>
+</tr></table>
+</div></div>
+</div>
+<a name="%24Folder_prev" id="$Folder_prev"> </a><div class="element clickable property protected $Folder_prev" data-toggle="collapse" data-target=".$Folder_prev .collapse">
+<h2>Folder privileges</h2>
+<pre>$Folder_prev : string</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\Configuration::$$Folder_prev</td>
+</tr></table>
+</div></div>
+</div>
+<a name="%24Lang" id="$Lang"> </a><div class="element clickable property protected $Lang" data-toggle="collapse" data-target=".$Lang .collapse">
+<h2>Language of site</h2>
+<pre>$Lang : string</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\Configuration::$$Lang</td>
+</tr></table>
+</div></div>
+</div>
+<a name="%24Template" id="$Template"> </a><div class="element clickable property protected $Template" data-toggle="collapse" data-target=".$Template .collapse">
+<h2>Which template you are using</h2>
+<pre>$Template : </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\Configuration::$$Template</td>
+</tr></table>
+</div></div>
+</div>
+<a name="%24TimeFormats" id="$TimeFormats"> </a><div class="element clickable property protected $TimeFormats" data-toggle="collapse" data-target=".$TimeFormats .collapse">
+<h2>Time formats to choose</h2>
+<pre>$TimeFormats : array</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\Configuration::$$TimeFormats</td>
+</tr></table>
+</div></div>
+</div>
+<a name="%24TimeZones" id="$TimeZones"> </a><div class="element clickable property protected $TimeZones" data-toggle="collapse" data-target=".$TimeZones .collapse">
+<h2>Time Zones to choose</h2>
+<pre>$TimeZones : array</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\Configuration::$$TimeZones</td>
+</tr></table>
+</div></div>
+</div>
+<a name="%24Time_Format" id="$Time_Format"> </a><div class="element clickable property protected $Time_Format" data-toggle="collapse" data-target=".$Time_Format .collapse">
+<h2>Format for time in date</h2>
+<pre>$Time_Format : string</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\Configuration::$$Time_Format</td>
+</tr></table>
+</div></div>
+</div>
+<a name="%24Time_zone" id="$Time_zone"> </a><div class="element clickable property protected $Time_zone" data-toggle="collapse" data-target=".$Time_zone .collapse">
+<h2>Timezone</h2>
+<pre>$Time_zone : string</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\Configuration::$$Time_zone</td>
+</tr></table>
+</div></div>
+</div>
+<a name="%24baseDir" id="$baseDir"> </a><div class="element clickable property private $baseDir" data-toggle="collapse" data-target=".$baseDir .collapse">
+<h2>Path to file load</h2>
+<pre>$baseDir : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="%24homeUrl" id="$homeUrl"> </a><div class="element clickable property private $homeUrl" data-toggle="collapse" data-target=".$homeUrl .collapse">
+<h2>Url form homepage</h2>
+<pre>$homeUrl : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="%24pageTitle" id="$pageTitle"> </a><div class="element clickable property private $pageTitle" data-toggle="collapse" data-target=".$pageTitle .collapse">
+<h2>Actual site title</h2>
+<pre>$pageTitle : </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+<a name="%24siteTitle" id="$siteTitle"> </a><div class="element clickable property private $siteTitle" data-toggle="collapse" data-target=".$siteTitle .collapse">
+<h2>Home site title</h2>
+<pre>$siteTitle : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a8</a> and<br>
+            generated on 2012-07-23T14:24:21+02:00.<br></footer></div>
+</div>
+</body>
+</html>

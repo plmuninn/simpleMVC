@@ -1,12 +1,13 @@
 <?php
-/**
- * Created by IntelliJ IDEA.
- * User: loki
- * Date: 19.07.12
- * Time: 08:26
- *
- */
 require_once("interfaces/LoaderInterface.php");
+/**
+ * Loader class
+ */
+/**
+ * Loader class, can manage a importing files
+ * @package core
+ * @subpackage helper
+ */
 class Loader implements LoaderInterface
 {
     /**
@@ -19,9 +20,11 @@ class Loader implements LoaderInterface
      */
     public function  __destruct(){}
 
-    /**Function auto-loading class files;
+    /**
+     * Function auto-loading class files.
      * @static
      * @param $class_name
+     * @return mixed|void
      */
     public static function  autoload($class_name){
         if(!preg_match("[^Controller$]", $class_name) && preg_match("[Controller$]", $class_name)){
@@ -46,9 +49,12 @@ class Loader implements LoaderInterface
 
     }
 
-    /**Method importing files
+    /**
+     * Method importing files
      * @static
      * @param $package
+     * @param null $exceptions
+     * @return mixed|void
      */
     public static function import($package, $exceptions = null)
     {
@@ -95,9 +101,11 @@ class Loader implements LoaderInterface
         }
     }
 
-    /**Recursive loading from folder files method
+    /**
+     * Recursive loading from folder files method
      * @param $files
      * @param $path
+     * @param $exceptions
      */
     private function loadFolder($files, $path, $exceptions){
         $app = new Application();
@@ -116,14 +124,17 @@ class Loader implements LoaderInterface
         else{
             $all = false;
             $exception_path = "";
+
             if(!is_array($exceptions))
             $exceptions = explode(".",$exceptions);
+
             for($i = 0 ; $i < count($exceptions); $i++){
                 if($exceptions[$i] == "*")
                     $all = true;
                 else
                     $exception_path .=($i == 0 ? "" : "/").$exceptions[$i];
             }
+
             if($all == true){
                 $exception_path = explode("/",$exception_path);
                 foreach($files as $value){
@@ -156,9 +167,10 @@ class Loader implements LoaderInterface
         }
     }
 
-    /**Function is loading file if is not like exception
+    /**
+     * Function is loading file if is not like exception
+     * @param $files
      * @param $path
-     * @param $exception_path
      */
     private function loadFile($files,$path){
         $app = new Application();
@@ -172,7 +184,8 @@ class Loader implements LoaderInterface
         }
     }
 
-    /**Downloaded from http://stackoverflow.com/questions/928928/determining-what-classes-are-defined-in-a-php-class-file
+    /**
+     * Downloaded from http://stackoverflow.com/questions/928928/determining-what-classes-are-defined-in-a-php-class-file
      * @static
      * @param $path
      * @return bool
@@ -187,7 +200,28 @@ class Loader implements LoaderInterface
             return false;
     }
 
-    /** Downloaded from http://stackoverflow.com/questions/928928/determining-what-classes-are-defined-in-a-php-class-file
+    /**
+     * Downloaded from http://stackoverflow.com/questions/928928/determining-what-classes-are-defined-in-a-php-class-file
+     * @static
+     * @param $path
+     * @param $name
+     * @return bool
+     */
+    public static  function checkClassName($path, $name){
+        $php_code = file_get_contents($path);
+        $classes = self::get_php_classes($php_code);
+        if(count($classes) == 1){
+            if(strtolower($classes[0]) == strtolower($name))
+                return true;
+                else
+                    return false;
+        }
+        else
+            return false;
+    }
+
+    /**
+     * Downloaded from http://stackoverflow.com/questions/928928/determining-what-classes-are-defined-in-a-php-class-file
      * @param $php_code
      * @return array
      */

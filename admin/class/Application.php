@@ -1,15 +1,13 @@
 <?php
 /**
- * Created by IntelliJ IDEA.
- * User: loki
- * Date: 12.04.12
- * Time: 21:12
- *
+ * Application instance class
  */
 
 /**
  * Class of application instance. Have all important
  * vars and methods.
+ *
+ * @package core
  *
  * @property-read string $homeUrl url form homepage
  * @property-read string $baseDir path to file load
@@ -19,13 +17,32 @@
 
 class Application extends  Configuration
 {
+    /**
+     * Url form homepage
+     * @var string
+     */
     private $homeUrl;
+
+    /**
+     * Path to file load
+     * @var string
+     */
     private static  $baseDir = BASE_DIR;
+
+    /**
+     * Home site title
+     * @var string
+     */
     private $siteTitle;
+
+    /**
+     * Actual site title
+     * @var
+     */
     private $pageTitle;
 
     /**
-     *
+     *Set base parameters.
      */
     function __construct()
     {
@@ -52,6 +69,9 @@ class Application extends  Configuration
         $this->siteTitle = SITE_TITLE;
     }
 
+    /**
+     *Do nothing.
+     */
     function __destruct(){
     parent::__destruct();
     }
@@ -59,8 +79,9 @@ class Application extends  Configuration
 
     /***Session methods***/
 
-    /**Check if session exist
-    *@return bool*/
+    /**
+     * Check if session exist
+     *@return bool*/
     public function session(){
        if(session_id() != null)
            return true;
@@ -68,7 +89,8 @@ class Application extends  Configuration
            return false;
     }
 
-    /**Starting session
+    /**
+     * Starting session
      *@static*/
     public static function sessionStart(){
        if(!self::session()){
@@ -77,7 +99,8 @@ class Application extends  Configuration
        }
     }
 
-    /**Stop session
+    /**
+     * Stop session
      *@static*/
     public static function sessionStop(){
             foreach($_SESSION as $key=>$value){
@@ -87,15 +110,16 @@ class Application extends  Configuration
     }
 
 
-    /**Write session
+    /**
+     * Write session
      * @static
-     *
      */
     public static function sessionWrite(){
         session_write_close();
     }
 
-    /** Adding variable to session
+    /**
+     * Adding variable to session
      * @static
      * @param array $var | Object $var
      * @throws Exception if variable is bad type*/
@@ -114,7 +138,8 @@ class Application extends  Configuration
 
     }
 
-   /** Removing variable from session
+   /**
+    * Removing variable from session
     * @static
     * @param array $var | Object $var
     * @throws Exception if variable is bad type*/
@@ -135,7 +160,8 @@ class Application extends  Configuration
 
     /*** Model Object Session Methods ***/
 
-   /**Add model object to session array
+   /**
+    * Add model object to session array
     * @static
     * @param Object $obj
     * @throws Exception if variable is bad type*/
@@ -148,7 +174,8 @@ class Application extends  Configuration
         }
     }
 
-  /**Removing model object from session array
+  /**
+   * Removing model object from session array
    * @static
    * @param Object $obj
    * @throws Exception if variable is bad type*/
@@ -161,7 +188,8 @@ class Application extends  Configuration
         }
     }
 
-   /**Get model object from session array
+   /**
+    * Get model object from session array
     * @static
     * @param Object $obj
     * @return Object $obj
@@ -177,7 +205,8 @@ class Application extends  Configuration
 
     /*** Model Object Get Methods ***/
 
-   /**Add model object to Get array
+   /**
+    * Add model object to Get array
     * @static
     * @param Object $obj
     * @throws Exception if variable is bad type*/
@@ -189,7 +218,8 @@ class Application extends  Configuration
         }
     }
 
-   /**Get model object from Get array
+   /**
+    * Get model object from Get array
     * @static
     * @param Object $obj
     * @return Object $obj
@@ -202,7 +232,8 @@ class Application extends  Configuration
         }
     }
 
-   /**Removing model object from Get array
+   /**
+    * Removing model object from Get array
     * @static
     * @param Object $obj
     * @throws Exception if variable is bad type*/
@@ -216,7 +247,8 @@ class Application extends  Configuration
 
     /*** Model Object Post Methods ***/
 
-   /**Get model object from Post array
+   /**
+    * Get model object from Post array
     * @static
     * @param Object $obj
     * @return Object $obj
@@ -229,7 +261,8 @@ class Application extends  Configuration
         }
     }
 
-   /**Add model object to Post array
+   /**
+    * Add model object to Post array
     * @static
     * @param Object $obj
     * @throws Exception if variable is bad type*/
@@ -242,6 +275,7 @@ class Application extends  Configuration
     }
 
    /**
+    * Remove model from Post array
     *@param Object $obj
     *@throws Exception if variable is bad type*/
     public function removePostModel($obj){
@@ -254,10 +288,11 @@ class Application extends  Configuration
 
     /*** Model Object Help Methods ***/
 
-    /**Removing from model object word "Model"
-    * @static
-    * @param Object $obj
-    * @return string*/
+    /**
+     * Removing from model object word "Model"
+     * @static
+     * @param Object $obj
+     * @return string*/
     public static function modelName($obj){
        $name = get_class($obj);
        return  strtolower($modelName = preg_replace("/Model/","",$name));
@@ -265,9 +300,10 @@ class Application extends  Configuration
 
     /*** User Identyfication Methods ***/
 
-    /**Check if user is guest
-    * @static
-    * @return bool*/
+    /**
+     * Check if user is guest
+     * @static
+     * @return bool*/
     public static function isGuest(){
             self::sessionStart();
             if(isset($_SESSION["user"])){
@@ -277,9 +313,10 @@ class Application extends  Configuration
                 return true;
     }
 
-    /**Check if user is Admin
-    * @static
-    * @return bool*/
+    /**
+     * Check if user is Admin
+     * @static
+     * @return bool*/
     public static function isAdmin(){
         self::sessionStart();
         if($_SESSION["user"] != null){
@@ -297,10 +334,11 @@ class Application extends  Configuration
 
     }
 
-    /**Check if id is the same as user id from session
-    * @static
-    * @param int $id
-    * @return bool */
+    /**
+     * Check if id is the same as user id from session
+     * @static
+     * @param int $id
+     * @return bool */
     public static function isOwner($id){
         self::sessionStart();
         if($_SESSION["user"] != null){
@@ -317,8 +355,9 @@ class Application extends  Configuration
 
     /*** Simple error manager ***/
 
-    /**Display errors, warnings, messages.
-    *All contains in session*/
+    /**
+     * Display errors, warnings, messages.
+     *All contains in session*/
     public function error(){
         self::sessionStart();
         if(isset($_SESSION["error"])){
@@ -340,7 +379,8 @@ class Application extends  Configuration
 
     /*** Helper Methods ***/
 
-    /**Generate actual link and add it to session
+    /**
+     * Generate actual link and add it to session
      *@static*/
     public static function makeActualLink(){
         self::clearActualLink();
@@ -354,7 +394,8 @@ class Application extends  Configuration
         $_SESSION["link"]= $link;
     }
 
-   /**Return actual link to redirect
+   /**
+    * Return actual link to redirect
     * @static
     * @return string */
     public static function getActualLink(){
@@ -362,7 +403,8 @@ class Application extends  Configuration
         return $_SESSION["link"];
     }
 
-    /**Clear acutal link from session
+    /**
+     * Clear acutal link from session
      *@static*/
     public  static function clearActualLink(){
         self::sessionStart();
@@ -370,6 +412,7 @@ class Application extends  Configuration
     }
 
     /**
+     * Return dir for load files
      * @static
      * @return string
      */
@@ -378,7 +421,8 @@ class Application extends  Configuration
         return self::$baseDir;
     }
 
-    /**Return template dir
+    /**
+     * Return template dir
      * @static
      * @return string
      */
@@ -388,7 +432,8 @@ class Application extends  Configuration
         return $url.=DIRECTORY_SEPARATOR.SITE_PATH."/templates/".$configuration->getTemplate().DIRECTORY_SEPARATOR;
     }
 
-    /**Check basic URL
+    /**
+     * Check basic URL
      * @static
      * @return string
      */
@@ -401,6 +446,7 @@ class Application extends  Configuration
     }
 
     /**
+     * Return url for homepage
      * @return string
      */
     public function getHomeUrl()
@@ -409,6 +455,7 @@ class Application extends  Configuration
     }
 
     /**
+     * Set page title
      * @param string $pageTitle
      */
     public function setPageTitle($pageTitle)
@@ -417,6 +464,7 @@ class Application extends  Configuration
     }
 
     /**
+     * Return title of page
      * @return string
      */
     public function getPageTitle()
@@ -425,6 +473,7 @@ class Application extends  Configuration
     }
 
     /**
+     * Set site title
      * @param $siteTitle
      */
     public function setSiteTitle($siteTitle)
@@ -433,6 +482,7 @@ class Application extends  Configuration
     }
 
     /**
+     * Return title of site
      * @return string
      */
     public function getSiteTitle()

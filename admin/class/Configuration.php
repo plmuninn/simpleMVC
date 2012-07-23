@@ -1,13 +1,13 @@
 <?php
 /**
- * Created by IntelliJ IDEA.
- * User: loki
- * Date: 13.04.12
- * Time: 18:21
- *
+ * Class for manage a basic configurations
  */
 
-/**Class for manage a basic configurations
+/**
+* Class for manage a basic configurations
+*
+* @package core
+*
 * @property $Date_format    date format
 * @property $Time_zone      time zone
 * @property $Time_Format    time format
@@ -25,14 +25,58 @@
 class Configuration
 {
 
+    /**
+     * Format for date
+     * @var string
+     */
     protected  $Date_format;
+
+    /**
+     * Timezone
+     * @var string
+     */
     protected  $Time_zone;
+
+    /**
+     * Format for time in date
+     * @var string
+     */
     protected  $Time_Format;
+
+    /**
+     * File privileges
+     * @var string
+     */
     protected  $File_prev;
+
+    /**
+     * Folder privileges
+     * @var  string
+     */
     protected  $Folder_prev;
+
+    /**
+     * Admin Email
+     * @var  string
+     */
     protected  $Admin_Email;
+
+    /**
+     * Admin User id
+     * @var string
+     */
     protected  $Admin_id;
+
+    /**
+     * Language of site
+     * @var string
+     */
     protected  $Lang;
+
+    /**
+     * Time Zones to choose
+     * @var array
+     */
     protected  $TimeZones = array(
         'Pacific/Midway'    => "(GMT-11:00) Midway Island",
         'US/Samoa'          => "(GMT-11:00) Samoa",
@@ -148,6 +192,11 @@ class Configuration
         'Pacific/Fiji'      => "(GMT+12:00) Fiji",
         'Asia/Kamchatka'    => "(GMT+12:00) Kamchatka",
     );
+
+    /**
+     * Date formats to choose
+     * @var array
+     */
     protected  $DateFormats = array(
         "1/17/2006 (mm/dd/y)" => "m/d/y",
         "17/1/2006 (dd/mm/y)" => "d/m/y",
@@ -156,6 +205,11 @@ class Configuration
         "1.17.2006 (mm.dd.y)" => "m.d.y",
         "17.1.2006 (dd.mm.y)" => "d.m.y",
     );
+
+    /**
+     * Time formats to choose
+     * @var array
+     */
     protected  $TimeFormats = array (
         " 16:45 (H:i)"  => "H:i",
         " 16:45:58 (H:i:s)" => "H:i:s",
@@ -171,11 +225,22 @@ class Configuration
         "04-45 PM.(h-i A.)" => "h-i A.",
 
     );
+
+    /**
+     * Which template you are using
+     * @var
+     */
     protected  $Template;
 
+    /**
+     * Templates to choose
+     * @var array
+     */
     protected  $AllTemplates = array();
 
-   /**Construct map Database record to Object*/
+   /**
+    * Construct map Database record to Object
+    */
     function __construct()
     {
      $db = ApplicationDB::connectDB();
@@ -203,10 +268,15 @@ class Configuration
 
     }
 
+    /**
+     * Empty
+     */
     function __destruct(){}
 
-    /**Save Object variables to Database
-     *@return bool if execute was ok is true else is false*/
+    /**
+     * Save Object variables to Database
+     *@return bool if execute was ok is true else is false
+     */
     public function save()
     {
         $db = ApplicationDB::connectDB();
@@ -236,6 +306,7 @@ class Configuration
 
 
     /**
+     * Set Admin Email
      * @param string $Admin_Email
      */
     public function setAdminEmail($Admin_Email)
@@ -243,12 +314,17 @@ class Configuration
         $this->Admin_Email = $Admin_Email;
     }
 
+    /**
+     * Get Admin Email
+     * @return mixed
+     */
     public function getAdminEmail()
     {
         return $this->Admin_Email;
     }
 
     /**
+     * Set admin user id
      * @param string $Admin_id
      */
     public function setAdminId($Admin_id)
@@ -256,12 +332,17 @@ class Configuration
         $this->Admin_id = $Admin_id;
     }
 
+    /**
+     * Get Set admin user id
+     * @return mixed
+     */
     public function getAdminId()
     {
         return $this->Admin_id;
     }
 
     /**
+     * Set Date Format
      * @param string $Date_format
      */
     public function setDateFormat($Date_format)
@@ -269,12 +350,17 @@ class Configuration
         $this->Date_format = $Date_format;
     }
 
+    /**
+     * Return Date Format
+     * @return mixed
+     */
     public function getDateFormat()
     {
         return $this->Date_format;
     }
 
     /**
+     * Set file privileges
      * @param string $File_prev
      */
     public function setFilePrev($File_prev)
@@ -282,12 +368,17 @@ class Configuration
         $this->File_prev = $File_prev;
     }
 
+    /**
+     * Return file privileges
+     * @return mixed
+     */
     public function getFilePrev()
     {
         return $this->File_prev;
     }
 
     /**
+     * Set folder privileges
      * @param string $Folder_prev
      */
     public function setFolderPrev($Folder_prev)
@@ -295,12 +386,17 @@ class Configuration
         $this->Folder_prev = $Folder_prev;
     }
 
+    /**
+     * Return folder privileges
+     * @return mixed
+     */
     public function getFolderPrev()
     {
         return $this->Folder_prev;
     }
 
     /**
+     * Set Time zone
      * @param string $Time_zone
      */
     public function setTimeZone($Time_zone)
@@ -308,12 +404,17 @@ class Configuration
         $this->Time_zone = $Time_zone;
     }
 
+    /**
+     * Return Time zone
+     * @return mixed
+     */
     public function getTimeZone()
     {
         return $this->Time_zone;
     }
 
     /**
+     * Change actual site language
      * @param string $Lang
      */
     public function setLang($Lang)
@@ -321,27 +422,44 @@ class Configuration
         $this->Lang = $Lang;
     }
 
+    /**
+     * Return actual language
+     * @return mixed
+     */
     public function getLang()
     {
         return $this->Lang;
     }
 
+    /**
+     * Return all Date formats
+     * @return mixed
+     */
     public function getDateFormats()
     {
         return $this->DateFormats;
     }
 
+    /**
+     * Return all Time zones
+     * @return mixed
+     */
     public function getTimeZones()
     {
         return $this->TimeZones;
     }
 
+    /**
+     * Return all Time formats
+     * @return mixed
+     */
     public function getTimeFormats()
     {
         return $this->TimeFormats;
     }
 
     /**
+     * Set Time format
      * @param string $Time_Format
      */
     public function setTimeFormat($Time_Format)
@@ -349,12 +467,17 @@ class Configuration
         $this->Time_Format = $Time_Format;
     }
 
+    /**
+     * Get Time format
+     * @return mixed
+     */
     public function getTimeFormat()
     {
         return $this->Time_Format;
     }
 
     /**
+     * Set actual template
      * @param string $Template
      */
     public function setTemplate($Template)
@@ -362,12 +485,17 @@ class Configuration
         $this->Template = $Template;
     }
 
+    /**
+     * Return actual template
+     * @return mixed
+     */
     public function getTemplate()
     {
         return $this->Template;
     }
 
-    /**List of all templates
+    /**
+     * List of all templates
      * @return array
      */
     public function getAllTemplates()

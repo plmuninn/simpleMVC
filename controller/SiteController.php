@@ -20,13 +20,20 @@ class SiteController extends Controller
         parent::generateControllers();
 
        try{
-        if(count($this->controllers) != 0 && $this->controllers[0] != "index"){
-            if(!parent::redirect()){
-                echo "Site don't found.";
-            }}
-         else{
-             parent::renderIndex();
-         }}
+           if(!isset($this->component)){
+                if(count($this->controllers) != 0 && $this->controllers[0] != "index"){
+                    if(!parent::redirect()){
+                        echo "Site don't found.";
+                    }
+                }
+                 else{
+                     parent::renderIndex();
+                 }
+           }
+           else
+               parent::redirectComponent();
+
+       }
        catch(Exception $e){
            echo $e->getMessage();
        }

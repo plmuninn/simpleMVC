@@ -1,14 +1,14 @@
 <?php
 /**
- * Created by IntelliJ IDEA.
- * User: loki
- * Date: 13.04.12
- * Time: 21:58
- *
+ * Class mapping database columns to PHP Object values
  */
 
  /**
- *Class mapping database columns to PHP Object values
+ *Class mapping database columns to PHP Object values and manage a relations
+ *
+ * @package core
+ * @subpackage model
+ *
  *@property string $table_name
  *@property array $primary
  *@property array $variablesTypes
@@ -17,13 +17,33 @@
 class ModelSQLManager  extends ApplicationDB implements SQLManagerInterface
 {
 
+    /**
+     * A model table name.
+     * @var null
+     */
     protected  $table_name = null;
+
+    /**
+     * Primary keys array.
+     * @var array
+     */
     protected  $primary = array();
+
+    /**
+     * Variables type mapping values
+     * @var array
+     */
     protected  $variablesTypes = array();
+
+    /**
+     * If object is new to create or save in DB.
+     * @var bool
+     */
     protected  $new = true;
 
 
-    /**Map database columns to PHP Object
+    /**
+     * Map database columns to PHP Object
      * @throws Exception
      */
     function __construct()
@@ -36,14 +56,24 @@ class ModelSQLManager  extends ApplicationDB implements SQLManagerInterface
 
     }
 
+    /**
+     * Method returns relation keys.
+     */
     private function getKeys(){
         //TODO: Keys sercher
     }
 
+    /**
+     * Method create relations
+     */
     private function relations(){
         //TODO: Relation manager
     }
 
+    /**
+     * Get values from mysql database
+     * @throws Exception
+     */
     private function mysql()
     {
         $db = $this->connectDB();
@@ -74,14 +104,17 @@ class ModelSQLManager  extends ApplicationDB implements SQLManagerInterface
         }
     }
 
-
+    /**
+     * Close Database connection
+     */
     function __destruct()
     {
         parent::__destruct();
     }
 
 
-    /**Return object from database by $primaryKeys
+    /**
+     * Return object from database by $primaryKeys
      * @param array $primaryKeys
      * @return mixed
      */
@@ -125,7 +158,8 @@ class ModelSQLManager  extends ApplicationDB implements SQLManagerInterface
         return false;
     }
 
-    /**Method return one object or array with objects from database by $statement
+    /**
+     * Method return one object or array with objects from database by $statement
      * @param string $statement
      * @return mixed
      */
@@ -166,7 +200,8 @@ class ModelSQLManager  extends ApplicationDB implements SQLManagerInterface
         return false;
     }
 
-    /**Make query from $statement. If query return something, it return array else true or false.
+    /**
+     * Make query from $statement. If query return something, it return array else true or false.
      * @param $statement
      * @return mixed
      */
@@ -196,7 +231,8 @@ class ModelSQLManager  extends ApplicationDB implements SQLManagerInterface
         return false;
     }
 
-    /**Return array of all object's in database.
+    /**
+     * Return array of all object's in database.
      * @return mixed
      */
     public function getAll(){
@@ -230,7 +266,8 @@ class ModelSQLManager  extends ApplicationDB implements SQLManagerInterface
 
 
 
-    /**Method save or update record with data i database.
+    /**
+     * Method save or update record with data i database.
      * @return mixed
      * @throws Exception
      */
@@ -331,7 +368,8 @@ class ModelSQLManager  extends ApplicationDB implements SQLManagerInterface
     }
 
 
-    /**Method remove object from database by $primaryKeys
+    /**
+     * Method remove object from database by $primaryKeys
      * @param array $primaryKeys
      * @return mixed
      */
@@ -361,7 +399,8 @@ class ModelSQLManager  extends ApplicationDB implements SQLManagerInterface
     }
 
 
-    /**Return array with objects by $primaryKeys
+    /**
+     * Return array with objects by $primaryKeys
      * @param array $primaryKeys
      * @return mixed
      */
@@ -426,7 +465,8 @@ class ModelSQLManager  extends ApplicationDB implements SQLManagerInterface
     protected function beforeSave(){
     }
 
-    /**Return all variable types from database
+    /**
+     * Return all variable types from database
      * @return array
      */
     public function getVariablesTypes()

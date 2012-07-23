@@ -1,23 +1,44 @@
 <?php
 /**
- * Created by IntelliJ IDEA.
- * User: loki
- * Date: 02.07.12
- * Time: 19:39
- *
+ * A class for modules
  */
-class Module implements ModuleManagerInterface
+/**
+ * A class for modules
+ * @package core
+ * @subpackage controller
+ */
+class Module
 {
+    /**
+     * Default index view
+     * @var
+     */
     protected $view;
+
+    /**
+     * Module class name
+     * @var
+     */
     protected $name;
+
+    /**
+     * Application instance
+     * @var
+     */
     protected $app;
 
+    /**
+     * Create a instance and set parameters
+     */
     public function _construct(){
         $this->name = get_class($this);
         $this->view = "index";
         $this->app = new Application();
     }
 
+    /**
+     * Include a view file of module
+     */
     protected function render(){
      $file_src = Application::getBaseDir()."modules/".strtolower($this->name)."/views/".$this->view.".php";
         if(file_exists($file_src)){
@@ -32,6 +53,12 @@ class Module implements ModuleManagerInterface
         }
     }
 
+    /**
+     * Load css and js files
+     * @param $name
+     * @param $type
+     * @param null $path
+     */
     protected function loadFile($name, $type, $path = null){
          switch($type){
              case "css":

@@ -1,23 +1,26 @@
 <?php
 /**
- * Created by IntelliJ IDEA.
- * User: loki
- * Date: 12.04.12
- * Time: 20:57
- *
+ * Class to manage connection
  */
 
 /**
- * Class to manage connection
+ * Class to manage connection with database. Use PDO connection only.
+ *
+ * @package core
+ *
  * @property-read $connection its return PDO object
  * */
 
 class ApplicationDB
 {
-
+    /**
+     * PDO instance.
+     * @var PDO
+     */
     private $connection;
 
-   /**Construct a Database connection, get all
+   /**
+    * Construct a Database connection, get all
     *date for connection form config.php file in site root directory*/
     function __construct()
     {
@@ -37,19 +40,22 @@ class ApplicationDB
         }
     }
 
-   /**Close Database connection*/
+   /**
+    * Close Database connection*/
     function __destruct()
     {
         $this->connection = null;
     }
 
-   /**Close Database connection*/
+   /**
+    * Close Database connection*/
     public function  closeDB()
     {
         $this->connection = null;
     }
 
-   /**Create new connection
+   /**
+    * Create new connection
     *@static
     *@return PDO
     *@throws Exception*/
@@ -64,7 +70,8 @@ class ApplicationDB
             }
     }
 
-    /** Return PDO object
+    /**
+     * Return PDO object
      * @return PDO*/
     public function getConnection()
     {

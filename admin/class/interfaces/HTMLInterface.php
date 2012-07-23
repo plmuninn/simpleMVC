@@ -1,13 +1,11 @@
 <?php
 /**
- * Created by IntelliJ IDEA.
- * User: loki
- * Date: 19.04.12
- * Time: 07:22
- *
+ * Interface for HTMLManager class
  */
-
-/**Interface for HTMLManager class */
+/**
+ * Interface for HTMLManager class
+ * @package interfaces
+ */
 interface HTMLInterface
 {
 

@@ -1,25 +1,31 @@
 <?php
 /**
- * Created by IntelliJ IDEA.
- * User: loki
- * Date: 30.05.12
- * Time: 21:50
- *
+ * Class to manage files.
+ */
+
+/**
+ * Class is used to manage files.
+ * @package core
+ * @subpackage helper
  */
 class FileManager implements FileInterface
 {
     /**
-     *
+     * Empty
      */
     function __construct()
     {
     }
 
+    /**
+     * Empty
+     */
     function __destruct()
     {
      }
 
-    /**Create folder if not exits. Name of folder should be at end of $path
+    /**
+     * Create folder if not exits. Name of folder should be at end of $path
      * @static
      * @param string $path
      * @return bool
@@ -34,7 +40,8 @@ class FileManager implements FileInterface
         return false;
     }
 
-    /**Remove folder if exits. Name of folder should be at end of $path
+    /**
+     * Remove folder if exits. Name of folder should be at end of $path
      * @static
      * @param string $path
      * @return bool
@@ -52,7 +59,8 @@ class FileManager implements FileInterface
         return false;
     }
 
-    /**Create file on $path
+    /**
+     * Create file on $path
      * @static
      * @param string $path
      * @param string $name
@@ -74,7 +82,8 @@ class FileManager implements FileInterface
         return false;
     }
 
-    /**Remove folder on $path
+    /**
+     * Remove folder on $path
      * @static
      * @param string $path
      * @param string $name
@@ -90,7 +99,8 @@ class FileManager implements FileInterface
         return false;
     }
 
-    /**Get all folders ona $path
+    /**
+     * Get all folders ona $path
      * @static
      * @param string $path
      * @return array
@@ -108,7 +118,8 @@ class FileManager implements FileInterface
         return $folders;
     }
 
-    /**Get all files from $path
+    /**
+     * Get all files from $path
      * @static
      * @param string $path
      * @return array
@@ -126,7 +137,8 @@ class FileManager implements FileInterface
         return $files;
     }
 
-    /**Return all files and folders in directory
+    /**
+     * Return all files and folders in directory
      * @static
      * @param string $path
      * @return array

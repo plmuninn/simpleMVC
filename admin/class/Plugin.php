@@ -1,12 +1,13 @@
 <?php
 /**
- * Created by IntelliJ IDEA.
- * User: loki
- * Date: 02.07.12
- * Time: 19:39
- *
+ * Plugin manager.
+ */
+/**
+ * Class to manage a plugins in all MVC and Components.
+ * @package core
+ * @subpackage controller
  */
 class PluginManager implements PluginManagerIterface
 {
-
+    //TODO: Implement Plugins!
 }

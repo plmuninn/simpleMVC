@@ -1,14 +1,15 @@
 <?php
 /**
- * Created by IntelliJ IDEA.
- * User: loki
- * Date: 30.05.12
- * Time: 21:52
- *
+ * Interface for FileManager class
+ */
+/**
+ * Interface for FileManager class
+ * @package interfaces
  */
 interface FileInterface
 {
-    /**Create folder if not exits. Name of folder should be at end of $path
+    /**
+     * Create folder if not exits. Name of folder should be at end of $path
      * @static
      * @abstract
      * @param string $path
@@ -16,7 +17,8 @@ interface FileInterface
      */
     public static function  createFolder($path);
 
-    /**Remove folder if exits. Name of folder should be at end of $path
+    /**
+     * Remove folder if exits. Name of folder should be at end of $path
      * @static
      * @abstract
      * @param string $path
@@ -25,7 +27,8 @@ interface FileInterface
      */
     public static function  removeFolder($path);
 
-    /**Create file on $path
+    /**
+     * Create file on $path
      * @static
      * @abstract
      * @param string $path
@@ -35,7 +38,8 @@ interface FileInterface
      */
     public static function  createFile($path, $name);
 
-    /**Remove file on $path
+    /**
+     * Remove file on $path
      * @static
      * @abstract
      * @param string $path
@@ -44,7 +48,8 @@ interface FileInterface
      */
     public static function  removeFile($path, $name);
 
-    /**Get all folders ona $path
+    /**
+     * Get all folders ona $path
      * @static
      * @abstract
      * @param string $path
@@ -53,7 +58,8 @@ interface FileInterface
      */
     public static function  getFolders($path);
 
-    /**Get all files from $path
+    /**
+     * Get all files from $path
      * @static
      * @abstract
      * @param string $path
@@ -62,7 +68,8 @@ interface FileInterface
      */
     public static function getFiles($path);
 
-    /**Return all files and folders in directory
+    /**
+     * Return all files and folders in directory
      * @static
      * @abstract
      * @param string $path

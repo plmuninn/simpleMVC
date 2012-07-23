@@ -1,29 +1,37 @@
 <?php
+
 /**
- * Created by IntelliJ IDEA.
- * User: loki
- * Date: 19.04.12
- * Time: 07:18
+ * HTML Generator.
  */
 
-/**Class to generate Html code from php vars and arrays */
+/**
+ *
+ * Class to generate Html code from php vars and arrays.
+ * @package core
+ * @subpackage helper
+ */
 class HTMLManager implements HTMLInterface
 {
     /**
-     *
+     *Empty
      */
     function __construct()
     {
     }
 
+    /**
+     *Empty
+     */
     function __destruct()
     {
     }
 
-   /**Method make link (<a></a> tag)
+   /**
+    * Method make link (<a></a> tag).
     *@param array $array with link values
     *@param bool $admin  if link is to administration sector
-    *@return string with correct <a></a> tag */
+    *@return string with correct <a></a> tag
+    */
     public static function makeLink($array = array(), $admin)
     {
         $app = new Application();
@@ -70,9 +78,11 @@ class HTMLManager implements HTMLInterface
             return "Bad variable type.";
     }
 
-   /**Method make <img /> tag
+   /**
+    * Method make <img /> tag.
     *@param array $array with image values
-    *@return string */
+    *@return string
+    */
     public static function makeImage($array = array())
     {
         $app = new Application();
@@ -105,18 +115,22 @@ class HTMLManager implements HTMLInterface
             return "Bad variable type.";
     }
 
-   /**Method clear input varibales, protect for SqlInjection
+   /**
+    * Method clear input varibales, protect for SqlInjection.
     *@param string $input
-    *@return string */
+    *@return string
+    */
     public static function cleanInput($input)
     {
       return stripslashes(htmlentities($input)) ;
     }
 
-   /**Method make list menu <ul></ul>
+   /**
+    * Method make list menu <ul></ul>.
     *@param array $array with link values
     *@param bool $admin  if link is to administration sector
-    *@return string with correct <ul><ul> tag */
+    *@return string with correct <ul><ul> tag
+    */
     public static function makeMenu($array = array(), $admin)
     {
          $variable = "";
@@ -133,9 +147,11 @@ class HTMLManager implements HTMLInterface
             return "Bad variable type.";
     }
 
-   /**Method create <select></select> tag
+   /**
+    * Method create <select></select> tag.
     *@param array $array with select values
-    *@return string with correct <select> tag */
+    *@return string with correct <select> tag
+    */
     public static function makeSelect($array = array())
     {
            $id ='';
@@ -182,10 +198,12 @@ class HTMLManager implements HTMLInterface
                 return "Bad variable type.";
     }
 
-   /**Method create options for select method
+   /**
+    * Method create options for select method.
     *@param array $array with select values
     *@param bool $selected if option should be selected
-    *@return string with correct <option> tag */
+    *@return string with correct <option> tag
+    */
     private static function makeOptions($array =array(), $selected)
     {
         $options = '';
