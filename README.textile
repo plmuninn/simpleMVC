@@ -1,14 +1,11 @@
 <h1>Simple MVC</h1>
-<hr />
-<p>A Framework documentation (only basic for now)</p>
+<h2>A Framework documentation (only basic for now)</h2>
 <p><a href="http://simplemvc.loki.iswift.eu/doc/" target="blank">Documentation</a></p>
-<p>Simple MVC framework with forum implementation.</p>
+<h2>Simple MVC framework with forum implementation.</h2>
 <p><a href="http://simplemvc.loki.iswift.eu/" target="blank">Forum implementation here</a></p>
-<hr />
-<p>Admin user:</p>
+<h2>Admin user:</h2>
 <p><strong>Login:</strong>admin</p>
 <p><strong>Password:</strong>admin</p>
-<hr />
-<p>Normal user:</p>
+<h2>Normal user:</h2>
 <p><strong>Login:</strong>user</p>
 <p><strong>Password:</strong>user</p>
