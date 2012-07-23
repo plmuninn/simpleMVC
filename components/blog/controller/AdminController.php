@@ -25,7 +25,7 @@ class AdminController extends Component
              $long = HTMLManager::cleanInput($_POST["long"]);
              $blog = new BlogModel();
 
-                if(isset($_POST["blog_id"])){
+                if(isset($_POST["blog_id"]) && !empty($_POST["blog_id"])){
                 $blog = $blog->getById(array("id_blog" => HTMLManager::cleanInput($_POST["blog_id"])));
                 }
 
