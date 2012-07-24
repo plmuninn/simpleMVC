@@ -16,7 +16,7 @@ interface HTMLInterface
      * @param bool $admin
      * @return mixed
      */
-    public static function makeLink($values = array(), $admin);
+    public static function makeLink($values = array(), $admin = false);
 
     /** Method create image tag (<img />)
      * @static
@@ -41,7 +41,7 @@ interface HTMLInterface
      * @param bool $admin
      * @return mixed
      */
-    public static function makeMenu($values = array(), $admin);
+    public static function makeMenu($values = array(), $admin = false);
 
     /** Method create <select></select> tag
      * @static

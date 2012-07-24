@@ -9,6 +9,13 @@
  */
 class Module
 {
+
+    /**
+     * Path to module.
+     * @var
+     */
+    private $path;
+
     /**
      * Default index view
      * @var
@@ -34,6 +41,7 @@ class Module
         $this->name = get_class($this);
         $this->view = "index";
         $this->app = new Application();
+        $this->path = $this->app->getHomeUrl()."modules/".strtolower($this->name)."/";
     }
 
     /**
@@ -74,5 +82,14 @@ class Module
                      echo "<script src='".$path.$name."' type='text/javascript' charset='utf-8'></script>";
                  break;
          }
+    }
+
+    /**
+     * Path to module.
+     * @return
+     */
+    public function getPath()
+    {
+        return $this->path;
     }
 }

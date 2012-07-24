@@ -180,7 +180,7 @@ class Controller {
      * @param string $view
      * @param bool $admin for admin site true
      */
-    protected function redirectToOther($view, $admin){
+    protected function redirectToOther($view, $admin = false){
         $app = new Application();
         header('Location: '.$app->getHomeUrl().($admin == false ? "index.php?url=" : "admin/index.php?url=").$view."");
         exit();

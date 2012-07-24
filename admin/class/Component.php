@@ -12,6 +12,11 @@
 class Component extends Controller
 {
 
+    /**
+     * Path to component.
+     * @var
+     */
+    private $path;
 
     /**
      *Constructor check url and active controller and actions from them.
@@ -23,6 +28,8 @@ class Component extends Controller
       parent::dependencies();
       $this->generateModels();
       parent::generateControllers();
+      $this->app = new Application();
+      $this->path = $this->app->getHomeUrl()."components/".$this->component."/";
 
         if( (count($this->controllers) == 0) || ($this->controllers[0] == strtolower(preg_replace("/Controller/","",get_class($this)))) ){
             $this->rendered = true;
@@ -70,8 +77,6 @@ class Component extends Controller
     public function render($name){
 
         $this->beforeRender();
-        /*Create instance of application configurations and make it global*/
-        $this->app = new Application();
         /*Get view*/
         $this->file =  $this->app->getBaseDir()."components/".$this->component."/views/".$this->name."/".$name.".php";
         /*Get template*/
@@ -143,5 +148,14 @@ class Component extends Controller
      */
     protected function beforeRender(){
 
+    }
+
+    /**
+     * Path to component.
+     * @return mixed
+     */
+    public function getPath()
+    {
+        return $this->path;
     }
 }

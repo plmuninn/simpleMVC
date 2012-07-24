@@ -32,7 +32,7 @@ class HTMLManager implements HTMLInterface
     *@param bool $admin  if link is to administration sector
     *@return string with correct <a></a> tag
     */
-    public static function makeLink($array = array(), $admin)
+    public static function makeLink($array = array(), $admin = false)
     {
         $app = new Application();
 
@@ -131,7 +131,7 @@ class HTMLManager implements HTMLInterface
     *@param bool $admin  if link is to administration sector
     *@return string with correct <ul><ul> tag
     */
-    public static function makeMenu($array = array(), $admin)
+    public static function makeMenu($array = array(), $admin = false)
     {
          $variable = "";
          if(is_array($array)){
