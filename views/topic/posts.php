@@ -32,8 +32,8 @@ if(isset($_GET["id_topic"])){
             if(Application::isAdmin() || Application::isOwner($usr->id_user)){
                 $edit .= "<div class='edit-panel'>";
                 $edit .= HTMLManager::makeMenu(array(
-                        array('href'=>'post/edit&post_id='.$id, 'link'=>'Edytuj'),
-                        array('href'=>'post/remove&post_id='.$id, 'link'=>'Usuń'),
+                        array('href'=>'post&act=edit&post_id='.$id, 'link'=>'Edytuj'),
+                        array('href'=>'post&act=remove&post_id='.$id, 'link'=>'Usuń'),
                     ),
                     false);
                 $edit .="</div>";
@@ -52,17 +52,17 @@ if(isset($_GET["id_topic"])){
 <hr />
 
 <?php
- echo HTMLManager::makeLink(array('link'=>'Dodaj wiadomość','href'=>'post/add&id_topic='.HTMLManager::cleanInput($_GET["id_topic"])),false);
+ echo HTMLManager::makeLink(array('link'=>'Dodaj wiadomość','href'=>'post&id_topic='.HTMLManager::cleanInput($_GET["id_topic"])."&act=add"),false);
 
 }
 else{
     $_SESSION["error"] = array("type"=>"error","message"=>"Brak takiego tematu");
-    $this->redirectToOther("",false);
+    $this->redirectToOther("","");
 }
 }
 else{
     $_SESSION["error"] = array("type"=>"error","message"=>"Błędne dane");
-    $this->redirectToOther("",false);
+    $this->redirectToOther("","");
 }
 
 

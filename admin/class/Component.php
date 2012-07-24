@@ -30,12 +30,11 @@ class Component extends Controller
       parent::generateControllers();
       $this->app = new Application();
       $this->path = $this->app->getHomeUrl()."components/".$this->component."/";
-
-        if( (count($this->controllers) == 0) || ($this->controllers[0] == strtolower(preg_replace("/Controller/","",get_class($this)))) ){
+        if( ($this->controllers == null) || ($this->controllers == strtolower(preg_replace("/Controller/","",get_class($this)))) ){
             $this->rendered = true;
-            $this->renderIndex();
+            $this->actionIndex();
         }
-        elseif( count($this->controllers) < 2 || ($this->getName() != $this->controllers[1]) ){
+        else {
            $this->redirect();
         }
 
@@ -61,13 +60,6 @@ class Component extends Controller
         $modelName = preg_replace("/Controller/","",$className)."Model";
         if(file_exists(Application::getBaseDir()."components/".$this->component."/model/".$modelName.".php"))
             $this->model = new $modelName();
-    }
-
-    /**
-     *Render index file
-     */
-    protected function renderIndex(){
-        $this->render("index");
     }
 
     /**

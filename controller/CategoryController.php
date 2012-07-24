@@ -28,10 +28,10 @@ class CategoryController  extends Controller
         parent::beforeRender();
     }
 
-    public function addRender(){
+    public function addAction(){
         if(Application::isGuest()){
             $_SESSION["error"] = array("type"=>"error","message"=>"Musisz być zalogowany");
-            $this->redirectToOther("login", false);}
+            $this->redirectToOther("login", "");}
         else  if(Application::isAdmin()){
               $this->model->name = HTMLManager::cleanInput($_POST["name"]);
               $this->model->description = HTMLManager::cleanInput($_POST["description"]);
@@ -42,16 +42,16 @@ class CategoryController  extends Controller
         }
         else{
             $_SESSION["error"] = array("type"=>"error","message"=>"Nie jesteś administratorem");
-            $this->renderIndex();
+            $this->actionIndex();
         }
     }
 
-    public function editRender(){
+    public function editAction(){
         $_SESSION["title"] = "- Edycja kategorii";
 
         if(Application::isGuest()){
             $_SESSION["error"] = array("type"=>"error","message"=>"Musisz być zalogowany");
-            $this->redirectToOther("login", false);}
+            $this->redirectToOther("login", "");}
         else  if(Application::isAdmin()){
               if(isset($_POST['cat-edit'])){
                   $category = $this->model->getById(array("id_category"=>HTMLManager::cleanInput($_GET["cat_id"])));
@@ -59,40 +59,40 @@ class CategoryController  extends Controller
                   $category->description = HTMLManager::cleanInput($_POST["description"]);
                   $category->save();
                   $_SESSION["error"] = array("type"=>"message","message"=>"Kategoria zapisana");
-                  $this->redirectToOther("admin/kategorie",true);
+                  $this->redirectToOther("admin","kategorie",true);
               }
         $this->render("edit");}
         else{
             $_SESSION["error"] = array("type"=>"error","message"=>"Nie jesteś administratorem");
-            $this->renderIndex();}
+            $this->actionIndex();}
     }
 
-    public function listRender(){
+    public function listAction(){
         if(Application::isGuest()){
             $_SESSION["error"] = array("type"=>"error","message"=>"Musisz być zalogowany");
-            $this->redirectToOther("login", false);}
+            $this->redirectToOther("login", "");}
         else  if(Application::isAdmin()){
             $this->render("list");}
         else{
             $_SESSION["error"] = array("type"=>"error","message"=>"Nie jesteś administratorem");
-            $this->renderIndex();}
+            $this->actionIndex();}
     }
 
-    public function topicsRender(){
+    public function topicsAction(){
         $_SESSION["title"] = "- Tematy";
         if(Application::isGuest()){
             $_SESSION["error"] = array("type"=>"error","message"=>"Musisz być zalogowany");
-            $this->redirectToOther("login", false);}
+            $this->redirectToOther("login", "");}
         else{
             Application::makeActualLink();
             $this->render("topics");
         }
     }
 
-    public function removeRender(){
+    public function removeAction(){
         if(Application::isGuest()){
             $_SESSION["error"] = array("type"=>"error","message"=>"Musisz być zalogowany");
-            $this->redirectToOther("login", false);}
+            $this->redirectToOther("login", "");}
         else  if(Application::isAdmin()){
             $this->model->removeById(array("id_category" => HTMLManager::cleanInput($_GET["cat_id"])));
             $topics = $this->model->query("SELECT id_topic FROM topic WHERE category_id_category =".HTMLManager::cleanInput($_GET["cat_id"]));
@@ -118,7 +118,7 @@ class CategoryController  extends Controller
         }
         else{
             $_SESSION["error"] = array("type"=>"error","message"=>"Nie jesteś administratorem");
-            $this->renderIndex();}
+            $this->actionIndex();}
     }
 
 

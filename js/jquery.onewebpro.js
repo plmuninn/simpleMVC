@@ -117,7 +117,7 @@ function addUser(e){
     }
 
   var ajax = ajaxOpen();
-  var object = url+"index.php?url=user/create";
+  var object = url+"index.php?cont=user&act=create";
     function processResponse()
     {
         if (ajax.readyState == 4) {
@@ -142,8 +142,8 @@ function addUser(e){
                 cell2.innerHTML = obj.usrEmail;
                 cell3.innerHTML = obj.usrName;
                 cell4.innerHTML = obj.usrSurname;
-                cell5.innerHTML = "<a href='"+url+"index.php?url=user/edit&us_id="+obj.usrId+"'>Edytuj</a>";
-                cell6.innerHTML = "<a class='remove-user' href='"+url+"index.php?url=user/remove&us_id="+obj.usrId+"'>Usuń</a>";
+                cell5.innerHTML = "<a href='"+url+"index.php?cont=user&act=edit&us_id="+obj.usrId+"'>Edytuj</a>";
+                cell6.innerHTML = "<a class='remove-user' href='"+url+"index.php?cont=user&act=remove&us_id="+obj.usrId+"'>Usuń</a>";
 
                 users();
             }
@@ -177,7 +177,7 @@ function saveConfig(e){
         url += "simpleMVC/"
     }
 
-    var object = url +"admin/index.php?url=admin/configurationsave";
+    var object = url +"admin/index.php?cont=admin&act=configurationsave";
 
     var ajax = ajaxOpen();
 
@@ -220,14 +220,13 @@ function addCategory(e){
      }
 
     var ajax = ajaxOpen();
-    var object = url+"index.php?url=category/add";
+    var object = url+"index.php?cont=category&act=add";
 
 
     function processResponse()
     {
         if (ajax.readyState == 4) {
             if (ajax.status == 200) {
-
                 var obj = eval('(' + ajax.responseText + ')');
                 $('.systemMessage').html("<div class='message'>"+obj.messages+"</div>");
                 $('.message').delay(2000).slideUp('slow');
@@ -244,8 +243,8 @@ function addCategory(e){
 
                 cell1.innerHTML = obj.catName;
                 cell2.innerHTML = obj.catDescription;
-                cell3.innerHTML = "<a href='"+url+"index.php?url=category/edit&cat_id="+obj.catId+"'>Edytuj</a>";
-                cell4.innerHTML = "<a class='remove-category' href='"+url+"index.php?url=category/remove&cat_id="+obj.catId+"'>Usuń</a>";
+                cell3.innerHTML = "<a href='"+url+"index.php?cont=category&act=edit&cat_id="+obj.catId+"'>Edytuj</a>";
+                cell4.innerHTML = "<a class='remove-category' href='"+url+"index.php?cont=category&act=remove&cat_id="+obj.catId+"'>Usuń</a>";
 
                 categories();
             }

@@ -67,6 +67,7 @@
 <li class="method public "><a href="#render" title="render :: Render view."><span class="description">Render view.</span><pre>render()</pre></a></li>
 <li class="method public inherited"><a href="#setTitle" title="setTitle :: Change title of site."><span class="description">Change title of site.</span><pre>setTitle()</pre></a></li>
 <li class="nav-header protected">» Protected</li>
+<li class="method protected inherited"><a href="#actionIndex" title="actionIndex :: Render index file."><span class="description">Render index file.</span><pre>actionIndex()</pre></a></li>
 <li class="method protected "><a href="#afterRender" title="afterRender :: Method after render a view."><span class="description">Method after render a view.</span><pre>afterRender()</pre></a></li>
 <li class="method protected "><a href="#beforeRender" title="beforeRender :: Method before render a view."><span class="description">Method before render a view.</span><pre>beforeRender()</pre></a></li>
 <li class="method protected inherited"><a href="#changeComponent" title="changeComponent :: Change component."><span class="description">Change component.</span><pre>changeComponent()</pre></a></li>
@@ -81,16 +82,15 @@
 <li class="method protected inherited"><a href="#redirectComponent" title="redirectComponent :: Method redirect to component class."><span class="description">Method redirect to component class.</span><pre>redirectComponent()</pre></a></li>
 <li class="method protected inherited"><a href="#redirectToOther" title="redirectToOther :: Change location to other view."><span class="description">Change location to other view.</span><pre>redirectToOther()</pre></a></li>
 <li class="method protected inherited"><a href="#redirectToOtherComponent" title="redirectToOtherComponent :: Change location in component."><span class="description">Change location in component.</span><pre>redirectToOtherComponent()</pre></a></li>
-<li class="method protected "><a href="#renderIndex" title="renderIndex :: Render index file"><span class="description">Render index file</span><pre>renderIndex()</pre></a></li>
 <li class="nav-header private">» Private</li>
 <li class="method private "><a href="#view" title="view :: Generate view"><span class="description">Generate view</span><pre>view()</pre></a></li>
 <li class="nav-header">
 <i class="icon-custom icon-property"></i> Properties</li>
 <li class="nav-header protected">» Protected</li>
-<li class="property protected inherited"><a href="#%24actions" title="$actions :: Temporary array with controllers, actions etc."><span class="description">Temporary array with controllers, actions etc.</span><pre>$actions</pre></a></li>
+<li class="property protected inherited"><a href="#%24actions" title="$actions :: Which action on controller should be triggered."><span class="description">Which action on controller should be triggered.</span><pre>$actions</pre></a></li>
 <li class="property protected inherited"><a href="#%24app" title="$app :: Application instance."><span class="description">Application instance.</span><pre>$app</pre></a></li>
 <li class="property protected inherited"><a href="#%24component" title="$component :: Component instance."><span class="description">Component instance.</span><pre>$component</pre></a></li>
-<li class="property protected inherited"><a href="#%24controllers" title="$controllers :: All controllers, actions etc."><span class="description">All controllers, actions etc.</span><pre>$controllers</pre></a></li>
+<li class="property protected inherited"><a href="#%24controllers" title="$controllers :: Which controller should be initialized."><span class="description">Which controller should be initialized.</span><pre>$controllers</pre></a></li>
 <li class="property protected inherited"><a href="#%24file" title="$file :: File of view path."><span class="description">File of view path.</span><pre>$file</pre></a></li>
 <li class="property protected inherited"><a href="#%24functions" title="$functions :: All functions."><span class="description">All functions.</span><pre>$functions</pre></a></li>
 <li class="property protected inherited"><a href="#%24message" title="$message :: Messages callback"><span class="description">Messages callback</span><pre>$message</pre></a></li>
@@ -229,6 +229,18 @@
 </div>
 </div></div>
 </div>
+<a name="actionIndex" id="actionIndex"></a><div class="element clickable method protected actionIndex" data-toggle="collapse" data-target=".actionIndex .collapse">
+<h2>Render index file.</h2>
+<pre>actionIndex() </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\Controller::actionIndex()</td>
+</tr></table>
+</div></div>
+</div>
 <a name="afterRender" id="afterRender"></a><div class="element clickable method protected afterRender" data-toggle="collapse" data-target=".afterRender .collapse">
 <h2>Method after render a view.</h2>
 <pre>afterRender() </pre>
@@ -243,7 +255,7 @@
 </div>
 <a name="changeComponent" id="changeComponent"></a><div class="element clickable method protected changeComponent" data-toggle="collapse" data-target=".changeComponent .collapse">
 <h2>Change component.</h2>
-<pre>changeComponent($view, $component) </pre>
+<pre>changeComponent(string $view, string $action, string $component) </pre>
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="detail-description">
 <p class="long_description"></p>
@@ -254,11 +266,15 @@
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$view</h4>
-<code></code>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$action</h4>
+<code>string</code>
 </div>
 <div class="subelement argument">
 <h4>$component</h4>
-<code></code>
+<code>string</code>
 </div>
 </div></div>
 </div>
@@ -380,7 +396,7 @@
 </div>
 <a name="redirectToOther" id="redirectToOther"></a><div class="element clickable method protected redirectToOther" data-toggle="collapse" data-target=".redirectToOther .collapse">
 <h2>Change location to other view.</h2>
-<pre>redirectToOther(string $view, bool $admin) </pre>
+<pre>redirectToOther(string $view, string $action, bool $admin) </pre>
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="detail-description">
 <p class="long_description"></p>
@@ -394,13 +410,17 @@
 <code>string</code>
 </div>
 <div class="subelement argument">
+<h4>$action</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
 <h4>$admin</h4>
 <code>bool</code><p>for admin site true</p></div>
 </div></div>
 </div>
 <a name="redirectToOtherComponent" id="redirectToOtherComponent"></a><div class="element clickable method protected redirectToOtherComponent" data-toggle="collapse" data-target=".redirectToOtherComponent .collapse">
 <h2>Change location in component.</h2>
-<pre>redirectToOtherComponent($view) </pre>
+<pre>redirectToOtherComponent(string $view, string $action) </pre>
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="detail-description">
 <p class="long_description"></p>
@@ -411,15 +431,13 @@
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$view</h4>
-<code></code>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$action</h4>
+<code>string</code>
 </div>
 </div></div>
-</div>
-<a name="renderIndex" id="renderIndex"></a><div class="element clickable method protected renderIndex" data-toggle="collapse" data-target=".renderIndex .collapse">
-<h2>Render index file</h2>
-<pre>renderIndex() </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
 </div>
 <a name="view" id="view"></a><div class="element clickable method private view" data-toggle="collapse" data-target=".view .collapse">
 <h2>Generate view</h2>
@@ -430,11 +448,11 @@
 <h3>
 <i class="icon-custom icon-property"></i> Properties</h3>
 <a name="%24actions" id="$actions"> </a><div class="element clickable property protected $actions" data-toggle="collapse" data-target=".$actions .collapse">
-<h2>Temporary array with controllers, actions etc.</h2>
+<h2>Which action on controller should be triggered.</h2>
 <pre>$actions : </pre>
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="detail-description">
-<p class="long_description"><p>get from $_GET["url"].</p></p>
+<p class="long_description"></p>
 <table class="table table-bordered"><tr>
 <th>inherited_from</th>
 <td>\Controller::$$actions</td>
@@ -466,11 +484,11 @@
 </div></div>
 </div>
 <a name="%24controllers" id="$controllers"> </a><div class="element clickable property protected $controllers" data-toggle="collapse" data-target=".$controllers .collapse">
-<h2>All controllers, actions etc.</h2>
-<pre>$controllers : array</pre>
+<h2>Which controller should be initialized.</h2>
+<pre>$controllers : </pre>
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="detail-description">
-<p class="long_description"><p>get from $_GET["url"].</p></p>
+<p class="long_description"></p>
 <table class="table table-bordered"><tr>
 <th>inherited_from</th>
 <td>\Controller::$$controllers</td>
@@ -562,7 +580,7 @@
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a8</a> and<br>
-            generated on 2012-07-24T08:27:11+02:00.<br></footer></div>
+            generated on 2012-07-24T12:00:58+02:00.<br></footer></div>
 </div>
 </body>
 </html>

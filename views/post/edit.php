@@ -28,12 +28,12 @@ if(isset($_GET["post_id"])){
     }
     else{
         $_SESSION["error"] = array("type"=>"error","message"=>"Brak takiej wiadomości");
-        $this->redirectToOther("",false);
+        $this->redirectToOther("","");
     }
 }
 else{
     $_SESSION["error"] = array("type"=>"error","message"=>"Błędne dane");
-    $this->redirectToOther("",false);
+    $this->redirectToOther("","");
 }
 
 ?>

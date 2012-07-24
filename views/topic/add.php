@@ -29,12 +29,12 @@ if(isset($_GET["cat_id"])){
 }
     else{
         $_SESSION["error"] = array("type"=>"error","message"=>"Brak takiej kategorii");
-        $this->redirectToOther("",false);
+        $this->redirectToOther("","");
     }
 }
 else{
     $_SESSION["error"] = array("type"=>"error","message"=>"Błędne dane");
-    $this->redirectToOther("",false);
+    $this->redirectToOther("","");
 }
 
 ?>

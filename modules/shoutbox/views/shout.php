@@ -23,4 +23,4 @@ if(count($shoutbox)>0){
 else{
     echo "<li>Brak wiadomości</li>";
 }
-echo"</ul>";
+echo"</ul>"; ?>

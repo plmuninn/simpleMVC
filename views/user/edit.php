@@ -20,5 +20,6 @@ if($_GET["us_id"] != null):
 </form>
 <?php
 else:
-    $this->redirectToOther("user/list");
+    $this->redirectToOther("user","list");
 endif;
+?>

@@ -21,13 +21,13 @@ class SiteController extends Controller
 
        try{
            if(!isset($this->component)){
-                if(count($this->controllers) != 0 && $this->controllers[0] != "index"){
+                if($this->controllers != null && $this->actions == null){
                     if(!parent::redirect()){
-                        echo "Site don't found.";
+                        throw new Exception ("Site don't found.");
                     }
                 }
                  else{
-                     parent::renderIndex();
+                     parent::actionIndex();
                  }
            }
            else

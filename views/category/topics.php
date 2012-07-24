@@ -29,7 +29,7 @@ if(isset($_GET["cat_id"])){
            $post = new PostModel();
            $posts = $post->getAllById(array("topic_id_topic"=>$id));
            $count = $post->query("SELECT COUNT(*) FROM post WHERE topic_id_topic =".$id);
-           $link = HTMLManager::makelink(array('href'=>"topic/posts&id_topic=".$id, 'link'=>$title ),false);;
+           $link = HTMLManager::makelink(array('href'=>"topic&id_topic=".$id."&act=posts", 'link'=>$title ),false);;
            $size = $count[0]["COUNT(*)"];
            $last = $posts[count($posts)-1]->added_date;
            $time = $posts[count($posts)-1]->added_time;
@@ -38,8 +38,8 @@ if(isset($_GET["cat_id"])){
              if(Application::isAdmin() || Application::isOwner($usr->id_user)){
                  $edit .= "<div class='edit-panel'>";
                  $edit .= HTMLManager::makeMenu(array(
-                          array('href'=>'topic/edit&topic_id='.$id, 'link'=>'Edytuj'),
-                          array('href'=>'topic/remove&topic_id='.$id, 'link'=>'Usuń'),
+                          array('href'=>'topic&act=edit&topic_id='.$id, 'link'=>'Edytuj'),
+                          array('href'=>'topic&act=remove&topic_id='.$id, 'link'=>'Usuń'),
                      ),
                      false);
                  $edit .="</div>";
@@ -61,7 +61,7 @@ if(isset($_GET["cat_id"])){
     <?php echo
            HTMLManager::makeMenu(
                     array(
-                        array("href" =>"topic/add&cat_id=".HTMLManager::cleanInput($_GET["cat_id"]), "link" =>"Dodaj temat"),
+                        array("href" =>"topic&act=add&cat_id=".HTMLManager::cleanInput($_GET["cat_id"]), "link" =>"Dodaj temat"),
                     )
                     , false
                 );
@@ -71,12 +71,12 @@ if(isset($_GET["cat_id"])){
     }
     else{
         $_SESSION["error"] = array("type"=>"error","message"=>"Brak takiej kategorii");
-        $this->redirectToOther("",false);
+        $this->redirectToOther("","");
     }
 }
 else{
     $_SESSION["error"] = array("type"=>"error","message"=>"Błędne dane");
-    $this->redirectToOther("",false);
+    $this->redirectToOther("","");
 }
 
 ?>

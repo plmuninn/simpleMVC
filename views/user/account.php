@@ -1,12 +1,4 @@
 <?php
-/**
- * Created by IntelliJ IDEA.
- * User: loki
- * Date: 20.04.12
- * Time: 11:41
- *
- */
-
 if($_GET["us_id"] != null):
     $edit_user = $this->model->getById(array("id_user" => HTMLManager::cleanInput($_GET["us_id"])));?>
     <div class="showed">
@@ -37,4 +29,4 @@ if($_GET["us_id"] != null):
         </fieldset>
 </div>
 <?php
-endif;
+endif; ?>

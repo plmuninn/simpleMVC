@@ -17,7 +17,7 @@ class AdminController extends Component
         parent::__destruct();
     }
 
-    public function addRender(){
+    public function addAction(){
         if(!Application::isGuest()){
             if(Application::isOwner(HTMLManager::cleanInput($_POST["id_user"]))){
              $id = HTMLManager::cleanInput($_POST["id_user"]);
@@ -35,42 +35,41 @@ class AdminController extends Component
 
                 if($blog->save()){
                     $_SESSION["error"] = array("type"=>"message","message"=>"Dodano wpis");
-                    $this->redirectToOtherComponent("blog/account&comp=blog&user_id=".Application::loggedUser()->id_user);
+                    $this->redirectToOtherComponent("blog&comp=blog&user_id=".Application::loggedUser()->id_user,"account");
                 }
                 else{
                     $_SESSION["error"] = array("type"=>"error","message"=>"Błąd przy dodawaniu");
-                    $this->redirectToOtherComponent("blog/account&comp=blog&user_id=".Application::loggedUser()->id_user);
+                    $this->redirectToOtherComponent("blog&comp=blog&user_id=".Application::loggedUser()->id_user,"account");
                 }
            }
             else{
                 $_SESSION["error"] = array("type"=>"warning","message"=>"Nie włamujemy się ; )");
-                $this->redirectToOther("",false);
+                $this->redirectToOther("","");
             }
         }
         else{
             $_SESSION["error"] = array("type"=>"error","message"=>"Musisz być zalogowany");
-            $this->redirectToOther("login",false);
+            $this->redirectToOther("login","");
         }
 
     }
 
-    public function editRender(){
+    public function editAction(){
         if(!Application::isGuest()){
          $this->render("index");
         }
         else
-            $this->redirectToOther("login",false);
+            $this->redirectToOther("login","");
     }
 
-    public function removeRender(){
-
+    public function removeAction(){
         if(isset($_GET["blog_id"]) && !empty($_GET["blog_id"])){
            $blog = new BlogModel();
            $blog->removeById(array("id_blog" => HTMLManager::cleanInput($_GET["blog_id"])));
            $_SESSION["error"] = array("type"=>"message","message"=>"Usunięto wpis");
-           $this->redirectToOtherComponent("blog/account&comp=blog&user_id=".Application::loggedUser()->id_user);
+           $this->redirectToOtherComponent("blog&comp=blog&user_id=".Application::loggedUser()->id_user,"account");
         }
         else
-          $this->redirectToOtherComponent("admin");
+          $this->redirectToOtherComponent("admin","");
     }
 }

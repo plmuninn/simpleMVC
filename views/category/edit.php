@@ -20,5 +20,5 @@ if($_GET["cat_id"] != null):
 </fieldset>
 <?php
 else:
-    $this->redirectToOther("user/list");
+    $this->redirectToOther("user"."list");
 endif;

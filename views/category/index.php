@@ -6,4 +6,4 @@
  * Time: 07:43
  *
  */
-$this->redirectToOther("",false);
+$this->redirectToOther("","");

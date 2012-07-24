@@ -16,20 +16,20 @@ class BlogController extends Component
     parent::__destruct();
     }
 
-    public function accountRender(){
+    public function accountAction(){
         if(isset($_GET["user_id"]) && !empty($_GET["user_id"])){
         $this->render("account");
         }
         else
-            $this->redirectToOther("",false);
+            $this->redirectToOther("","");
     }
 
-    public function topicRender(){
+    public function topicAction(){
         if(isset($_GET["blog_id"]) && !empty($_GET["blog_id"])){
             $this->render("topic");
         }
         else
-            $this->redirectToOther("",false);
+            $this->redirectToOther("","");
     }
 
 }

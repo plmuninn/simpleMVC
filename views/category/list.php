@@ -15,8 +15,8 @@ $classType = 0;
 echo "<table id='categorys' width='100%'>";
 echo "<tr class='head'><td>Nazwa</td><td>Opis</td><td>#</td><td>#</td></tr>";
 foreach($categories as $key => $value){
-    $editLink = HTMLManager::makelink(array('href'=>"category/edit&cat_id=".$value->id_category , 'link'=>'Edytuj' ),false);
-    $delink = HTMLManager::makelink(array('href'=>"category/remove&cat_id=".$value->id_category, 'link'=>'Usuń', 'class'=>'remove-category'), false);
+    $editLink = HTMLManager::makelink(array('href'=>"category&cat_id=".$value->id_category."&act=edit" , 'link'=>'Edytuj' ),false);
+    $delink = HTMLManager::makelink(array('href'=>"category&cat_id=".$value->id_category."&act=remove", 'link'=>'Usuń', 'class'=>'remove-category'), false);
 
 
     $class = ($classType !=1 ? 'first' : 'second');

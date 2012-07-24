@@ -55,5 +55,5 @@ if(isset($_GET["topic_id"])):
 </fieldset>
 <?php
 else:
-    $this->redirectToOther("user/list");
+    $this->redirectToOther("user"."list");
 endif;

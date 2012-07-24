@@ -13,12 +13,12 @@ class LoginController extends Controller
         parent::__construct();
     }
 
-    protected function renderIndex()
+    protected function actionIndex()
     {
         if(Application::isGuest())
-        parent::renderIndex();
+        parent::actionIndex();
         else
-        $this->redirectToOther("", false);
+        $this->redirectToOther("","");
     }
 
     function __destruct()
@@ -40,7 +40,7 @@ class LoginController extends Controller
         $user = new UserModel();
         $user->login($_POST["login"],$_POST["password"]);
             if(!Application::isGuest()){
-            $this->redirectToOther("", false);
+            $this->redirectToOther("", "");
         }
         else{
             $_SESSION["error"] = array("type"=>"error","message"=>"Niepoprawny login lub hasło");

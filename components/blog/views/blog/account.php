@@ -13,10 +13,10 @@ echo "<h1>".$user->login." Blog</h1>";
 if(is_array($blog)){
     echo "<ul>";
     foreach($blog as $topic){
-       echo"<li>".HTMLManager::makeLink(array("link"=>$topic->short, "href" =>"blog/topic&comp=blog&blog_id=".$topic->id_blog),false);
+       echo"<li>".HTMLManager::makeLink(array("link"=>$topic->short, "href" =>"blog&comp=blog&blog_id=".$topic->id_blog."&act=topic"),false);
         if(Application::isOwner($topic->id_user)){
-           echo "<br /> ".HTMLManager::makeLink(array("link"=>"Usuń", "href"=>"admin/remove&comp=blog&blog_id=".$topic->id_blog), false)." |";
-           echo HTMLManager::makeLink(array("link"=>" Edytuj", "href"=>"admin/edit&comp=blog&blog_id=".$topic->id_blog), false);
+           echo "<br /> ".HTMLManager::makeLink(array("link"=>"Usuń", "href"=>"admin&comp=blog&blog_id=".$topic->id_blog."&act=remove"), false)." |";
+           echo HTMLManager::makeLink(array("link"=>" Edytuj", "href"=>"admin&comp=blog&blog_id=".$topic->id_blog."&act=edit"), false);
         }
        echo "</li>";
     }

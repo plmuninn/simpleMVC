@@ -31,12 +31,12 @@ if(isset($_GET["id_topic"])){
     }
 else{
     $_SESSION["error"] = array("type"=>"error","message"=>"Brak takiego tematu");
-    $this->redirectToOther("",false);
+    $this->redirectToOther("","");
 }
 }
 else{
     $_SESSION["error"] = array("type"=>"error","message"=>"Błędne dane");
-    $this->redirectToOther("",false);
+    $this->redirectToOther("","");
 }
 
 ?>

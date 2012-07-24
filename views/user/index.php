@@ -10,4 +10,4 @@ if($app->isGuest())
     $this->redirectToOther("login");
 else {
     $usr = $_SESSION["user"];
-    $this->redirectToOther("user/account&us_id=$usr->id_user");}
+    $this->redirectToOther("user&us_id=$usr->id_user","account");}

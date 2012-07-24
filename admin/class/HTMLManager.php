@@ -58,7 +58,12 @@ class HTMLManager implements HTMLInterface
                       $admin = $value;
                       break;
                 case "href":
-                   $href = "href='".$app->getHomeUrl().($admin == false ? "index.php?url=" : "admin/index.php?url=").$value."'";
+                    if($value != null){
+                   $href = "href='".$app->getHomeUrl().($admin == false ? "index.php?cont=" : "admin/index.php?cont=").$value."'";
+                    }
+                    else{
+                        $href = "href='".$app->getHomeUrl().($admin == false ? "index.php" : "admin/index.php")."'";
+                    }
                     break;
                 case "link":
                     $link = $value;

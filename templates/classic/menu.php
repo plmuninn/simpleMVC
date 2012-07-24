@@ -17,7 +17,7 @@ $usr = $_SESSION["user"];}
     if(Application::isGuest()){
         echo HTMLManager::makeMenu(
             array(
-                array("href" =>"user/registration", "link" =>"Rejestracja"),
+                array("href" =>"user&act=registration", "link" =>"Rejestracja"),
                 array("href" =>"login", "link" =>"Zaloguj"),
             )
         , false
@@ -32,8 +32,8 @@ $usr = $_SESSION["user"];}
 
         echo HTMLManager::makeMenu(
             array(
-                array("href" =>"user/account&us_id=$usr->id_user", "link" =>"Twoje konto"),
-                array("href" =>"user/logout", "link" =>"Wyloguj"),
+                array("href" =>"user&act=account&us_id=$usr->id_user", "link" =>"Twoje konto"),
+                array("href" =>"user&act=logout", "link" =>"Wyloguj"),
                 (Application::isAdmin() ? array("admin" => true,"href" =>"", "link" =>"Panel Admina") : array()),
             ), false
         );

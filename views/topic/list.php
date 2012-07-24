@@ -23,8 +23,8 @@ echo "<tr class='head'><td>Nazwa</td><td>Utworzył</td><td>#</td><td>#</td></tr>
     if(is_array($topics)){
     foreach($topics as $oneTopic){
 
-    $editLink = HTMLManager::makelink(array('href'=>"topic/edit&topic_id=".$oneTopic->id_topic , 'link'=>'Edytuj' ),false);
-    $delink = HTMLManager::makelink(array('href'=>"topic/remove&topic_id=".$oneTopic->id_topic, 'link'=>'Usuń', 'class'=>'remove-topic'), false);
+    $editLink = HTMLManager::makelink(array('href'=>"topic&topic_id=".$oneTopic->id_topic."&act=edit" , 'link'=>'Edytuj' ),false);
+    $delink = HTMLManager::makelink(array('href'=>"topic&topic_id=".$oneTopic->id_topic."&act=remove", 'link'=>'Usuń', 'class'=>'remove-topic'), false);
 
     $usr = new UserModel();
     $usr = $usr->getById(array("id_user"=>$oneTopic->user_id_user));
@@ -41,7 +41,7 @@ echo "<tr class='head'><td>Nazwa</td><td>Utworzył</td><td>#</td><td>#</td></tr>
     ($classType !=1 ? $classType++ : $classType= 0);
 }}
 
-$addLink = HTMLManager::makeLink(array('href'=>"topic/add&cat_id=".$value->id_category , 'link'=>'Dodaj temat' ),false);
+$addLink = HTMLManager::makeLink(array('href'=>"topic&cat_id=".$value->id_category."&act=add" , 'link'=>'Dodaj temat' ),false);
 
 echo "<tr class='foot'><td>$addLink</td></tr>";
 echo "</table>";

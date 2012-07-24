@@ -28,10 +28,10 @@ class PostController extends Controller
         parent::beforeRender();
     }
 
-    public function addRender(){
+    public function addAction(){
         if(Application::isGuest()){
             $_SESSION["error"] = array("type"=>"error","message"=>"Musisz być zalogowany");
-            $this->redirectToOther("login", false);}
+            $this->redirectToOther("login", "");}
         else{
             if(isset($_POST["add-post"])){
                $this->model->value = HTMLManager::cleanInput($_POST["value"]);
@@ -45,16 +45,16 @@ class PostController extends Controller
                $_SESSION["error"] = array("type"=>"message","message"=>"Wiadomość dodana");
               else
                   $_SESSION["error"] = array("type"=>"error","message"=>"Wystąpił błąd");
-                $this->redirectToOther("topic/posts&id_topic=".HTMLManager::cleanInput($_POST["id_topic"]),false);
+                $this->redirectToOther("topic&id_topic=".HTMLManager::cleanInput($_POST["id_topic"]),"posts");
             }
             else
             $this->render("add");}
     }
 
-    public function editRender(){
+    public function editAction(){
         if(Application::isGuest()){
             $_SESSION["error"] = array("type"=>"error","message"=>"Musisz być zalogowany");
-            $this->redirectToOther("login", false);}
+            $this->redirectToOther("login", "");}
         else {
             if(isset($_POST["save-post"])){
                 unset($_POST["save-post"]);
@@ -65,21 +65,21 @@ class PostController extends Controller
             $post->value = HTMLManager::cleanInput($_POST["value"]);
             $post->save();
             $_SESSION["error"] = array("type"=>"message","message"=>"Wiadomość zapisana");
-            $this->redirectToOther("topic/posts&id_topic=".$post->topic_id_topic,false);
+            $this->redirectToOther("topic&id_topic=".$post->topic_id_topic,"posts");
             }
                 else{
                     $_SESSION["error"] = array("type"=>"error","message"=>"Brak dostępu");
-                    $this->redirectToOther("", false);
+                    $this->redirectToOther("", "");
                 }
             }
             else
             $this->render("edit");}
     }
 
-    public function removeRender(){
+    public function removeAction(){
         if(Application::isGuest()){
             $_SESSION["error"] = array("type"=>"error","message"=>"Musisz być zalogowany");
-            $this->redirectToOther("login", false);}
+            $this->redirectToOther("login", "");}
         else {
             $post = new PostModel();
             $id =  HTMLManager::cleanInput($_GET['post_id']);
@@ -94,15 +94,15 @@ class PostController extends Controller
             $topic = $topic->removeById(array("id_topic"=>$post->topic_id_topic));
                 $this->model->removeById(array("topic_id_topic"=>$post->topic_id_topic));
                 $_SESSION["error"] = array("type"=>"message","message"=>"Temat usunięty");
-                $this->redirectToOther("",false);
+                $this->redirectToOther("","");
             }
 
             $_SESSION["error"] = array("type"=>"message","message"=>"Wiadomość usunięta");
-            $this->redirectToOther("topic/posts&id_topic=".$post->topic_id_topic,false);
+            $this->redirectToOther("topic&id_topic=".$post->topic_id_topic,"posts");
         }
             else{
                 $_SESSION["error"] = array("type"=>"error","message"=>"Brak dostępu");
-                $this->redirectToOther("", false);
+                $this->redirectToOther("", "");
             }
         }
     }

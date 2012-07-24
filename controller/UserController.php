@@ -14,15 +14,15 @@ class UserController extends Controller
         parent::__construct();
     }
 
-    protected function renderIndex()
+    protected function actionIndex()
     {
         if(Application::isGuest()){
             $_SESSION["error"] = array("type"=>"error","message"=>"Musisz być zalogowany");
-            $this->redirectToOther("login", false);}
+            $this->redirectToOther("login", "");}
         else {
             $usr = $_SESSION["user"];
-            $this->redirectToOther("user/account&us_id=$usr->id_user", false);}
-        parent::renderIndex();
+            $this->redirectToOther("user&us_id=$usr->id_user", "account");}
+        parent::actionIndex();
     }
 
     function __destruct()
@@ -40,12 +40,12 @@ class UserController extends Controller
         parent::beforeRender();
     }
 
-    public function createRender(){
+    public function createAction(){
 
         if(Application::isGuest()){
             $_SESSION["error"] = array("type"=>"error","message"=>"Musisz być zalogowany");
-            $this->redirectToOther("login", false);}
-        else  if(Application::isAdmin()){
+            $this->redirectToOther("login", "");}
+        else if(Application::isAdmin()){
 
             $this->model->name = HTMLManager::cleanInput($_POST["name"]);
             $this->model->surname = HTMLManager::cleanInput($_POST["surname"]);
@@ -58,14 +58,14 @@ class UserController extends Controller
         }
         else{
             $_SESSION["error"] = array("type"=>"error","message"=>"Nie jesteś administratorem");
-            $this->renderIndex();
+            $this->actionIndex();
         };
     }
 
-    public function removeRender(){
+    public function removeAction(){
         if(Application::isGuest()){
             $_SESSION["error"] = array("type"=>"error","message"=>"Musisz być zalogowany");
-            $this->redirectToOther("login", false);}
+            $this->redirectToOther("login", "");}
         else  if(Application::isAdmin()){
             $this->model->removeById(array("id_user" => HTMLManager::cleanInput($_GET["us_id"])));
             $usr = $this->model->getById(array("id_user" => HTMLManager::cleanInput($_GET["us_id"])));
@@ -79,17 +79,17 @@ class UserController extends Controller
             }
         else{
            $_SESSION["error"]  = array("type"=>"error","message"=>"Nie jesteś administratorem");
-            $this->renderIndex();
+            $this->actionIndex();
 
         };
     }
 
-    public function editRender(){
+    public function editAction(){
         $_SESSION["title"] = "- Edycja użytkownika";
 
         if(Application::isGuest()){
             $_SESSION["error"] = array("type"=>"error","message"=>"Musisz być zalogowany");
-            $this->redirectToOther("login", false);}
+            $this->redirectToOther("login", "");}
         else  if(Application::isAdmin()){
             if(isset($_POST['user-edit'])){
                 unset($_POST['user-edit']);
@@ -104,13 +104,13 @@ class UserController extends Controller
               }
                 $user->save();
                 $_SESSION["error"] = array("type"=>"message","message"=>"Użytkownik zapisany");
-                $this->redirectToOther("admin/user",true);
+                $this->redirectToOther("admin","user");
             }
         $this->render("edit");
         }
         else{
             $_SESSION['error'] = array("type"=>"error","message"=>"Nie jesteś administratorem");
-            $this->renderIndex();
+            $this->actionIndex();
 
         };
     }
@@ -118,16 +118,16 @@ class UserController extends Controller
     public function listRender(){
         if(Application::isGuest()){
             $_SESSION["error"] = array("type"=>"error","message"=>"Musisz być zalogowany");
-            $this->redirectToOther("login", false);}
+            $this->redirectToOther("login", "");}
         else  if(Application::isAdmin())
             $this->render("list");
         else{
             $_SESSION["error"] = array("type"=>"error","message"=>"Nie jesteś administratorem");
-            $this->renderIndex();
+            $this->actionIndex();
         }
     }
 
-    public function registrationRender(){
+    public function registrationAction(){
         if(Application::isGuest())
             if(isset($_POST["submit"])){
              $user = new UserModel();
@@ -138,47 +138,47 @@ class UserController extends Controller
                 if($_POST["password"] == $_POST["password_repeat"]){
                     $user->password = md5($_POST["password"]);
                     $user->save();
-                    $this->redirectToOther("login", false);
+                    $this->redirectToOther("login", "");
                 }
                 else{
                     $_SESSION["error"] = array("type"=>"warning","message"=>"Nie poprawne hasła");
-                    $this->renderIndex();
+                    $this->actionIndex();
                 };
 
             }
             else
             $this->render("registration");
         else
-            $this->redirectToOther("user/account", false);
+            $this->redirectToOther("use", "account");
     }
 
-    public function viewRender(){
+    public function viewAction(){
         if(Application::isGuest()){
             $_SESSION["error"] = array("type"=>"error","message"=>"Musisz być zalogowany");
-            $this->redirectToOther("login", false);}
+            $this->redirectToOther("login", "");}
         else  if(Application::isAdmin())
         $this->render("view");
         else{
             $_SESSION["error"] = array("type"=>"error","message"=>"Nie jesteś administratorem");
-            $this->renderIndex();
+            $this->actionIndex();
         }
     }
 
-    public function logoutRender(){
+    public function logoutAction(){
        $usr = $_SESSION["user"];
        Application::removeSessionModel($usr);
-       $this->redirectToOther("", false);
+       $this->redirectToOther("", "");
     }
 
-    public function saveRender(){
+    public function saveAction(){
 
     }
 
-    public function accountRender(){
+    public function accountAction(){
         $_SESSION["title"] = "- Panel użytkownika";
         if(Application::isGuest()){
             $_SESSION["error"] = array("type"=>"error","message"=>"Musisz być zalogowany");
-            $this->redirectToOther("login", false);}
+            $this->redirectToOther("login", "");}
         else{
             if($_SESSION["user"]->id_user == $_GET['us_id']){
                 if(isset($_POST["us_id"])){
@@ -203,7 +203,7 @@ class UserController extends Controller
                 }
                 else{
                     $_SESSION["error"] = array("type"=>"warning","message"=>"Nie poprawnie powtórzone hasło");
-                    $this->renderIndex();
+                    $this->actionIndex();
                 }
             }
 
@@ -216,7 +216,7 @@ class UserController extends Controller
             }
             else{
                 $_SESSION["error"] = array("type"=>"warning","message"=>"Ładnie to się tak włamywać?");
-                $this->redirectToOther("",false);
+                $this->redirectToOther("","");
             }
         }
         $this->render("account");

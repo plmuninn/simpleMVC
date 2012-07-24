@@ -30,12 +30,12 @@ class TopicController  extends Controller
         parent::beforeRender();
     }
 
-    public function addRender(){
+    public function addAction(){
         $_SESSION["title"] = "- Dodaj temat";
 
         if(Application::isGuest()){
             $_SESSION["error"] = array("type"=>"error","message"=>"Musisz być zalogowany");
-            $this->redirectToOther("login", false);}
+            $this->redirectToOther("login", "");}
         else  {
             if(isset($_POST['add-topic'])){
                 unset($_POST['add-topic']);
@@ -78,12 +78,12 @@ class TopicController  extends Controller
         }
     }
 
-    public function editRender(){
+    public function editAction(){
         $_SESSION["title"] = "- Edycja tematu";
 
         if(Application::isGuest()){
             $_SESSION["error"] = array("type"=>"error","message"=>"Musisz być zalogowany");
-            $this->redirectToOther("login", false);}
+            $this->redirectToOther("login", "");}
         else {
                    if(isset($_POST["topic-edit"])){
                        unset($_POST["topic-edit"]);
@@ -106,33 +106,33 @@ class TopicController  extends Controller
                     $first_post->save();
 
                     if(!strpos(Application::getActualLink(),"admin"))
-                        $this->redirectToOther("category/topics&cat_id=".$cat,false);
+                        $this->redirectToOther("category&cat_id=".$cat,"topics");
                     else
-                        $this->redirectToOther("admin/tematy",true);
+                        $this->redirectToOther("admin","tematy",true);
                 }
                 else{
                     $_SESSION["error"] = array("type"=>"error","message"=>"Brak dostępu");
-                    $this->redirectToOther("", false);
+                    $this->redirectToOther("", "");
                 }
                    }
             $this->render("edit");}
     }
 
-    public function listRender(){
+    public function listAction(){
         if(Application::isGuest()){
             $_SESSION["error"] = array("type"=>"error","message"=>"Musisz być zalogowany");
-            $this->redirectToOther("login", false);}
+            $this->redirectToOther("login", "");}
         else  if(Application::isAdmin()){
             $this->render("list");}
         else{
             $_SESSION["error"] = array("type"=>"error","message"=>"Nie jesteś administratorem");
-            $this->renderIndex();}
+            $this->actionIndex();}
     }
 
-    public function removeRender(){
+    public function removeAction(){
         if(Application::isGuest()){
             $_SESSION["error"] = array("type"=>"error","message"=>"Musisz być zalogowany");
-            $this->redirectToOther("login", false);}
+            $this->redirectToOther("login", "");}
         else  {
             $topic = $this->model->getById(array("id_topic"=>HTMLManager::cleanInput($_GET["topic_id"])));
             if(Application::isOwner($topic->user_id_user) || Application::isAdmin()){
@@ -151,27 +151,27 @@ class TopicController  extends Controller
             else{
                 if($cat->id_topic != null){
                     $_SESSION["error"] = array("type"=>"error",'message'=>"Nie udało się usunąć, skontakuj się ze samym sobą!(czyt. z Maciejem Romańskim)");
-                   $this->redirectToOther("",false);
+                   $this->redirectToOther("","");
                 }
                 else{
                     $_SESSION["error"] = array("type"=>"message",'message'=>"Temat usunięty");
-                    $this->redirectToOther("category/topic&cat_id=".$topic->category_id_category,false);
+                    $this->redirectToOther("category&cat_id=".$topic->category_id_category,"topic");
                 }
             }
         }
             else{
                 $_SESSION["error"] = array("type"=>"error","message"=>"Brak dostępu");
-                $this->redirectToOther("", false);
+                $this->redirectToOther("", "");
             }
         }
     }
 
-    public function postsRender(){
+    public function postsAction(){
         $_SESSION["title"] = "- Wiadomości";
 
         if(Application::isGuest()){
             $_SESSION["error"] = array("type"=>"error","message"=>"Musisz być zalogowany");
-            $this->redirectToOther("login", false);}
+            $this->redirectToOther("login", "");}
         else{
             Application::makeActualLink();
             $this->render("posts");

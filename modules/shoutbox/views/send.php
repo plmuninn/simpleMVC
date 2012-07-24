@@ -10,5 +10,4 @@ $shoutbox = new ShoutboxModel();
 $shoutbox->user_id_user = $user_id;
 $shoutbox->text = $message;
 $shoutbox->save();
-}
-
+} ?>

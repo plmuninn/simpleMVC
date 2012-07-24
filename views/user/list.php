@@ -17,8 +17,8 @@ echo"<div class='showed'>";
 echo "<table id='users' width='100%'>";
 echo "<tr class='head'><td>Login</td><td>Mail</td><td>Imię</td><td>Nazwisko</td><td>#</td><td>#</td></tr>";
 foreach($users as $key => $value){
-    $editLink = HTMLManager::makelink(array('href'=>"user/edit&us_id=".$value->id_user , 'link'=>'Edytuj' ),false);
-    $delink = HTMLManager::makelink(array('href'=>"user/remove&us_id=".$value->id_user, 'link'=>'Usuń', 'class'=>'remove-user'), false);
+    $editLink = HTMLManager::makelink(array('href'=>"user&us_id=".$value->id_user."&act=edit" , 'link'=>'Edytuj' ),false);
+    $delink = HTMLManager::makelink(array('href'=>"user&us_id=".$value->id_user."&act=remove", 'link'=>'Usuń', 'class'=>'remove-user'), false);
     $class = ($classType !=1 ? 'first' : 'second');
 
 

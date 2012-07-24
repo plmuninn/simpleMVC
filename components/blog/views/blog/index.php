@@ -15,9 +15,9 @@ if(count($models) >0){
          $blog = $this->model->getUserLast($user->id_user);
             if(is_object($blog)){
               echo "<li>";
-              echo "<div class='user'>Napisane przez :".HTMLManager::makeLink(array("link"=>"<strong>".$user->login."</strong>", "href" =>"blog/account&comp=blog&user_id=".$user->id_user),false)."</div>";
+              echo "<div class='user'>Napisane przez :".HTMLManager::makeLink(array("link"=>"<strong>".$user->login."</strong>", "href" =>"blog&comp=blog&user_id=".$user->id_user."&act=account"),false)."</div>";
               echo "<div class='short'>".$blog->short."</div>";
-              echo "<div class='more'>".HTMLManager::makeLink(array("link"=>"Więcej", "href" =>"blog/topic&comp=blog&blog_id=".$blog->id_blog),false)."</div>";
+              echo "<div class='more'>".HTMLManager::makeLink(array("link"=>"Więcej", "href" =>"blog&comp=blog&blog_id=".$blog->id_blog."&act=topic"),false)."</div>";
               echo "</li>";
             }
     }

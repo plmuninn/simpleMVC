@@ -14,7 +14,6 @@ class AdminController  extends Controller
      */
     function __construct()
     {
-
         if(isset($_POST["login"])&& isset($_POST["password"])){
             $_POST["password"] = md5($_POST["password"]);
 
@@ -26,10 +25,10 @@ class AdminController  extends Controller
                 Application::sendSessionModel($usr);}}
 
           if(Application::isGuest()){
-        $this->renderIndex();}
+        $this->actionIndex();}
         else{
             if(Application::isAdmin()){
-         $this->panelRender();
+         $this->panelAction();
             }
         }
     }
@@ -55,7 +54,7 @@ class AdminController  extends Controller
     /**
     *Render Administration panel
     */
-    public function panelRender()
+    public function panelAction()
     {
        parent::generateModels();
        parent::generateControllers();
@@ -68,38 +67,38 @@ class AdminController  extends Controller
     }
 
 
-    public function configRender()
+    public function configAction()
     {
         $_SESSION["title"] = "- Admin - Konfiguracje";
         $this->render("config");
     }
 
-    public function userRender()
+    public function userAction()
     {
         $_SESSION["title"] = "- Admin - Użytkownicy";
         $this->render("user");
     }
 
-    public function tematyRender()
+    public function tematyAction()
     {
         $_SESSION["title"] = "- Admin - Tematy";
         Application::makeActualLink();
         $this->render("tematy");
     }
 
-    public function wiadomosciRender()
+    public function wiadomosciAction()
     {
         $_SESSION["title"] = "- Admin - Wiadomości";
         $this->render("wiadomosci");
     }
 
-    public function kategorieRender()
+    public function kategorieAction()
     {
         $_SESSION["title"] = "- Admin - Kategorie";
         $this->render("kategorie");
     }
 
-    public function configurationsaveRender()
+    public function configurationsaveAction()
     {
         $conf = new Configuration();
         $conf->setDateFormat($_POST["date"]);
