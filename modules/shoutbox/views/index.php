@@ -2,9 +2,10 @@
 <?php
 $this->loadFile($this->path."css/shoutbox.css");
 $this->loadFile($this->path."css/","jquery.mCustomScrollbar.css");
-$this->loadFile(null,"shoutbox.js","javascript");
 $this->loadFile(null,"jquery.mousewheel.min.js","javascript");
 $this->loadFile(null,"jquery.mCustomScrollbar.js","javascript");
+$this->loadFile(null,"resize.js","javascript");
+$this->loadFile(null,"shoutbox.js","javascript");
 $usr = $_SESSION["user"];
 ?>
 <a id="shoutbox_show" href="#">Pokaż shoutbox</a>

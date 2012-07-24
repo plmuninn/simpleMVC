@@ -21,7 +21,7 @@ class SiteController extends Controller
 
        try{
            if(!isset($this->component)){
-                if($this->controllers != null && $this->actions == null){
+                if($this->controllers != null){
                     if(!parent::redirect()){
                         throw new Exception ("Site don't found.");
                     }

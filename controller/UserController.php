@@ -21,7 +21,8 @@ class UserController extends Controller
             $this->redirectToOther("login", "");}
         else {
             $usr = $_SESSION["user"];
-            $this->redirectToOther("user&us_id=$usr->id_user", "account");}
+            $this->redirectToOther("user&us_id=$usr->id_user", "account");
+        }
         parent::actionIndex();
     }
 
