@@ -78,6 +78,7 @@ class Component extends Controller
 
         $this->beforeRender();
         /*Get view*/
+        $this->app = new Application();
         $this->file =  $this->app->getBaseDir()."components/".$this->component."/views/".$this->name."/".$name.".php";
         /*Get template*/
         include_once($this->app->getBaseDir()."templates/".$this->app->getTemplate()."/index.php");
