@@ -2852,7 +2852,7 @@ date for connection form config.php file in site root directory]]></description>
       </method>
     </interface>
   </file>
-  <file path="Module.php" hash="9c6f37a26b90dc15b410d7af8d8079d9" package="Default">
+  <file path="Module.php" hash="72b0477f7561f42ebcf763c1530b6910" package="Default">
     <docblock line="2">
       <description><![CDATA[A class for modules]]></description>
       <long-description><![CDATA[]]></long-description>
@@ -2928,12 +2928,21 @@ date for connection form config.php file in site root directory]]></description>
         <docblock line="64">
           <description><![CDATA[Load css and js files]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="64" name="param" description="" type="" variable="$name"/>
-          <tag line="64" name="param" description="" type="" variable="$type"/>
           <tag line="64" name="param" description="" type="null" variable="$path">
             <type by_reference="false">null</type>
           </tag>
+          <tag line="64" name="param" description="" type="null" variable="$name">
+            <type by_reference="false">null</type>
+          </tag>
+          <tag line="64" name="param" description="" type="null" variable="$type">
+            <type by_reference="false">null</type>
+          </tag>
         </docblock>
+        <argument line="70">
+          <name>$path</name>
+          <default><![CDATA[null]]></default>
+          <type/>
+        </argument>
         <argument line="70">
           <name>$name</name>
           <default><![CDATA[null]]></default>
@@ -2941,11 +2950,6 @@ date for connection form config.php file in site root directory]]></description>
         </argument>
         <argument line="70">
           <name>$type</name>
-          <default><![CDATA[null]]></default>
-          <type/>
-        </argument>
-        <argument line="70">
-          <name>$path</name>
           <default><![CDATA[null]]></default>
           <type/>
         </argument>
@@ -3447,7 +3451,7 @@ date for connection form config.php file in site root directory]]></description>
       <todo line="70">Relation manager</todo>
     </markers>
   </file>
-  <file path="Component.php" hash="2be2cc307dc79faaa5c5abac3bfc75d5" package="Default">
+  <file path="Component.php" hash="96d85f2ecefa5544eae862e0e29ac6ce" package="Default">
     <docblock line="3">
       <description><![CDATA[Class for components Controllers.]]></description>
       <long-description><![CDATA[]]></long-description>
@@ -3545,12 +3549,21 @@ date for connection form config.php file in site root directory]]></description>
         <docblock line="103">
           <description><![CDATA[Load css and js files]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="103" name="param" description="" type="" variable="$name"/>
-          <tag line="103" name="param" description="" type="" variable="$type"/>
           <tag line="103" name="param" description="" type="null" variable="$path">
             <type by_reference="false">null</type>
           </tag>
+          <tag line="103" name="param" description="" type="null" variable="$name">
+            <type by_reference="false">null</type>
+          </tag>
+          <tag line="103" name="param" description="" type="null" variable="$type">
+            <type by_reference="false">null</type>
+          </tag>
         </docblock>
+        <argument line="109">
+          <name>$path</name>
+          <default><![CDATA[null]]></default>
+          <type/>
+        </argument>
         <argument line="109">
           <name>$name</name>
           <default><![CDATA[null]]></default>
@@ -3558,11 +3571,6 @@ date for connection form config.php file in site root directory]]></description>
         </argument>
         <argument line="109">
           <name>$type</name>
-          <default><![CDATA[null]]></default>
-          <type/>
-        </argument>
-        <argument line="109">
-          <name>$path</name>
           <default><![CDATA[null]]></default>
           <type/>
         </argument>

@@ -63,57 +63,57 @@ class Module
 
     /**
      * Load css and js files
-     * @param $name
-     * @param $type
      * @param null $path
+     * @param null $name
+     * @param null $type
      */
-    protected function loadFile($name = null, $type = null, $path = null){
-         switch($type){
-             case "css":
-                 if($path == null)
-                     echo "<link rel='stylesheet' type='text/css' href='".$this->path."css/".$name."' />";
-                 else
-                     echo "<link rel='stylesheet' type='text/css' href='".$path.$name."' />";
-                 break;
-             case "javascript":
-                 if($path == null)
-                     echo "<script src='".$this->path."js/".$name."' type='text/javascript' charset='utf-8'></script>";
-                 else
-                     echo "<script src='".$path.$name."' type='text/javascript' charset='utf-8'></script>";
-                 break;
-             case "js":
-                 if($path == null)
-                     echo "<script src='".$this->path."js/".$name."' type='text/javascript' charset='utf-8'></script>";
-                 else
-                     echo "<script src='".$path.$name."' type='text/javascript' charset='utf-8'></script>";
-                 break;
-             case null:
-                 if($path != null && $name != null){
-                     $file_info = new finfo(FILEINFO_MIME);
-                     $mime_type = $file_info->buffer(file_get_contents($path));
-                         switch($mime_type){
-                             case"text/css";
-                                 echo "<link rel='stylesheet' type='text/css' href='".$path.$name."' />";
-                                 break;
-                             case"text/javascript";
-                                 echo "<script src='".$path.$name."' type='text/javascript' charset='utf-8'></script>";
-                                 break;
-                         }
-                 }
-                 elseif($path != null && $name == null){
-                     $file_info = new finfo(FILEINFO_MIME);
-                     $mime_type = $file_info->buffer(file_get_contents($path));
-                     switch($mime_type){
-                         case"text/css";
-                             echo "<link rel='stylesheet' type='text/css' href='".$path."' />";
-                             break;
-                         case"text/javascript";
-                             echo "<script src='".$path."' type='text/javascript' charset='utf-8'></script>";
-                             break;
-                     }
-                 }
-                 break;
-         }
+    protected function loadFile($path = null , $name = null, $type = null){
+        switch($type){
+            case "css":
+                if($path == null)
+                    echo "<link rel='stylesheet' type='text/css' href='".$this->path."css/".$name."' />";
+                else
+                    echo "<link rel='stylesheet' type='text/css' href='".$path.$name."' />";
+                break;
+            case "javascript":
+                if($path == null)
+                    echo "<script src='".$this->path."js/".$name."' type='text/javascript' charset='utf-8'></script>";
+                else
+                    echo "<script src='".$path.$name."' type='text/javascript' charset='utf-8'></script>";
+                break;
+            case "js":
+                if($path == null)
+                    echo "<script src='".$this->path."js/".$name."' type='text/javascript' charset='utf-8'></script>";
+                else
+                    echo "<script src='".$path.$name."' type='text/javascript' charset='utf-8'></script>";
+                break;
+            case null:
+                if($path != null && $name != null){
+                    $file_info = $name;
+                    $mime_type = explode(".",$name);
+                    switch($mime_type[count($mime_type) -1]){
+                        case"css";
+                            echo "<link rel='stylesheet' type='text/css' href='".$path.$name."' />";
+                            break;
+                        case"js";
+                            echo "<script src='".$path.$name."' type='text/javascript' charset='utf-8'></script>";
+                            break;
+                    }
+                }
+                elseif($path != null && $name == null){
+                    $file_info = $name;
+                    $mime_type = explode(".",$path);
+                    switch($mime_type[count($mime_type) -1]){
+                        case"css";
+                            echo "<link rel='stylesheet' type='text/css' href='".$path."' />";
+                            break;
+                        case"js";
+                            echo "<script src='".$path."' type='text/javascript' charset='utf-8'></script>";
+                            break;
+                    }
+                }
+                break;
+        }
     }
 
     /**

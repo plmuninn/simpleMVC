@@ -1,10 +1,10 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
 <?php
-$this->loadFile("shoutbox.css","css");
-$this->loadFile("jquery.mCustomScrollbar.css","css");
-$this->loadFile("shoutbox.js","javascript");
-$this->loadFile("jquery.mousewheel.min.js","javascript");
-$this->loadFile("jquery.mCustomScrollbar.js","javascript");
+$this->loadFile($this->path."css/shoutbox.css");
+$this->loadFile($this->path."css/","jquery.mCustomScrollbar.css");
+$this->loadFile(null,"shoutbox.js","javascript");
+$this->loadFile(null,"jquery.mousewheel.min.js","javascript");
+$this->loadFile(null,"jquery.mCustomScrollbar.js","javascript");
 $usr = $_SESSION["user"];
 ?>
 <a id="shoutbox_show" href="#">Pokaż shoutbox</a>

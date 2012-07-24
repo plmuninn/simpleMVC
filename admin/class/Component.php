@@ -102,11 +102,11 @@ class Component extends Controller
 
     /**
      * Load css and js files
-     * @param $name
-     * @param $type
      * @param null $path
+     * @param null $name
+     * @param null $type
      */
-    protected function loadFile($name = null, $type = null, $path = null){
+    protected function loadFile($path = null , $name = null, $type = null){
         switch($type){
             case "css":
                 if($path == null)
@@ -128,25 +128,25 @@ class Component extends Controller
                 break;
             case null:
                 if($path != null && $name != null){
-                    $file_info = new finfo(FILEINFO_MIME);
-                    $mime_type = $file_info->buffer(file_get_contents($path));
-                    switch($mime_type){
-                        case"text/css";
+                    $file_info = $name;
+                    $mime_type = explode(".",$name);
+                    switch($mime_type[count($mime_type) -1]){
+                        case"css";
                             echo "<link rel='stylesheet' type='text/css' href='".$path.$name."' />";
                             break;
-                        case"text/javascript";
+                        case"js";
                             echo "<script src='".$path.$name."' type='text/javascript' charset='utf-8'></script>";
                             break;
                     }
                 }
                 elseif($path != null && $name == null){
-                    $file_info = new finfo(FILEINFO_MIME);
-                    $mime_type = $file_info->buffer(file_get_contents($path));
-                    switch($mime_type){
-                        case"text/css";
+                    $file_info = $name;
+                    $mime_type = explode(".",$path);
+                    switch($mime_type[count($mime_type) -1]){
+                        case"css";
                             echo "<link rel='stylesheet' type='text/css' href='".$path."' />";
                             break;
-                        case"text/javascript";
+                        case"js";
                             echo "<script src='".$path."' type='text/javascript' charset='utf-8'></script>";
                             break;
                     }
