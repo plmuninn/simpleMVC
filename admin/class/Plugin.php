@@ -1,13 +1,38 @@
 <?php
 /**
- * Plugin manager.
+ * Plugin abstract class.
  */
 /**
- * Class to manage a plugins in all MVC and Components.
+ * Class to implements plugin functions.
  * @package core
  * @subpackage controller
  */
-class PluginManager implements PluginManagerIterface
+abstract class Plugin
 {
-    //TODO: Implement Plugins!
+    /**
+     * Method before renderer starts working. Good for changing size of photos in gallery.
+     * @abstract
+     */
+    abstract public function beforeRender();
+
+    /**
+     * Method after renderer work out. Good for remove temp files.
+     * @abstract
+     */
+    abstract public function afterRender();
+
+    /**
+     * Method before view was printed.
+     * @abstract
+     * @param string $content
+     * @param string $controller_name
+     * @param string $model
+     */
+    abstract public function beforeView($content, $controller_name, $model);
+
+    /**
+     * Method after view was printed.
+     * @abstract
+     */
+    abstract public function afterView();
 }

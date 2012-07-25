@@ -16,9 +16,8 @@ class AdminController  extends Controller
     {
         if(isset($_POST["login"])&& isset($_POST["password"])){
             $_POST["password"] = md5($_POST["password"]);
-
             $usr = new UserModel();
-            $usr = $usr->getQueryObject("SELECT * FROM user WHERE login =".ApplicationDB::connectDB()->quote(HTMLManager::cleanInput($_POST["login"])));
+            $usr = $usr->getQueryObject("SELECT * FROM user WHERE login =".HTMLManager::cleanInput($_POST["login"]));
             if($usr->password == $_POST["password"]){
                 unset($_POST["password"]);
                 unset($_POST["login"]);
@@ -33,24 +32,6 @@ class AdminController  extends Controller
         }
     }
 
-    function __destruct()
-    {
-        parent::__destruct();
-    }
-
-    protected function afterRender()
-    {
-       parent::afterRender();
-    }
-
-
-
-    protected function beforeRender()
-    {
-        parent::beforeRender();
-
-    }
-
     /**
     *Render Administration panel
     */
@@ -58,8 +39,6 @@ class AdminController  extends Controller
     {
        parent::generateModels();
        parent::generateControllers();
-
-        unset($_GET["url"]);
 
         if(sizeof($this->controllers) <= 0){
             $_SESSION["title"] = "- Admin";

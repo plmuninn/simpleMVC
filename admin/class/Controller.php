@@ -71,6 +71,12 @@ class Controller {
     protected $file;
 
     /**
+     * A plugin manager instance.
+     * @var PluginManager
+     */
+    protected $plugins;
+
+    /**
      *Constructor check url and active controller and actions from them.
      *@throws Exception
      */
@@ -78,6 +84,7 @@ class Controller {
     {
            Application::sessionStart();
            $this->generateName();
+           Loader::import("plugins.*");
            $this->generateModels();
            $this->generateControllers();
 
@@ -124,6 +131,8 @@ class Controller {
      * @param string $name
      */
     public function render($name){
+        if(!is_object($this->plugins))
+            $this->plugins = new PluginManager();
         $this->beforeRender();
         /*Create instance of application configurations and make it global*/
         $this->app = new Application();
@@ -233,8 +242,10 @@ class Controller {
         ob_start();
         require_once($this->file);
         $contents = ob_get_contents();
+        $contents = $this->beforeView($contents, $this->name, $this->model);
         ob_end_clean();
         echo $contents;
+        $this->afterView(array());
         }
         else
            trigger_error("No view".$this->actions." in ",$this->name,E_USER_ERROR);
@@ -270,9 +281,10 @@ class Controller {
     }
 
     /**
-     *Getting site url and component variable.
+     *Getting site url and component variable and create PluginManager instance.
      */
     protected function dependencies(){
+        $this->plugins = new PluginManager();
         if(isset($_GET["cont"])){
             $this->controllers = $_GET["cont"];
         }
@@ -347,17 +359,38 @@ class Controller {
     }
 
     /**
-     * After render.
+     * Dispatch afterRender plugins.
+     * @return mixed|void
      */
     protected function afterRender(){
-
+        return $this->plugins->afterRender();
     }
 
     /**
-     * Before render.
+     * Dispatch beforeRender plugins.
+     * @return mixed|void
      */
     protected function beforeRender(){
+        return $this->plugins->beforeRender();
+    }
 
+    /**
+     * Dispatch afterView plugins.
+     * @return mixed|void
+     */
+    protected function afterView(){
+        return $this->plugins->afterView();
+    }
+
+    /**
+     * Dispatch beforeView plugins.
+     * @param $content
+     * @param $name
+     * @param $model
+     * @return mixed
+     */
+    protected function beforeView($content, $name, $model){
+       return $this->plugins->beforeView($content, $name, $model);
     }
 
 

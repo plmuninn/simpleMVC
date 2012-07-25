@@ -35,7 +35,7 @@
                 <span class="label label-info">3</span></a></li>
 <li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
                 <ul><li>todo 
-                <span class="label label-info">4</span>
+                <span class="label label-info">2</span>
 </li></ul></a></li>
 <li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
                 <span class="label label-info">0</span></a></li>
@@ -59,20 +59,21 @@
 <li class="nav-header">
 <i class="icon-custom icon-method"></i> Methods</li>
 <li class="method public "><a href="#__construct" title="__construct :: Constructor check url and active controller and actions from them."><span class="description">Constructor check url and active controller and actions from them.</span><pre>__construct()</pre></a></li>
-<li class="method public "><a href="#__destruct" title="__destruct :: Clear dependecies and stop session."><span class="description">Clear dependecies and stop session.</span><pre>__destruct()</pre></a></li>
-<li class="method public "><a href="#getModel" title="getModel :: Returning a Controller model."><span class="description">Returning a Controller model.</span><pre>getModel()</pre></a></li>
-<li class="method public "><a href="#getName" title="getName :: Returning a name of controller."><span class="description">Returning a name of controller.</span><pre>getName()</pre></a></li>
-<li class="method public "><a href="#getPath" title="getPath :: Path to component."><span class="description">Path to component.</span><pre>getPath()</pre></a></li>
-<li class="method public "><a href="#module" title="module :: Load module in view."><span class="description">Load module in view.</span><pre>module()</pre></a></li>
+<li class="method public inherited"><a href="#__destruct" title="__destruct :: Clean dependencies and close session."><span class="description">Clean dependencies and close session.</span><pre>__destruct()</pre></a></li>
+<li class="method public inherited"><a href="#getModel" title="getModel :: Return Controller Model."><span class="description">Return Controller Model.</span><pre>getModel()</pre></a></li>
+<li class="method public inherited"><a href="#getName" title="getName :: Return controller name."><span class="description">Return controller name.</span><pre>getName()</pre></a></li>
+<li class="method public inherited"><a href="#module" title="module :: Load module in view."><span class="description">Load module in view.</span><pre>module()</pre></a></li>
 <li class="method public "><a href="#render" title="render :: Render view."><span class="description">Render view.</span><pre>render()</pre></a></li>
 <li class="method public inherited"><a href="#setTitle" title="setTitle :: Change title of site."><span class="description">Change title of site.</span><pre>setTitle()</pre></a></li>
 <li class="nav-header protected">» Protected</li>
 <li class="method protected inherited"><a href="#actionIndex" title="actionIndex :: Render index file."><span class="description">Render index file.</span><pre>actionIndex()</pre></a></li>
-<li class="method protected "><a href="#afterRender" title="afterRender :: Method after render a view."><span class="description">Method after render a view.</span><pre>afterRender()</pre></a></li>
-<li class="method protected "><a href="#beforeRender" title="beforeRender :: Method before render a view."><span class="description">Method before render a view.</span><pre>beforeRender()</pre></a></li>
+<li class="method protected inherited"><a href="#afterRender" title="afterRender :: Dispatch afterRender plugins."><span class="description">Dispatch afterRender plugins.</span><pre>afterRender()</pre></a></li>
+<li class="method protected inherited"><a href="#afterView" title="afterView :: Dispatch afterView plugins."><span class="description">Dispatch afterView plugins.</span><pre>afterView()</pre></a></li>
+<li class="method protected inherited"><a href="#beforeRender" title="beforeRender :: Dispatch beforeRender plugins."><span class="description">Dispatch beforeRender plugins.</span><pre>beforeRender()</pre></a></li>
+<li class="method protected inherited"><a href="#beforeView" title="beforeView :: Dispatch beforeView plugins."><span class="description">Dispatch beforeView plugins.</span><pre>beforeView()</pre></a></li>
 <li class="method protected inherited"><a href="#changeComponent" title="changeComponent :: Change component."><span class="description">Change component.</span><pre>changeComponent()</pre></a></li>
 <li class="method protected "><a href="#checkController" title="checkController :: Check if controller file exists."><span class="description">Check if controller file exists.</span><pre>checkController()</pre></a></li>
-<li class="method protected inherited"><a href="#dependencies" title="dependencies :: Getting site url and component variable."><span class="description">Getting site url and component variable.</span><pre>dependencies()</pre></a></li>
+<li class="method protected inherited"><a href="#dependencies" title="dependencies :: Getting site url and component variable and create PluginManager instance."><span class="description">Getting site url and component variable and create PluginManager instance.</span><pre>dependencies()</pre></a></li>
 <li class="method protected inherited"><a href="#functionsCheck" title="functionsCheck :: Method check and activate action."><span class="description">Method check and activate action.</span><pre>functionsCheck()</pre></a></li>
 <li class="method protected inherited"><a href="#generateControllers" title="generateControllers :: Method generate all controllers and add it to class array."><span class="description">Method generate all controllers and add it to class array.</span><pre>generateControllers()</pre></a></li>
 <li class="method protected "><a href="#generateModels" title="generateModels :: Method generate model if model exist."><span class="description">Method generate model if model exist.</span><pre>generateModels()</pre></a></li>
@@ -96,6 +97,7 @@
 <li class="property protected inherited"><a href="#%24message" title="$message :: Messages callback"><span class="description">Messages callback</span><pre>$message</pre></a></li>
 <li class="property protected inherited"><a href="#%24model" title="$model :: Model object if exists a model."><span class="description">Model object if exists a model.</span><pre>$model</pre></a></li>
 <li class="property protected inherited"><a href="#%24name" title="$name :: Class controller name"><span class="description">Class controller name</span><pre>$name</pre></a></li>
+<li class="property protected inherited"><a href="#%24plugins" title="$plugins :: A plugin manager instance."><span class="description">A plugin manager instance.</span><pre>$plugins</pre></a></li>
 <li class="property protected inherited"><a href="#%24rendered" title="$rendered :: If view was rendered."><span class="description">If view was rendered.</span><pre>$rendered</pre></a></li>
 <li class="nav-header private">» Private</li>
 <li class="property private "><a href="#%24path" title="$path :: Path to component."><span class="description">Path to component.</span><pre>$path</pre></a></li>
@@ -141,49 +143,57 @@
 </div></div>
 </div>
 <a name="__destruct" id="__destruct"></a><div class="element clickable method public __destruct" data-toggle="collapse" data-target=".__destruct .collapse">
-<h2>Clear dependecies and stop session.</h2>
+<h2>Clean dependencies and close session.</h2>
 <pre>__destruct() </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
-</div>
-<a name="getModel" id="getModel"></a><div class="element clickable method public getModel" data-toggle="collapse" data-target=".getModel .collapse">
-<h2>Returning a Controller model.</h2>
-<pre>getModel() : mixed</pre>
-<div class="labels"></div>
+<div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="detail-description">
 <p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\Controller::__destruct()</td>
+</tr></table>
+</div></div>
+</div>
+<a name="getModel" id="getModel"></a><div class="element clickable method public getModel" data-toggle="collapse" data-target=".getModel .collapse">
+<h2>Return Controller Model.</h2>
+<pre>getModel() : mixed</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\Controller::getModel()</td>
+</tr></table>
 <h3>Returns</h3>
 <div class="subelement response"><code>mixed</code></div>
 </div></div>
 </div>
 <a name="getName" id="getName"></a><div class="element clickable method public getName" data-toggle="collapse" data-target=".getName .collapse">
-<h2>Returning a name of controller.</h2>
+<h2>Return controller name.</h2>
 <pre>getName() : mixed | string</pre>
-<div class="labels"></div>
+<div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="detail-description">
 <p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\Controller::getName()</td>
+</tr></table>
 <h3>Returns</h3>
 <div class="subelement response">
 <code>mixed</code><code>string</code>
 </div>
 </div></div>
 </div>
-<a name="getPath" id="getPath"></a><div class="element clickable method public getPath" data-toggle="collapse" data-target=".getPath .collapse">
-<h2>Path to component.</h2>
-<pre>getPath() : mixed</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<p class="long_description"></p>
-<h3>Returns</h3>
-<div class="subelement response"><code>mixed</code></div>
-</div></div>
-</div>
 <a name="module" id="module"></a><div class="element clickable method public module" data-toggle="collapse" data-target=".module .collapse">
 <h2>Load module in view.</h2>
 <pre>module($name) : mixed</pre>
-<div class="labels"></div>
+<div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="detail-description">
 <p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\Controller::module()</td>
+</tr></table>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$name</h4>
@@ -242,16 +252,79 @@
 </div></div>
 </div>
 <a name="afterRender" id="afterRender"></a><div class="element clickable method protected afterRender" data-toggle="collapse" data-target=".afterRender .collapse">
-<h2>Method after render a view.</h2>
-<pre>afterRender() </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+<h2>Dispatch afterRender plugins.</h2>
+<pre>afterRender() : mixed | void</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\Controller::afterRender()</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>mixed</code><code>void</code>
+</div>
+</div></div>
+</div>
+<a name="afterView" id="afterView"></a><div class="element clickable method protected afterView" data-toggle="collapse" data-target=".afterView .collapse">
+<h2>Dispatch afterView plugins.</h2>
+<pre>afterView() : mixed | void</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\Controller::afterView()</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>mixed</code><code>void</code>
+</div>
+</div></div>
 </div>
 <a name="beforeRender" id="beforeRender"></a><div class="element clickable method protected beforeRender" data-toggle="collapse" data-target=".beforeRender .collapse">
-<h2>Method before render a view.</h2>
-<pre>beforeRender() </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+<h2>Dispatch beforeRender plugins.</h2>
+<pre>beforeRender() : mixed | void</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\Controller::beforeRender()</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>mixed</code><code>void</code>
+</div>
+</div></div>
+</div>
+<a name="beforeView" id="beforeView"></a><div class="element clickable method protected beforeView" data-toggle="collapse" data-target=".beforeView .collapse">
+<h2>Dispatch beforeView plugins.</h2>
+<pre>beforeView($content, $name, $model) : mixed</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\Controller::beforeView()</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$content</h4>
+<code></code>
+</div>
+<div class="subelement argument">
+<h4>$name</h4>
+<code></code>
+</div>
+<div class="subelement argument">
+<h4>$model</h4>
+<code></code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>mixed</code></div>
+</div></div>
 </div>
 <a name="changeComponent" id="changeComponent"></a><div class="element clickable method protected changeComponent" data-toggle="collapse" data-target=".changeComponent .collapse">
 <h2>Change component.</h2>
@@ -294,7 +367,7 @@
 </div></div>
 </div>
 <a name="dependencies" id="dependencies"></a><div class="element clickable method protected dependencies" data-toggle="collapse" data-target=".dependencies .collapse">
-<h2>Getting site url and component variable.</h2>
+<h2>Getting site url and component variable and create PluginManager instance.</h2>
 <pre>dependencies() </pre>
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="detail-description">
@@ -555,6 +628,18 @@
 </tr></table>
 </div></div>
 </div>
+<a name="%24plugins" id="$plugins"> </a><div class="element clickable property protected $plugins" data-toggle="collapse" data-target=".$plugins .collapse">
+<h2>A plugin manager instance.</h2>
+<pre>$plugins : <a href="../classes/PluginManager.html">\PluginManager</a></pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\Controller::$$plugins</td>
+</tr></table>
+</div></div>
+</div>
 <a name="%24rendered" id="$rendered"> </a><div class="element clickable property protected $rendered" data-toggle="collapse" data-target=".$rendered .collapse">
 <h2>If view was rendered.</h2>
 <pre>$rendered : bool</pre>
@@ -580,7 +665,7 @@
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a8</a> and<br>
-            generated on 2012-07-25T10:38:52+02:00.<br></footer></div>
+            generated on 2012-07-25T22:47:23+02:00.<br></footer></div>
 </div>
 </body>
 </html>

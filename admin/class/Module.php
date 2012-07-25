@@ -42,6 +42,7 @@ class Module
         $this->view = "index";
         $this->app = new Application();
         $this->path = $this->app->getHomeUrl()."modules/".strtolower($this->name)."/";
+        Loader::import("plugins.*");
     }
 
     /**

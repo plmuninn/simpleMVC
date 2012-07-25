@@ -9,11 +9,6 @@
  */
 class UserController extends Controller
 {
-    function __construct()
-    {
-        parent::__construct();
-    }
-
     protected function actionIndex()
     {
         if(Application::isGuest()){
@@ -24,21 +19,6 @@ class UserController extends Controller
             $this->redirectToOther("user&us_id=$usr->id_user", "account");
         }
         parent::actionIndex();
-    }
-
-    function __destruct()
-    {
-        parent::__destruct();
-    }
-
-    protected function afterRender()
-    {
-        parent::afterRender();
-    }
-
-    protected function beforeRender()
-    {
-        parent::beforeRender();
     }
 
     public function createAction(){

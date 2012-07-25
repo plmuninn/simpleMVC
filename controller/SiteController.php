@@ -17,6 +17,8 @@ class SiteController extends Controller
      */
     function __construct()
     {
+        Loader::import("plugins.*");
+        $this->plugins = new PluginManager();
         parent::generateControllers();
 
        try{
@@ -39,15 +41,6 @@ class SiteController extends Controller
        }
     }
 
-    function __destruct()
-    {
-        parent::__destruct();
-    }
-
-    protected function afterRender()
-    {
-
-    }
 
     protected function beforeRender()
     {

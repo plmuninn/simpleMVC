@@ -8,27 +8,12 @@
  */
 class LoginController extends Controller
 {
-    function __construct()
-    {
-        parent::__construct();
-    }
-
     protected function actionIndex()
     {
         if(Application::isGuest())
         parent::actionIndex();
         else
         $this->redirectToOther("","");
-    }
-
-    function __destruct()
-    {
-        parent::__destruct();
-    }
-
-    protected function afterRender()
-    {
-       parent::afterRender();
     }
 
     protected function beforeRender()

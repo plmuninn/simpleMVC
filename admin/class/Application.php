@@ -355,7 +355,7 @@ class Application extends  Configuration
      * @return bool */
     public static function isOwner($id){
         self::sessionStart();
-        if($_SESSION["user"] != null){
+        if(isset($_SESSION["user"])){
               $usr = $_SESSION["user"];
             if($id == $usr->id_user){
                 return true;

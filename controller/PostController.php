@@ -8,26 +8,6 @@
  */
 class PostController extends Controller
 {
-    function __construct()
-    {
-        parent::__construct();
-    }
-
-    function __destruct()
-    {
-        parent::__destruct();
-    }
-
-    protected function afterRender()
-    {
-        parent::afterRender();
-    }
-
-    protected function beforeRender()
-    {
-        parent::beforeRender();
-    }
-
     public function addAction(){
         if(Application::isGuest()){
             $_SESSION["error"] = array("type"=>"error","message"=>"Musisz być zalogowany");

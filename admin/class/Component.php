@@ -27,6 +27,8 @@ class Component extends Controller
       parent::getName();
       parent::dependencies();
       $this->generateModels();
+      Loader::import("plugins.*");
+      Loader::import("components.".$this->name.".plugins.*");
       parent::generateControllers();
       $this->app = new Application();
       $this->path = $this->app->getHomeUrl()."components/".$this->component."/";
@@ -42,13 +44,6 @@ class Component extends Controller
         if(!$this->rendered){
             throw new Exception("Site don't found.");
         }
-    }
-
-    /**
-     *Clear dependecies and stop session.
-     */
-    public function __destruct(){
-        parent::__destruct();
     }
 
 
@@ -68,13 +63,13 @@ class Component extends Controller
      */
     public function render($name){
 
-        $this->beforeRender();
+        $this->beforeRender(array($name));
         /*Get view*/
         $this->app = new Application();
         $this->file =  $this->app->getBaseDir()."components/".$this->component."/views/".$this->name."/".$name.".php";
         /*Get template*/
         include_once($this->app->getBaseDir()."templates/".$this->app->getTemplate()."/index.php");
-        $this->afterRender();
+        $this->afterRender(array($name));
     }
 
     /**
@@ -85,6 +80,7 @@ class Component extends Controller
             ob_start();
             require_once($this->file);
             $contents = ob_get_contents();
+            $contents = $this->beforeView($contents, $this->name, $this->model);
             ob_end_clean();
             echo $contents;
         }
@@ -149,25 +145,6 @@ class Component extends Controller
     }
 
     /**
-     * Returning a name of controller.
-     * @return mixed|string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * Load module in view.
-     * @param $name
-     * @return mixed
-     */
-    public function module($name){
-        Loader::import("modules.".strtolower($name).".*","modules.".strtolower($name).".views.*" );
-        return new $name;
-    }
-
-    /**
      * Check if controller file exists.
      * @param string $name
      * @return bool
@@ -176,35 +153,4 @@ class Component extends Controller
         return file_exists(Application::getBaseDir()."components/".strtolower($this->getName())."/controller/".$name.".php");
     }
 
-    /**
-     * Returning a Controller model.
-     * @return mixed
-     */
-    public function getModel()
-    {
-        return $this->model;
-    }
-
-    /**
-     *Method after render a view.
-     */
-    protected function afterRender(){
-
-    }
-
-    /**
-     *Method before render a view.
-     */
-    protected function beforeRender(){
-
-    }
-
-    /**
-     * Path to component.
-     * @return mixed
-     */
-    public function getPath()
-    {
-        return $this->path;
-    }
 }
