@@ -71,11 +71,11 @@ class Loader implements LoaderInterface
         if($all){
            $files = FileManager::getAll($app->getBaseDir().$path);
                 if(is_array($files))
-                    self::loadFolder($files,$app->getBaseDir().$path, $exceptions);
+                    Loader::loadFolder($files,$app->getBaseDir().$path, $exceptions);
         }
         else{
           if($exceptions == null){
-              if(self::checkClass($app->getBaseDir().$path.".php"))
+              if(Loader::checkClass($app->getBaseDir().$path.".php"))
               require_once($app->getBaseDir().$path.".php");
           }
             else{
@@ -90,11 +90,11 @@ class Loader implements LoaderInterface
                 if($all == true){
                     $files = FileManager::getAll($app->getBaseDir()."/".$exception_path);
                             if(is_array($files))
-                             self::loadFile($files,$app->getBaseDir()."/".$path);
+                                Loader::loadFile($files,$app->getBaseDir()."/".$path);
                 }
                 else
                     if($path != $exception_path) {
-                        if(self::checkClass($app->getBaseDir().$path.".php"))
+                        if(Loader::checkClass($app->getBaseDir().$path.".php"))
                         require_once($app->getBaseDir().$path.".php");
                     }
             }
@@ -103,21 +103,22 @@ class Loader implements LoaderInterface
 
     /**
      * Recursive loading from folder files method
+     * @static
      * @param $files
      * @param $path
      * @param $exceptions
      */
-    private function loadFolder($files, $path, $exceptions){
+    private static function loadFolder($files, $path, $exceptions){
         $app = new Application();
         if($exceptions == null){
             foreach($files as $value){
                 if(is_file($path."/".$value)){
-                    if(self::checkClass($path."/".$value))
+                    if(Loader::checkClass($path."/".$value))
                     require_once($path."/".$value);
                 }
                 elseif (is_dir($path."/".$value)){
                   $newFiles = FileManager::getAll($path."/".$value);
-                    self::loadFolder($newFiles,$path."/".$value, $exceptions);
+                    Loader::loadFolder($newFiles,$path."/".$value, $exceptions);
                 }
             }
         }
@@ -139,13 +140,13 @@ class Loader implements LoaderInterface
                 $exception_path = explode("/",$exception_path);
                 foreach($files as $value){
                     if(is_file($path."/".$value)){
-                        if(self::checkClass($path."/".$value))
+                        if(Loader::checkClass($path."/".$value))
                             require_once($path."/".$value);
                     }
                     elseif (is_dir($path."/".$value)){
                         if(!in_array($value,$exception_path)){
                         $newFiles = FileManager::getAll($path."/".$value);
-                        self::loadFolder($newFiles,$path."/".$value, $exceptions);
+                            Loader::loadFolder($newFiles,$path."/".$value, $exceptions);
                         }
                     }
                 }
@@ -154,13 +155,13 @@ class Loader implements LoaderInterface
                 foreach($files as $value){
                     if(is_file($path."/".$value)){
                         if($path."/".$value != $app->getBaseDir().$exception_path.".php"){
-                            if(self::checkClass($path."/".$value))
+                            if(Loader::checkClass($path."/".$value))
                             require_once($path."/".$value);
                         }
                     }
                     elseif (is_dir($path."/".$value)){
                         $newFiles = FileManager::getAll($path."/".$value);
-                        self::loadFolder($newFiles,$path."/".$value, $exceptions);
+                        Loader::loadFolder($newFiles,$path."/".$value, $exceptions);
                     }
                 }
             }
@@ -169,17 +170,18 @@ class Loader implements LoaderInterface
 
     /**
      * Function is loading file if is not like exception
+     * @static
      * @param $files
      * @param $path
      */
-    private function loadFile($files,$path){
+    private static function loadFile($files,$path){
         $app = new Application();
         $path = explode("/",$path);
         $path = array_reverse($path);
          if(!in_array($files,$path[0])){
              $path = array_reverse($path);
              $path = implode("/",$path);
-             if(self::checkClass($app->getBaseDir().$path.".php"))
+             if(Loader::checkClass($app->getBaseDir().$path.".php"))
              require_once($app->getBaseDir().$path.".php");
         }
     }
@@ -190,9 +192,9 @@ class Loader implements LoaderInterface
      * @param $path
      * @return bool
      */
-    public static  function checkClass($path){
+    public static function checkClass($path){
             $php_code = file_get_contents($path);
-            $classes = self::get_php_classes($php_code);
+            $classes = Loader::get_php_classes($php_code);
             if(count($classes) >0){
                 return true;
             }
@@ -207,9 +209,9 @@ class Loader implements LoaderInterface
      * @param $name
      * @return bool
      */
-    public static  function checkClassName($path, $name){
+    public static function checkClassName($path, $name){
         $php_code = file_get_contents($path);
-        $classes = self::get_php_classes($php_code);
+        $classes = Loader::get_php_classes($php_code);
         if(count($classes) == 1){
             if(strtolower($classes[0]) == strtolower($name))
                 return true;
@@ -222,10 +224,11 @@ class Loader implements LoaderInterface
 
     /**
      * Downloaded from http://stackoverflow.com/questions/928928/determining-what-classes-are-defined-in-a-php-class-file
+     * @static
      * @param $php_code
      * @return array
      */
-    private  function get_php_classes($php_code) {
+    private static function get_php_classes($php_code) {
         $classes = array();
         $tokens = token_get_all($php_code);
         $count = count($tokens);

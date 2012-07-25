@@ -10,9 +10,12 @@ $(document).ready(function() {
 
     var dataVisable = true;
 
-    $('.message').delay(2000).slideUp('slow');
-    $('.error').delay(2000).slideUp('slow');
-    $('.warning').delay(2000).slideUp('slow');
+    $('.message').delay(5000).fadeOut('slow');
+    $('.error').delay(5000).fadeOut('slow');
+    $('.warning').delay(5000).fadeOut('slow');
+
+    $('.system_error').delay(5000).fadeOut('slow')
+    $('.system_warning').delay(5000).fadeOut('slow')
 
     /*Pokazanie panelu do zmiany hasła*/
     $('#show').click(function() {

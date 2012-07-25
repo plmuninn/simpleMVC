@@ -237,7 +237,7 @@ class Controller {
         echo $contents;
         }
         else
-            include_once(Application::getBaseDir()."error/errorfile.php");
+           trigger_error("No view".$this->actions." in ",$this->name,E_USER_ERROR);
     }
 
     /**

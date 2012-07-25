@@ -81,8 +81,10 @@ class Application extends  Configuration
 
     /**
      * Check if session exist
-     *@return bool*/
-    public function session(){
+     * @static
+     * @return bool
+     */
+    public static function session(){
        if(session_id() != null)
            return true;
        else

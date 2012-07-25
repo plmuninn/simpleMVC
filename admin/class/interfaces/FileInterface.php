@@ -77,4 +77,14 @@ interface FileInterface
      * @throws Exception
      */
     public static function getAll($path);
+
+    /**
+     * Method writing text to file
+     * @static
+     * @abstract
+     * @param $path_to_file
+     * @param $text
+     * @return mixed
+     */
+    public static function writeToFile($path_to_file, $text);
 }

@@ -70,11 +70,11 @@ class FileManager implements FileInterface
     public static function  createFile($path, $name)
     {
         $configuration = new Configuration();
-        $path = $path.(strlen($path,-1) != DIRECTORY_SEPARATOR ? DIRECTORY_SEPARATOR : '').$name;
+        $path = $path.(substr($path,-1) != DIRECTORY_SEPARATOR ? DIRECTORY_SEPARATOR : '').$name;
         if(!file_exists($path)){
-        $file = fopen($path,"w");
+        $file = fopen($path,"w+");
         fclose($file);
-        chmod($path,$configuration->getFilePrev());
+        chmod($path,octdec($configuration->getFilePrev()));
         return true;
         }
         else
@@ -91,7 +91,7 @@ class FileManager implements FileInterface
      */
     public static function  removeFile($path, $name)
     {
-        $path = rtrim($path.(strlen($path,-1) != DIRECTORY_SEPARATOR ? DIRECTORY_SEPARATOR : '')).$name;
+        $path = rtrim($path.(substr($path,-1) != DIRECTORY_SEPARATOR ? DIRECTORY_SEPARATOR : '')).$name;
         if(file_exists($path)){
             unlink($path);
             return true;
@@ -127,7 +127,7 @@ class FileManager implements FileInterface
      */
     public static function getFiles($path)
     {
-        $path = rtrim($path.(strlen($path,-1) != DIRECTORY_SEPARATOR ? DIRECTORY_SEPARATOR : ''));
+        $path = rtrim($path.(substr($path,-1) != DIRECTORY_SEPARATOR ? DIRECTORY_SEPARATOR : ''));
         $allFiles = self::getAll($path);
         $files = array();
         foreach($allFiles as $key => $value){
@@ -157,5 +157,25 @@ class FileManager implements FileInterface
         else
             new Exception($path." is not a directory");
         return null;
+    }
+
+    /**
+     * Method writing text to file
+     * @static
+     * @param $path_to_file
+     * @param $text
+     * @return mixed
+     */
+    public static function writeToFile($path_to_file, $text)
+    {
+        if(!is_dir($path_to_file)){
+            if(is_file($path_to_file)){
+                if(file_exists($path_to_file)){
+                $file = fopen($path_to_file,"a");
+                fwrite($file,$text."\n");
+                    fclose($file);
+                }
+            }
+        }
     }
 }
