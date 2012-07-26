@@ -469,7 +469,8 @@ class ModelSQLManager  extends ApplicationDB implements SQLManagerInterface
     }
 
     /**
-     *We can do something with data before save.
+     * We can do something with data before save.
+     * @param $model
      */
     protected function beforeSave(&$model){
         $this->plugins->beforeSave($model);

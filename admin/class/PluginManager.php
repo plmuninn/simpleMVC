@@ -96,6 +96,7 @@ class PluginManager
     /**
      * Method before model will be saved.
      * @static
+     * @param $model
      */
     public static function beforeSave(&$model)
     {

@@ -86,6 +86,7 @@
 <li class="property public "><a href="#%24variablesTypes" title="$variablesTypes :: "><span class="description">$variablesTypes</span><pre>$variablesTypes</pre></a></li>
 <li class="nav-header protected">» Protected</li>
 <li class="property protected "><a href="#%24new" title="$new :: If object is new to create or save in DB."><span class="description">If object is new to create or save in DB.</span><pre>$new</pre></a></li>
+<li class="property protected "><a href="#%24plugins" title="$plugins :: PluginManager"><span class="description">PluginManager</span><pre>$plugins</pre></a></li>
 <li class="property protected "><a href="#%24primary" title="$primary :: Primary keys array."><span class="description">Primary keys array.</span><pre>$primary</pre></a></li>
 <li class="property protected "><a href="#%24table_name" title="$table_name :: A model table name."><span class="description">A model table name.</span><pre>$table_name</pre></a></li>
 <li class="property protected "><a href="#%24variablesTypes" title="$variablesTypes :: Variables type mapping values"><span class="description">Variables type mapping values</span><pre>$variablesTypes</pre></a></li>
@@ -312,9 +313,16 @@
 </div>
 <a name="beforeSave" id="beforeSave"></a><div class="element clickable method protected beforeSave" data-toggle="collapse" data-target=".beforeSave .collapse">
 <h2>We can do something with data before save.</h2>
-<pre>beforeSave() </pre>
+<pre>beforeSave($model) </pre>
 <div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$model</h4>
+<code></code>
+</div>
+</div></div>
 </div>
 <a name="getKeys" id="getKeys"></a><div class="element clickable method private getKeys" data-toggle="collapse" data-target=".getKeys .collapse">
 <h2>Method returns relation keys.</h2>
@@ -421,6 +429,12 @@
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
 </div>
+<a name="%24plugins" id="$plugins"> </a><div class="element clickable property protected $plugins" data-toggle="collapse" data-target=".$plugins .collapse">
+<h2>PluginManager</h2>
+<pre>$plugins : </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+</div>
 <a name="%24primary" id="$primary"> </a><div class="element clickable property protected $primary" data-toggle="collapse" data-target=".$primary .collapse">
 <h2>Primary keys array.</h2>
 <pre>$primary : array</pre>
@@ -458,7 +472,7 @@
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a8</a> and<br>
-            generated on 2012-07-25T22:47:23+02:00.<br></footer></div>
+            generated on 2012-07-26T07:47:20+02:00.<br></footer></div>
 </div>
 </body>
 </html>

@@ -72,8 +72,8 @@
 <li class="method public "><a href="#removeById" title="removeById :: Method remove object from database by id."><span class="description">Method remove object from database by id.</span><pre>removeById()</pre></a></li>
 <li class="method public "><a href="#save" title="save :: Method save object in database."><span class="description">Method save object in database.</span><pre>save()</pre></a></li>
 <li class="nav-header protected">» Protected</li>
-<li class="method protected "><a href="#afterSave" title="afterSave :: After model save."><span class="description">After model save.</span><pre>afterSave()</pre></a></li>
-<li class="method protected "><a href="#beforeSave" title="beforeSave :: Before model save."><span class="description">Before model save.</span><pre>beforeSave()</pre></a></li>
+<li class="method protected inherited"><a href="#afterSave" title="afterSave :: We can do something with data after save."><span class="description">We can do something with data after save.</span><pre>afterSave()</pre></a></li>
+<li class="method protected inherited"><a href="#beforeSave" title="beforeSave :: We can do something with data before save."><span class="description">We can do something with data before save.</span><pre>beforeSave()</pre></a></li>
 <li class="nav-header private">» Private</li>
 <li class="method private inherited"><a href="#getKeys" title="getKeys :: Method returns relation keys."><span class="description">Method returns relation keys.</span><pre>getKeys()</pre></a></li>
 <li class="method private inherited"><a href="#mysql" title="mysql :: Get values from mysql database"><span class="description">Get values from mysql database</span><pre>mysql()</pre></a></li>
@@ -82,6 +82,7 @@
 <i class="icon-custom icon-property"></i> Properties</li>
 <li class="nav-header protected">» Protected</li>
 <li class="property protected inherited"><a href="#%24new" title="$new :: If object is new to create or save in DB."><span class="description">If object is new to create or save in DB.</span><pre>$new</pre></a></li>
+<li class="property protected inherited"><a href="#%24plugins" title="$plugins :: PluginManager"><span class="description">PluginManager</span><pre>$plugins</pre></a></li>
 <li class="property protected inherited"><a href="#%24primary" title="$primary :: Primary keys array."><span class="description">Primary keys array.</span><pre>$primary</pre></a></li>
 <li class="property protected "><a href="#%24table_name" title="$table_name :: Name of database table."><span class="description">Name of database table.</span><pre>$table_name</pre></a></li>
 <li class="property protected inherited"><a href="#%24variablesTypes" title="$variablesTypes :: Variables type mapping values"><span class="description">Variables type mapping values</span><pre>$variablesTypes</pre></a></li>
@@ -339,16 +340,33 @@
 </div></div>
 </div>
 <a name="afterSave" id="afterSave"></a><div class="element clickable method protected afterSave" data-toggle="collapse" data-target=".afterSave .collapse">
-<h2>After model save.</h2>
+<h2>We can do something with data after save.</h2>
 <pre>afterSave() </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\ModelSQLManager::afterSave()</td>
+</tr></table>
+</div></div>
 </div>
 <a name="beforeSave" id="beforeSave"></a><div class="element clickable method protected beforeSave" data-toggle="collapse" data-target=".beforeSave .collapse">
-<h2>Before model save.</h2>
-<pre>beforeSave() </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
+<h2>We can do something with data before save.</h2>
+<pre>beforeSave($model) </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\ModelSQLManager::beforeSave()</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$model</h4>
+<code></code>
+</div>
+</div></div>
 </div>
 <a name="getKeys" id="getKeys"></a><div class="element clickable method private getKeys" data-toggle="collapse" data-target=".getKeys .collapse">
 <h2>Method returns relation keys.</h2>
@@ -402,6 +420,18 @@
 <table class="table table-bordered"><tr>
 <th>inherited_from</th>
 <td>\ModelSQLManager::$$new</td>
+</tr></table>
+</div></div>
+</div>
+<a name="%24plugins" id="$plugins"> </a><div class="element clickable property protected $plugins" data-toggle="collapse" data-target=".$plugins .collapse">
+<h2>PluginManager</h2>
+<pre>$plugins : </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\ModelSQLManager::$$plugins</td>
 </tr></table>
 </div></div>
 </div>
@@ -460,7 +490,7 @@
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a8</a> and<br>
-            generated on 2012-07-25T22:47:23+02:00.<br></footer></div>
+            generated on 2012-07-26T07:47:20+02:00.<br></footer></div>
 </div>
 </body>
 </html>

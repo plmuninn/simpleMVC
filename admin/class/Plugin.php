@@ -44,7 +44,9 @@ abstract class Plugin
 
     /**
      * Method before model will be saved.
-     *  @abstract
+     * @abstract
+     * @param $model
+     * @return mixed
      */
     abstract public function beforeSave(&$model);
 }
