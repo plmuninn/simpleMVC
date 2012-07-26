@@ -242,7 +242,7 @@ class Controller {
         ob_start();
         require_once($this->file);
         $contents = ob_get_contents();
-        $contents = $this->beforeView($contents, $this->name, $this->model);
+        $this->beforeView($contents, $this->name, $this->model);
         ob_end_clean();
         echo $contents;
         $this->afterView(array());
@@ -351,7 +351,6 @@ class Controller {
 
     /**
      * Return Controller Model.
-     * @return mixed
      */
     public function getModel()
     {
@@ -360,26 +359,23 @@ class Controller {
 
     /**
      * Dispatch afterRender plugins.
-     * @return mixed|void
      */
     protected function afterRender(){
-        return $this->plugins->afterRender();
+        $this->plugins->afterRender();
     }
 
     /**
      * Dispatch beforeRender plugins.
-     * @return mixed|void
      */
     protected function beforeRender(){
-        return $this->plugins->beforeRender();
+        $this->plugins->beforeRender();
     }
 
     /**
      * Dispatch afterView plugins.
-     * @return mixed|void
      */
     protected function afterView(){
-        return $this->plugins->afterView();
+        $this->plugins->afterView();
     }
 
     /**
@@ -387,10 +383,9 @@ class Controller {
      * @param $content
      * @param $name
      * @param $model
-     * @return mixed
      */
-    protected function beforeView($content, $name, $model){
-       return $this->plugins->beforeView($content, $name, $model);
+    protected function beforeView(&$content, &$name, &$model){
+       $this->plugins->beforeView($content, $name, $model);
     }
 
 

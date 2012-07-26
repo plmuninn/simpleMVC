@@ -62,14 +62,15 @@ class Component extends Controller
      * @param string $name
      */
     public function render($name){
-
-        $this->beforeRender(array($name));
+        if(!is_object($this->plugins))
+            $this->plugins = new PluginManager();
+        $this->beforeRender();
         /*Get view*/
         $this->app = new Application();
         $this->file =  $this->app->getBaseDir()."components/".$this->component."/views/".$this->name."/".$name.".php";
         /*Get template*/
         include_once($this->app->getBaseDir()."templates/".$this->app->getTemplate()."/index.php");
-        $this->afterRender(array($name));
+        $this->afterRender();
     }
 
     /**
@@ -80,9 +81,10 @@ class Component extends Controller
             ob_start();
             require_once($this->file);
             $contents = ob_get_contents();
-            $contents = $this->beforeView($contents, $this->name, $this->model);
+            $this->beforeView($contents, $this->name, $this->model);
             ob_end_clean();
             echo $contents;
+            $this->afterView();
         }
         else
             include_once(Application::getBaseDir()."error/errorfile.php");

@@ -41,6 +41,11 @@ class ModelSQLManager  extends ApplicationDB implements SQLManagerInterface
      */
     protected  $new = true;
 
+    /**
+     * PluginManager
+     * @var
+     */
+    protected $plugins;
 
     /**
      * Map database columns to PHP Object
@@ -48,6 +53,8 @@ class ModelSQLManager  extends ApplicationDB implements SQLManagerInterface
      */
     function __construct()
     {
+
+        $this->plugins = new PluginManager();
         switch(DB_TYPE){
             case "mysql":
                 $this->mysql();
@@ -272,7 +279,7 @@ class ModelSQLManager  extends ApplicationDB implements SQLManagerInterface
      * @throws Exception
      */
     public function save(){
-        $this->beforeSave();
+        $this->beforeSave($this);
         $db = $this->connectDB();
         if($this->new){
             $sql ="INSERT INTO ".$this->table_name." (";
@@ -458,12 +465,14 @@ class ModelSQLManager  extends ApplicationDB implements SQLManagerInterface
      *We can do something with data after save.
      */
     protected function afterSave(){
+        $this->plugins->afterSave();
     }
 
     /**
      *We can do something with data before save.
      */
-    protected function beforeSave(){
+    protected function beforeSave(&$model){
+        $this->plugins->beforeSave($model);
     }
 
     /**

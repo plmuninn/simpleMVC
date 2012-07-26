@@ -28,11 +28,23 @@ abstract class Plugin
      * @param string $controller_name
      * @param string $model
      */
-    abstract public function beforeView($content, $controller_name, $model);
+    abstract public function beforeView(&$content, &$controller_name, &$model);
 
     /**
      * Method after view was printed.
      * @abstract
      */
     abstract public function afterView();
+
+    /**
+     * Method after model was saved.
+     *  @abstract
+     */
+    abstract public function afterSave();
+
+    /**
+     * Method before model will be saved.
+     *  @abstract
+     */
+    abstract public function beforeSave(&$model);
 }

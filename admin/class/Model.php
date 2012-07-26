@@ -122,21 +122,4 @@ class Model extends ModelSQLManager
         }
     }
 
-    /**
-     * After model save.
-     */
-    protected function afterSave()
-    {
-
-    }
-
-    /**
-     * Before model save.
-     */
-    protected function beforeSave()
-    {
-
-    }
-
-
 }
