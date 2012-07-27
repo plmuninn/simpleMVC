@@ -67,14 +67,30 @@ class ModelSQLManager  extends ApplicationDB implements SQLManagerInterface
      * Method returns relation keys.
      */
     private function getKeys(){
-        //TODO: Keys sercher
-    }
+        $db = $this->connectDB();
+        if($this->table_name != ''){
+            $sql =  "SHOW INDEX FROM ".$this->table_name;
 
-    /**
-     * Method create relations
-     */
-    private function relations(){
-        //TODO: Relation manager
+            $stmt = $db->prepare($sql);
+            $arr = array();
+            try{
+                if($stmt->execute()){
+                    while($obj = $stmt->fetch(PDO::FETCH_OBJ)){
+                        array_push($arr, $obj);
+                    }
+                    foreach($arr as $key){
+                    var_dump($key);
+                        //TODO: end keys function
+                    }
+                }
+            }
+            catch(Exception $e){
+                $_SESSION["error"] = array("type"=>"error","message"=>$e->getMessage());
+            }
+        }
+        else{
+            throw new Exception("Don't find column name ".$this->table_name);
+        }
     }
 
     /**
@@ -83,6 +99,7 @@ class ModelSQLManager  extends ApplicationDB implements SQLManagerInterface
      */
     private function mysql()
     {
+       // $this->getKeys();
         $db = $this->connectDB();
         if($this->table_name != ''){
             $sql = "SHOW COLUMNS FROM ".$this->table_name;

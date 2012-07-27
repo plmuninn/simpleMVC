@@ -452,10 +452,16 @@ class Application extends  Configuration
      * @return string
      */
     private static function generateUrl(){
-        $url  ="http://".$_SERVER["SERVER_NAME"];
-        if($_SERVER["SERVER_PORT"] != 80){
-            $url .=":".$_SERVER["SERVER_PORT"];
+        $url = '';
+        if(isset($_SERVER["SERVER_NAME"])){
+            $url  ="http://".$_SERVER["SERVER_NAME"];
+            if(isset($_SERVER["SERVER_PORT"])){
+                if($_SERVER["SERVER_PORT"] != 80){
+                    $url .=":".$_SERVER["SERVER_PORT"];
+                }
+            }
         }
+
        return $url;
     }
 
