@@ -18,7 +18,7 @@ define("SITE_CHARSET", "utf-8");
 define("DB_TYPE","mysql");
 define("DB_NAME" ,"test");
 define("DB_USER", "root");
-define("DB_PASSWORD","zielone");
+define("DB_PASSWORD","");
 define("DB_ADDRES","localhost");
 define("DB_CHARSET", "utf8");
 
