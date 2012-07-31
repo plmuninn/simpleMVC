@@ -3,7 +3,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
 <meta charset="utf-8">
-<title>phpDocumentor » \PluginManager</title>
+<title>phpDocumentor » \Plugin</title>
 <meta name="author" content="Mike van Riel">
 <meta name="description" content="">
 <link href="../css/template.css" rel="stylesheet" media="all">
@@ -65,17 +65,17 @@
 </ul>
 </div>
 <div class="span8">
-<a name="%5CPluginManager" id="\PluginManager"></a><ul class="breadcrumb">
+<a name="%5CPlugin" id="\Plugin"></a><ul class="breadcrumb">
 <li>
 <a href="../index.html"><i class="icon-custom icon-class"></i></a><span class="divider">\</span>
 </li>
 <li><a href="../namespaces/global.html">global</a></li>
 <li class="active">
-<span class="divider">\</span><a href="../classes/PluginManager.html">PluginManager</a>
+<span class="divider">\</span><a href="../classes/Plugin.html">Plugin</a>
 </li>
 </ul>
-<div href="../classes/PluginManager.html" class="element class">
-<p class="short_description">Class to manage a plugins in all MVC and Components.</p>
+<div href="../classes/Plugin.html" class="element class">
+<p class="short_description">Class to implements plugin functions.</p>
 <div class="details">
 <p class="long_description"></p>
 <table class="table table-bordered">
@@ -97,7 +97,7 @@
 <div class="row collapse"><div class="detail-description">
 <p class="long_description"><p>Good for remove temp files.</p></p>
 <table class="table table-bordered"><tr>
-<th>static</th>
+<th>abstract</th>
 <td></td>
 </tr></table>
 </div></div>
@@ -106,13 +106,7 @@
 <h2>Method after model was saved.</h2>
 <pre>afterSave() </pre>
 <div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<p class="long_description"></p>
-<table class="table table-bordered"><tr>
-<th>static</th>
-<td></td>
-</tr></table>
-</div></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"><p>@abstract</p></p></div></div>
 </div>
 <a name="afterView" id="afterView"></a><div class="element clickable method public afterView" data-toggle="collapse" data-target=".afterView .collapse">
 <h2>Method after view was printed.</h2>
@@ -121,7 +115,7 @@
 <div class="row collapse"><div class="detail-description">
 <p class="long_description"></p>
 <table class="table table-bordered"><tr>
-<th>static</th>
+<th>abstract</th>
 <td></td>
 </tr></table>
 </div></div>
@@ -133,53 +127,53 @@
 <div class="row collapse"><div class="detail-description">
 <p class="long_description"><p>Good for changing size of photos in gallery.</p></p>
 <table class="table table-bordered"><tr>
-<th>static</th>
+<th>abstract</th>
 <td></td>
 </tr></table>
 </div></div>
 </div>
 <a name="beforeSave" id="beforeSave"></a><div class="element clickable method public beforeSave" data-toggle="collapse" data-target=".beforeSave .collapse">
 <h2>Method before model will be saved.</h2>
-<pre>beforeSave($model) </pre>
+<pre>beforeSave($model) : mixed</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
 <p class="long_description"></p>
 <table class="table table-bordered"><tr>
-<th>static</th>
+<th>abstract</th>
 <td></td>
 </tr></table>
 <h3>Parameters</h3>
-<div class="subelement argument">
-<h4>$model</h4>
-<code></code>
-</div>
-</div></div>
-</div>
-<a name="beforeView" id="beforeView"></a><div class="element clickable method public beforeView" data-toggle="collapse" data-target=".beforeView .collapse">
-<h2>Method before view was printed.</h2>
-<pre>beforeView($content, $controller_name, $model) : mixed</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<p class="long_description"></p>
-<table class="table table-bordered"><tr>
-<th>static</th>
-<td></td>
-</tr></table>
-<h3>Parameters</h3>
-<div class="subelement argument">
-<h4>$content</h4>
-<code></code>
-</div>
-<div class="subelement argument">
-<h4>$controller_name</h4>
-<code></code>
-</div>
 <div class="subelement argument">
 <h4>$model</h4>
 <code></code>
 </div>
 <h3>Returns</h3>
 <div class="subelement response"><code>mixed</code></div>
+</div></div>
+</div>
+<a name="beforeView" id="beforeView"></a><div class="element clickable method public beforeView" data-toggle="collapse" data-target=".beforeView .collapse">
+<h2>Method before view was printed.</h2>
+<pre>beforeView(string $content, string $controller_name, string $model) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>abstract</th>
+<td></td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$content</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$controller_name</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$model</h4>
+<code>string</code>
+</div>
 </div></div>
 </div>
 </div>
@@ -189,7 +183,7 @@
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a8</a> and<br>
-            generated on 2012-07-31T13:38:41+02:00.<br></footer></div>
+            generated on 2012-07-31T13:38:42+02:00.<br></footer></div>
 </div>
 </body>
 </html>

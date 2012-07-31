@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by IntelliJ IDEA.
- * User: loki
- * Date: 20.04.12
- * Time: 10:58
- *
- */
 
 $categories = new CategoryModel();
 $categories = $categories->getAll();
@@ -23,5 +16,6 @@ foreach($categories as $key=>$value){
   echo"</tr>";
 } }
 echo "</table>";
+
 ?>
 

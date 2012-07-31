@@ -4,6 +4,13 @@ require_once("../../../admin/class/Loader.php");
 spl_autoload_register("Loader::autoload");
 require_once("../models/ShoutboxModel.php");
 
+if(function_exists('lcfirst') === false) {
+    function lcfirst($str) {
+        $str[0] = strtolower($str[0]);
+        return $str;
+    }
+}
+
 $users = new UserModel();
 $users = $users->getAll();
 $shoutbox = new ShoutboxModel();

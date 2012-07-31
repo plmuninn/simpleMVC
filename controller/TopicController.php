@@ -36,7 +36,7 @@ class TopicController  extends Controller
 
                 $post = new PostModel();
 
-                $post->user_id_user = $usrid;
+                $post->userModel->id_user = $usrid;
                 $post->value = HTMLManager::cleanInput($_POST['value']);;
                 $post->topic_id_topic = $id;
                 $post->added_date = $added_date;
@@ -114,26 +114,28 @@ class TopicController  extends Controller
         else  {
             $topic = $this->model->getById(array("id_topic"=>HTMLManager::cleanInput($_GET["topic_id"])));
             if(Application::isOwner($topic->user_id_user) || Application::isAdmin()){
-            $this->model->removeById(array("id_topic"=>HTMLManager::cleanInput($_GET["topic_id"])));
-            $cat = $this->model->getById(array("id_topic"=>HTMLManager::cleanInput($_GET["topic_id"])));
             $post = new PostModel();
             $post->removeById(array("topic_id_topic"=>HTMLManager::cleanInput($_GET["topic_id"])));
+            $this->model->removeById(array("id_topic"=>HTMLManager::cleanInput($_GET["topic_id"])));
 
-            if(strpos(Application::getActualLink(),"admin")){
-            if($cat->id_topic != null){
+            $test = $this->model->getById(array("id_topic"=>HTMLManager::cleanInput($_GET["topic_id"])));
+
+
+                if(strpos(Application::getActualLink(),"admin")){
+            if(is_bool($test)){
                 echo  json_encode(array('warning'=>"Nie udało się usunąć, skontakuj się ze samym sobą!(czyt. z Maciejem Romańskim)"));
             }
             else{
                 echo  json_encode(array('messages'=>"Kategorię usunięty"));
             }}
             else{
-                if($cat->id_topic != null){
+                if(is_bool($test)){
                     $_SESSION["error"] = array("type"=>"error",'message'=>"Nie udało się usunąć, skontakuj się ze samym sobą!(czyt. z Maciejem Romańskim)");
-                   $this->redirectToOther("","");
+                    $this->redirectToOther("","");
                 }
                 else{
                     $_SESSION["error"] = array("type"=>"message",'message'=>"Temat usunięty");
-                    $this->redirectToOther("category&cat_id=".$topic->category_id_category,"topic");
+                    $this->redirectToOther("","");
                 }
             }
         }

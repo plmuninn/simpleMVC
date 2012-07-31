@@ -1,140 +1,153 @@
--- phpMyAdmin SQL Dump
--- version 3.3.10
--- http://www.phpmyadmin.net
---
--- Host: localhost
--- Generation Time: Jul 25, 2012 at 11:03 AM
--- Server version: 5.1.58
--- PHP Version: 5.2.17
-
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL';
 
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-
---
--- Database: `loki_mvc`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `blog`
---
-
-CREATE TABLE IF NOT EXISTS `blog` (
-  `id_blog` int(11) NOT NULL AUTO_INCREMENT,
-  `short` varchar(100) DEFAULT NULL,
-  `long` varchar(150) DEFAULT NULL,
-  `id_user` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id_blog`)
-) ENGINE=InnoDB;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `category`
---
-
-CREATE TABLE IF NOT EXISTS `category` (
-  `id_category` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(45) NOT NULL,
-  `description` varchar(200) DEFAULT NULL,
-  PRIMARY KEY (`id_category`)
-) ENGINE=InnoDB ;
+-- -----------------------------------------------------
+-- Table `user`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `user` (
+  `id_user` INT(11) NOT NULL AUTO_INCREMENT ,
+  `login` VARCHAR(45) CHARACTER SET 'utf8' COLLATE 'utf8_polish_ci' NOT NULL ,
+  `email` VARCHAR(45) CHARACTER SET 'utf8' COLLATE 'utf8_polish_ci' NOT NULL ,
+  `password` VARCHAR(45) CHARACTER SET 'utf8' COLLATE 'utf8_polish_ci' NULL DEFAULT NULL ,
+  `name` VARCHAR(45) CHARACTER SET 'utf8' COLLATE 'utf8_polish_ci' NULL DEFAULT NULL ,
+  `surname` VARCHAR(45) CHARACTER SET 'utf8' COLLATE 'utf8_polish_ci' NULL DEFAULT NULL ,
+  PRIMARY KEY (`id_user`) )
+ENGINE = InnoDB
+AUTO_INCREMENT = 3
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_polish_ci;
 
 
--- --------------------------------------------------------
+-- -----------------------------------------------------
+-- Table `blog`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `blog` (
+  `id_blog` INT(11) NOT NULL AUTO_INCREMENT ,
+  `short` VARCHAR(100) CHARACTER SET 'utf8' COLLATE 'utf8_polish_ci' NULL DEFAULT NULL ,
+  `long` VARCHAR(150) CHARACTER SET 'utf8' COLLATE 'utf8_polish_ci' NULL DEFAULT NULL ,
+  `id_user` INT(11) NOT NULL ,
+  PRIMARY KEY (`id_blog`, `id_user`) ,
+  INDEX `fk_blog_user` (`id_user` ASC) ,
+  CONSTRAINT `fk_blog_user`
+    FOREIGN KEY (`id_user` )
+    REFERENCES `user` (`id_user` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_polish_ci;
 
---
--- Table structure for table `configuration`
---
 
-CREATE TABLE IF NOT EXISTS `configuration` (
-  `id_configuration` int(11) NOT NULL,
-  `Date_format` varchar(45) NOT NULL,
-  `Time_zone` varchar(45) NOT NULL,
-  `File_prev` varchar(45) NOT NULL,
-  `Folder_prev` varchar(45) NOT NULL,
-  `Admin_Email` varchar(45) NOT NULL,
-  `Admin_id` varchar(45) NOT NULL,
-  `Lang` varchar(45) NOT NULL,
-  `Time_Format` varchar(45) NOT NULL,
-  `Template` varchar(50) NOT NULL,
-  PRIMARY KEY (`id_configuration`)
-) ENGINE=InnoDB;
+-- -----------------------------------------------------
+-- Table `category`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `category` (
+  `id_category` INT(11) NOT NULL AUTO_INCREMENT ,
+  `name` VARCHAR(45) CHARACTER SET 'utf8' COLLATE 'utf8_polish_ci' NOT NULL ,
+  `description` VARCHAR(200) CHARACTER SET 'utf8' COLLATE 'utf8_polish_ci' NULL DEFAULT NULL ,
+  PRIMARY KEY (`id_category`) )
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_polish_ci;
 
---
--- Dumping data for table `configuration`
---
 
-INSERT INTO `configuration` (`id_configuration`, `Date_format`, `Time_zone`, `File_prev`, `Folder_prev`, `Admin_Email`, `Admin_id`, `Lang`, `Time_Format`, `Template`) VALUES
-(1, 'm/d/y', '(GMT+01:00) Warsaw', '0777', '0777', 's8066@pjwstk.edu.pl', '1', 'PL', 'H:i', 'standard');
+-- -----------------------------------------------------
+-- Table `configuration`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `configuration` (
+  `id_configuration` INT(11) NOT NULL ,
+  `Date_format` VARCHAR(45) NOT NULL ,
+  `Time_zone` VARCHAR(45) NOT NULL ,
+  `File_prev` VARCHAR(45) NOT NULL ,
+  `Folder_prev` VARCHAR(45) NOT NULL ,
+  `Admin_Email` VARCHAR(45) NOT NULL ,
+  `Admin_id` INT(11) NOT NULL ,
+  `Lang` VARCHAR(45) NOT NULL ,
+  `Time_Format` VARCHAR(45) NOT NULL ,
+  `Template` VARCHAR(50) NOT NULL ,
+  PRIMARY KEY (`id_configuration`, `Admin_id`) ,
+  INDEX `fk_configuration_user` (`Admin_id` ASC) ,
+  CONSTRAINT `fk_configuration_user`
+    FOREIGN KEY (`Admin_id` )
+    REFERENCES `user` (`id_user` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = latin1;
 
--- --------------------------------------------------------
 
---
--- Table structure for table `post`
---
+-- -----------------------------------------------------
+-- Table `topic`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `topic` (
+  `id_topic` INT(11) NOT NULL AUTO_INCREMENT ,
+  `title` VARCHAR(45) CHARACTER SET 'utf8' COLLATE 'utf8_polish_ci' NULL DEFAULT NULL ,
+  `user_id_user` INT(11) NOT NULL ,
+  `added_date` VARCHAR(8) CHARACTER SET 'utf8' COLLATE 'utf8_polish_ci' NOT NULL ,
+  `added_time` VARCHAR(45) CHARACTER SET 'utf8' COLLATE 'utf8_polish_ci' NOT NULL ,
+  `first_topic` INT(11) NOT NULL ,
+  `category_id_category` INT(11) NOT NULL ,
+  PRIMARY KEY (`id_topic`, `category_id_category`, `first_topic`) ,
+  INDEX `fk_topic_category` (`category_id_category` ASC) ,
+  CONSTRAINT `fk_topic_category`
+    FOREIGN KEY (`category_id_category` )
+    REFERENCES `category` (`id_category` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_polish_ci;
 
-CREATE TABLE IF NOT EXISTS `post` (
-  `id_post` int(11) NOT NULL AUTO_INCREMENT,
-  `value` varchar(11500)  NOT NULL,
-  `topic_id_topic` int(11) NOT NULL,
-  `user_id_user` int(11) NOT NULL,
-  `added_date` varchar(8) NOT NULL,
-  `added_time` varchar(8) NOT NULL,
-  PRIMARY KEY (`id_post`)
-) ENGINE=InnoDB ;
 
--- --------------------------------------------------------
+-- -----------------------------------------------------
+-- Table `post`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `post` (
+  `id_post` INT(11) NOT NULL AUTO_INCREMENT ,
+  `value` VARCHAR(11500) CHARACTER SET 'utf8' COLLATE 'utf8_polish_ci' NOT NULL ,
+  `added_date` VARCHAR(8) CHARACTER SET 'utf8' COLLATE 'utf8_polish_ci' NOT NULL ,
+  `added_time` VARCHAR(8) CHARACTER SET 'utf8' COLLATE 'utf8_polish_ci' NOT NULL ,
+  `topic_id_topic` INT(11) NOT NULL ,
+  `user_id_user` INT(11) NOT NULL ,
+  PRIMARY KEY (`id_post`, `topic_id_topic`, `user_id_user`) ,
+  INDEX `fk_post_topic` (`topic_id_topic` ASC) ,
+  INDEX `fk_post_user` (`user_id_user` ASC) ,
+  CONSTRAINT `fk_post_topic`
+    FOREIGN KEY (`topic_id_topic` )
+    REFERENCES `topic` (`id_topic` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_post_user`
+    FOREIGN KEY (`user_id_user` )
+    REFERENCES `user` (`id_user` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_polish_ci;
 
---
--- Table structure for table `shoutbox`
---
 
-CREATE TABLE IF NOT EXISTS `shoutbox` (
-  `id_shoutbox` int(11) NOT NULL AUTO_INCREMENT,
-  `text` varchar(100) NOT NULL,
-  `user_id_user` int(11) NOT NULL,
-  PRIMARY KEY (`id_shoutbox`)
-) ENGINE=InnoDB ;
+-- -----------------------------------------------------
+-- Table `shoutbox`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `shoutbox` (
+  `id_shoutbox` INT(11) NOT NULL AUTO_INCREMENT ,
+  `text` VARCHAR(100) CHARACTER SET 'utf8' COLLATE 'utf8_polish_ci' NOT NULL ,
+  `user_id_user` INT(11) NOT NULL ,
+  PRIMARY KEY (`id_shoutbox`, `user_id_user`) ,
+  INDEX `fk_shoutbox_user` (`user_id_user` ASC) ,
+  CONSTRAINT `fk_shoutbox_user`
+    FOREIGN KEY (`user_id_user` )
+    REFERENCES `user` (`id_user` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_polish_ci;
 
--- --------------------------------------------------------
 
---
--- Table structure for table `topic`
---
-
-CREATE TABLE IF NOT EXISTS `topic` (
-  `id_topic` int(11) NOT NULL AUTO_INCREMENT,
-  `title` varchar(45) DEFAULT NULL,
-  `category_id_category` int(11) NOT NULL,
-  `user_id_user` int(11) NOT NULL,
-  `added_date` varchar(8) NOT NULL,
-  `added_time` varchar(45) NOT NULL,
-  `first_topic` int(11) NOT NULL,
-  PRIMARY KEY (`id_topic`)
-) ENGINE=InnoDB ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `user`
---
-
-CREATE TABLE IF NOT EXISTS `user` (
-  `id_user` int(11) NOT NULL AUTO_INCREMENT,
-  `login` varchar(45) NOT NULL,
-  `email` varchar(45) NOT NULL,
-  `password` varchar(45) DEFAULT NULL,
-  `name` varchar(45) DEFAULT NULL,
-  `surname` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`id_user`)
-) ENGINE=InnoDB  ;
 
 --
 -- Dumping data for table `user`
@@ -143,3 +156,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 INSERT INTO `user` (`id_user`, `login`, `email`, `password`, `name`, `surname`) VALUES
 (1, 'admin', 'biuro@onewebpro.pl', '21232f297a57a5a743894a0e4a801fc3', 'Maciej', 'Roma&Aring;'),
 (2, 'user', 'maciej.romanski@o2.pl', 'ee11cbb19052e40b07aac0ca060c23ee', 'user', 'user');
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

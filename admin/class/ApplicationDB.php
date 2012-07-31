@@ -7,17 +7,17 @@
  * Class to manage connection with database. Use PDO connection only.
  *
  * @package core
- *
- * @property-read $connection its return PDO object
+ * @property PDO connection
  * */
 
 class ApplicationDB
 {
     /**
-     * PDO instance.
+     * PDO instance
+     * @static.
      * @var PDO
      */
-    private $connection;
+    private static $connection;
 
    /**
     * Construct a Database connection, get all
@@ -26,16 +26,16 @@ class ApplicationDB
     {
         switch(DB_TYPE){
             case "mysql":
-                $this->connection = new PDO(DB_TYPE.":host=".DB_ADDRES.";dbname=".DB_NAME.";charset=".DB_CHARSET, DB_USER,DB_PASSWORD);
-                $this->connection->setAttribute(PDO::ATTR_ERRMODE , PDO::ERRMODE_EXCEPTION);
+                self::$connection = new PDO(DB_TYPE.":host=".DB_ADDRES.";dbname=".DB_NAME.";charset=".DB_CHARSET, DB_USER,DB_PASSWORD);
+                self::$connection->setAttribute(PDO::ATTR_ERRMODE , PDO::ERRMODE_EXCEPTION);
                 break;
             case "pgsql":
-                $this->connection = new PDO(DB_TYPE.":host=".DB_ADDRES.";dbname=".DB_NAME."", DB_USER,DB_PASSWORD);
-                $this->connection->setAttribute(PDO::ATTR_ERRMODE , PDO::ERRMODE_EXCEPTION);
-                $this->connection->exec("SET NAMES".DB_CHARSET);
+                self::$connection = new PDO(DB_TYPE.":host=".DB_ADDRES.";dbname=".DB_NAME."", DB_USER,DB_PASSWORD);
+                self::$connection->setAttribute(PDO::ATTR_ERRMODE , PDO::ERRMODE_EXCEPTION);
+                self::$connection->exec("SET NAMES".DB_CHARSET);
                 break;
             case "oracle":
-                $this->connection = new PDO("OCI:dbname=".DB_NAME.";charset=".DB_CHARSET, DB_USER, DB_PASSWORD);
+                self::$connection = new PDO("OCI:dbname=".DB_NAME.";charset=".DB_CHARSET, DB_USER, DB_PASSWORD);
                 break;
         }
     }
@@ -44,14 +44,14 @@ class ApplicationDB
     * Close Database connection*/
     function __destruct()
     {
-        $this->connection = null;
+        self::$connection = null;
     }
 
    /**
     * Close Database connection*/
     public function  closeDB()
     {
-        $this->connection = null;
+        self::$connection = null;
     }
 
    /**
@@ -61,13 +61,17 @@ class ApplicationDB
     *@throws Exception*/
     public static function connectDB()
     {
-        $conn = new ApplicationDB();
-            try{
-                return $conn->getConnection();
-            }
-            catch(PDOException $e){
-                throw new Exception ('Connection error: '.$e->getMessage());
-            }
+       if(!self::$connection){
+           $conn = new ApplicationDB();
+           try{
+               return $conn->getConnection();
+           }
+           catch(PDOException $e){
+               throw new Exception ('Connection error: '.$e->getMessage());
+           }
+       }
+        else
+            return self::$connection;
     }
 
     /**
@@ -75,7 +79,7 @@ class ApplicationDB
      * @return PDO*/
     public function getConnection()
     {
-        return $this->connection;
+        return self::$connection;
     }
 
 }

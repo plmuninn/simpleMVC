@@ -148,34 +148,37 @@ class ValueCheck
      */
     public static function  showPDOType($valueArr, $typeArr){
         $key = key($valueArr);
-        $type = preg_replace("/[^A-Za-z]/", '', $typeArr[$key]);       /*Get type of variable*/
-        $value =$valueArr[$key];      /*Get varieble*/
+        if(array_key_exists($key,$typeArr)){
+            $type = preg_replace("/[^A-Za-z]/", '', $typeArr[$key]);       /*Get type of variable*/
+            $value =$valueArr[$key];      /*Get varieble*/
 
-        if(count($value) != 0 && $value != ''){
-            switch($type){
-                case "int":
-                    if(is_numeric($value)){
-                        return PDO::PARAM_INT;
-                    }
-                    else
-                        return false;
-                    break;
-                case "varchar":
-                    if(is_string($value)){
-                        return PDO::PARAM_STR;
-                    }
-                    else
-                        return false;
-                    break;
-                case "decimal":
-                    if(is_double($value)){
-                       return PDO::PARAM_STR;
-                    }
-                    else
-                        return false;
-                    break;
+            if(count($value) != 0 && $value != ''){
+                switch($type){
+                    case "int":
+                        if(is_numeric($value)){
+                            return PDO::PARAM_INT;
+                        }
+                        else
+                            return false;
+                        break;
+                    case "varchar":
+                        if(is_string($value)){
+                            return PDO::PARAM_STR;
+                        }
+                        else
+                            return false;
+                        break;
+                    case "decimal":
+                        if(is_double($value)){
+                           return PDO::PARAM_STR;
+                        }
+                        else
+                            return false;
+                        break;
+                }
             }
         }
-
+        else
+            return false;
     }
 }

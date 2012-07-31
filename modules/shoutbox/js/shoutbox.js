@@ -1,9 +1,6 @@
 
 $(document).ready(function() {
 
-
-    $(".shout").append("<div class='shoutbox_loader'><img src='"+url+"modules/shoutbox/views/img/ajax-loader.gif' /></div>");
-
     loadShoutbox();
     $("#shout_send").click(function(e){
         e.preventDefault();
@@ -39,6 +36,8 @@ $(document).ready(function() {
 });
 
 function loadShoutbox(){
+    $(".shout").empty();
+    $(".shout").append("<div class='shoutbox_loader'><img src='"+url()+"modules/shoutbox/img/ajax-loader.gif' /></div>");
     $.ajax({
         url: url() +"modules/shoutbox/views/shout.php"
     }).done(function(data){

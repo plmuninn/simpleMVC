@@ -34,9 +34,7 @@
 <li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
                 <span class="label label-info">3</span></a></li>
 <li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
-                <ul><li>todo 
-                <span class="label label-info">2</span>
-</li></ul></a></li>
+                <ul></ul></a></li>
 <li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
                 <span class="label label-info">0</span></a></li>
 </ul>
@@ -62,32 +60,42 @@
 <li class="method public "><a href="#__destruct" title="__destruct :: Close Database connection."><span class="description">Close Database connection.</span><pre>__destruct()</pre></a></li>
 <li class="method public inherited"><a href="#closeDB" title="closeDB :: Close Database connection"><span class="description">Close Database connection</span><pre>closeDB()</pre></a></li>
 <li class="method public inherited"><a href="#connectDB" title="connectDB :: Create new connection"><span class="description">Create new connection</span><pre>connectDB()</pre></a></li>
+<li class="method public "><a href="#count" title="count :: Method return count of objects in database;"><span class="description">Method return count of objects in database;</span><pre>count()</pre></a></li>
 <li class="method public "><a href="#getAll" title="getAll :: Method return all object of this model from database."><span class="description">Method return all object of this model from database.</span><pre>getAll()</pre></a></li>
 <li class="method public inherited"><a href="#getAllById" title="getAllById :: Return array with objects by $primaryKeys"><span class="description">Return array with objects by $primaryKeys</span><pre>getAllById()</pre></a></li>
 <li class="method public "><a href="#getById" title="getById :: Method get object from database by id key."><span class="description">Method get object from database by id key.</span><pre>getById()</pre></a></li>
 <li class="method public inherited"><a href="#getConnection" title="getConnection :: Return PDO object"><span class="description">Return PDO object</span><pre>getConnection()</pre></a></li>
+<li class="method public inherited"><a href="#getMaxId" title="getMaxId :: Return next id in table."><span class="description">Return next id in table.</span><pre>getMaxId()</pre></a></li>
+<li class="method public inherited"><a href="#getNew" title="getNew :: If object is new in database or isn't."><span class="description">If object is new in database or isn't.</span><pre>getNew()</pre></a></li>
+<li class="method public inherited"><a href="#getPrimary" title="getPrimary :: Array with relation keys"><span class="description">Array with relation keys</span><pre>getPrimary()</pre></a></li>
 <li class="method public "><a href="#getQueryObject" title="getQueryObject :: Method get object from database by $statement."><span class="description">Method get object from database by $statement.</span><pre>getQueryObject()</pre></a></li>
+<li class="method public inherited"><a href="#getRelationsArray" title="getRelationsArray :: Array with relations keys"><span class="description">Array with relations keys</span><pre>getRelationsArray()</pre></a></li>
 <li class="method public inherited"><a href="#getVariablesTypes" title="getVariablesTypes :: Return all variable types from database"><span class="description">Return all variable types from database</span><pre>getVariablesTypes()</pre></a></li>
 <li class="method public inherited"><a href="#query" title="query :: Make query from $statement."><span class="description">Make query from $statement.</span><pre>query()</pre></a></li>
+<li class="method public "><a href="#remove" title="remove :: Function remove model if it's not new."><span class="description">Function remove model if it's not new.</span><pre>remove()</pre></a></li>
 <li class="method public "><a href="#removeById" title="removeById :: Method remove object from database by id."><span class="description">Method remove object from database by id.</span><pre>removeById()</pre></a></li>
 <li class="method public "><a href="#save" title="save :: Method save object in database."><span class="description">Method save object in database.</span><pre>save()</pre></a></li>
+<li class="method public inherited"><a href="#setNew" title="setNew :: If object is new in database or isn't."><span class="description">If object is new in database or isn't.</span><pre>setNew()</pre></a></li>
 <li class="nav-header protected">» Protected</li>
 <li class="method protected inherited"><a href="#afterSave" title="afterSave :: We can do something with data after save."><span class="description">We can do something with data after save.</span><pre>afterSave()</pre></a></li>
 <li class="method protected inherited"><a href="#beforeSave" title="beforeSave :: We can do something with data before save."><span class="description">We can do something with data before save.</span><pre>beforeSave()</pre></a></li>
 <li class="nav-header private">» Private</li>
-<li class="method private inherited"><a href="#getKeys" title="getKeys :: Method returns relation keys."><span class="description">Method returns relation keys.</span><pre>getKeys()</pre></a></li>
+<li class="method private inherited"><a href="#generateModels" title="generateModels :: Method create a referenced model objects."><span class="description">Method create a referenced model objects.</span><pre>generateModels()</pre></a></li>
+<li class="method private inherited"><a href="#indexes" title="indexes :: Get relations keys from information schema."><span class="description">Get relations keys from information schema.</span><pre>indexes()</pre></a></li>
+<li class="method private inherited"><a href="#models" title="models :: Method generate instance of models with values."><span class="description">Method generate instance of models with values.</span><pre>models()</pre></a></li>
 <li class="method private inherited"><a href="#mysql" title="mysql :: Get values from mysql database"><span class="description">Get values from mysql database</span><pre>mysql()</pre></a></li>
-<li class="method private inherited"><a href="#relations" title="relations :: Method create relations"><span class="description">Method create relations</span><pre>relations()</pre></a></li>
+<li class="method private inherited"><a href="#relationValues" title="relationValues :: Generate from relations models values to model."><span class="description">Generate from relations models values to model.</span><pre>relationValues()</pre></a></li>
 <li class="nav-header">
 <i class="icon-custom icon-property"></i> Properties</li>
 <li class="nav-header protected">» Protected</li>
 <li class="property protected inherited"><a href="#%24new" title="$new :: If object is new to create or save in DB."><span class="description">If object is new to create or save in DB.</span><pre>$new</pre></a></li>
 <li class="property protected inherited"><a href="#%24plugins" title="$plugins :: PluginManager"><span class="description">PluginManager</span><pre>$plugins</pre></a></li>
 <li class="property protected inherited"><a href="#%24primary" title="$primary :: Primary keys array."><span class="description">Primary keys array.</span><pre>$primary</pre></a></li>
+<li class="property protected inherited"><a href="#%24relationsArray" title="$relationsArray :: Array with relations keys"><span class="description">Array with relations keys</span><pre>$relationsArray</pre></a></li>
 <li class="property protected "><a href="#%24table_name" title="$table_name :: Name of database table."><span class="description">Name of database table.</span><pre>$table_name</pre></a></li>
 <li class="property protected inherited"><a href="#%24variablesTypes" title="$variablesTypes :: Variables type mapping values"><span class="description">Variables type mapping values</span><pre>$variablesTypes</pre></a></li>
 <li class="nav-header private">» Private</li>
-<li class="property private inherited"><a href="#%24connection" title="$connection :: PDO instance."><span class="description">PDO instance.</span><pre>$connection</pre></a></li>
+<li class="property private inherited"><a href="#%24connection" title="$connection :: PDO instance"><span class="description">PDO instance</span><pre>$connection</pre></a></li>
 </ul>
 </div>
 <div class="span8">
@@ -124,14 +132,7 @@
 <h2>Construct mapping Database variables to object.</h2>
 <pre>__construct() </pre>
 <div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<p class="long_description"></p>
-<h3>Exceptions</h3>
-<table class="table table-bordered"><tr>
-<th><code><a href="http://php.net/manual/en/class.exception.php">\Exception</a></code></th>
-<td></td>
-</tr></table>
-</div></div>
+<div class="row collapse"><div class="detail-description"><p class="long_description"></p></div></div>
 </div>
 <a name="__destruct" id="__destruct"></a><div class="element clickable method public __destruct" data-toggle="collapse" data-target=".__destruct .collapse">
 <h2>Close Database connection.</h2>
@@ -184,6 +185,16 @@
 </tr></table>
 <h3>Returns</h3>
 <div class="subelement response"><code><a href="http://php.net/manual/en/class.pdo.php">\PDO</a></code></div>
+</div></div>
+</div>
+<a name="count" id="count"></a><div class="element clickable method public count" data-toggle="collapse" data-target=".count .collapse">
+<h2>Method return count of objects in database;</h2>
+<pre>count() : bool</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<h3>Returns</h3>
+<div class="subelement response"><code>bool</code></div>
 </div></div>
 </div>
 <a name="getAll" id="getAll"></a><div class="element clickable method public getAll" data-toggle="collapse" data-target=".getAll .collapse">
@@ -252,6 +263,48 @@
 <div class="subelement response"><code><a href="http://php.net/manual/en/class.pdo.php">\PDO</a></code></div>
 </div></div>
 </div>
+<a name="getMaxId" id="getMaxId"></a><div class="element clickable method public getMaxId" data-toggle="collapse" data-target=".getMaxId .collapse">
+<h2>Return next id in table.</h2>
+<pre>getMaxId() : mixed</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\ModelSQLManager::getMaxId()</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>mixed</code></div>
+</div></div>
+</div>
+<a name="getNew" id="getNew"></a><div class="element clickable method public getNew" data-toggle="collapse" data-target=".getNew .collapse">
+<h2>If object is new in database or isn't.</h2>
+<pre>getNew() : bool</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\ModelSQLManager::getNew()</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>bool</code></div>
+</div></div>
+</div>
+<a name="getPrimary" id="getPrimary"></a><div class="element clickable method public getPrimary" data-toggle="collapse" data-target=".getPrimary .collapse">
+<h2>Array with relation keys</h2>
+<pre>getPrimary() : Array</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\ModelSQLManager::getPrimary()</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>Array</code></div>
+</div></div>
+</div>
 <a name="getQueryObject" id="getQueryObject"></a><div class="element clickable method public getQueryObject" data-toggle="collapse" data-target=".getQueryObject .collapse">
 <h2>Method get object from database by $statement.</h2>
 <pre>getQueryObject(string $statement) : mixed</pre>
@@ -265,6 +318,20 @@
 </div>
 <h3>Returns</h3>
 <div class="subelement response"><code>mixed</code></div>
+</div></div>
+</div>
+<a name="getRelationsArray" id="getRelationsArray"></a><div class="element clickable method public getRelationsArray" data-toggle="collapse" data-target=".getRelationsArray .collapse">
+<h2>Array with relations keys</h2>
+<pre>getRelationsArray() : Array</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\ModelSQLManager::getRelationsArray()</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>Array</code></div>
 </div></div>
 </div>
 <a name="getVariablesTypes" id="getVariablesTypes"></a><div class="element clickable method public getVariablesTypes" data-toggle="collapse" data-target=".getVariablesTypes .collapse">
@@ -298,6 +365,19 @@
 </div>
 <h3>Returns</h3>
 <div class="subelement response"><code>mixed</code></div>
+</div></div>
+</div>
+<a name="remove" id="remove"></a><div class="element clickable method public remove" data-toggle="collapse" data-target=".remove .collapse">
+<h2>Function remove model if it's not new.</h2>
+<pre>remove() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="http://php.net/manual/en/class.exception.php">\Exception</a></code></th>
+<td></td>
+</tr></table>
 </div></div>
 </div>
 <a name="removeById" id="removeById"></a><div class="element clickable method public removeById" data-toggle="collapse" data-target=".removeById .collapse">
@@ -339,6 +419,23 @@
 </div>
 </div></div>
 </div>
+<a name="setNew" id="setNew"></a><div class="element clickable method public setNew" data-toggle="collapse" data-target=".setNew .collapse">
+<h2>If object is new in database or isn't.</h2>
+<pre>setNew(bool $new) </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\ModelSQLManager::setNew()</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$new</h4>
+<code>bool</code>
+</div>
+</div></div>
+</div>
 <a name="afterSave" id="afterSave"></a><div class="element clickable method protected afterSave" data-toggle="collapse" data-target=".afterSave .collapse">
 <h2>We can do something with data after save.</h2>
 <pre>afterSave() </pre>
@@ -368,16 +465,50 @@
 </div>
 </div></div>
 </div>
-<a name="getKeys" id="getKeys"></a><div class="element clickable method private getKeys" data-toggle="collapse" data-target=".getKeys .collapse">
-<h2>Method returns relation keys.</h2>
-<pre>getKeys() </pre>
+<a name="generateModels" id="generateModels"></a><div class="element clickable method private generateModels" data-toggle="collapse" data-target=".generateModels .collapse">
+<h2>Method create a referenced model objects.</h2>
+<pre>generateModels() </pre>
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="detail-description">
 <p class="long_description"></p>
 <table class="table table-bordered"><tr>
 <th>inherited_from</th>
-<td>\ModelSQLManager::getKeys()</td>
+<td>\ModelSQLManager::generateModels()</td>
 </tr></table>
+</div></div>
+</div>
+<a name="indexes" id="indexes"></a><div class="element clickable method private indexes" data-toggle="collapse" data-target=".indexes .collapse">
+<h2>Get relations keys from information schema.</h2>
+<pre>indexes() </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\ModelSQLManager::indexes()</td>
+</tr></table>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="http://php.net/manual/en/class.exception.php">\Exception</a></code></th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a name="models" id="models"></a><div class="element clickable method private models" data-toggle="collapse" data-target=".models .collapse">
+<h2>Method generate instance of models with values.</h2>
+<pre>models($instance) </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\ModelSQLManager::models()</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$instance</h4>
+<code></code>
+</div>
 </div></div>
 </div>
 <a name="mysql" id="mysql"></a><div class="element clickable method private mysql" data-toggle="collapse" data-target=".mysql .collapse">
@@ -397,15 +528,15 @@
 </tr></table>
 </div></div>
 </div>
-<a name="relations" id="relations"></a><div class="element clickable method private relations" data-toggle="collapse" data-target=".relations .collapse">
-<h2>Method create relations</h2>
-<pre>relations() </pre>
+<a name="relationValues" id="relationValues"></a><div class="element clickable method private relationValues" data-toggle="collapse" data-target=".relationValues .collapse">
+<h2>Generate from relations models values to model.</h2>
+<pre>relationValues() </pre>
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="detail-description">
 <p class="long_description"></p>
 <table class="table table-bordered"><tr>
 <th>inherited_from</th>
-<td>\ModelSQLManager::relations()</td>
+<td>\ModelSQLManager::relationValues()</td>
 </tr></table>
 </div></div>
 </div>
@@ -447,6 +578,18 @@
 </tr></table>
 </div></div>
 </div>
+<a name="%24relationsArray" id="$relationsArray"> </a><div class="element clickable property protected $relationsArray" data-toggle="collapse" data-target=".$relationsArray .collapse">
+<h2>Array with relations keys</h2>
+<pre>$relationsArray : Array</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\ModelSQLManager::$$relationsArray</td>
+</tr></table>
+</div></div>
+</div>
 <a name="%24table_name" id="$table_name"> </a><div class="element clickable property protected $table_name" data-toggle="collapse" data-target=".$table_name .collapse">
 <h2>Name of database table.</h2>
 <pre>$table_name : null | string</pre>
@@ -466,12 +609,16 @@
 </div></div>
 </div>
 <a name="%24connection" id="$connection"> </a><div class="element clickable property private $connection" data-toggle="collapse" data-target=".$connection .collapse">
-<h2>PDO instance.</h2>
+<h2>PDO instance</h2>
 <pre>$connection : <a href="http://php.net/manual/en/class.pdo.php">\PDO</a></pre>
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="detail-description">
 <p class="long_description"></p>
 <table class="table table-bordered">
+<tr>
+<th>static</th>
+<td>.</td>
+</tr>
 <tr>
 <th>inherited_from</th>
 <td>\ApplicationDB::$$connection</td>
@@ -490,7 +637,7 @@
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a8</a> and<br>
-            generated on 2012-07-26T07:47:20+02:00.<br></footer></div>
+            generated on 2012-07-31T13:38:42+02:00.<br></footer></div>
 </div>
 </body>
 </html>

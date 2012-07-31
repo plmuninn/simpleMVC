@@ -122,4 +122,34 @@ class Model extends ModelSQLManager
         }
     }
 
+    /**
+     * Function remove model if it's not new.
+     */
+    public function remove()
+        {
+
+            try{
+                parent::remove();
+
+            }
+                catch(Exception $e){
+                    $_SESSION["error"] = array("type"=>"error","message"=>$e->getMessage());
+                }
+    }
+
+    /**
+     * Method return count of objects in database;
+     * @return bool
+     */
+    public function count()
+    {
+        try{
+        return parent::count();
+        }
+        catch(Exception $e){
+            $_SESSION["error"] = array("type"=>"error","message"=>$e->getMessage());
+        }
+    }
+
+
 }

@@ -74,8 +74,7 @@ class CategoryController  extends Controller
             $_SESSION["error"] = array("type"=>"error","message"=>"Musisz być zalogowany");
             $this->redirectToOther("login", "");}
         else  if(Application::isAdmin()){
-            $this->model->removeById(array("id_category" => HTMLManager::cleanInput($_GET["cat_id"])));
-            $topics = $this->model->query("SELECT id_topic FROM topic WHERE category_id_category =".HTMLManager::cleanInput($_GET["cat_id"]));
+             $topics = $this->model->query("SELECT id_topic FROM topic WHERE category_id_category =".HTMLManager::cleanInput($_GET["cat_id"]));
 
             /*Usuwanie zależności*/
             $post = new PostModel();
@@ -86,6 +85,8 @@ class CategoryController  extends Controller
                      $topic->removeById(array("id_topic"=>$value["id_topic"]));
                 }
             }
+
+            $this->model->removeById(array("id_category" => HTMLManager::cleanInput($_GET["cat_id"])));
 
             $cat = $this->model->getById(array("id_category"=>HTMLManager::cleanInput($_GET["cat_id"])));
 
