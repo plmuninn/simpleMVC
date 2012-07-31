@@ -1,4 +1,9 @@
 <h1>Simple MVC</h1>
+<p>This is my simple implementation MVC with ORM. ORM have relations initialized with most simple implementation. We can use it or not.</p>
+<p>Script have simple error logger and system of components (with all MVC implementation), plugins (with 6 events) and many more.</p>
+<p>Before implementation of relations in ORM it was fast. After is slow (very). Like for now i will not working about it.</p>
+<p>This script is showing my skills of PHP, understanding MVC and show how simple is ORM pattern to design,and ORM relations design.</p>
+<p>If somebody wants to evolve this script. I can help, like for me it was good practice to do this. But I don't won't to do everything alone : ).</p>
 <h2>A Framework documentation (only basic for now).</h2>
 <p><a href="http://simplemvc.loki.iswift.eu/doc/" target="blank">Documentation</a></p>
 <h2>Simple MVC framework with forum implementation.</h2>
