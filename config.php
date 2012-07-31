@@ -16,8 +16,8 @@ define("SITE_CHARSET", "utf-8");
 
 /*Database configuration*/
 define("DB_TYPE","mysql");
-define("DB_NAME" ,"test2");
-define("DB_USER", "root");
+define("DB_NAME" ,"");
+define("DB_USER", "");
 define("DB_PASSWORD","");
 define("DB_ADDRES","localhost");
 define("DB_CHARSET", "utf8");
