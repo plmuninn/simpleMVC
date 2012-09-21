@@ -21,30 +21,27 @@ class SiteController extends Controller
         $this->plugins = new PluginManager();
         parent::generateControllers();
 
-       try{
-           if(!isset($this->component)){
-                if($this->controllers != null){
-                    if(!parent::redirect()){
+        try {
+            if (!isset($this->component)) {
+                if ($this->controllers != null) {
+                    if (!parent::redirect()) {
                         throw new Exception ("Site don't found.");
                     }
+                } else {
+                    parent::actionIndex();
                 }
-                 else{
-                     parent::actionIndex();
-                 }
-           }
-           else
-               parent::redirectComponent();
+            } else
+                parent::redirectComponent();
 
-       }
-       catch(Exception $e){
-           echo $e->getMessage();
-       }
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
     }
 
 
     protected function beforeRender()
     {
-       parent::setTitle("");
+        parent::setTitle("");
     }
 
 

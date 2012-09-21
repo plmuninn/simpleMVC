@@ -10,27 +10,26 @@ class LoginController extends Controller
 {
     protected function actionIndex()
     {
-        if(Application::isGuest())
-        parent::actionIndex();
+        if (Application::isGuest())
+            parent::actionIndex();
         else
-        $this->redirectToOther("","");
+            $this->redirectToOther("", "");
     }
 
     protected function beforeRender()
     {
         $this->setTitle(" Zaloguj");
 
-        if(isset($_POST['zaloguj'])){
-        unset($_POST['zaloguje']);
-        $user = new UserModel();
-        $user->login($_POST["login"],$_POST["password"]);
-            if(!Application::isGuest()){
-            $this->redirectToOther("", "");
+        if (isset($_POST['zaloguj'])) {
+            unset($_POST['zaloguje']);
+            $user = new UserModel();
+            $user->login($_POST["login"], $_POST["password"]);
+            if (!Application::isGuest()) {
+                $this->redirectToOther("", "");
+            } else {
+                $_SESSION["error"] = array("type" => "error", "message" => "Niepoprawny login lub hasło");
+            }
         }
-        else{
-            $_SESSION["error"] = array("type"=>"error","message"=>"Niepoprawny login lub hasło");
-        }
-    }
 
     }
 

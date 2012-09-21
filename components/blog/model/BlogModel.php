@@ -8,13 +8,15 @@
  */
 class BlogModel extends Model
 {
-    public function getUser($id){
+    public function getUser($id)
+    {
         return $this->getAllById(array("id_user" => $id));
     }
 
-    public function getUserLast($id){
-       $userAll =  $this->getUser($id);
-       $lenght = count($userAll);
-        return $userAll[$lenght-1];
+    public function getUserLast($id)
+    {
+        $userAll = $this->getUser($id);
+        $lenght = count($userAll);
+        return $userAll[$lenght - 1];
     }
 }

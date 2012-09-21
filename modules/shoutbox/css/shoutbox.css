@@ -1,5 +1,9 @@
-.box{text-align: center; width: 100%;}
-.shoutbox{
+.box {
+    text-align: center;
+    width: 100%;
+}
+
+.shoutbox {
     margin: 0 auto;
     text-align: left;
     width: 600px;
@@ -8,10 +12,32 @@
     border-radius: 10px;
     padding: 2px;
 }
-.shout{height: 70px;}
-.shoutbox_loader{text-align: center;}
-#shout_send{margin: 10px 0 0 0;}
-#shout_message{width: 595px; margin: 6px 0 0 -4px;}
-.shout ul{list-style: none}
-.shout ul li {margin: 2px 0 0 20px;}
-.shout_remove{float: right;}
+
+.shout {
+    height: 70px;
+}
+
+.shoutbox_loader {
+    text-align: center;
+}
+
+#shout_send {
+    margin: 10px 0 0 0;
+}
+
+#shout_message {
+    width: 595px;
+    margin: 6px 0 0 -4px;
+}
+
+.shout ul {
+    list-style: none
+}
+
+.shout ul li {
+    margin: 2px 0 0 20px;
+}
+
+.shout_remove {
+    float: right;
+}

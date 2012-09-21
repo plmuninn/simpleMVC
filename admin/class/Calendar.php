@@ -14,7 +14,7 @@ class Calendar
      * Configuration class instance.
      * @var Configuration
      */
-    private  $configuration;
+    private $configuration;
 
     /**
      *Setting time zone from Configuration class.
@@ -24,50 +24,50 @@ class Calendar
         $this->configuration = new Configuration();
         $zone = $this->configuration->getTimeZone();
         $array = $this->configuration->getTimeZones();
-        $key = array_search($zone,$array);
+        $key = array_search($zone, $array);
         date_default_timezone_set($key);
     }
 
-   /**
-    * Clearing instance.
-    */
+    /**
+     * Clearing instance.
+     */
     function __destruct()
     {
         $this->configuration = null;
     }
 
-   /**
-    * Method return actual date.
-    * @return string actual date
-    */
+    /**
+     * Method return actual date.
+     * @return string actual date
+     */
     public static function today()
     {
         $cal = new Calendar();
-        return  date($cal->configuration->getDateFormat());
+        return date($cal->configuration->getDateFormat());
     }
 
-   /**
-    * Method return actual time.
-    * @return string actual time
-    */
+    /**
+     * Method return actual time.
+     * @return string actual time
+     */
     public static function now()
     {
         $cal = new Calendar();
         return date($cal->configuration->getTimeFormat());
     }
 
-   /**
-    * Return timestamp date.
-    *@static
-    *@param int $year
-    *@param int $month
-    *@param int $day
-    *@return string timestamp date */
-    public static function changedDate($year = 0 , $month = 0 , $day = 0)
+    /**
+     * Return timestamp date.
+     * @static
+     * @param int $year
+     * @param int $month
+     * @param int $day
+     * @return string timestamp date */
+    public static function changedDate($year = 0, $month = 0, $day = 0)
     {
         $cal = new Calendar();
-        $nextDate = mktime(0,0,0,date("m")+$month,date("d")+$day,date("Y")+$year);
-        return date($cal->configuration->getTimeFormat(),$nextDate);
+        $nextDate = mktime(0, 0, 0, date("m") + $month, date("d") + $day, date("Y") + $year);
+        return date($cal->configuration->getTimeFormat(), $nextDate);
     }
 
 
@@ -79,10 +79,10 @@ class Calendar
      * @param int $seconds
      * @return string
      */
-    public static function changedTime($hour = 0 , $minutes = 0 , $seconds = 0)
+    public static function changedTime($hour = 0, $minutes = 0, $seconds = 0)
     {
         $cal = new Calendar();
-        $nextDate = mktime(date("G")+$hour,date("i")+$minutes,date("s")+$seconds,0,0,0);
+        $nextDate = mktime(date("G") + $hour, date("i") + $minutes, date("s") + $seconds, 0, 0, 0);
         return date($cal->configuration->getTimeFormat(), $nextDate);
     }
 

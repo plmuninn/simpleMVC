@@ -3,43 +3,43 @@
  * Class mapping database columns to PHP Object values
  */
 
- /**
+/**
  *Class mapping database columns to PHP Object values and manage a relations
  *
  * @package core
  * @subpackage model
  *
- *@property string $table_name
- *@property array $primary
- *@property array $variablesTypes
- *@property bool $new
+ * @property string $table_name
+ * @property array $primary
+ * @property array $variablesTypes
+ * @property bool $new
  */
-class ModelSQLManager  extends ApplicationDB implements SQLManagerInterface
+class ModelSQLManager extends ApplicationDB implements SQLManagerInterface
 {
 
     /**
      * A model table name.
      * @var null
      */
-    protected  $table_name = null;
+    protected $table_name = null;
 
     /**
      * Primary keys array.
      * @var array
      */
-    protected  $primary = array();
+    protected $primary = array();
 
     /**
      * Variables type mapping values
      * @var array
      */
-    protected  $variablesTypes = array();
+    protected $variablesTypes = array();
 
     /**
      * If object is new to create or save in DB.
      * @var bool
      */
-    protected  $new = true;
+    protected $new = true;
 
     /**
      * PluginManager
@@ -65,10 +65,10 @@ class ModelSQLManager  extends ApplicationDB implements SQLManagerInterface
     {
 
         $this->plugins = new PluginManager();
-        switch(DB_TYPE){
+        switch (DB_TYPE) {
             case "mysql":
                 $this->mysql();
-            break;
+                break;
         }
 
     }
@@ -79,32 +79,34 @@ class ModelSQLManager  extends ApplicationDB implements SQLManagerInterface
      */
     private function mysql()
     {
-        $this->indexes();
+
+        /*Remove database relations*/
+        //     $this->indexes();
+
         $db = $this->connectDB();
-        if($this->table_name != ''){
-            $sql = "SHOW COLUMNS FROM ".$this->table_name;
+        if ($this->table_name != '') {
+            $sql = "SHOW COLUMNS FROM " . $this->table_name;
             $stmt = $db->prepare($sql);
             $arr = array();
-            try{
-                if($stmt->execute()){
-                    while($obj = $stmt->fetch(PDO::FETCH_OBJ)){
+            try {
+                if ($stmt->execute()) {
+                    while ($obj = $stmt->fetch(PDO::FETCH_OBJ)) {
                         array_push($arr, $obj);
+
                     }
-                        for($i = 0 ; $i < count($arr) ; $i++){
-                                if(strtolower($arr[$i]->Key) == "pri"){
-                                    $this->primary[strtolower($arr[$i]->Field)] = $arr[$i]->Extra;
-                                }
-                                    $this->{strtolower($arr[$i]->Field)} = NULL;
-                                    $this->variablesTypes[strtolower($arr[$i]->Field)] = $arr[$i]->Type;
+                    for ($i = 0; $i < count($arr); $i++) {
+                        if (strtolower($arr[$i]->Key) == "pri") {
+                            $this->primary[strtolower($arr[$i]->Field)] = $arr[$i]->Extra;
                         }
+                        $this->{strtolower($arr[$i]->Field)} = NULL;
+                        $this->variablesTypes[strtolower($arr[$i]->Field)] = $arr[$i]->Type;
+                    }
                 }
+            } catch (Exception $e) {
+                $_SESSION["error"] = array("type" => "error", "message" => $e->getMessage());
             }
-            catch(Exception $e){
-                $_SESSION["error"] = array("type"=>"error","message"=>$e->getMessage());
-            }
-        }
-        else{
-            throw new Exception("Don't find column name ".$this->table_name);
+        } else {
+            throw new Exception("Don't find column name " . $this->table_name);
         }
     }
 
@@ -112,40 +114,40 @@ class ModelSQLManager  extends ApplicationDB implements SQLManagerInterface
      * Get relations keys from information schema.
      * @throws Exception
      */
-    private function indexes(){
+    private function indexes()
+    {
         $db = $this->connectDB();
-        if($this->table_name != ''){
+        if ($this->table_name != '') {
             $sql = "SELECT table_name, column_name,
                     referenced_table_name, referenced_column_name
                     FROM INFORMATION_SCHEMA.key_column_usage
-                    WHERE referenced_table_schema = '".DB_NAME."'
+                    WHERE referenced_table_schema = '" . DB_NAME . "'
                     AND referenced_table_name IS NOT NULL AND table_name = '$this->table_name'
                     ORDER BY table_name, column_name";
             $stmt = $db->prepare($sql);
-            try{
-                if($stmt->execute()){
-                    while($obj = $stmt->fetch(PDO::FETCH_OBJ)){
-                        array_push($this->relationsArray,$obj);
+            try {
+                if ($stmt->execute()) {
+                    while ($obj = $stmt->fetch(PDO::FETCH_OBJ)) {
+                        array_push($this->relationsArray, $obj);
                     }
-                    if(count($this->relationsArray) > 0)
-                       $this->generateModels();
+                    if (count($this->relationsArray) > 0)
+                        $this->generateModels();
                 }
+            } catch (Exception $e) {
+                $_SESSION["error"] = array("type" => "error", "message" => $e->getMessage());
             }
-            catch(Exception $e){
-                $_SESSION["error"] = array("type"=>"error","message"=>$e->getMessage());
-            }
-        }
-        else{
-            throw new Exception("Don't find column name ".$this->table_name);
+        } else {
+            throw new Exception("Don't find column name " . $this->table_name);
         }
     }
 
     /**
      * Method create a referenced model objects.
      */
-    private function generateModels(){
-        foreach($this->relationsArray as $relation){
-            $model = ucfirst(strtolower($relation->referenced_table_name))."Model";
+    private function generateModels()
+    {
+        foreach ($this->relationsArray as $relation) {
+            $model = ucfirst(strtolower($relation->referenced_table_name)) . "Model";
             $instance = new $model();
             $modelName = lcfirst($model);
             $this->{$modelName} = $instance;
@@ -168,43 +170,43 @@ class ModelSQLManager  extends ApplicationDB implements SQLManagerInterface
      */
     public function getById($primaryKeys)
     {
-     if(is_array($primaryKeys)){
-        $db = $this->connectDB();
-        $sql = "SELECT * FROM ".$this->table_name." WHERE ";
-        $name = get_class($this);
+        if (is_array($primaryKeys)) {
+            $db = $this->connectDB();
+            $sql = "SELECT * FROM " . $this->table_name . " WHERE ";
+            $name = get_class($this);
 
-         foreach($primaryKeys as $key => $value){
-            $sql .="`".$key."`= :".$key." AND ";
-        }
+            foreach ($primaryKeys as $key => $value) {
+                $sql .= "`" . $key . "`= :" . $key . " AND ";
+            }
 
-        $sql = substr($sql , 0 , -4);
-        $stmt = $db->prepare($sql);
+            $sql = substr($sql, 0, -4);
+            $stmt = $db->prepare($sql);
 
-        foreach($primaryKeys as $key => $value){
-           $stmt->bindParam(":".$key , $value,ValueCheck::showPDOType(array($key => $value), $this->variablesTypes));
-        }
+            foreach ($primaryKeys as $key => $value) {
+                $stmt->bindParam(":" . $key, $value, ValueCheck::showPDOType(array($key => $value), $this->variablesTypes));
+            }
 
-        try{
-             if($stmt->execute()){
-                 $obj = $stmt->fetch(PDO::FETCH_OBJ);
-                     $instance = new $name();
-                     $instanceVars = $this->variablesTypes;
+            try {
+                if ($stmt->execute()) {
+                    $obj = $stmt->fetch(PDO::FETCH_OBJ);
+                    $instance = new $name();
+                    $instanceVars = $this->variablesTypes;
 
-                    if(!is_bool($obj)){
-                        foreach($instanceVars as $key => $value){
+                    if (!is_bool($obj)) {
+                        foreach ($instanceVars as $key => $value) {
                             $instance->{$key} = $obj->{$key};
                         }
 
-                        $this->models($instance);
+                        /*Remove database relations*/
+                        // $this->models($instance);
                     }
-                 $instance->setNew(false);
-                 return $instance;
+                    $instance->setNew(false);
+                    return $instance;
+                }
+            } catch (Exception $e) {
+                $_SESSION["error"] = array("type" => "error", "message" => $e->getMessage());
             }
         }
-        catch(Exception $e){
-            $_SESSION["error"] = array("type"=>"error","message"=>$e->getMessage());
-        }
-     }
         return false;
     }
 
@@ -220,36 +222,35 @@ class ModelSQLManager  extends ApplicationDB implements SQLManagerInterface
         $stmt = $db->prepare($statement);
         $objects = array();
 
-        try{
-            if($stmt->execute()){
-                    while($obj = $stmt->fetch(PDO::FETCH_OBJ)){
+        try {
+            if ($stmt->execute()) {
+                while ($obj = $stmt->fetch(PDO::FETCH_OBJ)) {
 
-                        $instance = new $name();
-                        $instanceVars = $this->variablesTypes;
+                    $instance = new $name();
+                    $instanceVars = $this->variablesTypes;
 
-                        if(!is_bool($obj)){
-                            foreach($instanceVars as $key => $value){
-                                $instance->{$key} = $obj->{$key};
-                            }
-
-                            $this->models($instance);
-                            $instance->setNew(false);
-                           array_push($objects, $instance);
+                    if (!is_bool($obj)) {
+                        foreach ($instanceVars as $key => $value) {
+                            $instance->{$key} = $obj->{$key};
                         }
+
+                        /*Remove database relations*/
+                        // $this->models($instance);
+                        $instance->setNew(false);
+                        array_push($objects, $instance);
                     }
-                        if(count($objects) > 1){
-                           return $objects;
-                        }else if (count($objects) == 1){
-                           return $objects[0];
-                        }
-                        else if (count($objects) <= 0){
-                           return false;
-                        }
+                }
+                if (count($objects) > 1) {
+                    return $objects;
+                } else if (count($objects) == 1) {
+                    return $objects[0];
+                } else if (count($objects) <= 0) {
+                    return false;
+                }
             }
+        } catch (ErrorException $e) {
+            $_SESSION["error"] = array("type" => "error", "message" => $e->getMessage());
         }
-        catch(ErrorException $e){
-            $_SESSION["error"] = array("type"=>"error","message"=>$e->getMessage());
-            }
         return false;
     }
 
@@ -264,22 +265,20 @@ class ModelSQLManager  extends ApplicationDB implements SQLManagerInterface
         $stmt = $db->prepare($statement);
         $objects = array();
 
-        try{
-            if($stmt->execute()){
-               while($obj = $stmt->fetch(PDO::FETCH_ASSOC)){
-                    array_push($objects,$obj);
+        try {
+            if ($stmt->execute()) {
+                while ($obj = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    array_push($objects, $obj);
                 }
-                 if(count($objects) > 0)
+                if (count($objects) > 0)
                     return $objects;
-                     else
-                       return true;
-            }
-            else{
+                else
+                    return true;
+            } else {
                 return false;
             }
-        }
-        catch(ErrorException $e){
-            $_SESSION["error"] = array("type"=>"error","message"=>$e->getMessage());
+        } catch (ErrorException $e) {
+            $_SESSION["error"] = array("type" => "error", "message" => $e->getMessage());
         }
         return false;
     }
@@ -288,38 +287,39 @@ class ModelSQLManager  extends ApplicationDB implements SQLManagerInterface
      * Return array of all object's in database.
      * @return mixed
      */
-    public function getAll(){
+    public function getAll()
+    {
         $db = $this->connectDB();
-        $sql = "SELECT * FROM ".$this->table_name;
+        $sql = "SELECT * FROM " . $this->table_name;
         $stmt = $db->prepare($sql);
         $arr = array();
         $name = get_class($this);
 
-     try{
-         if($stmt->execute()){
-             while($obj = $stmt->fetch(PDO::FETCH_OBJ)){
-                 $instance = new $name();
-                 $instanceVars = $this->variablesTypes;
+        try {
+            if ($stmt->execute()) {
+                while ($obj = $stmt->fetch(PDO::FETCH_OBJ)) {
+                    $instance = new $name();
+                    $instanceVars = $this->variablesTypes;
 
-                 foreach($instanceVars as $key => $value){
-                     $instance->{$key} = $obj->{$key};
-                 }
+                    foreach ($instanceVars as $key => $value) {
+                        $instance->{$key} = $obj->{$key};
+                    }
 
-              $this->models($instance);
-              $instance->setNew(false);
-              array_push($arr, $instance);
-             }
-             $stmt = null;
+                    /*Remove database relations*/
+                    // $this->models($instance);
 
-             return $arr;
-         }
-        }
-        catch(Exception $e){
-            $_SESSION["error"] = array("type"=>"error","message"=>$e->getMessage());
+                    $instance->setNew(false);
+                    array_push($arr, $instance);
+                }
+                $stmt = null;
+
+                return $arr;
+            }
+        } catch (Exception $e) {
+            $_SESSION["error"] = array("type" => "error", "message" => $e->getMessage());
         }
         return false;
     }
-
 
 
     /**
@@ -327,101 +327,99 @@ class ModelSQLManager  extends ApplicationDB implements SQLManagerInterface
      * @return mixed
      * @throws Exception
      */
-    public function save(){
+    public function save()
+    {
         $this->beforeSave($this);
         $db = $this->connectDB();
-        $this->relationValues();
 
-        if($this->new){
-            $sql ="INSERT INTO ".$this->table_name." (";
+        /*Remove database relations*/
+        //  $this->relationValues();
+
+        if ($this->new) {
+            $sql = "INSERT INTO " . $this->table_name . " (";
             $sql_values = " VALUES(";
             /*Check variables*/
-            foreach($this->variablesTypes as $key =>$value){
+            foreach ($this->variablesTypes as $key => $value) {
                 $valueArr = array();
                 $valueArr[$key] = $this->{$key};
                 /*Remove AutoIncrements on ID*/
                 $primKey = array_keys($this->getPrimary());
-                if($key != $primKey[0]){
-                        $sql.="`".$key."` ,";
-                        if(ValueCheck::isGoodType($valueArr, $this->variablesTypes)){
-                            $sql_values .=":".$key.",";
-                         }
-                        else{
-                            throw new Exception("Bad type of variable ".$key);
-                        }
+                if ($key != $primKey[0]) {
+                    $sql .= "`" . $key . "` ,";
+                    if (ValueCheck::isGoodType($valueArr, $this->variablesTypes)) {
+                        $sql_values .= ":" . $key . ",";
+                    } else {
+                        throw new Exception("Bad type of variable " . $key);
+                    }
                 }
             }
 
-            $sql_values = substr($sql_values , 0 ,-1);
-            $sql_values .=")";
-            $sql = substr($sql , 0 ,-1);
-            $sql .=")";
+            $sql_values = substr($sql_values, 0, -1);
+            $sql_values .= ")";
+            $sql = substr($sql, 0, -1);
+            $sql .= ")";
             $sql .= $sql_values;
             $stmt = $db->prepare($sql);
             /*Bind params*/
-            foreach($this->variablesTypes as $key =>$value){
+            foreach ($this->variablesTypes as $key => $value) {
                 $valueArr = array();
                 $valueArr[$key] = $this->{$key};
                 $primKey = array_keys($this->getPrimary());
-                if($key != $primKey[0]){
-                     $stmt->bindParam(":".$key ,$this->{$key},ValueCheck::showPDOType(array($key => $this->{$key}), $this->variablesTypes));
-                    }
+                if ($key != $primKey[0]) {
+                    $stmt->bindParam(":" . $key, $this->{$key}, ValueCheck::showPDOType(array($key => $this->{$key}), $this->variablesTypes));
+                }
             }
-            try{
-                  if($stmt->execute()){
+            try {
+                if ($stmt->execute()) {
                     $this->new = false;
                     $key = array_keys($this->getPrimary());
                     $this->{$key[0]} = $db->lastInsertId();
                     return $this->{$key[0]};
-                  }
-            }
-            catch(ErrorException $e){
-                $_SESSION["error"] = array("type"=>"error","message"=>$e->getMessage());
+                }
+            } catch (ErrorException $e) {
+                $_SESSION["error"] = array("type" => "error", "message" => $e->getMessage());
             }
 
-        }
-        else{
-          $sql = "UPDATE ".$this->table_name." SET ";
-            foreach($this->variablesTypes as $key =>$value){
+        } else {
+            $sql = "UPDATE " . $this->table_name . " SET ";
+            foreach ($this->variablesTypes as $key => $value) {
                 $valueArr = array();
                 $valueArr[$key] = $this->{$key};
                 $primKey = array_keys($this->getPrimary());
-                if($key != $primKey[0]){
-                    if(ValueCheck::isGoodType($valueArr, $this->variablesTypes)){
-                        $sql .="`".$key."`= :".$key.",";
-                    }
-                    else{
-                        throw new Exception("Bad type of variable ".$key);
+                if ($key != $primKey[0]) {
+                    if (ValueCheck::isGoodType($valueArr, $this->variablesTypes)) {
+                        $sql .= "`" . $key . "`= :" . $key . ",";
+                    } else {
+                        throw new Exception("Bad type of variable " . $key);
                     }
                 }
 
             }
 
-            $sql = substr($sql , 0 ,-1);
-            $sql .=" WHERE ";
-            foreach($this->primary as $key => $value){
-                $sql .="`".$key."`= :".$key." AND ";
+            $sql = substr($sql, 0, -1);
+            $sql .= " WHERE ";
+            foreach ($this->primary as $key => $value) {
+                $sql .= "`" . $key . "`= :" . $key . " AND ";
             }
-            $sql = substr($sql , 0 , -4);
-            $stmt=$db->prepare($sql);
+            $sql = substr($sql, 0, -4);
+            $stmt = $db->prepare($sql);
             /*Bind params*/
-            foreach($this->variablesTypes as $key =>$value){
+            foreach ($this->variablesTypes as $key => $value) {
                 $valueArr = array();
                 $valueArr[$key] = $this->{$key};
                 $primKey = array_keys($this->getPrimary());
-                if($key != $primKey[0]){
-                    $stmt->bindParam(":".$key ,$this->{$key},ValueCheck::showPDOType(array($key => $this->{$key}), $this->variablesTypes));
+                if ($key != $primKey[0]) {
+                    $stmt->bindParam(":" . $key, $this->{$key}, ValueCheck::showPDOType(array($key => $this->{$key}), $this->variablesTypes));
                 }
             }
-                foreach($this->primary as $key => $value){
-                    $stmt->bindParam(":".$key ,$this->{$key},ValueCheck::showPDOType(array($key => $this->{$key}), $this->variablesTypes));
-                }
+            foreach ($this->primary as $key => $value) {
+                $stmt->bindParam(":" . $key, $this->{$key}, ValueCheck::showPDOType(array($key => $this->{$key}), $this->variablesTypes));
+            }
 
-            try{
+            try {
                 return $stmt->execute();
-            }
-            catch(ErrorException $e){
-                $_SESSION["error"] = array("type"=>"error","message"=>$e->getMessage());
+            } catch (ErrorException $e) {
+                $_SESSION["error"] = array("type" => "error", "message" => $e->getMessage());
             }
 
         }
@@ -432,29 +430,30 @@ class ModelSQLManager  extends ApplicationDB implements SQLManagerInterface
     /**
      * Generate from relations models values to model.
      */
-    private function relationValues(){
-         if(count($this->getRelationsArray()) > 0){
-            foreach($this->getRelationsArray() as $relationObject){
-                $instance = $this->{lcfirst(strtolower($relationObject->referenced_table_name))."Model"};
+    private function relationValues()
+    {
+        if (count($this->getRelationsArray()) > 0) {
+            foreach ($this->getRelationsArray() as $relationObject) {
+                $instance = $this->{lcfirst(strtolower($relationObject->referenced_table_name)) . "Model"};
 
                 $key = array_keys($instance->getPrimary());
 
                 $instance2 = $instance->getById(array($key[0] => $instance->{$key[0]}));
-                if(!is_bool($instance2))
+                if (!is_bool($instance2))
                     $instance = $instance2;
 
-                    if($instance->getNew())
-                        $instance->save();
+                if ($instance->getNew())
+                    $instance->save();
 
-                if(is_bool($instance2))
+                if (is_bool($instance2))
                     $instance = $instance->getById(array($key[0] => $instance->{$key[0]}));
 
-                     if(isset($instance->{$relationObject->referenced_column_name})) {
-                              if(!isset($this->{$relationObject->column_name}))
-                                $this->{$relationObject->column_name} = $instance->{$relationObject->referenced_column_name};
-                     }
+                if (isset($instance->{$relationObject->referenced_column_name})) {
+                    if (!isset($this->{$relationObject->column_name}))
+                        $this->{$relationObject->column_name} = $instance->{$relationObject->referenced_column_name};
+                }
             }
-         }
+        }
     }
 
     /**
@@ -462,28 +461,28 @@ class ModelSQLManager  extends ApplicationDB implements SQLManagerInterface
      * @param array $primaryKeys
      * @return mixed
      */
-    public function removeById($primaryKeys){
+    public function removeById($primaryKeys)
+    {
         $db = $this->connectDB();
 
-        $sql = "DELETE FROM ".$this->table_name." WHERE ";
+        $sql = "DELETE FROM " . $this->table_name . " WHERE ";
 
-        foreach($primaryKeys as $key => $value){
-            $sql .="`".$key."`= :".$key." AND ";
+        foreach ($primaryKeys as $key => $value) {
+            $sql .= "`" . $key . "`= :" . $key . " AND ";
         }
-        $sql = substr($sql , 0 , -4);
+        $sql = substr($sql, 0, -4);
         $stmt = $db->prepare($sql);
-        foreach($primaryKeys as $key => $value){
-            $stmt->bindParam(":".$key , $value,ValueCheck::showPDOType(array($key => $value), $this->variablesTypes));
+        foreach ($primaryKeys as $key => $value) {
+            $stmt->bindParam(":" . $key, $value, ValueCheck::showPDOType(array($key => $value), $this->variablesTypes));
         }
-        try{
+        try {
             $deleted = $stmt->execute();
-            if($deleted){
-               $this->new = true;
+            if ($deleted) {
+                $this->new = true;
             }
             return $deleted;
-        }
-        catch(Exception $e){
-            $_SESSION["error"] = array("type"=>"error","message"=>$e->getMessage());
+        } catch (Exception $e) {
+            $_SESSION["error"] = array("type" => "error", "message" => $e->getMessage());
         }
         return false;
     }
@@ -492,12 +491,12 @@ class ModelSQLManager  extends ApplicationDB implements SQLManagerInterface
      * Function remove model if it's not new.
      * @throws Exception
      */
-    public function remove(){
-      if(!$this->new){
-          $key = array_keys($this->getPrimary());
-          $this->removeById(array($key[0]=>$this->{$key[0]}));
-      }
-        else{
+    public function remove()
+    {
+        if (!$this->new) {
+            $key = array_keys($this->getPrimary());
+            $this->removeById(array($key[0] => $this->{$key[0]}));
+        } else {
             throw new Exception("Model was new, cant remove.");
         }
     }
@@ -512,47 +511,46 @@ class ModelSQLManager  extends ApplicationDB implements SQLManagerInterface
     {
         $models = array();
 
-        if(is_array($primaryKeys)){
+        if (is_array($primaryKeys)) {
             $db = $this->connectDB();
-            $sql = "SELECT * FROM ".$this->table_name." WHERE ";
+            $sql = "SELECT * FROM " . $this->table_name . " WHERE ";
             $name = get_class($this);
 
-            foreach($primaryKeys as $key => $value){
-                $sql .=$key."= :".$key." AND ";
+            foreach ($primaryKeys as $key => $value) {
+                $sql .= $key . "= :" . $key . " AND ";
             }
 
-            $sql = substr($sql , 0 , -4);
+            $sql = substr($sql, 0, -4);
             $stmt = $db->prepare($sql);
 
-            foreach($primaryKeys as $key => $value){
-                $stmt->bindParam(":".$key , $value,ValueCheck::showPDOType(array($key => $value), $this->variablesTypes));
+            foreach ($primaryKeys as $key => $value) {
+                $stmt->bindParam(":" . $key, $value, ValueCheck::showPDOType(array($key => $value), $this->variablesTypes));
             }
-            try{
-                if($stmt->execute()){
-                    while($obj = $stmt->fetch(PDO::FETCH_OBJ)){
+            try {
+                if ($stmt->execute()) {
+                    while ($obj = $stmt->fetch(PDO::FETCH_OBJ)) {
                         $instance = new $name();
                         $instanceVars = $this->variablesTypes;
 
-                        if(!is_bool($obj)){
-                            foreach($instanceVars as $key => $value){
+                        if (!is_bool($obj)) {
+                            foreach ($instanceVars as $key => $value) {
                                 $instance->{$key} = $obj->{$key};
                             }
 
-                            $this->models($instance);
+                            /*Remove database relations*/
+                            // $this->models($instance);
                         }
                         $instance->new = false;
-                        array_push($models,$instance);
+                        array_push($models, $instance);
                     }
                 }
-                if(count($models) > 0){
-                      return $models;
-                }
-                else{
+                if (count($models) > 0) {
+                    return $models;
+                } else {
                     return false;
                 }
-            }
-            catch(Exception $e){
-                $_SESSION["error"] = array("type"=>"error","message"=>$e->getMessage());
+            } catch (Exception $e) {
+                $_SESSION["error"] = array("type" => "error", "message" => $e->getMessage());
             }
         }
         return false;
@@ -562,17 +560,18 @@ class ModelSQLManager  extends ApplicationDB implements SQLManagerInterface
      * Method generate instance of models with values.
      * @param $instance
      */
-    private function models(&$instance){
-        if(count($this->relationsArray) > 0){
-            foreach($this->getRelationsArray() as $relationObject){
-                $modelInstance = $instance->{lcfirst(strtolower($relationObject->referenced_table_name))."Model"};
+    private function models(&$instance)
+    {
+        if (count($this->relationsArray) > 0) {
+            foreach ($this->getRelationsArray() as $relationObject) {
+                $modelInstance = $instance->{lcfirst(strtolower($relationObject->referenced_table_name)) . "Model"};
                 $primarys = $modelInstance->getPrimary();
                 $primarysKeys = array_keys($primarys);
-                if(count($primarysKeys)>0){
-                    if(property_exists($modelInstance,$primarysKeys[0])){
+                if (count($primarysKeys) > 0) {
+                    if (property_exists($modelInstance, $primarysKeys[0])) {
                         $returned = $modelInstance->getById(array($primarysKeys[0] => $instance->{$relationObject->column_name}));
-                        if(!is_bool($returned));
-                        $instance->{lcfirst(strtolower($relationObject->referenced_table_name))."Model"} = $returned;
+                        if (!is_bool($returned)) ;
+                        $instance->{lcfirst(strtolower($relationObject->referenced_table_name)) . "Model"} = $returned;
                     }
                 }
             }
@@ -583,18 +582,18 @@ class ModelSQLManager  extends ApplicationDB implements SQLManagerInterface
      * Method return count of objects in database;
      * @return bool
      */
-    public function count(){
+    public function count()
+    {
         $db = $this->connectDB();
-        $sql = "SELECT COUNT(*) as count FROM ".$this->table_name;
+        $sql = "SELECT COUNT(*) as count FROM " . $this->table_name;
         $stmt = $db->prepare($sql);
-        try{
-            if($stmt->execute()){
-            $obj = $stmt->fetch(PDO::FETCH_OBJ);
-             return $obj->count;
+        try {
+            if ($stmt->execute()) {
+                $obj = $stmt->fetch(PDO::FETCH_OBJ);
+                return $obj->count;
             }
-        }
-        catch(Exception $e){
-            $_SESSION["error"] = array("type"=>"error","message"=>$e->getMessage());
+        } catch (Exception $e) {
+            $_SESSION["error"] = array("type" => "error", "message" => $e->getMessage());
         }
         return false;
     }
@@ -603,19 +602,19 @@ class ModelSQLManager  extends ApplicationDB implements SQLManagerInterface
      * Return next id in table.
      * @return mixed
      */
-    public function getMaxId(){
+    public function getMaxId()
+    {
         $db = $this->connectDB();
         $key = array_keys($this->getPrimary());
-        $sql = "SELECT MAX(".$key[0].") as id FROM ".$this->table_name;
+        $sql = "SELECT MAX(" . $key[0] . ") as id FROM " . $this->table_name;
         $stmt = $db->prepare($sql);
-        try{
-            if($stmt->execute()){
+        try {
+            if ($stmt->execute()) {
                 $obj = $stmt->fetch(PDO::FETCH_OBJ);
                 return $obj->id + 1;
             }
-        }
-        catch(Exception $e){
-            $_SESSION["error"] = array("type"=>"error","message"=>$e->getMessage());
+        } catch (Exception $e) {
+            $_SESSION["error"] = array("type" => "error", "message" => $e->getMessage());
         }
         return false;
     }
@@ -623,7 +622,8 @@ class ModelSQLManager  extends ApplicationDB implements SQLManagerInterface
     /**
      *We can do something with data after save.
      */
-    protected function afterSave(){
+    protected function afterSave()
+    {
         $this->plugins->afterSave();
     }
 
@@ -631,7 +631,8 @@ class ModelSQLManager  extends ApplicationDB implements SQLManagerInterface
      * We can do something with data before save.
      * @param $model
      */
-    protected function beforeSave(&$model){
+    protected function beforeSave(&$model)
+    {
         $this->plugins->beforeSave($model);
     }
 

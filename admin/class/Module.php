@@ -35,30 +35,39 @@ class Module
     protected $app;
 
     /**
+     * Values from view
+     * @var array
+     */
+    protected $values = array();
+
+    /**
      * Create a instance and set parameters
      */
-    public function _construct(){
+    public function _construct($values = array())
+    {
+        $this->values = $values;
         $this->name = get_class($this);
         $this->view = "index";
         $this->app = new Application();
-        $this->path = $this->app->getHomeUrl()."modules/".strtolower($this->name)."/";
+        $this->path = $this->app->getHomeUrl() . "modules/" . strtolower($this->name) . "/";
+        $this->generateValues();
         Loader::import("plugins.*");
     }
 
     /**
      * Include a view file of module
      */
-    protected function render(){
-     $file_src = Application::getBaseDir()."modules/".strtolower($this->name)."/views/".$this->view.".php";
-        if(file_exists($file_src)){
+    protected function render()
+    {
+        $file_src = Application::getBaseDir() . "modules/" . strtolower($this->name) . "/views/" . $this->view . ".php";
+        if (file_exists($file_src)) {
             ob_start();
             require_once($file_src);
             $contents = ob_get_contents();
             ob_end_clean();
             echo $contents;
-        }
-        else{
-            echo "Brak pliku";
+        } else {
+            echo "No such file";
         }
     }
 
@@ -68,48 +77,48 @@ class Module
      * @param null $name
      * @param null $type
      */
-    protected function loadFile($path = null , $name = null, $type = null){
-        switch($type){
+    protected function loadFile($path = null, $name = null, $type = null)
+    {
+        switch ($type) {
             case "css":
-                if($path == null)
-                    echo "<link rel='stylesheet' type='text/css' href='".$this->path."css/".$name."' />";
+                if ($path == null)
+                    echo "<link rel='stylesheet' type='text/css' href='" . $this->path . "css/" . $name . "' />";
                 else
-                    echo "<link rel='stylesheet' type='text/css' href='".$path.$name."' />";
+                    echo "<link rel='stylesheet' type='text/css' href='" . $path . $name . "' />";
                 break;
             case "javascript":
-                if($path == null)
-                    echo "<script src='".$this->path."js/".$name."' type='text/javascript' charset='utf-8'></script>";
+                if ($path == null)
+                    echo "<script src='" . $this->path . "js/" . $name . "' type='text/javascript' charset='utf-8'></script>";
                 else
-                    echo "<script src='".$path.$name."' type='text/javascript' charset='utf-8'></script>";
+                    echo "<script src='" . $path . $name . "' type='text/javascript' charset='utf-8'></script>";
                 break;
             case "js":
-                if($path == null)
-                    echo "<script src='".$this->path."js/".$name."' type='text/javascript' charset='utf-8'></script>";
+                if ($path == null)
+                    echo "<script src='" . $this->path . "js/" . $name . "' type='text/javascript' charset='utf-8'></script>";
                 else
-                    echo "<script src='".$path.$name."' type='text/javascript' charset='utf-8'></script>";
+                    echo "<script src='" . $path . $name . "' type='text/javascript' charset='utf-8'></script>";
                 break;
             case null:
-                if($path != null && $name != null){
+                if ($path != null && $name != null) {
                     $file_info = $name;
-                    $mime_type = explode(".",$name);
-                    switch($mime_type[count($mime_type) -1]){
+                    $mime_type = explode(".", $name);
+                    switch ($mime_type[count($mime_type) - 1]) {
                         case"css";
-                            echo "<link rel='stylesheet' type='text/css' href='".$path.$name."' />";
+                            echo "<link rel='stylesheet' type='text/css' href='" . $path . $name . "' />";
                             break;
                         case"js";
-                            echo "<script src='".$path.$name."' type='text/javascript' charset='utf-8'></script>";
+                            echo "<script src='" . $path . $name . "' type='text/javascript' charset='utf-8'></script>";
                             break;
                     }
-                }
-                elseif($path != null && $name == null){
+                } elseif ($path != null && $name == null) {
                     $file_info = $name;
-                    $mime_type = explode(".",$path);
-                    switch($mime_type[count($mime_type) -1]){
+                    $mime_type = explode(".", $path);
+                    switch ($mime_type[count($mime_type) - 1]) {
                         case"css";
-                            echo "<link rel='stylesheet' type='text/css' href='".$path."' />";
+                            echo "<link rel='stylesheet' type='text/css' href='" . $path . "' />";
                             break;
                         case"js";
-                            echo "<script src='".$path."' type='text/javascript' charset='utf-8'></script>";
+                            echo "<script src='" . $path . "' type='text/javascript' charset='utf-8'></script>";
                             break;
                     }
                 }
@@ -124,5 +133,18 @@ class Module
     public function getPath()
     {
         return $this->path;
+    }
+
+    /**
+     * Method generate values to module view
+     */
+    private function generateValues()
+    {
+        foreach ($this->values as $key => $value) {
+            if (is_int($key))
+                $this->{$value} = $value;
+            else
+                $this->{$key} = $value;
+        }
     }
 }

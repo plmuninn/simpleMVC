@@ -38,7 +38,7 @@ abstract class Plugin
 
     /**
      * Method after model was saved.
-     *  @abstract
+     * @abstract
      */
     abstract public function afterSave();
 

@@ -7,7 +7,8 @@
  * @package core
  * @subpackage controller
  */
-class Controller {
+class Controller
+{
 
 
     /**
@@ -78,32 +79,31 @@ class Controller {
 
     /**
      *Constructor check url and active controller and actions from them.
-     *@throws Exception
+     * @throws Exception
      */
     function __construct()
     {
-           Application::sessionStart();
-           $this->generateName();
-           Loader::import("plugins.*");
-           $this->generateModels();
-           $this->generateControllers();
+        Application::sessionStart();
+        $this->generateName();
+        Loader::import("plugins.*");
+        $this->generateModels();
+        $this->generateControllers();
 
         /*If index controller*/
-        if(!isset($this->component)){
-              if($this->controllers == strtolower(preg_replace("/Controller/","",get_class($this)))){
-                  if($this->actions == null){
-                $this->rendered = true;
-                $this->actionIndex();
-                  }
-               }
-        }
-        else{
+        if (!isset($this->component)) {
+            if ($this->controllers == strtolower(preg_replace("/Controller/", "", get_class($this)))) {
+                if ($this->actions == null) {
+                    $this->rendered = true;
+                    $this->actionIndex();
+                }
+            }
+        } else {
             $this->redirectComponent();
         }
 
         /*If don't find any controller or action*/
-        if(!$this->rendered){
-          throw new Exception("Site don't found.");
+        if (!$this->rendered) {
+            throw new Exception("Site don't found.");
         }
 
     }
@@ -113,13 +113,13 @@ class Controller {
      */
     function __destruct()
     {
-        if(isset($_GET["cont"]))
-        unset($_GET["cont"]);
+        if (isset($_GET["cont"]))
+            unset($_GET["cont"]);
 
-        if(isset($_GET["act"]))
+        if (isset($_GET["act"]))
             unset($_GET["act"]);
 
-        if(isset($_GET["comp"]))
+        if (isset($_GET["comp"]))
             unset($_GET["comp"]);
 
         Application::sessionWrite();
@@ -130,24 +130,26 @@ class Controller {
      * Render view. $name must have that same value like file name in view folder.
      * @param string $name
      */
-    public function render($name){
-        if(!is_object($this->plugins))
+    public function render($name)
+    {
+        if (!is_object($this->plugins))
             $this->plugins = new PluginManager();
         $this->beforeRender();
         /*Create instance of application configurations and make it global*/
         $this->app = new Application();
         /*Get view*/
-        $this->file =  $this->app->getBaseDir()."views/".$this->name."/".$name.".php";
+        $this->file = $this->app->getBaseDir() . "views/" . $this->name . "/" . $name . ".php";
         /*Get template*/
-        include_once($this->app->getBaseDir()."templates/".$this->app->getTemplate()."/index.php");
+        include_once($this->app->getBaseDir() . "templates/" . $this->app->getTemplate() . "/index.php");
         $this->afterRender();
     }
 
     /**
      * Render index file.
      */
-    protected function actionIndex(){
-       $this->render("index");
+    protected function actionIndex()
+    {
+        $this->render("index");
     }
 
     /**
@@ -155,15 +157,14 @@ class Controller {
      * @param string $name
      * @return bool
      */
-    protected  function checkController($name){
-        if(file_exists(Application::getBaseDir()."controller/".$name.".php")){
-            if(Loader::checkClassName(Application::getBaseDir()."controller/".$name.".php", $name)) {
-        return true;
-        }
-        else
-            return false;
-        }
-        else
+    protected function checkController($name)
+    {
+        if (file_exists(Application::getBaseDir() . "controller/" . $name . ".php")) {
+            if (Loader::checkClassName(Application::getBaseDir() . "controller/" . $name . ".php", $name)) {
+                return true;
+            } else
+                return false;
+        } else
             return false;
     }
 
@@ -172,12 +173,13 @@ class Controller {
      * Function redirect to other controller.
      * @return bool
      */
-    protected function redirect(){
-            $name = ucfirst($this->controllers)."Controller";
-            if($this->checkController($name)){
-                $site = new $name();
-                $this->rendered = true;
-                return true;
+    protected function redirect()
+    {
+        $name = ucfirst($this->controllers) . "Controller";
+        if ($this->checkController($name)) {
+            $site = new $name();
+            $this->rendered = true;
+            return true;
         }
         return false;
     }
@@ -185,11 +187,12 @@ class Controller {
     /**
      * Method check and activate action.
      */
-    protected  function functionsCheck(){
-            if(in_array(($this->actions."Action"),$this->functions) && !$this->rendered){
-                $name = ($this->actions."Action");
-                $this->$name();
-                $this->rendered = true;
+    protected function functionsCheck()
+    {
+        if (in_array(($this->actions . "Action"), $this->functions) && !$this->rendered) {
+            $name = ($this->actions . "Action");
+            $this->$name();
+            $this->rendered = true;
         }
     }
 
@@ -199,11 +202,12 @@ class Controller {
      * @param string $action
      * @param bool $admin for admin site true
      */
-    protected function redirectToOther($view= "", $action ="", $admin = false){
+    protected function redirectToOther($view = "", $action = "", $admin = false)
+    {
         $app = new Application();
-        if (!headers_sent()){
-        header('Location: '.$app->getHomeUrl().($admin == false ? "index.php?cont=" : "admin/index.php?cont=").$view."&act=".$action);
-        exit();
+        if (!headers_sent()) {
+            header('Location: ' . $app->getHomeUrl() . ($admin == false ? "index.php?cont=" : "admin/index.php?cont=") . $view . "&act=" . $action);
+            exit();
         }
     }
 
@@ -212,11 +216,12 @@ class Controller {
      * @param string $view
      * @param string $action
      */
-    protected function redirectToOtherComponent($view ="", $action=""){
+    protected function redirectToOtherComponent($view = "", $action = "")
+    {
         $app = new Application();
-        if (!headers_sent()){
-        header('Location: '.$app->getHomeUrl()."index.php?url=".$view."&act=".$action."&comp=".$this->component);
-        exit();
+        if (!headers_sent()) {
+            header('Location: ' . $app->getHomeUrl() . "index.php?url=" . $view . "&act=" . $action . "&comp=" . $this->component);
+            exit();
         }
     }
 
@@ -226,35 +231,36 @@ class Controller {
      * @param string $action
      * @param string $component
      */
-    protected function changeComponent($view ="",$action="",$component=""){
+    protected function changeComponent($view = "", $action = "", $component = "")
+    {
         $app = new Application();
-        header('Location: '.$app->getHomeUrl()."index.php?url=".$view."&act=".$action."&comp=".$component);
+        header('Location: ' . $app->getHomeUrl() . "index.php?url=" . $view . "&act=" . $action . "&comp=" . $component);
         exit();
     }
-
 
 
     /**
      * Generate view.
      */
-    private function view(){
-        if(file_exists($this->file)){
-        ob_start();
-        require_once($this->file);
-        $contents = ob_get_contents();
-        $this->beforeView($contents, $this->name, $this->model);
-        ob_end_clean();
-        echo $contents;
-        $this->afterView(array());
-        }
-        else
-           trigger_error("No view".$this->actions." in ",$this->name,E_USER_ERROR);
+    private function view()
+    {
+        if (file_exists($this->file)) {
+            ob_start();
+            require_once($this->file);
+            $contents = ob_get_contents();
+            $this->beforeView($contents, $this->name, $this->model);
+            ob_end_clean();
+            echo $contents;
+            $this->afterView(array());
+        } else
+            trigger_error("No view" . $this->actions . " in ", $this->name, E_USER_ERROR);
     }
 
     /**
      *Method generate all controllers and add it to class array.
      */
-    protected function generateControllers(){
+    protected function generateControllers()
+    {
         self::generateName();
         self::dependencies();
         $this->functions = get_class_methods($this);
@@ -264,59 +270,60 @@ class Controller {
     /**
      *Method generate model if model exist.
      */
-    protected function generateModels(){
+    protected function generateModels()
+    {
         $className = get_class($this);
-        $modelName = preg_replace("/Controller/","",$className)."Model";
-        if(file_exists(Application::getBaseDir()."model/".$modelName.".php"))
+        $modelName = preg_replace("/Controller/", "", $className) . "Model";
+        if (file_exists(Application::getBaseDir() . "model/" . $modelName . ".php"))
             $this->model = new $modelName();
     }
 
     /**
      *Method set name of object from controller.
      */
-    protected function generateName(){
+    protected function generateName()
+    {
         $className = get_class($this);
-        $this->name = preg_replace("/Controller/","",$className);
-        $this->name  = strtolower($this->name);
+        $this->name = preg_replace("/Controller/", "", $className);
+        $this->name = strtolower($this->name);
     }
 
     /**
      *Getting site url and component variable and create PluginManager instance.
      */
-    protected function dependencies(){
+    protected function dependencies()
+    {
         $this->plugins = new PluginManager();
-        if(isset($_GET["cont"])){
+        if (isset($_GET["cont"])) {
             $this->controllers = $_GET["cont"];
         }
-        if(isset($_GET["act"])){
+        if (isset($_GET["act"])) {
             $this->actions = $_GET["act"];
         }
-        if(isset($_GET["comp"]))
-            $this->component =$_GET["comp"];
+        if (isset($_GET["comp"]))
+            $this->component = $_GET["comp"];
     }
 
     /**
      *Method redirect to component class.
      */
-    protected function redirectComponent(){
-          if(file_exists(Application::getBaseDir()."components/".strtolower($this->component))){
-              Loader::import("components.".strtolower($this->component).".*", "components.".strtolower($this->component).".views.*");
-                if(file_exists(Application::getBaseDir()."components/".strtolower($this->component)."/controller/".ucfirst($this->component)."Controller.php")){
-                   $class  =  Loader::checkClassName(Application::getBaseDir()."components/".strtolower($this->component)."/controller/".ucfirst($this->component)."Controller.php", $this->component."Controller");
-                    if($class){
-                        $name = ucfirst($this->component)."Controller";
-                                 new $name;
-                    }
-                    else
-                        throw new Exception("Component ".$this->component." don't have a controller class or file structure is bad!");
-                }
-              else
-                  throw new Exception("Component ".$this->component." don't have a controller file!");
+    protected function redirectComponent()
+    {
+        if (file_exists(Application::getBaseDir() . "components/" . strtolower($this->component))) {
+            Loader::import("components." . strtolower($this->component) . ".*", "components." . strtolower($this->component) . ".views.*");
+            if (file_exists(Application::getBaseDir() . "components/" . strtolower($this->component) . "/controller/" . ucfirst($this->component) . "Controller.php")) {
+                $class = Loader::checkClassName(Application::getBaseDir() . "components/" . strtolower($this->component) . "/controller/" . ucfirst($this->component) . "Controller.php", $this->component . "Controller");
+                if ($class) {
+                    $name = ucfirst($this->component) . "Controller";
+                    new $name;
+                } else
+                    throw new Exception("Component " . $this->component . " don't have a controller class or file structure is bad!");
+            } else
+                throw new Exception("Component " . $this->component . " don't have a controller file!");
 
-              $this->rendered = true;
-          }
-        else
-            throw new Exception("Component ".$this->component." not found");
+            $this->rendered = true;
+        } else
+            throw new Exception("Component " . $this->component . " not found");
     }
 
     /**
@@ -324,10 +331,11 @@ class Controller {
      * @static
      * @param $title
      */
-    public static  function setTitle($title){
-       $app = new Application();
-       $app->sessionStart();
-       $_SESSION["title"] = $title;
+    public static function setTitle($title)
+    {
+        $app = new Application();
+        $app->sessionStart();
+        $_SESSION["title"] = $title;
     }
 
     /**
@@ -342,11 +350,13 @@ class Controller {
     /**
      * Load module in view.
      * @param $name
-     * @return mixed
+     * @param array $values
+     * @return Object
      */
-    public function module($name){
-        Loader::import("modules.".strtolower($name).".*","modules.".strtolower($name).".views.*" );
-        return new $name;
+    public function module($name, $values = array())
+    {
+        Loader::import("modules." . strtolower($name) . ".*", "modules." . strtolower($name) . ".views.*");
+        new $name($values);
     }
 
     /**
@@ -360,21 +370,24 @@ class Controller {
     /**
      * Dispatch afterRender plugins.
      */
-    protected function afterRender(){
+    protected function afterRender()
+    {
         $this->plugins->afterRender();
     }
 
     /**
      * Dispatch beforeRender plugins.
      */
-    protected function beforeRender(){
+    protected function beforeRender()
+    {
         $this->plugins->beforeRender();
     }
 
     /**
      * Dispatch afterView plugins.
      */
-    protected function afterView(){
+    protected function afterView()
+    {
         $this->plugins->afterView();
     }
 
@@ -384,8 +397,9 @@ class Controller {
      * @param $name
      * @param $model
      */
-    protected function beforeView(&$content, &$name, &$model){
-       $this->plugins->beforeView($content, $name, $model);
+    protected function beforeView(&$content, &$name, &$model)
+    {
+        $this->plugins->beforeView($content, $name, $model);
     }
 
 

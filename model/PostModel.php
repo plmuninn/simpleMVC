@@ -1,8 +1,7 @@
 <?php
 
-class PostModel  extends Model
+class PostModel extends Model
 {
-
 
 
 }

@@ -7,4 +7,4 @@
  *
  */
 
-$this->redirectToOther("","");
+$this->redirectToOther("", "");

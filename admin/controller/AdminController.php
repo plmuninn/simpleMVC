@@ -6,7 +6,7 @@
  * Time: 22:44
  *
  */
-class AdminController  extends Controller
+class AdminController extends AdminManager
 {
 
     /**
@@ -14,35 +14,38 @@ class AdminController  extends Controller
      */
     function __construct()
     {
-        if(isset($_POST["login"])&& isset($_POST["password"])){
+        if (isset($_POST["login"]) && isset($_POST["password"])) {
             $_POST["password"] = md5($_POST["password"]);
             $usr = new UserModel();
-            $usr = $usr->getQueryObject("SELECT * FROM user WHERE login =".HTMLManager::cleanInput($_POST["login"]));
-            if($usr->password == $_POST["password"]){
+            $usr = $usr->getQueryObject("SELECT * FROM user WHERE login =" . HTMLManager::cleanInput($_POST["login"]));
+            if ($usr->password == $_POST["password"]) {
                 unset($_POST["password"]);
                 unset($_POST["login"]);
-                Application::sendSessionModel($usr);}}
+                Application::sendSessionModel($usr);
+            }
+        }
 
-          if(Application::isGuest()){
-        $this->actionIndex();}
-        else{
-            if(Application::isAdmin()){
-         $this->panelAction();
+        if (Application::isGuest()) {
+            $this->actionIndex();
+        } else {
+            if (Application::isAdmin()) {
+                $this->panelAction();
             }
         }
     }
 
     /**
-    *Render Administration panel
-    */
+     *Render Administration panel
+     */
     public function panelAction()
     {
-       parent::generateModels();
-       parent::generateControllers();
+        parent::generateModels();
+        parent::generateControllers();
 
-        if(sizeof($this->controllers) <= 0){
+        if (sizeof($this->controllers) <= 0) {
             $_SESSION["title"] = "- Admin";
-        $this->render("panel");}
+            $this->render("panel");
+        }
     }
 
 
@@ -86,7 +89,7 @@ class AdminController  extends Controller
         $conf->setTemplate($_POST["template"]);
         $conf->save();
 
-        echo  json_encode(array('messages'=>"Zapisano ustawienia"));
+        echo  json_encode(array('messages' => "Zapisano ustawienia"));
     }
 
 }

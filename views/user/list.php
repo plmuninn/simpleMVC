@@ -9,17 +9,17 @@
 
 
 $users = new UserModel();
-$users =$users->getAll();
+$users = $users->getAll();
 $classType = 0;
 
 echo "<div class='list'>";
 echo"<div class='showed'>";
 echo "<table id='users' width='100%'>";
 echo "<tr class='head'><td>Login</td><td>Mail</td><td>Imię</td><td>Nazwisko</td><td>#</td><td>#</td></tr>";
-foreach($users as $key => $value){
-    $editLink = HTMLManager::makelink(array('href'=>"user&us_id=".$value->id_user."&act=edit" , 'link'=>'Edytuj' ),false);
-    $delink = HTMLManager::makelink(array('href'=>"user&us_id=".$value->id_user."&act=remove", 'link'=>'Usuń', 'class'=>'remove-user'), false);
-    $class = ($classType !=1 ? 'first' : 'second');
+foreach ($users as $key => $value) {
+    $editLink = HTMLManager::makelink(array('href' => "user&us_id=" . $value->id_user . "&act=edit", 'link' => 'Edytuj'), false);
+    $delink = HTMLManager::makelink(array('href' => "user&us_id=" . $value->id_user . "&act=remove", 'link' => 'Usuń', 'class' => 'remove-user'), false);
+    $class = ($classType != 1 ? 'first' : 'second');
 
 
     echo "<tr class='$class'>";
@@ -31,7 +31,7 @@ foreach($users as $key => $value){
     echo "<td>$delink</td>";
     echo "</tr>";
 
-    ($classType !=1 ? $classType++ : $classType= 0);
+    ($classType != 1 ? $classType++ : $classType = 0);
 }
 echo "</table>";
 echo "</div>";

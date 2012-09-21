@@ -6,6 +6,6 @@
  * Time: 07:58
  *
  */
-include_once(Application::getBaseDir()."views/user/list.php");
+include_once(Application::getBaseDir() . "views/user/list.php");
 ?>
-<hr />
+<hr/>

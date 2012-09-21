@@ -8,15 +8,17 @@
  */
 class Shoutbox extends Module
 {
-        public $model = null;
+    public $model = null;
 
-       public function __construct(){
-           parent::_construct();
-           $this->initialization();
-       }
+    public function __construct($values = array())
+    {
+        parent::_construct($values);
+        $this->initialization();
+    }
 
-        private function initialization(){
-             $this->model = new ShoutboxModel();
-             $this->render();
-        }
+    private function initialization()
+    {
+        $this->model = new ShoutboxModel();
+        $this->render();
+    }
 }

@@ -8,28 +8,30 @@
  */
 class BlogController extends Component
 {
-    public function __construct(){
-    parent::__construct();
+    public function __construct()
+    {
+        parent::__construct();
     }
 
-    public function __destruct(){
-    parent::__destruct();
+    public function __destruct()
+    {
+        parent::__destruct();
     }
 
-    public function accountAction(){
-        if(isset($_GET["user_id"]) && !empty($_GET["user_id"])){
-        $this->render("account");
-        }
-        else
-            $this->redirectToOther("","");
+    public function accountAction()
+    {
+        if (isset($_GET["user_id"]) && !empty($_GET["user_id"])) {
+            $this->render("account");
+        } else
+            $this->redirectToOther("", "");
     }
 
-    public function topicAction(){
-        if(isset($_GET["blog_id"]) && !empty($_GET["blog_id"])){
+    public function topicAction()
+    {
+        if (isset($_GET["blog_id"]) && !empty($_GET["blog_id"])) {
             $this->render("topic");
-        }
-        else
-            $this->redirectToOther("","");
+        } else
+            $this->redirectToOther("", "");
     }
 
 }

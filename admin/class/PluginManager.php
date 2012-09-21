@@ -17,13 +17,13 @@ class PluginManager
     public static function beforeRender()
     {
 
-            $classes = get_declared_classes();
-            foreach($classes as $class){
-                if(get_parent_class($class) == "Plugin"){
-                    $obj = new $class;
-                    call_user_func(array($obj,__FUNCTION__));
-                }
+        $classes = get_declared_classes();
+        foreach ($classes as $class) {
+            if (get_parent_class($class) == "Plugin") {
+                $obj = new $class;
+                call_user_func(array($obj, __FUNCTION__));
             }
+        }
 
     }
 
@@ -33,13 +33,13 @@ class PluginManager
      */
     public static function afterRender()
     {
-            $classes = get_declared_classes();
-            foreach($classes as $class){
-                if(get_parent_class($class) == "Plugin"){
-                    $obj = new $class;
-                    call_user_func(array($obj,__FUNCTION__));
-                }
+        $classes = get_declared_classes();
+        foreach ($classes as $class) {
+            if (get_parent_class($class) == "Plugin") {
+                $obj = new $class;
+                call_user_func(array($obj, __FUNCTION__));
             }
+        }
     }
 
     /**
@@ -53,13 +53,13 @@ class PluginManager
     public static function beforeView(&$content, &$controller_name, &$model)
     {
 
-            $classes = get_declared_classes();
-            foreach($classes as $class){
-                if(get_parent_class($class) == "Plugin"){
-                    $obj = new $class;
-                    call_user_func_array(array($obj,__FUNCTION__), array(&$content, &$controller_name, &$model));
-                }
+        $classes = get_declared_classes();
+        foreach ($classes as $class) {
+            if (get_parent_class($class) == "Plugin") {
+                $obj = new $class;
+                call_user_func_array(array($obj, __FUNCTION__), array(&$content, &$controller_name, &$model));
             }
+        }
 
     }
 
@@ -69,13 +69,13 @@ class PluginManager
      */
     public static function afterView()
     {
-            $classes = get_declared_classes();
-            foreach($classes as $class){
-                if(get_parent_class($class) == "Plugin"){
-                    $obj = new $class;
-                    call_user_func(array($obj,__FUNCTION__));
-                }
+        $classes = get_declared_classes();
+        foreach ($classes as $class) {
+            if (get_parent_class($class) == "Plugin") {
+                $obj = new $class;
+                call_user_func(array($obj, __FUNCTION__));
             }
+        }
     }
 
     /**
@@ -85,10 +85,10 @@ class PluginManager
     public static function afterSave()
     {
         $classes = get_declared_classes();
-        foreach($classes as $class){
-            if(get_parent_class($class) == "Plugin"){
+        foreach ($classes as $class) {
+            if (get_parent_class($class) == "Plugin") {
                 $obj = new $class;
-                call_user_func(array($obj,__FUNCTION__));
+                call_user_func(array($obj, __FUNCTION__));
             }
         }
     }
@@ -101,10 +101,10 @@ class PluginManager
     public static function beforeSave(&$model)
     {
         $classes = get_declared_classes();
-        foreach($classes as $class){
-            if(get_parent_class($class) == "Plugin"){
+        foreach ($classes as $class) {
+            if (get_parent_class($class) == "Plugin") {
                 $obj = new $class;
-                call_user_func_array(array($obj,__FUNCTION__),array(&$model));
+                call_user_func_array(array($obj, __FUNCTION__), array(&$model));
             }
         }
     }

@@ -18,38 +18,42 @@ time, mark, audio, video {
     font: inherit;
     vertical-align: baseline;
 }
+
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
     display: block;
 }
+
 body {
     line-height: 1;
     text-align: center;
     background: #fff;
 }
+
 blockquote, q {
     quotes: none;
 }
+
 blockquote:before, blockquote:after,
 q:before, q:after {
     content: '';
     content: none;
 }
+
 table {
     border-collapse: collapse;
     border-spacing: 0;
 }
 
-a{
+a {
     color: #000;
     font-weight: bold;
 }
 
-a:hover{
+a:hover {
     text-decoration: none;
 }
-
 
 .content {
     width: 1000px;
@@ -61,124 +65,146 @@ a:hover{
 }
 
 .banner {
-  text-align: center;
-  background: #000;
-  border-radius: 10px;
-  margin: 0 0 10px 0;
+    text-align: center;
+    background: #000;
+    border-radius: 10px;
+    margin: 0 0 10px 0;
 }
 
-ul{
+ul {
     margin: 0 0 0 16px;
 }
 
-ul li{
+ul li {
     margin: 2px 0 2px 0;
 }
 
 h1 {
-   font-size: 20px;
-   margin: 10px 5px 20px 0;
+    font-size: 20px;
+    margin: 10px 5px 20px 0;
 }
 
 strong {
     font-weight: bolder;
 }
 
-.user-menu{
+.user-menu {
     width: 100%;
     height: 20px;
 }
 
-.user-menu ul:first-child{
+.user-menu ul:first-child {
     list-style: none;
     float: left;
 }
 
-.user-menu ul:last-child{
-  list-style: none;
-  float: right;
+.user-menu ul:last-child {
+    list-style: none;
+    float: right;
 }
 
-.user-menu ul li{
-   float: left;
+.user-menu ul li {
+    float: left;
     padding: 0 15px 0 0;
 }
 
-hr{
+hr {
     border: 1px solid #000;
 }
 
-fieldset{
+fieldset {
     border: 1px solid #000;
     padding: 20px;
-    border-radius:10px;
+    border-radius: 10px;
     background: #eeeeee;
     margin: 0 0 10px 0;
 }
 
-label{
+label {
     width: 120px;
     float: left;
     margin: 5px 0 5px 0;
 }
 
-input, select, textarea{
+input, select, textarea {
     border: 1px solid #000;
-    border-radius:10px;
-    padding:5px;
+    border-radius: 10px;
+    padding: 5px;
     margin: 0 0 5px 0;
     background: #fff;
 
 }
 
-input:hover, input:focus ,select:hover, select:focus, textarea:hover, textarea:focus{
+input:hover, input:focus, select:hover, select:focus, textarea:hover, textarea:focus {
     color: #ffffff;
     background: #000000;
 }
 
-.submit{
+.submit {
     cursor: pointer;
 }
 
-.submit:hover{
+.submit:hover {
     cursor: pointer;
     color: #ffffff;
     background: #000000;
 }
 
-div.hide{
+div.hide {
     display: none;
 }
 
-.panel{
+.panel {
     text-align: center;
     overflow: hidden;
 }
-.panel ul{
+
+.panel ul {
     width: 100%;
     list-style: none;
     margin: 0 auto 0 auto;
 }
-.panel ul li{
+
+.panel ul li {
     width: 32%;
     height: 150px;
     float: left;
     margin: 0 10px 10px 0;
 }
-.panel ul li a img:hover{opacity: 0.6;}
 
+.panel ul li a img:hover {
+    opacity: 0.6;
+}
 
-div.list{}
-div.list table tr{border: 1px solid #000;}
-div.list table td{padding: 5px;}
-div.list table tr.head{background: #aaaaaa;}
+div.list {
+}
 
-div.list table tr.first{background: #eeeeee;}
-div.list table tr.second{background: #ffffff;}
+div.list table tr {
+    border: 1px solid #000;
+}
 
-div.list table tr.second:hover, div.user-list table tr.first:hover{background: #ccc; cursor: pointer}
+div.list table td {
+    padding: 5px;
+}
 
-div.error{
+div.list table tr.head {
+    background: #aaaaaa;
+}
+
+div.list table tr.first {
+    background: #eeeeee;
+}
+
+div.list table tr.second {
+    background: #ffffff;
+}
+
+div.list table tr.second:hover, div.user-list table tr.first:hover {
+    background: #ccc;
+    cursor: pointer
+}
+
+div.error {
     width: 100%;
     text-align: center;
     padding: 10px 0 10px 0;
@@ -189,7 +215,7 @@ div.error{
     color: #fff;
 }
 
-div.warning{
+div.warning {
     width: 100%;
     text-align: center;
     padding: 10px 0 10px 0;
@@ -200,7 +226,7 @@ div.warning{
     color: #000;
 }
 
-div.message{
+div.message {
     width: 100%;
     text-align: center;
     padding: 10px 0 10px 0;
@@ -211,23 +237,72 @@ div.message{
     color: #fff;
 }
 
+table#forum td {
+    border: 1px solid #fff;
+    padding: 10px
+}
 
-table#forum td{border: 1px solid #fff;padding: 10px}
-table#forum tr.head{background: #000; color: #fff;}
-table#forum td.title a{background: #000; color: #FCFF00;}
-table#forum td.title{background: #000; color: #fff;}
-table#forum td.title:hover{background: #fff; color: #000; cursor: pointer}
-table#forum td.title:hover a{background: #fff; color: #000;}
-table#forum td.size{background: #000; color: #fff;}
+table#forum tr.head {
+    background: #000;
+    color: #fff;
+}
 
+table#forum td.title a {
+    background: #000;
+    color: #FCFF00;
+}
 
-div#add{}
-div#add ul{list-style: none}
-diva#dd ul li{float: left;}
+table#forum td.title {
+    background: #000;
+    color: #fff;
+}
 
-div.login{font-weight: bold;text-align: center;width: 100%;}
-div.info{font-size: 12px; }
+table#forum td.title:hover {
+    background: #fff;
+    color: #000;
+    cursor: pointer
+}
 
-div.edit-panel{float: right}
-div.edit-panel ul{list-style: none}
-div.edit-panel ul li{ padding: 5px; float: left}
+table#forum td.title:hover a {
+    background: #fff;
+    color: #000;
+}
+
+table#forum td.size {
+    background: #000;
+    color: #fff;
+}
+
+div#add {
+}
+
+div#add ul {
+    list-style: none
+}
+
+diva#dd ul li {
+    float: left;
+}
+
+div.login {
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+}
+
+div.info {
+    font-size: 12px;
+}
+
+div.edit-panel {
+    float: right
+}
+
+div.edit-panel ul {
+    list-style: none
+}
+
+div.edit-panel ul li {
+    padding: 5px;
+    float: left
+}

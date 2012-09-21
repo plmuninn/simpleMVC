@@ -6,7 +6,7 @@
  *
  */
 
-$(document).ready(function() {
+$(document).ready(function () {
 
     var dataVisable = true;
 
@@ -18,7 +18,7 @@ $(document).ready(function() {
     $('.system_warning').delay(5000).fadeOut('slow')
 
     /*Pokazanie panelu do zmiany hasła*/
-    $('#show').click(function() {
+    $('#show').click(function () {
 
         /*Zjeżdzamy na sam doł strony*/
         $("html").animate({ scrollTop:$(document).height() }, "slow");
@@ -27,11 +27,11 @@ $(document).ready(function() {
         $('div.hide').slideToggle('slow');
 
         /*Wystawiamy flagę*/
-        if(dataVisable == false){
-              dataVisable = true
+        if (dataVisable == false) {
+            dataVisable = true
             $(this).text("Pokaż");
         }
-        else{
+        else {
             dataVisable = false;
             $(this).text("Ukryj");
         }
@@ -44,25 +44,24 @@ $(document).ready(function() {
     topics();
 
     var addUs = document.getElementById('addUser');
-    if(addUs != null){
-         addUs.addEventListener('click',addUser,false);
+    if (addUs != null) {
+        addUs.addEventListener('click', addUser, false);
     }
 
     var saveConf = document.getElementById('saveConfig')
-    if(saveConf != null){
-              saveConf.addEventListener('click',saveConfig,false);
+    if (saveConf != null) {
+        saveConf.addEventListener('click', saveConfig, false);
     }
 
     var addCat = document.getElementById('addCategory')
-    if(addCat != null){
-          addCat.addEventListener('click',addCategory,false);
+    if (addCat != null) {
+        addCat.addEventListener('click', addCategory, false);
     }
-
 
 
 });
 
-function removeUser(object){
+function removeUser(object) {
 
     object.preventDefault();
     object.stopPropagation();
@@ -70,44 +69,43 @@ function removeUser(object){
 
     var ajax = ajaxOpen();
 
-    function processResponse()
-    {
+    function processResponse() {
         if (ajax.readyState == 4) {
             if (ajax.status == 200) {
                 var obj = eval('(' + ajax.responseText + ')');
-                    if(typeof(obj.messages) != 'undefined'){
-                        $('.systemMessage').html("<div class='message'>"+obj.messages+"</div>");
-                        $('.message').delay(2000).slideUp('slow');
+                if (typeof(obj.messages) != 'undefined') {
+                    $('.systemMessage').html("<div class='message'>" + obj.messages + "</div>");
+                    $('.message').delay(2000).slideUp('slow');
 
-                        var table = document.getElementById("users");
-                        var lenght = table.rows.length;
+                    var table = document.getElementById("users");
+                    var lenght = table.rows.length;
 
-                        for(var i =0 ; i < lenght; i++){
-                            var rows = table.rows[i].cells.length;
+                    for (var i = 0; i < lenght; i++) {
+                        var rows = table.rows[i].cells.length;
 
-                            for(var i2= 0; i2 < rows; i2++){
-                                if(table.rows[i].cells[i2].innerHTML.replace(/\&amp;/g,'&').indexOf(object.target.href) != -1){
-                                    table.deleteRow(i);
-                                }
-
+                        for (var i2 = 0; i2 < rows; i2++) {
+                            if (table.rows[i].cells[i2].innerHTML.replace(/\&amp;/g, '&').indexOf(object.target.href) != -1) {
+                                table.deleteRow(i);
                             }
+
+                        }
                     }
-                  }
-                else if(typeof(obj.warning) != 'undefined'){
-                        $('.systemMessage').html("<div class='warning'>"+obj.warning+"</div>");
-                    }
+                }
+                else if (typeof(obj.warning) != 'undefined') {
+                    $('.systemMessage').html("<div class='warning'>" + obj.warning + "</div>");
+                }
             }
         }
     }
 
 
     ajax.open('GET', object.target.href, true);
-    ajax.onreadystatechange =processResponse;
+    ajax.onreadystatechange = processResponse;
     ajax.send(null);
     return false;
 }
 
-function addUser(e){
+function addUser(e) {
 
     e.preventDefault();
     e.stopPropagation();
@@ -115,18 +113,18 @@ function addUser(e){
 
     var url = location.protocol + "//" + location.hostname + (location.port && ":" + location.port) + "/";
 
-    if(location.hostname == "localhost"){
+    if (location.hostname == "localhost") {
         url += "simpleMVC/"
     }
 
-  var ajax = ajaxOpen();
-  var object = url+"index.php?cont=user&act=create";
-    function processResponse()
-    {
+    var ajax = ajaxOpen();
+    var object = url + "index.php?cont=user&act=create";
+
+    function processResponse() {
         if (ajax.readyState == 4) {
             if (ajax.status == 200) {
                 var obj = eval('(' + ajax.responseText + ')');
-                $('.systemMessage').html("<div class='message'>"+obj.messages+"</div>");
+                $('.systemMessage').html("<div class='message'>" + obj.messages + "</div>");
                 $('.message').delay(2000).slideUp('slow');
 
                 var table = document.getElementById("users");
@@ -145,22 +143,22 @@ function addUser(e){
                 cell2.innerHTML = obj.usrEmail;
                 cell3.innerHTML = obj.usrName;
                 cell4.innerHTML = obj.usrSurname;
-                cell5.innerHTML = "<a href='"+url+"index.php?cont=user&act=edit&us_id="+obj.usrId+"'>Edytuj</a>";
-                cell6.innerHTML = "<a class='remove-user' href='"+url+"index.php?cont=user&act=remove&us_id="+obj.usrId+"'>Usuń</a>";
+                cell5.innerHTML = "<a href='" + url + "index.php?cont=user&act=edit&us_id=" + obj.usrId + "'>Edytuj</a>";
+                cell6.innerHTML = "<a class='remove-user' href='" + url + "index.php?cont=user&act=remove&us_id=" + obj.usrId + "'>Usuń</a>";
 
                 users();
             }
         }
     }
 
-    ajax.onreadystatechange =processResponse;
+    ajax.onreadystatechange = processResponse;
 
     var name = document.getElementById('name').value;
     var surname = document.getElementById('surname').value;
     var email = document.getElementById('email').value;
     var login = document.getElementById('login').value;
     var password = document.getElementById('password').value;
-    var params = "name="+name+"&surname="+surname+"&email="+email+"&login="+login+"&password="+password;
+    var params = "name=" + name + "&surname=" + surname + "&email=" + email + "&login=" + login + "&password=" + password;
     ajax.open("POST", object, true);
 
     ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -168,7 +166,7 @@ function addUser(e){
     ajax.send(params);
 }
 
-function saveConfig(e){
+function saveConfig(e) {
 
     e.preventDefault();
     e.stopPropagation();
@@ -176,34 +174,33 @@ function saveConfig(e){
 
     var url = location.protocol + "//" + location.hostname + (location.port && ":" + location.port) + "/";
 
-    if(location.hostname == "localhost"){
+    if (location.hostname == "localhost") {
         url += "simpleMVC/"
     }
 
-    var object = url +"admin/index.php?cont=admin&act=configurationsave";
+    var object = url + "admin/index.php?cont=admin&act=configurationsave";
 
     var ajax = ajaxOpen();
 
-    function processResponse()
-    {
+    function processResponse() {
         if (ajax.readyState == 4) {
             if (ajax.status == 200) {
                 var obj = eval('(' + ajax.responseText + ')');
-                $('.systemMessage').html("<div class='message'>"+obj.messages+"</div>");
-                $('.message').delay(2000).slideUp('slow').delay(3000, function(){
+                $('.systemMessage').html("<div class='message'>" + obj.messages + "</div>");
+                $('.message').delay(2000).slideUp('slow').delay(3000, function () {
                     location.reload();
                 });
             }
         }
     }
 
-    ajax.onreadystatechange =processResponse;
+    ajax.onreadystatechange = processResponse;
 
     var date = document.getElementById('date').value;
     var zone = document.getElementById('zone').value;
     var time = document.getElementById('time').value;
     var template = document.getElementById('template').value;
-    var params = "date="+date+"&zone="+zone.replace("+",encodeURIComponent('+'))+"&time="+time+"&template="+template;
+    var params = "date=" + date + "&zone=" + zone.replace("+", encodeURIComponent('+')) + "&time=" + time + "&template=" + template;
 
     ajax.open("POST", object, true);
 
@@ -212,26 +209,25 @@ function saveConfig(e){
     ajax.send(params);
 }
 
-function addCategory(e){
+function addCategory(e) {
     e.preventDefault();
     e.stopPropagation();
 
     var url = location.protocol + "//" + location.hostname + (location.port && ":" + location.port) + "/";
 
-    if(location.hostname == "localhost"){
+    if (location.hostname == "localhost") {
         url += "simpleMVC/"
-     }
+    }
 
     var ajax = ajaxOpen();
-    var object = url+"index.php?cont=category&act=add";
+    var object = url + "index.php?cont=category&act=add";
 
 
-    function processResponse()
-    {
+    function processResponse() {
         if (ajax.readyState == 4) {
             if (ajax.status == 200) {
                 var obj = eval('(' + ajax.responseText + ')');
-                $('.systemMessage').html("<div class='message'>"+obj.messages+"</div>");
+                $('.systemMessage').html("<div class='message'>" + obj.messages + "</div>");
                 $('.message').delay(2000).slideUp('slow');
 
                 var table = document.getElementById("categorys");
@@ -246,19 +242,19 @@ function addCategory(e){
 
                 cell1.innerHTML = obj.catName;
                 cell2.innerHTML = obj.catDescription;
-                cell3.innerHTML = "<a href='"+url+"index.php?cont=category&act=edit&cat_id="+obj.catId+"'>Edytuj</a>";
-                cell4.innerHTML = "<a class='remove-category' href='"+url+"index.php?cont=category&act=remove&cat_id="+obj.catId+"'>Usuń</a>";
+                cell3.innerHTML = "<a href='" + url + "index.php?cont=category&act=edit&cat_id=" + obj.catId + "'>Edytuj</a>";
+                cell4.innerHTML = "<a class='remove-category' href='" + url + "index.php?cont=category&act=remove&cat_id=" + obj.catId + "'>Usuń</a>";
 
                 categories();
             }
         }
     }
 
-    ajax.onreadystatechange =processResponse;
+    ajax.onreadystatechange = processResponse;
 
     var name = document.getElementById('name').value;
     var description = document.getElementById('description').value;
-    var params = "name="+name+"&description="+description;
+    var params = "name=" + name + "&description=" + description;
 
     ajax.open("POST", object, true);
 
@@ -267,38 +263,37 @@ function addCategory(e){
     ajax.send(params);
 }
 
-function removeCategory(object){
+function removeCategory(object) {
 
     object.preventDefault();
     object.stopPropagation();
 
     var ajax = ajaxOpen();
 
-    function processResponse()
-    {
+    function processResponse() {
         if (ajax.readyState == 4) {
             if (ajax.status == 200) {
                 var obj = eval('(' + ajax.responseText + ')');
-                if(typeof(obj.messages) != 'undefined'){
-                    $('.systemMessage').html("<div class='message'>"+obj.messages+"</div>");
+                if (typeof(obj.messages) != 'undefined') {
+                    $('.systemMessage').html("<div class='message'>" + obj.messages + "</div>");
                     $('.message').delay(2000).slideUp('slow');
 
                     var table = document.getElementById("categorys");
                     var lenght = table.rows.length;
 
-                    for(var i =0 ; i < lenght; i++){
+                    for (var i = 0; i < lenght; i++) {
                         var rows = table.rows[i].cells.length;
 
-                        for(var i2= 0; i2 < rows; i2++){
-                            if(table.rows[i].cells[i2].innerHTML.replace(/\&amp;/g,'&').indexOf(object.target.href) != -1){
+                        for (var i2 = 0; i2 < rows; i2++) {
+                            if (table.rows[i].cells[i2].innerHTML.replace(/\&amp;/g, '&').indexOf(object.target.href) != -1) {
                                 table.deleteRow(i);
                             }
 
                         }
                     }
                 }
-                else if(typeof(obj.warning) != 'undefined'){
-                    $('.systemMessage').html("<div class='warning'>"+obj.warning+"</div>");
+                else if (typeof(obj.warning) != 'undefined') {
+                    $('.systemMessage').html("<div class='warning'>" + obj.warning + "</div>");
                 }
             }
         }
@@ -306,86 +301,83 @@ function removeCategory(object){
 
 
     ajax.open('GET', object.target.href, true);
-    ajax.onreadystatechange =processResponse;
+    ajax.onreadystatechange = processResponse;
     ajax.send(null);
     return false;
 }
 
-function removeTopic(object){
+function removeTopic(object) {
 
     object.preventDefault();
     object.stopPropagation();
 
     var ajax = ajaxOpen();
 
-    function processResponse()
-    {
+    function processResponse() {
         if (ajax.readyState == 4) {
             if (ajax.status == 200) {
                 var obj = eval('(' + ajax.responseText + ')');
-                if(typeof(obj.messages) != 'undefined'){
-                    $('.systemMessage').html("<div class='message'>"+obj.messages+"</div>");
+                if (typeof(obj.messages) != 'undefined') {
+                    $('.systemMessage').html("<div class='message'>" + obj.messages + "</div>");
                     $('.message').delay(2000).slideUp('slow');
 
                     var tables = document.getElementsByClassName("topics");
-                  for(var i3 = 0 ; i3 < tables.length ; i3++ ){
-                    var lenght = tables[i3].rows.length;
-                    for(var i =0 ; i < lenght; i++){
-                        var rows = tables[i3].rows[i].cells.length;
-                        for(var i2= 0; i2 < rows; i2++){
-                            if(tables[i3].rows[i].cells[i2].innerHTML.replace(/\&amp;/g,'&').indexOf(object.target.href) != -1){
-                                tables[i3].deleteRow(i);
-                            }
+                    for (var i3 = 0; i3 < tables.length; i3++) {
+                        var lenght = tables[i3].rows.length;
+                        for (var i = 0; i < lenght; i++) {
+                            var rows = tables[i3].rows[i].cells.length;
+                            for (var i2 = 0; i2 < rows; i2++) {
+                                if (tables[i3].rows[i].cells[i2].innerHTML.replace(/\&amp;/g, '&').indexOf(object.target.href) != -1) {
+                                    tables[i3].deleteRow(i);
+                                }
 
+                            }
                         }
                     }
-                  }
                 }
-                else if(typeof(obj.warning) != 'undefined'){
-                    $('.systemMessage').html("<div class='warning'>"+obj.warning+"</div>");
+                else if (typeof(obj.warning) != 'undefined') {
+                    $('.systemMessage').html("<div class='warning'>" + obj.warning + "</div>");
                 }
             }
         }
     }
 
 
-    ajax.open('GET',object.target.href, true);
-    ajax.onreadystatechange =processResponse;
+    ajax.open('GET', object.target.href, true);
+    ajax.onreadystatechange = processResponse;
     ajax.send(null);
     return false;
 }
 
-function ajaxOpen(){
+function ajaxOpen() {
     var xmlhttp;
-    if (window.XMLHttpRequest)
-    {// code for IE7+, Firefox, Chrome, Opera, Safari
-        xmlhttp=new XMLHttpRequest();
+    if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+        xmlhttp = new XMLHttpRequest();
     }
-    else
-    {// code for IE6, IE5
-        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+    else {// code for IE6, IE5
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
     }
     return xmlhttp;
 }
 
-function users(){
+function users() {
     var users = document.getElementsByClassName('remove-user');
-    for (i = 0; i < users.length; i++){
+    for (i = 0; i < users.length; i++) {
         users[i].addEventListener('click', removeUser, false);
     }
 }
 
-function categories(){
+function categories() {
 
     var categories = document.getElementsByClassName('remove-category');
-    for (i = 0; i < categories.length; i++){
+    for (i = 0; i < categories.length; i++) {
         categories[i].addEventListener('click', removeCategory, false);
     }
 }
 
-function topics(){
+function topics() {
     var topics = document.getElementsByClassName('remove-topic');
-    for (i = 0; i < topics.length; i++){
+    for (i = 0; i < topics.length; i++) {
         topics[i].addEventListener('click', removeTopic, false);
     }
 }

@@ -6,8 +6,9 @@
  * Time: 10:58
  *
  */
-if($app->isGuest())
+if ($app->isGuest())
     $this->redirectToOther("login");
 else {
     $usr = $_SESSION["user"];
-    $this->redirectToOther("user&us_id=$usr->id_user","account");}
+    $this->redirectToOther("user&us_id=$usr->id_user", "account");
+}

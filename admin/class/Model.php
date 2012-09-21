@@ -5,9 +5,9 @@
 
 /**
  * Class implements all models functionality.
- *@package core
- *@subpackage model
- *@param string $table_name if its null we get name from Model name
+ * @package core
+ * @subpackage model
+ * @param string $table_name if its null we get name from Model name
  */
 class Model extends ModelSQLManager
 {
@@ -22,16 +22,15 @@ class Model extends ModelSQLManager
      */
     function __construct()
     {
-        if($this->table_name == null){
-        $name = get_class($this);
-        $this->table_name = strtolower(preg_replace("/Model/","",$name));
+        if ($this->table_name == null) {
+            $name = get_class($this);
+            $this->table_name = strtolower(preg_replace("/Model/", "", $name));
         }
 
-        try{
-        parent::__construct();
-        }
-        catch(Exception $e){
-            $_SESSION["error"] = array("type"=>"error","message"=>$e->getMessage());
+        try {
+            parent::__construct();
+        } catch (Exception $e) {
+            $_SESSION["error"] = array("type" => "error", "message" => $e->getMessage());
         }
     }
 
@@ -49,10 +48,10 @@ class Model extends ModelSQLManager
      * @return mixed
      */
     public function getById($primaryKeys)
-    {   try{
-        return parent::getById($primaryKeys);
-         }
-        catch(Exception $e){
+    {
+        try {
+            return parent::getById($primaryKeys);
+        } catch (Exception $e) {
             echo $e->getMessage();
         }
 
@@ -66,11 +65,10 @@ class Model extends ModelSQLManager
      */
     public function getQueryObject($statement)
     {
-        try{
-        return parent::getQueryObject($statement);
-        }
-        catch(Exception $e){
-            $_SESSION["error"] = array("type"=>"error","message"=>$e->getMessage());
+        try {
+            return parent::getQueryObject($statement);
+        } catch (Exception $e) {
+            $_SESSION["error"] = array("type" => "error", "message" => $e->getMessage());
         }
 
         return false;
@@ -82,11 +80,10 @@ class Model extends ModelSQLManager
      */
     public function getAll()
     {
-        try{
-        return parent::getAll();
-        }
-        catch(Exception $e){
-            $_SESSION["error"] = array("type"=>"error","message"=>$e->getMessage());
+        try {
+            return parent::getAll();
+        } catch (Exception $e) {
+            $_SESSION["error"] = array("type" => "error", "message" => $e->getMessage());
         }
 
         return false;
@@ -98,12 +95,11 @@ class Model extends ModelSQLManager
      */
     public function save()
     {
-       try{
-        return parent::save();
-       }
-       catch(Exception $e){
-           $_SESSION["error"] = array("type"=>"error","message"=>$e->getMessage());
-       }
+        try {
+            return parent::save();
+        } catch (Exception $e) {
+            $_SESSION["error"] = array("type" => "error", "message" => $e->getMessage());
+        }
         return false;
     }
 
@@ -114,11 +110,10 @@ class Model extends ModelSQLManager
      */
     public function removeById($primaryKeys)
     {
-        try{
-        parent::removeById($primaryKeys);
-        }
-        catch(Exception $e){
-            $_SESSION["error"] = array("type"=>"error","message"=>$e->getMessage());
+        try {
+            parent::removeById($primaryKeys);
+        } catch (Exception $e) {
+            $_SESSION["error"] = array("type" => "error", "message" => $e->getMessage());
         }
     }
 
@@ -126,15 +121,14 @@ class Model extends ModelSQLManager
      * Function remove model if it's not new.
      */
     public function remove()
-        {
+    {
 
-            try{
-                parent::remove();
+        try {
+            parent::remove();
 
-            }
-                catch(Exception $e){
-                    $_SESSION["error"] = array("type"=>"error","message"=>$e->getMessage());
-                }
+        } catch (Exception $e) {
+            $_SESSION["error"] = array("type" => "error", "message" => $e->getMessage());
+        }
     }
 
     /**
@@ -143,11 +137,10 @@ class Model extends ModelSQLManager
      */
     public function count()
     {
-        try{
-        return parent::count();
-        }
-        catch(Exception $e){
-            $_SESSION["error"] = array("type"=>"error","message"=>$e->getMessage());
+        try {
+            return parent::count();
+        } catch (Exception $e) {
+            $_SESSION["error"] = array("type" => "error", "message" => $e->getMessage());
         }
     }
 

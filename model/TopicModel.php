@@ -1,8 +1,7 @@
 <?php
 
-class TopicModel  extends Model
+class TopicModel extends Model
 {
-
 
 
 }

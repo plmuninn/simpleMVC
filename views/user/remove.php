@@ -8,10 +8,9 @@
  */
 $usr = $this->model->getById(HTMLManager::cleanInput($_GET["us_id"]));
 
-if(!isset($usr->id_user)){
+if (!isset($usr->id_user)) {
     echo "Nie udało się usunąć, skontakuj się ze samym sobą!(czyt. z Maciejem Romańskim)";
-}
-else{
+} else {
     echo "Usunięto użytkownika";
 }
 ?>
