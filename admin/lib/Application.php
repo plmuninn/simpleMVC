@@ -328,7 +328,7 @@ class Application extends Configuration
     }
 
     /**
-     * Check if user is Admin
+     * Check if user is AdminC
      * @static
      * @return bool*/
     public static function isAdmin()

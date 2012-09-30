@@ -253,7 +253,7 @@ class Controller
             echo $contents;
             $this->afterView(array());
         } else
-            trigger_error("No view" . $this->actions . " in ", $this->name, E_USER_ERROR);
+            trigger_error("No view" . $this->actions . " in ".$this->name, E_USER_ERROR);
     }
 
     /**

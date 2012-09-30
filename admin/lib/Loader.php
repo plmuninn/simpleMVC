@@ -42,11 +42,11 @@ class Loader implements LoaderInterface
                 require_once  BASE_DIR . "model/" . $class_name . ".php";
         } else if (!preg_match("[^Interface$]", $class_name) && preg_match("[Interface$]", $class_name)) {
 
-            if (file_exists(BASE_DIR . "admin/class/interfaces/" . $class_name . ".php"))
-                require_once  BASE_DIR . "admin/class/interfaces/" . $class_name . ".php";
+            if (file_exists(BASE_DIR . "admin/lib/interfaces/" . $class_name . ".php"))
+                require_once  BASE_DIR . "admin/lib/interfaces/" . $class_name . ".php";
         } else {
-            if (file_exists(BASE_DIR . "admin/class/" . $class_name . ".php"))
-                require_once  BASE_DIR . "admin/class/" . $class_name . ".php";
+            if (file_exists(BASE_DIR . "admin/lib/" . $class_name . ".php"))
+                require_once  BASE_DIR . "admin/lib/" . $class_name . ".php";
         }
 
     }

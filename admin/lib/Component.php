@@ -16,7 +16,13 @@ class Component extends Controller
      * Path to component.
      * @var
      */
-    private $path;
+    protected  $path;
+
+    /**
+     * File loader value
+     * @var string
+     */
+    protected  $dir;
 
     /**
      *Constructor check url and active controller and actions from them.
@@ -27,13 +33,13 @@ class Component extends Controller
         Application::sessionStart();
         parent::getName();
         parent::dependencies();
+        $this->app = new Application();
+        $this->path = $this->app->getHomeUrl() . "components/" . $this->component . "/";
+        $this->dir = $this->app->getBaseDir() . "components/" . $this->component ;
         $this->generateModels();
         Loader::import("plugins.*");
         Loader::import("components." . $this->name . ".plugins.*");
         parent::generateControllers();
-        $this->app = new Application();
-        $this->path = $this->app->getHomeUrl() . "components/" . $this->component . "/";
-        $this->dir = $this->app->getBaseDir() . "admin/components/" . $this->component . "/";
         if (($this->controllers == null) || ($this->controllers == strtolower(preg_replace("/Controller/", "", get_class($this))))) {
             $this->rendered = true;
             $this->actionIndex();
@@ -55,7 +61,7 @@ class Component extends Controller
     {
         $className = get_class($this);
         $modelName = preg_replace("/Controller/", "", $className) . "Model";
-        if (file_exists($this->path . "/model/" . $modelName . ".php"))
+        if (file_exists($this->dir . "/model/" . $modelName . ".php"))
             $this->model = new $modelName();
     }
 
@@ -70,7 +76,7 @@ class Component extends Controller
         $this->beforeRender();
         /*Get view*/
         $this->app = new Application();
-        $this->file = $this->path . "/views/" . $this->name . "/" . $name . ".php";
+        $this->file = $this->dir . "/views/" . $this->name . "/" . $name . ".php";
         /*Get template*/
         include_once($this->app->getBaseDir() . "templates/" . $this->app->getTemplate() . "/index.php");
         $this->afterRender();
@@ -156,7 +162,7 @@ class Component extends Controller
      */
     protected function checkController($name)
     {
-        return file_exists(Application::getBaseDir() . "components/" . strtolower($this->getName()) . "/controller/" . $name . ".php");
+        return file_exists(   $this->dir  . "/controller/" . $name . ".php");
     }
 
 }

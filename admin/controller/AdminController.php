@@ -14,6 +14,7 @@ class AdminController extends AdminManager
      */
     function __construct()
     {
+          parent::__construct();
         if (isset($_POST["login"]) && isset($_POST["password"])) {
             $_POST["password"] = md5($_POST["password"]);
             $usr = new UserModel();
@@ -43,7 +44,7 @@ class AdminController extends AdminManager
         parent::generateControllers();
 
         if (sizeof($this->controllers) <= 0) {
-            $_SESSION["title"] = "- Admin";
+            $_SESSION["title"] = "- AdminC";
             $this->render("panel");
         }
     }
@@ -51,32 +52,32 @@ class AdminController extends AdminManager
 
     public function configAction()
     {
-        $_SESSION["title"] = "- Admin - Konfiguracje";
+        $_SESSION["title"] = "- AdminC - Konfiguracje";
         $this->render("config");
     }
 
     public function userAction()
     {
-        $_SESSION["title"] = "- Admin - Użytkownicy";
+        $_SESSION["title"] = "- AdminC - Użytkownicy";
         $this->render("user");
     }
 
     public function tematyAction()
     {
-        $_SESSION["title"] = "- Admin - Tematy";
+        $_SESSION["title"] = "- AdminC - Tematy";
         Application::makeActualLink();
         $this->render("tematy");
     }
 
     public function wiadomosciAction()
     {
-        $_SESSION["title"] = "- Admin - Wiadomości";
+        $_SESSION["title"] = "- AdminC - Wiadomości";
         $this->render("wiadomosci");
     }
 
     public function kategorieAction()
     {
-        $_SESSION["title"] = "- Admin - Kategorie";
+        $_SESSION["title"] = "- AdminC - Kategorie";
         $this->render("kategorie");
     }
 

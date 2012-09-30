@@ -56,13 +56,13 @@ class Configuration
     protected $Folder_prev;
 
     /**
-     * Admin Email
+     * AdminC Email
      * @var  string
      */
     protected $Admin_Email;
 
     /**
-     * Admin User id
+     * AdminC User id
      * @var string
      */
     protected $Admin_id;
@@ -306,7 +306,7 @@ class Configuration
 
 
     /**
-     * Set Admin Email
+     * Set AdminC Email
      * @param string $Admin_Email
      */
     public function setAdminEmail($Admin_Email)
@@ -315,7 +315,7 @@ class Configuration
     }
 
     /**
-     * Get Admin Email
+     * Get AdminC Email
      * @return mixed
      */
     public function getAdminEmail()
