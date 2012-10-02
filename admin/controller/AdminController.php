@@ -15,24 +15,7 @@ class AdminController extends AdminManager
     function __construct()
     {
           parent::__construct();
-        if (isset($_POST["login"]) && isset($_POST["password"])) {
-            $_POST["password"] = md5($_POST["password"]);
-            $usr = new UserModel();
-            $usr = $usr->getQueryObject("SELECT * FROM user WHERE login =" . HTMLManager::cleanInput($_POST["login"]));
-            if ($usr->password == $_POST["password"]) {
-                unset($_POST["password"]);
-                unset($_POST["login"]);
-                Application::sendSessionModel($usr);
-            }
-        }
 
-        if (Application::isGuest()) {
-            $this->actionIndex();
-        } else {
-            if (Application::isAdmin()) {
-                $this->panelAction();
-            }
-        }
     }
 
     /**

@@ -12,3 +12,4 @@ else {
     $usr = $_SESSION["user"];
     $this->redirectToOther("user&us_id=$usr->id_user", "account");
 }
+

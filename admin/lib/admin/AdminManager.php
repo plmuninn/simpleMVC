@@ -25,8 +25,8 @@ class AdminManager extends Controller
 
         /*If index controller*/
         if (!isset($this->component)) {
-            if ($this->controllers == strtolower(preg_replace("/Controller/", "", get_class($this)))) {
-                if ($this->actions == null) {
+            if ($this->controllers == strtolower(preg_replace("/Controller/", "", get_class($this))) || is_null($this->controllers)) {
+                if (is_null($this->actions)) {
                     $this->rendered = true;
                     $this->actionIndex();
                 }
