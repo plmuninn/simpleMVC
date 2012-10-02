@@ -19,7 +19,7 @@ class AdminManager extends Controller
     {
         Application::sessionStart();
         $this->generateName();
-        Loader::import("plugins.*");
+        Loader::import("admin.plugins.*");
         $this->generateModels();
         $this->generateControllers();
 

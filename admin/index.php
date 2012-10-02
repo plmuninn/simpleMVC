@@ -4,6 +4,7 @@ require_once("lib/Loader.php");
 spl_autoload_register("Loader::autoload");
 set_error_handler("Error::errorFunction");
 set_exception_handler('Error::errorMessage');
+Loader::admin();
 
 
 if (function_exists('lcfirst') === false) {
@@ -13,15 +14,6 @@ if (function_exists('lcfirst') === false) {
         return $str;
     }
 }
-
-
-Loader::import("admin.lib.admin.interfaces.*");
-Loader::import("admin.lib.admin.*");
-Loader::import("admin.plugins.*");
-Loader::import("admin.models.*");
-Loader::import("admin.controller.*");
-
-
 
 new AdminController();
 

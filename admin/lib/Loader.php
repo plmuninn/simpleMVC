@@ -242,4 +242,10 @@ class Loader implements LoaderInterface
         return $classes;
     }
 
+    public static function admin(){
+        self::import("admin.lib.admin.interfaces.*");
+        self::import("admin.lib.admin.*");
+        self::import("admin.controller.*");
+    }
+
 }
