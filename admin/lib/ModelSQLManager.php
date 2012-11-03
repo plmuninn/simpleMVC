@@ -65,7 +65,8 @@ class ModelSQLManager extends ApplicationDB implements SQLManagerInterface
     {
 
         $this->plugins = new PluginManager();
-        switch (DB_TYPE) {
+        $config = new Configuration();
+        switch ($config->getDBType()) {
             case "mysql":
                 $this->mysql();
                 break;

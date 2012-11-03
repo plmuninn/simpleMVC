@@ -1984,22 +1984,22 @@ date for connection form config.php file in site root directory]]></description>
                 <description><![CDATA[Class for manage a basic configurations]]></description>
                 <long-description><![CDATA[]]></long-description>
                 <tag line="6" name="package" description="core"/>
-                <tag line="6" name="property" description="date format" type="\$Date_format" variable="">
-                    <type by_reference="false">\$Date_format</type>
+                <tag line="6" name="property" description="date format" type="\$DateFormat" variable="">
+                    <type by_reference="false">\$DateFormat</type>
                 </tag>
-                <tag line="6" name="property" description="time zone" type="\$Time_zone" variable="">
-                    <type by_reference="false">\$Time_zone</type>
+                <tag line="6" name="property" description="time zone" type="\$TimeZone" variable="">
+                    <type by_reference="false">\$TimeZone</type>
                 </tag>
-                <tag line="6" name="property" description="time format" type="\$Time_Format" variable="">
-                    <type by_reference="false">\$Time_Format</type>
+                <tag line="6" name="property" description="time format" type="\$TimeFormat" variable="">
+                    <type by_reference="false">\$TimeFormat</type>
                 </tag>
-                <tag line="6" name="property" description="privileges to create,save files" type="\$File_prev"
+                <tag line="6" name="property" description="privileges to create,save files" type="\$FilePrev"
                      variable="">
-                    <type by_reference="false">\$File_prev</type>
+                    <type by_reference="false">\$FilePrev</type>
                 </tag>
-                <tag line="6" name="property" description="privileges to create,save folders" type="\$Folder_prev"
+                <tag line="6" name="property" description="privileges to create,save folders" type="\$FolderPrev"
                      variable="">
-                    <type by_reference="false">\$Folder_prev</type>
+                    <type by_reference="false">\$FolderPrev</type>
                 </tag>
                 <tag line="6" name="property" description="administrator email" type="\$Admin_Email" variable="">
                     <type by_reference="false">\$Admin_Email</type>
@@ -2032,7 +2032,7 @@ date for connection form config.php file in site root directory]]></description>
             </docblock>
             <property final="false" static="false" visibility="protected" line="32" namespace="global"
                       package="Default">
-                <name>$Date_format</name>
+                <name>$DateFormat</name>
                 <default><![CDATA[]]></default>
                 <docblock line="28">
                     <description><![CDATA[Format for date]]></description>
@@ -2044,7 +2044,7 @@ date for connection form config.php file in site root directory]]></description>
             </property>
             <property final="false" static="false" visibility="protected" line="38" namespace="global"
                       package="Default">
-                <name>$Time_zone</name>
+                <name>$TimeZone</name>
                 <default><![CDATA[]]></default>
                 <docblock line="34">
                     <description><![CDATA[Timezone]]></description>
@@ -2056,7 +2056,7 @@ date for connection form config.php file in site root directory]]></description>
             </property>
             <property final="false" static="false" visibility="protected" line="44" namespace="global"
                       package="Default">
-                <name>$Time_Format</name>
+                <name>$TimeFormat</name>
                 <default><![CDATA[]]></default>
                 <docblock line="40">
                     <description><![CDATA[Format for time in date]]></description>
@@ -2068,7 +2068,7 @@ date for connection form config.php file in site root directory]]></description>
             </property>
             <property final="false" static="false" visibility="protected" line="50" namespace="global"
                       package="Default">
-                <name>$File_prev</name>
+                <name>$FilePrev</name>
                 <default><![CDATA[]]></default>
                 <docblock line="46">
                     <description><![CDATA[File privileges]]></description>
@@ -2080,7 +2080,7 @@ date for connection form config.php file in site root directory]]></description>
             </property>
             <property final="false" static="false" visibility="protected" line="56" namespace="global"
                       package="Default">
-                <name>$Folder_prev</name>
+                <name>$FolderPrev</name>
                 <default><![CDATA[]]></default>
                 <docblock line="52">
                     <description><![CDATA[Folder privileges]]></description>
@@ -2282,12 +2282,12 @@ date for connection form config.php file in site root directory]]></description>
                 <docblock line="344">
                     <description><![CDATA[Set Date Format]]></description>
                     <long-description><![CDATA[]]></long-description>
-                    <tag line="344" name="param" description="" type="string" variable="$Date_format">
+                    <tag line="344" name="param" description="" type="string" variable="$DateFormat">
                         <type by_reference="false">string</type>
                     </tag>
                 </docblock>
                 <argument line="348">
-                    <name>$Date_format</name>
+                    <name>$DateFormat</name>
                     <default><![CDATA[]]></default>
                     <type/>
                 </argument>
@@ -2311,12 +2311,12 @@ date for connection form config.php file in site root directory]]></description>
                 <docblock line="362">
                     <description><![CDATA[Set file privileges]]></description>
                     <long-description><![CDATA[]]></long-description>
-                    <tag line="362" name="param" description="" type="string" variable="$File_prev">
+                    <tag line="362" name="param" description="" type="string" variable="$FilePrev">
                         <type by_reference="false">string</type>
                     </tag>
                 </docblock>
                 <argument line="366">
-                    <name>$File_prev</name>
+                    <name>$FilePrev</name>
                     <default><![CDATA[]]></default>
                     <type/>
                 </argument>
@@ -2340,12 +2340,12 @@ date for connection form config.php file in site root directory]]></description>
                 <docblock line="380">
                     <description><![CDATA[Set folder privileges]]></description>
                     <long-description><![CDATA[]]></long-description>
-                    <tag line="380" name="param" description="" type="string" variable="$Folder_prev">
+                    <tag line="380" name="param" description="" type="string" variable="$FolderPrev">
                         <type by_reference="false">string</type>
                     </tag>
                 </docblock>
                 <argument line="384">
-                    <name>$Folder_prev</name>
+                    <name>$FolderPrev</name>
                     <default><![CDATA[]]></default>
                     <type/>
                 </argument>
@@ -2369,12 +2369,12 @@ date for connection form config.php file in site root directory]]></description>
                 <docblock line="398">
                     <description><![CDATA[Set Time zone]]></description>
                     <long-description><![CDATA[]]></long-description>
-                    <tag line="398" name="param" description="" type="string" variable="$Time_zone">
+                    <tag line="398" name="param" description="" type="string" variable="$TimeZone">
                         <type by_reference="false">string</type>
                     </tag>
                 </docblock>
                 <argument line="402">
-                    <name>$Time_zone</name>
+                    <name>$TimeZone</name>
                     <default><![CDATA[]]></default>
                     <type/>
                 </argument>
@@ -2463,12 +2463,12 @@ date for connection form config.php file in site root directory]]></description>
                 <docblock line="461">
                     <description><![CDATA[Set Time format]]></description>
                     <long-description><![CDATA[]]></long-description>
-                    <tag line="461" name="param" description="" type="string" variable="$Time_Format">
+                    <tag line="461" name="param" description="" type="string" variable="$TimeFormat">
                         <type by_reference="false">string</type>
                     </tag>
                 </docblock>
                 <argument line="465">
-                    <name>$Time_Format</name>
+                    <name>$TimeFormat</name>
                     <default><![CDATA[]]></default>
                     <type/>
                 </argument>

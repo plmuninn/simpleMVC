@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <database>
+        <type>mysql</type>
+        <name>test</name>
+        <user>root</user>
+        <password>zielone</password>
+        <address>localhost</address>
+        <charset>utf8</charset>
+    </database>
+    <settings>
+        <title>Radio Forum</title>
+        <charset>utf-8</charset>
+        <template>standard</template>
+        <time_zone>(GMT+01:00) Warsaw</time_zone>
+        <date_format>H:i</date_format>
+        <time_format>m/d/y</time_format>
+        <file_prev>0777</file_prev>
+        <folder_prev>0777</folder_prev>
+        <lang>pl</lang>
+    </settings>
+</config>

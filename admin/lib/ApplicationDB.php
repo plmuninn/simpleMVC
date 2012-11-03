@@ -20,22 +20,30 @@ class ApplicationDB
     private static $connection;
 
     /**
+     * Configuration class instance
+     * @var Configuration
+     */
+    private $configuration;
+
+    /**
      * Construct a Database connection, get all
      *date for connection form config.php file in site root directory*/
     function __construct()
     {
-        switch (DB_TYPE) {
+        $this->configuration = new Configuration();
+
+        switch ($this->configuration->getDBType()) {
             case "mysql":
-                self::$connection = new PDO(DB_TYPE . ":host=" . DB_ADDRES . ";dbname=" . DB_NAME . ";charset=" . DB_CHARSET, DB_USER, DB_PASSWORD);
+                self::$connection = new PDO($this->configuration->getDBType(). ":host=" . $this->configuration->getDBAddress() . ";dbname=" . $this->configuration->getDBName() . ";charset=" . $this->configuration->getDBCharset(), $this->configuration->getDBUser(), $this->configuration->getDBPassword());
                 self::$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 break;
             case "pgsql":
-                self::$connection = new PDO(DB_TYPE . ":host=" . DB_ADDRES . ";dbname=" . DB_NAME . "", DB_USER, DB_PASSWORD);
+                self::$connection = new PDO($this->configuration->getDBType() . ":host=" . $this->configuration->getDBAddress()  . ";dbname=" . $this->configuration->getDBName() . "", $this->configuration->getDBUser(), $this->configuration->getDBPassword());
                 self::$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                self::$connection->exec("SET NAMES" . DB_CHARSET);
+                self::$connection->exec("SET NAMES " . $this->configuration->getDBCharset() );
                 break;
             case "oracle":
-                self::$connection = new PDO("OCI:dbname=" . DB_NAME . ";charset=" . DB_CHARSET, DB_USER, DB_PASSWORD);
+                self::$connection = new PDO("OCI:dbname=" . $this->configuration->getDBName() . ";charset=" . $this->configuration->getDBCharset(), $this->configuration->getDBUser(), $this->configuration->getDBPassword());
                 break;
         }
     }
