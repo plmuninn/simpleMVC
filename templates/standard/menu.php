@@ -30,7 +30,6 @@ if (!Application::isGuest()) {
                 array("href" => "", "link" => "Strona główna"),
             ), false
         );
-
         echo HTMLManager::makeMenu(
             array(
                 array("href" => "user&act=logout", "link" => "Wyloguj"),

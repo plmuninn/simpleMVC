@@ -331,16 +331,14 @@ class Application extends Configuration
      * Check if user is AdminC
      * @static
      * @return bool*/
+    //TODO: add auth system
     public static function isAdmin()
     {
         self::sessionStart();
         if ($_SESSION["user"] != null) {
             $usr = $_SESSION["user"];
             $config = new Configuration();
-            if ($usr->id_user == $config->getAdminId()) {
                 return true;
-            } else
-                return false;
         } else
             return false;
     }
