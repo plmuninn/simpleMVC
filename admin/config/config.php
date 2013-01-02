@@ -2,11 +2,11 @@
 return array (
     "database"=>array(
         "type"=>'mysql',
-        "name"=>'',
-        "user"=>'',
-        "password"=>'',
-        "address"=>'',
-        "charset"=>'',
+        "name"=>'mvc',
+        "user"=>'root',
+        "password"=>'zielone',
+        "address"=>'localhost',
+        "charset"=>'utf8',
     ),
     "setting"=>array(
         "title"=>'Default Title',
