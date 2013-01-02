@@ -75,7 +75,7 @@ class AdminManager extends Controller
         /*Get view*/
         $this->file = $this->app->getBaseDir() . "admin/views/" . $this->name . "/" . $name . ".php";
         /*Get template*/
-        include_once($this->app->getBaseDir() . "admin/templates/" . $this->app->getTemplate() . "/index.php");
+        include_once($this->app->getBaseDir() . "admin/templates/" . $this->app->settings('template') . "/index.php");
         $this->afterRender();
 
     }

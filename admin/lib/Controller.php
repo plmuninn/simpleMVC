@@ -140,7 +140,7 @@ class Controller
         /*Get view*/
         $this->file = $this->app->getBaseDir() . "views/" . $this->name . "/" . $name . ".php";
         /*Get template*/
-        include_once($this->app->getBaseDir() . "templates/" . $this->app->getTemplate() . "/index.php");
+        include_once($this->app->getBaseDir() . "templates/" . $this->app->settings('template') . "/index.php");
         $this->afterRender();
     }
 

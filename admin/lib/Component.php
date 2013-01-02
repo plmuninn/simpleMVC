@@ -16,13 +16,13 @@ class Component extends Controller
      * Path to component.
      * @var
      */
-    protected  $path;
+    protected $path;
 
     /**
      * File loader value
      * @var string
      */
-    protected  $dir;
+    protected $dir;
 
     /**
      *Constructor check url and active controller and actions from them.
@@ -35,7 +35,7 @@ class Component extends Controller
         parent::dependencies();
         $this->app = new Application();
         $this->path = $this->app->getHomeUrl() . "components/" . $this->component . "/";
-        $this->dir = $this->app->getBaseDir() . "components/" . $this->component ;
+        $this->dir = $this->app->getBaseDir() . "components/" . $this->component;
         $this->generateModels();
         Loader::import("plugins.*");
         Loader::import("components." . $this->name . ".plugins.*");
@@ -78,7 +78,7 @@ class Component extends Controller
         $this->app = new Application();
         $this->file = $this->dir . "/views/" . $this->name . "/" . $name . ".php";
         /*Get template*/
-        include_once($this->app->getBaseDir() . "templates/" . $this->app->getTemplate() . "/index.php");
+        include_once($this->app->getBaseDir() . "templates/" . $this->app->settings('template') . "/index.php");
         $this->afterRender();
     }
 
@@ -162,7 +162,7 @@ class Component extends Controller
      */
     protected function checkController($name)
     {
-        return file_exists(   $this->dir  . "/controller/" . $name . ".php");
+        return file_exists($this->dir . "/controller/" . $name . ".php");
     }
 
 }

@@ -81,7 +81,7 @@ class AdminComponent extends Component
         $this->app = new Application();
         $this->file = $this->dir . "/views/" . $this->name . "/" . $name . ".php";
         /*Get template*/
-        include_once($this->app->getBaseDir() . "admin/templates/" . $this->app->getTemplate() . "/index.php");
+        include_once($this->app->getBaseDir() . "admin/templates/" . $this->app->templateDir(). "/index.php");
         $this->afterRender();
     }
 

@@ -456,7 +456,7 @@ class Application extends Configuration
     {
         $url = Application::generateUrl();
         $configuration = new Configuration();
-        return $url .= DIRECTORY_SEPARATOR . SITE_PATH . "/templates/" . $configuration->getTemplate() . DIRECTORY_SEPARATOR;
+        return $url .= DIRECTORY_SEPARATOR . SITE_PATH . "/templates/" . $configuration->settings('template') . DIRECTORY_SEPARATOR;
     }
 
     /**

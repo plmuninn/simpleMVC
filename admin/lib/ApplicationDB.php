@@ -32,18 +32,18 @@ class ApplicationDB
     {
         $this->configuration = new Configuration();
 
-        switch ($this->configuration->getDBType()) {
+        switch ($this->configuration->db('type')) {
             case "mysql":
-                self::$connection = new PDO($this->configuration->getDBType(). ":host=" . $this->configuration->getDBAddress() . ";dbname=" . $this->configuration->getDBName() . ";charset=" . $this->configuration->getDBCharset(), $this->configuration->getDBUser(), $this->configuration->getDBPassword());
+                self::$connection = new PDO($this->configuration->db('type') . ":host=" . $this->configuration->db('address') . ";dbname=" . $this->configuration->db('name') . ";charset=" . $this->configuration->db('charset'), $this->configuration->db('user'), $this->configuration->db('password'));
                 self::$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 break;
             case "pgsql":
-                self::$connection = new PDO($this->configuration->getDBType() . ":host=" . $this->configuration->getDBAddress()  . ";dbname=" . $this->configuration->getDBName() . "", $this->configuration->getDBUser(), $this->configuration->getDBPassword());
+                self::$connection = new PDO($this->configuration->db('type') . ":host=" . $this->configuration->db('address') . ";dbname=" . $this->configuration->db('name') . "", $this->configuration->db('user'), $this->configuration->db('password'));
                 self::$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                self::$connection->exec("SET NAMES " . $this->configuration->getDBCharset() );
+                self::$connection->exec("SET NAMES " . $this->configuration->db('charset'));
                 break;
             case "oracle":
-                self::$connection = new PDO("OCI:dbname=" . $this->configuration->getDBName() . ";charset=" . $this->configuration->getDBCharset(), $this->configuration->getDBUser(), $this->configuration->getDBPassword());
+                self::$connection = new PDO("OCI:dbname=" . $this->configuration->db('name') . ";charset=" . $this->configuration->db('charset'), $this->configuration->db('user'), $this->configuration->db('password'));
                 break;
         }
     }

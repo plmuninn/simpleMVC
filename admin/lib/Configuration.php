@@ -11,91 +11,6 @@
  * */
 class Configuration
 {
-
-    /**
-     * Format for date
-     * @var string
-     */
-    protected $DateFormat;
-
-    /**
-     * Timezone
-     * @var string
-     */
-    protected $TimeZone;
-
-    /**
-     * Format for time in date
-     * @var string
-     */
-    protected $TimeFormat;
-
-    /**
-     * File privileges
-     * @var string
-     */
-    protected $FilePrev;
-
-    /**
-     * Folder privileges
-     * @var  string
-     */
-    protected $FolderPrev;
-
-    /**
-     * Language of site
-     * @var string
-     */
-    protected $Lang;
-
-    /**
-     * Name of database
-     * @var
-     */
-    protected $DBName;
-
-    /**
-     * Address to database
-     * @var
-     */
-    protected $DBAddress;
-
-    /**
-     * Database User Login
-     * @var
-     */
-    protected $DBUser;
-
-    /**
-     * Database User Password
-     * @var
-     */
-    protected $DBPassword;
-
-    /**
-     * Database connection charset encoding
-     * @var
-     */
-    protected $DBCharset;
-
-    /**
-     * Database Type (ex. mysql)
-     * @var
-     */
-    protected $DBType;
-
-    /**
-     * Website global title
-     * @var
-     */
-    protected $SiteTitle;
-
-    /**
-     * Website coding charset
-     * @var
-     */
-    protected $SiteCharset;
-
     /**
      * Time Zones to choose
      * @var array
@@ -250,45 +165,19 @@ class Configuration
     );
 
     /**
-     * Which template you are using
-     * @var
-     */
-    protected $Template;
-
-    /**
      * Templates to choose
      * @var array
      */
     protected $AllTemplates = array();
+
+    protected $config = array();
 
     /**
      * Construct map Database record to Object
      */
     function __construct()
     {
-        $obj = self::getConfig();
-
-        /*Setting DB Config*/
-        $this->DBAddress = $obj->database->address;
-        $this->DBName = $obj->database->name;
-        $this->DBType = $obj->database->type;
-        $this->DBUser = $obj->database->user;
-        $this->DBPassword = $obj->database->password;
-        $this->DBCharset = $obj->database->charset;
-
-        /*Setting system config*/
-        $this->DateFormat = $obj->settings->date_format;
-        $this->TimeFormat = $obj->settings->time_format;
-        $this->TimeZone = $obj->settings->time_zone;
-        $this->FilePrev = $obj->settings->file_prev;
-        $this->FolderPrev = $obj->settings->folder_prev;
-        $this->Template = $obj->settings->template;
-        $this->Lang = $obj->settings->lang;
-
-        /*Setting website config*/
-        $this->SiteTitle = $obj->settings->title;
-        $this->SiteCharset = $obj->settings->charset;
-
+        self::getConfig();
         self::setGlobals();
     }
 
@@ -299,37 +188,37 @@ class Configuration
     {
     }
 
-    /**
-     * Save Object variables to Database
-     * @return bool if execute was ok is true else is false
-     */
-    public function save()
+    private function reformatArray($array, $pre)
     {
-        $config = new DOMDocument('1.0', 'UTF-8');
-        $root = $config->createElement("config");
-        $root = $config->appendChild($root);
-        $database = $config->createElement("database");
-        $database = $root->appendChild($database);
-        $database->appendChild($config->createElement('type',$this->DBType));
-        $database->appendChild($config->createElement('name',$this->DBName));
-        $database->appendChild($config->createElement('user',$this->DBUser));
-        $database->appendChild($config->createElement('password',$this->DBPassword));
-        $database->appendChild($config->createElement('address',$this->DBAddress));
-        $database->appendChild($config->createElement('charset',$this->DBCharset));
-        $settings = $config->createElement("settings");
-        $settings = $root->appendChild($settings);
-        $settings->appendChild($config->createElement('title',$this->SiteTitle));
-        $settings->appendChild($config->createElement('charset',$this->SiteCharset));
-        $settings->appendChild($config->createElement('template',$this->Template));
-        $settings->appendChild($config->createElement('date_format',$this->DateFormat));
-        $settings->appendChild($config->createElement('time_zone',$this->TimeZone));
-        $settings->appendChild($config->createElement('time_format',$this->TimeFormat));
-        $settings->appendChild($config->createElement('file_prev',$this->FilePrev));
-        $settings->appendChild($config->createElement('folder_prev',$this->FolderPrev));
-        $settings->appendChild($config->createElement('lang',$this->Lang));
-        $config->save(BASE_DIR."admin/config/config.xml");
+        $string = "";
+        foreach ($array as $key => $value) {
+            if (is_array($array[$key])) {
+                $string .= "\n" . $pre . '"' . $key . '"' . "=>array(";
+                $string .= $this->reformatArray($array[$key], $pre . "\t");
+                $string .= "\n" . $pre . " ),";
+            } else if (is_int($key)) {
+                /*Do nothing*/
+            } else {
+                $string .= "\n" . $pre . '"' . $key . '"' . "=>" . '\'' . $array[$key] . '\'' . ',';
+            }
+        }
+        return $string;
+    }
+
+    /**
+     * Method save data to config file
+     * @return bool
+     */
+    private function save()
+    {
+        $string = "<?php \n return array (";
+        $string .= $this->reformatArray($this->config, "\t");
+        $string .= "\n);";
+        if (file_put_contents(BASE_DIR . "admin/config/config.php", $string) > 0)
+            return true;
         return false;
     }
+
 
     /**
      * List of all templates
@@ -348,349 +237,73 @@ class Configuration
     }
 
     /**
-     * Create clean config if config is not exists
+     * Create clean, default config if config is not exists
      */
-    public function cleanConfig(){
-        $config = new DOMDocument('1.0', 'UTF-8');
-        $root = $config->createElement("config");
-        $root = $config->appendChild($root);
-        $database = $config->createElement("database");
-        $database = $root->appendChild($database);
-        $database->appendChild($config->createElement('type','mysql'));
-        $database->appendChild($config->createElement('name',''));
-        $database->appendChild($config->createElement('user',''));
-        $database->appendChild($config->createElement('password',''));
-        $database->appendChild($config->createElement('address','localhost'));
-        $database->appendChild($config->createElement('charset','utf8'));
-        $settings = $config->createElement("settings");
-        $settings = $root->appendChild($settings);
-        $settings->appendChild($config->createElement('title','Default Title'));
-        $settings->appendChild($config->createElement('charset','utf-8'));
-        $settings->appendChild($config->createElement('template','default'));
-        $settings->appendChild($config->createElement('time_zone','(GMT) London'));
-        $settings->appendChild($config->createElement('date_format','H:i'));
-        $settings->appendChild($config->createElement('time_format','m/d/y'));
-        $settings->appendChild($config->createElement('file_prev','0777'));
-        $settings->appendChild($config->createElement('folder_prev','0777'));
-        $settings->appendChild($config->createElement('lang','eng'));
-        $config->save(BASE_DIR."admin/config/config.xml");
+    public function cleanConfig()
+    {
+        $this->config = array(
+            "database" => array(
+                "type" => "mysql",
+                "name" => "",
+                "user" => "",
+                "password" => "",
+                "address" => "",
+                "charset" => "",
+            ),
+            "setting" => array(
+                "title" => "Default Title",
+                "charset" => "utf-8",
+                "template" => "standard",
+                "time_zone" => "( GMT ) London",
+                "date_format" => "H:i",
+                "time_format" => "m/d/y",
+                "file_prev" => "0777",
+                "folder_prev" => "0777",
+                "lang" => "eng",
+            ),
+        );
     }
 
     /**
      * Return config object
      * @return object
      */
-    public function getConfig(){
-        if(!file_exists(BASE_DIR."admin/config/config.xml"))
+    public function getConfig()
+    {
+        if (!file_exists(BASE_DIR . "admin/config/config.php"))
             self::cleanConfig();
-        return simplexml_load_file(BASE_DIR."admin/config/config.xml");
+        $this->config = require(BASE_DIR . "admin/config/config.php");
     }
 
     /**
      * Setting system globals values
      */
-    private function setGlobals(){
-        if(!defined("SITE_TITLE") && !defined("SITE_CHARSET")){
-        define("SITE_TITLE",$this->SiteTitle);
-        define("SITE_CHARSET", $this->SiteCharset);
+    private function setGlobals()
+    {
+        if (!defined("SITE_TITLE") && !defined("SITE_CHARSET")) {
+            define("SITE_TITLE", $this->settings('title'));
+            define("SITE_CHARSET", $this->settings('charset'));
         }
     }
 
     /**
-     * Set Date Format
-     * @param string $Date_format
+     * Return config settings array
+     * @param $key
+     * @return array
      */
-    public function setDateFormat($Date_format)
+    public function settings($key)
     {
-        $this->DateFormat = $Date_format;
+        return $this->config['setting'][$key];
     }
 
     /**
-     * Return Date Format
+     * Return config database array
+     * @param $key
      * @return mixed
      */
-    public function getDateFormat()
+    public function db($key)
     {
-        return $this->DateFormat;
-    }
-
-    /**
-     * Set file privileges
-     * @param string $File_prev
-     */
-    public function setFilePrev($File_prev)
-    {
-        $this->FilePrev = $File_prev;
-    }
-
-    /**
-     * Return file privileges
-     * @return mixed
-     */
-    public function getFilePrev()
-    {
-        return $this->FilePrev;
-    }
-
-    /**
-     * Set folder privileges
-     * @param string $Folder_prev
-     */
-    public function setFolderPrev($Folder_prev)
-    {
-        $this->FolderPrev = $Folder_prev;
-    }
-
-    /**
-     * Return folder privileges
-     * @return mixed
-     */
-    public function getFolderPrev()
-    {
-        return $this->FolderPrev;
-    }
-
-    /**
-     * Set Time zone
-     * @param string $Time_zone
-     */
-    public function setTimeZone($Time_zone)
-    {
-        $this->TimeZone = $Time_zone;
-    }
-
-    /**
-     * Return Time zone
-     * @return mixed
-     */
-    public function getTimeZone()
-    {
-        return $this->TimeZone;
-    }
-
-    /**
-     * Change actual site language
-     * @param string $Lang
-     */
-    public function setLang($Lang)
-    {
-        $this->Lang = $Lang;
-    }
-
-    /**
-     * Return actual language
-     * @return mixed
-     */
-    public function getLang()
-    {
-        return $this->Lang;
-    }
-
-    /**
-     * Return all Date formats
-     * @return mixed
-     */
-    public function getDateFormats()
-    {
-        return $this->DateFormats;
-    }
-
-    /**
-     * Return all Time zones
-     * @return mixed
-     */
-    public function getTimeZones()
-    {
-        return $this->TimeZones;
-    }
-
-    /**
-     * Return all Time formats
-     * @return mixed
-     */
-    public function getTimeFormats()
-    {
-        return $this->TimeFormats;
-    }
-
-    /**
-     * Set Time format
-     * @param string $Time_Format
-     */
-    public function setTimeFormat($Time_Format)
-    {
-        $this->TimeFormat = $Time_Format;
-    }
-
-    /**
-     * Get Time format
-     * @return mixed
-     */
-    public function getTimeFormat()
-    {
-        return $this->TimeFormat;
-    }
-
-    /**
-     * Set actual template
-     * @param string $Template
-     */
-    public function setTemplate($Template)
-    {
-        $this->Template = $Template;
-    }
-
-    /**
-     * Return actual template
-     * @return mixed
-     */
-    public function getTemplate()
-    {
-        return $this->Template;
-    }
-
-    /**
-     * Setting Database address. Default localhost.
-     * @param $DBAddress
-     */
-    public function setDBAddress($DBAddress)
-    {
-        $this->DBAddress = $DBAddress;
-    }
-
-    /**
-     * Return Database address.
-     * @return mixed
-     */
-    public function getDBAddress()
-    {
-        return $this->DBAddress;
-    }
-
-    /**
-     * Setting Database connection encoding. Default utf8.
-     * @param $DBCharset
-     */
-    public function setDBCharset($DBCharset)
-    {
-        $this->DBCharset = $DBCharset;
-    }
-
-    /**
-     * Return Database connection encoding.
-     * @return mixed
-     */
-    public function getDBCharset()
-    {
-        return $this->DBCharset;
-    }
-
-    /**
-     * Setting database name;
-     * @param $DBName
-     */
-    public function setDBName($DBName)
-    {
-        $this->DBName = $DBName;
-    }
-
-    /**
-     * Return database name;
-     * @return mixed
-     */
-    public function getDBName()
-    {
-        return $this->DBName;
-    }
-
-    /**
-     * Set Database password for DB connection.;
-     * @param $DBPassword
-     */
-    public function setDBPassword($DBPassword)
-    {
-        $this->DBPassword = $DBPassword;
-    }
-
-    /**
-     * Return Database password for DB connection.
-     * @return mixed
-     */
-    public function getDBPassword()
-    {
-        return $this->DBPassword;
-    }
-
-    /**
-     * Setting Database type (ex. mysql)
-     * @param $DBType
-     */
-    public function setDBType($DBType)
-    {
-        $this->DBType = $DBType;
-    }
-
-    /**
-     * Return Database type (ex. mysql)
-     * @return mixed
-     */
-    public function getDBType()
-    {
-        return $this->DBType;
-    }
-
-    /**
-     * Setting Database User for DB connection
-     * @param $DBUser
-     */
-    public function setDBUser($DBUser)
-    {
-        $this->DBUser = $DBUser;
-    }
-
-    /**
-     * Return Database User for DB connection
-     * @return mixed
-     */
-    public function getDBUser()
-    {
-        return $this->DBUser;
-    }
-
-    /**
-     * Setting site charset
-     * @param  $SiteCharset
-     */
-    public function setSiteCharset($SiteCharset)
-    {
-        $this->SiteCharset = $SiteCharset;
-    }
-
-    /**
-     * Return site coding charset
-     * @return
-     */
-    public function getSiteCharset()
-    {
-        return $this->SiteCharset;
-    }
-
-    /**
-     * Setting website title
-     * @param  $SiteTitle
-     */
-    public function setSiteTitle($SiteTitle)
-    {
-        $this->SiteTitle = $SiteTitle;
-    }
-
-    /**
-     * Return config title
-     * @return
-     */
-    public function getSiteTitle()
-    {
-        return $this->SiteTitle;
+        return $this->config['database'][$key];
     }
 
 }
