@@ -22,7 +22,7 @@ class Calendar
     function __construct()
     {
         $this->configuration = new Configuration();
-        $zone = $this->configuration->getTimeZone();
+        $zone = $this->configuration->settings('time_zone');
         $array = $this->configuration->getTimeZones();
         $key = array_search($zone, $array);
         date_default_timezone_set($key);
@@ -43,7 +43,7 @@ class Calendar
     public static function today()
     {
         $cal = new Calendar();
-        return date($cal->configuration->getDateFormat());
+        return date($cal->configuration->settings('date_format'));
     }
 
     /**
@@ -53,7 +53,7 @@ class Calendar
     public static function now()
     {
         $cal = new Calendar();
-        return date($cal->configuration->getTimeFormat());
+        return date($cal->configuration->settings('time_format'));
     }
 
     /**
@@ -67,7 +67,7 @@ class Calendar
     {
         $cal = new Calendar();
         $nextDate = mktime(0, 0, 0, date("m") + $month, date("d") + $day, date("Y") + $year);
-        return date($cal->configuration->getTimeFormat(), $nextDate);
+        return date($cal->configuration->settings('time_format'), $nextDate);
     }
 
 
@@ -83,7 +83,7 @@ class Calendar
     {
         $cal = new Calendar();
         $nextDate = mktime(date("G") + $hour, date("i") + $minutes, date("s") + $seconds, 0, 0, 0);
-        return date($cal->configuration->getTimeFormat(), $nextDate);
+        return date($cal->configuration->settings('time_format'), $nextDate);
     }
 
 }

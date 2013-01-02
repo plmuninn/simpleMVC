@@ -306,4 +306,29 @@ class Configuration
         return $this->config['database'][$key];
     }
 
+    /**
+     * @return array
+     */
+    public function getDateFormats()
+    {
+        return $this->DateFormats;
+    }
+
+    /**
+     * @return array
+     */
+    public function getTimeFormats()
+    {
+        return $this->TimeFormats;
+    }
+
+    /**
+     * @return array
+     */
+    public function getTimeZones()
+    {
+        return $this->TimeZones;
+    }
+
+
 }
