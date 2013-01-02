@@ -11,7 +11,7 @@
     <settings>
         <title>Default Title</title>
         <charset>utf-8</charset>
-        <template>default</template>
+        <template>standard</template>
         <time_zone>(GMT) London</time_zone>
         <date_format>H:i</date_format>
         <time_format>m/d/y</time_format>
