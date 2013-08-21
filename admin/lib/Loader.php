@@ -10,6 +10,10 @@ require_once("interfaces/LoaderInterface.php");
  */
 class Loader implements LoaderInterface
 {
+    private $mappings = array(
+    );
+
+
     /**
      *Nothing
      */
@@ -32,23 +36,13 @@ class Loader implements LoaderInterface
      */
     public static function  autoload($class_name)
     {
-        if (!preg_match("[^Controller$]", $class_name) && preg_match("[Controller$]", $class_name)) {
-
-            if (file_exists(BASE_DIR . "controller/" . $class_name . ".php"))
-                require_once  BASE_DIR . "controller/" . $class_name . ".php";
-        } else if (!preg_match("[^Model$]", $class_name) && preg_match("[Model$]", $class_name)) {
-
-            if (file_exists(BASE_DIR . "model/" . $class_name . ".php"))
-                require_once  BASE_DIR . "model/" . $class_name . ".php";
-        } else if (!preg_match("[^Interface$]", $class_name) && preg_match("[Interface$]", $class_name)) {
-
-            if (file_exists(BASE_DIR . "admin/lib/interfaces/" . $class_name . ".php"))
-                require_once  BASE_DIR . "admin/lib/interfaces/" . $class_name . ".php";
-        } else {
-            if (file_exists(BASE_DIR . "admin/lib/" . $class_name . ".php"))
-                require_once  BASE_DIR . "admin/lib/" . $class_name . ".php";
+        $loaded = explode("\\", $class_name);
+        if (count($loaded) > 1) {
+            $file = implode(DS, $loaded) . ".php";
+            if (file_exists($file)) {
+                require_once($file);
+            }
         }
-
     }
 
     /**
@@ -68,7 +62,7 @@ class Loader implements LoaderInterface
             if ($package[$i] == "*")
                 $all = true;
             else
-                $path .= ($i == 0 ? "" : "/") . $package[$i];
+                $path .= ($i == 0 ? "" : DS) . $package[$i];
         }
         if ($all) {
             $files = FileManager::getAll($app->getBaseDir() . $path);
@@ -85,12 +79,12 @@ class Loader implements LoaderInterface
                     if ($exceptions[$i] == "*")
                         $all = true;
                     else
-                        $exception_path .= ($i == 0 ? "" : "/") . $exceptions[$i];
+                        $exception_path .= ($i == 0 ? "" : DS) . $exceptions[$i];
                 }
                 if ($all == true) {
-                    $files = FileManager::getAll($app->getBaseDir() . "/" . $exception_path);
+                    $files = FileManager::getAll($app->getBaseDir() . DS . $exception_path);
                     if (is_array($files))
-                        Loader::loadFile($files, $app->getBaseDir() . "/" . $path);
+                        Loader::loadFile($files, $app->getBaseDir() . DS . $path);
                 } else
                     if ($path != $exception_path) {
                         if (Loader::checkClass($app->getBaseDir() . $path . ".php"))
@@ -112,12 +106,12 @@ class Loader implements LoaderInterface
         $app = new Application();
         if ($exceptions == null) {
             foreach ($files as $value) {
-                if (is_file($path . "/" . $value)) {
-                    if (Loader::checkClass($path . "/" . $value))
-                        require_once($path . "/" . $value);
-                } elseif (is_dir($path . "/" . $value)) {
-                    $newFiles = FileManager::getAll($path . "/" . $value);
-                    Loader::loadFolder($newFiles, $path . "/" . $value, $exceptions);
+                if (is_file($path . DS . $value)) {
+                    if (Loader::checkClass($path . DS . $value))
+                        require_once($path . DS . $value);
+                } elseif (is_dir($path . DS . $value)) {
+                    $newFiles = FileManager::getAll($path . DS . $value);
+                    Loader::loadFolder($newFiles, $path . DS . $value, $exceptions);
                 }
             }
         } else {
@@ -131,32 +125,32 @@ class Loader implements LoaderInterface
                 if ($exceptions[$i] == "*")
                     $all = true;
                 else
-                    $exception_path .= ($i == 0 ? "" : "/") . $exceptions[$i];
+                    $exception_path .= ($i == 0 ? "" : DS) . $exceptions[$i];
             }
 
             if ($all == true) {
-                $exception_path = explode("/", $exception_path);
+                $exception_path = explode(DS, $exception_path);
                 foreach ($files as $value) {
-                    if (is_file($path . "/" . $value)) {
-                        if (Loader::checkClass($path . "/" . $value))
-                            require_once($path . "/" . $value);
-                    } elseif (is_dir($path . "/" . $value)) {
+                    if (is_file($path . DS . $value)) {
+                        if (Loader::checkClass($path . DS . $value))
+                            require_once($path . DS . $value);
+                    } elseif (is_dir($path . DS . $value)) {
                         if (!in_array($value, $exception_path)) {
-                            $newFiles = FileManager::getAll($path . "/" . $value);
-                            Loader::loadFolder($newFiles, $path . "/" . $value, $exceptions);
+                            $newFiles = FileManager::getAll($path . DS . $value);
+                            Loader::loadFolder($newFiles, $path . DS . $value, $exceptions);
                         }
                     }
                 }
             } else {
                 foreach ($files as $value) {
-                    if (is_file($path . "/" . $value)) {
-                        if ($path . "/" . $value != $app->getBaseDir() . $exception_path . ".php") {
-                            if (Loader::checkClass($path . "/" . $value))
-                                require_once($path . "/" . $value);
+                    if (is_file($path . DS . $value)) {
+                        if ($path . DS . $value != $app->getBaseDir() . $exception_path . ".php") {
+                            if (Loader::checkClass($path . DS . $value))
+                                require_once($path . DS . $value);
                         }
-                    } elseif (is_dir($path . "/" . $value)) {
-                        $newFiles = FileManager::getAll($path . "/" . $value);
-                        Loader::loadFolder($newFiles, $path . "/" . $value, $exceptions);
+                    } elseif (is_dir($path . DS . $value)) {
+                        $newFiles = FileManager::getAll($path . DS . $value);
+                        Loader::loadFolder($newFiles, $path . DS . $value, $exceptions);
                     }
                 }
             }
@@ -230,11 +224,7 @@ class Loader implements LoaderInterface
         $tokens = token_get_all($php_code);
         $count = count($tokens);
         for ($i = 2; $i < $count; $i++) {
-            if ($tokens[$i - 2][0] == T_CLASS
-                && $tokens[$i - 1][0] == T_WHITESPACE
-                && $tokens[$i][0] == T_STRING
-            ) {
-
+            if ($tokens[$i - 2][0] == T_CLASS && $tokens[$i - 1][0] == T_WHITESPACE && $tokens[$i][0] == T_STRING) {
                 $class_name = $tokens[$i][1];
                 $classes[] = $class_name;
             }
